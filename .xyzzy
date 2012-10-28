@@ -1,0 +1,95 @@
+(require :anything/anything)
+(require :anything/sources)
+(require :anything/menu)
+(undefine-key *global-keymap*  #\M-q)
+(global-set-key '#\M-q 'anything)
+(undefine-key ctl-x-map #\f)
+(global-set-key '(#\C-x #\f) 'anything)
+(setq *minibuffer-popup-completion-list* :always)
+; (add-hook 'ed::*command-output-mode-hook*
+; 	  #'(lambda ()
+; 	    (progn
+; 	    (other-window)
+; 	    (if (> (window-lines)(buffer-lines))
+; 		
+; 		(enlarge-window (-(buffer-lines) (window-lines)))))))
+; 
+(quietly-read-abbrev-file)
+(require "snippet")
+(define-key ctl-x-map #\' 'snippet-expand)
+(add-hook '*before-find-file-hook*
+          #'(lambda (x)
+              (when (string-matchp "\\.ssn$" x)
+                (load-session x)
+                (selected-buffer))))
+(defun cp ()
+  (interactive)
+  (buf2html)
+  (set-buffer (find-buffer "*buf2html: HTML*"))
+  (write-file "C:/Users/hutoiti/xyzzy/cp.html")
+  (delete-buffer (selected-buffer))
+  (shell-execute "C:/Users/hutoiti/xyzzy/cp.html")
+  )
+;(require "outlinex")
+;(add-hook '*csharp-mode-hook*
+;	  #'(lambda ()
+;	      (setq olx-pattern "^[\\t]*?\\(class \\|private \\|public \\)\\w+?")
+;	      (setq olx-vert-p t)))
+(global-set-key #\C-+ 'increase-text-font-size)
+(global-set-key #\C-- 'decrease-text-font-size)
+(defun my-split-window (&optional arg vertical)
+   (interactive)
+   (split-window arg vertical)
+   (switch-to-buffer-other-window (other-buffer)))
+; (defun own-split-window ()
+;   (interactive)
+;   (progn
+;     (let ((current-buffer-lines (round (/ (window-lines) 2))))
+;       (switch-to-buffer-other-window (other-buffer))
+;       (print  current-buffer-lines)
+;       (cond ((> (window-lines) (buffer-lines))
+; 	     (enlarge-window (* -1 (- current-buffer-lines (buffer-lines) ))))
+; 	    ((> current-buffer-lines (buffer-lines)) (enlarge-window (* -1 (- ; current-buffer-lines (buffer-lines)))))))))
+; 	
+; (defun own-split-window ()
+;   (interactive)
+;   (progn
+;     (let ((current-buffer-lines (round (/ (window-lines) 2))))
+;       (switch-to-buffer-other-window (other-buffer))
+;       (print current-buffer-lines);8
+;       (print ( buffer-lines));1
+;       (print (- (buffer-lines) current-buffer-lines))
+;       (if ; ((> (window-lines) (buffer-lines)))
+;  	     (enlarge-window (* -1 (- current-buffer-lines (buffer-lines)))))
+;         (and
+; 	  (> current-buffer-lines (buffer-lines))
+; 	  (< 1 (- (buffer-lines) current-buffer-lines)))
+; 	 (message "curentbuffer~A bufferlines~A" current-buffer-lines (buffer-lines)))
+; 	  (enlarge-window (* -1 (- current-buffer-lines (buffer-lines))))
+; 	(my-split-window)
+; 	)
+; 	 (t nil)
+; 	 )))
+(defun own-split-window ()
+  (interactive)
+  (if
+      (= 1 (count-windows nil))
+      (progn
+	(let
+	    ((resize) (current-window-lines (ceiling (/ (window-lines) 2))))
+	(switch-to-buffer-other-window (other-buffer))
+	(setq resize (- current-window-lines (buffer-lines)));‚Ç‚ê‚­‚ç‚¢¬‚³‚­‚·‚é‚©
+	(if (> resize 0)
+	    (enlarge-window (* -1  (- resize 1)))
+	  )))
+    (my-split-window)
+    )
+  )
+  (require "backup")
+  (setq *backup-directory* "C:/Users/hutoiti/xyzzyŠÖŒW/backup/")
+  (setq *hierarchic-backup-directory* nil)
+ ; 2 ‰æ–Ê—p
+ (setq *filer-primary-file-mask* '("*"))
+ (setq *filer-secondary-file-mask* '("*"))
+ ; 1 ‰æ–Ê—p
+ (setq *filer-last-file-mask* '("*"))
