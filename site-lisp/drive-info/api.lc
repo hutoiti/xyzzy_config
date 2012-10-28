@@ -1,0 +1,6 @@
+(lisp::in-package-1 :user)
+(require "drive-info/ffi")
+(require "drive-info/api/package")
+(require "drive-info/api/drive-info")
+(require "drive-info/api/version")
+(provide "drive-info/api")

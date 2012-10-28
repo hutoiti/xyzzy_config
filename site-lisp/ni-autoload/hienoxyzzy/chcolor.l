@@ -1,0 +1,1 @@
+(require "chcolor/chcolor")

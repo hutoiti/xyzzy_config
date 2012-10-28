@@ -1,0 +1,7 @@
+(lisp::in-package-1 :user)
+(require "xml-http-request/package")
+(require "xml-http-request/macros")
+(require "xml-http-request/types")
+(require "xml-http-request/util")
+(require "xml-http-request/ole")
+(provide "xml-http-request/base")

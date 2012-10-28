@@ -1,0 +1,1 @@
+(require "info-modoki-mode")

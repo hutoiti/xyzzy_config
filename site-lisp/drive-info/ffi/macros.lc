@@ -1,0 +1,4 @@
+(require "drive-info/ffi/package")
+(lisp::in-package-1 :drive-info.ffi)
+(system:*fset 'make-c-type-accessor '(macro (type) (block make-c-type-accessor (let ((make (intern (format nil "make-~A-chunk" type))) (unpack (intern (format nil "unpack-~A" type)))) (list 'progn (list 'defun make 'nil (list 'system:make-chunk 'nil (foreign::ctypedef-size (expand-c-type type)))) (list 'defun unpack '(chunk) (cons (foreign::ctypedef-accessor (expand-c-type type)) '(chunk 0))) (list 'export (list 'quote (list make unpack))))))))
+(provide "drive-info/ffi/macros")

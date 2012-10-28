@@ -1,0 +1,45 @@
+2004-09-13  MIYAMUKO Katsuyuki  <k-miyamuko@yy.yy.yyx.xyy>
+
+	* java-scrapbook 0.3 リリース
+
+	* java-scrapbook-current-kill: kill ring の文字列を java コード片と
+	して実行する。
+
+	* java-scrapbook-clipboard: クリップボードの文字列を java コード片
+	として実行する。
+
+	* java-scrapbook-command: classpath が空文字列の場合 javac がエラー
+	になっていたのを修正
+
+2004-09-12  MIYAMUKO Katsuyuki  <miyamuko@xxy.yxxxxyx.xx.xx>
+
+	* java-scrapbook 0.2 リリース
+
+	* java-scrapbook-eclipse-classpath-entry: eclipse の .classpath フ
+	ァイルを検索してクラスパスを指定できるようにした。
+
+	* java-scrapbook-classpath: クラスパスを指定できるようにした。
+
+2004-09-10  MIYAMUKO Katsuyuki  <k-miyamuko@zy.yy.yyy.yyy>
+
+	* java-scrapbook-extract-import: スクラップに import foo.bar.baz.*;
+	と書いておくと import 文を追加できるようにした。
+
+	* java-scrapbook-as-string: *java-scrapbook-javac?-command* に
+	文字列以外が指定された場合、文字列に変換するようにした。
+
+2004-08-09  MIYAMUKO Katsuyuki  <miyamuko@zzy.yzzzzyz.zz.zz>
+
+	* java-scrapbook 0.1 仕切り直しリリース
+
+	* サイト移転に伴うこまごまとした修正
+
+2003-08-12  MIYAMUKO Katsuyuki  <k-miyamuko@xy.yy.yyz.zyy>
+
+	* ni-autoload 用ファイルをやっと追加。
+
+	* なぞの Hook を追加。
+
+2003-05-18  MIYAMUKO Katsuyuki  <k-miyamuko@zx.xx.xxy.yxx>
+
+	* 初期リリース

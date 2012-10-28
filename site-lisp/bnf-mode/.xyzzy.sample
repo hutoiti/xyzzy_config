@@ -1,0 +1,11 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; bnf-mode
+(require "bnf-mode")
+(pushnew '("\\.[ae]?bnf$" . bnf-mode) *auto-mode-alist* :test 'equal)
+
+;; インデントは 4
+(setq *bnf-indent-level* 4)
+
+;; セパレータをコロンのみに設定
+(setq *bnf-rule-separator-regexp* ":")

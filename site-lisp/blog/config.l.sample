@@ -1,0 +1,50 @@
+;;; -*- Mode: Lisp; Package: EDITOR -*-
+;;;
+;;; This file is not part of xyzzy.
+;;;
+; $Id: config.l.sample 549 2006-01-19 18:22:33Z torihat $
+;
+; config.l sample
+;
+
+(in-package "blog")
+
+;;;
+;;; Windowの設定
+;;;
+;3ペイン
+;(setq *window-3pain* t)
+;ブログリストwindowの幅
+;(setq *menu-window-width* 20)
+;タイトル一覧windowの高さ
+;(setq *title-window-height* 5)
+
+;;;
+;;; 編集モードの設定
+;;;
+;本文編集時のモード
+;(setq *edit-description-mode* 'text-mode)
+;概要編集時のモード
+;(setq *edit-mt_excerpt-mode* 'text-mode)
+;追記編集時のモード
+;(setq *edit-mt_text_more-mode* 'text-mode)
+
+;;;
+;;; 簡易プレビューをbrowserexで
+;;;
+;(require "browserex")
+;
+;(setq *blog-browserex-position* bx::XPIS_BOTTOM)
+;(setq *blog-browserex-height* 400)
+;
+;(defun open-in-browser-preview (url)
+;  (bx::navigate url
+;		:position *blog-browserex-position*
+;		:size *blog-browserex-height*))
+;
+;(defun post-close ()
+;  (interactive)
+;  (if (bx::browser-open-p)
+;      (bx::close-browser)
+;    (progn
+;      (title-window-set))))

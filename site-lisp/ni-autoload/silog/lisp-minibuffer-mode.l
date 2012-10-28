@@ -1,0 +1,1 @@
+(require "lisp-minibuffer-mode")

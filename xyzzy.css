@@ -1,0 +1,76 @@
+.bgcolor {
+  color: #000000;
+  background-color: #ffffff;
+} /* textColor, backColor */
+SPAN.keyword1 {
+  color: #0000ff;
+} /* kwdColor1 */
+SPAN.keyword2 {
+  color: #004000;
+} /* kwdColor2 */
+SPAN.keyword3 {
+  color: #800080;
+} /* kwdColor3 */
+SPAN.keyword1inverse {
+  color: #ffffff;
+  background-color: #0000ff;
+} /* backColor, kwdColor1 */
+SPAN.keyword2inverse {
+  color: #ffffff;
+  background-color: #004000;
+} /* backColor, kwdColor2 */
+SPAN.keyword3inverse {
+  color: #ffffff;
+  background-color: #800080;
+} /* backColor, kwdColor3 */
+SPAN.ctl {
+  color: #808000;
+} /* ctlColor */
+SPAN.string {
+  color: #00a600;
+} /* stringColor */
+SPAN.comment {
+  color: #008000;
+} /* commentColor */
+SPAN.tag {
+  color: #404000;
+} /* tagColor */
+.fg0 {
+  color: #000000;
+} /* textColor */
+.bg0 {
+  background-color: #ffffff;
+} /* backColor */
+.fg1 { color: #ff0000; } /* fg1 */
+.bg1 { background-color: #ff0000; } /* bg1 */
+.fg2 { color: #00ff00; } /* fg2 */
+.bg2 { background-color: #00ff00; } /* bg2 */
+.fg3 { color: #ffff00; } /* fg3 */
+.bg3 { background-color: #ffff00; } /* bg3 */
+.fg4 { color: #0000ff; } /* fg4 */
+.bg4 { background-color: #0000ff; } /* bg4 */
+.fg5 { color: #ff00ff; } /* fg5 */
+.bg5 { background-color: #ff00ff; } /* bg5 */
+.fg6 { color: #00ffff; } /* fg6 */
+.bg6 { background-color: #00ffff; } /* bg6 */
+.fg7 { color: #ffffff; } /* fg7 */
+.bg7 { background-color: #ffffff; } /* bg7 */
+.fg8 { color: #000000; } /* fg8 */
+.bg8 { background-color: #000000; } /* bg8 */
+.fg9 { color: #800000; } /* fg9 */
+.bg9 { background-color: #800000; } /* bg9 */
+.fg10 { color: #008000; } /* fg10 */
+.bg10 { background-color: #008000; } /* bg10 */
+.fg11 { color: #808000; } /* fg11 */
+.bg11 { background-color: #808000; } /* bg11 */
+.fg12 { color: #000080; } /* fg12 */
+.bg12 { background-color: #000080; } /* bg12 */
+.fg13 { color: #800080; } /* fg13 */
+.bg13 { background-color: #800080; } /* bg13 */
+.fg14 { color: #008080; } /* fg14 */
+.bg14 { background-color: #008080; } /* bg14 */
+.fg15 { color: #808080; } /* fg15 */
+.bg15 { background-color: #808080; } /* bg15 */
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+.strike-out { text-decoration: line-through; }

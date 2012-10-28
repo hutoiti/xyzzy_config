@@ -1,0 +1,788 @@
+;;; $Id: siteinit.l 362 2009-03-15 08:32:51Z raido $
+;;;
+
+(si:*load-library "packaged/before" :if-does-not-exist nil) (gc)
+#| ################################################################ |#
+
+(require "optprop")
+
+(in-package "editor")
+;;; 共通設定の「[...]はワイルドカード」の項目をヒストリ変数に追加
+(register-history-variable '(*brackets-is-wildcard-character*))
+
+(in-package "user")
+(if (find-load-path "packaged/keybind")
+    (require "packaged/keybind")
+  (progn
+#| ---- from $XYZZY/lisp/winkey.l --------------------------------- |#
+(in-package "editor")
+
+(defvar *default-selection-keymap*
+  (let ((keymap (make-sparse-keymap)))
+    (define-key keymap #\C-c 'copy-selection-to-clipboard)
+    (define-key keymap #\C-x 'kill-selection-to-clipboard)
+    keymap))
+
+(setq-default selection-keymap *default-selection-keymap*)
+(global-set-key #\C-z 'undo)
+(global-set-key #\C-v 'paste-from-clipboard)
+(define-key esc-map #\C-x #'ctl-x-prefix)
+(define-key esc-map #\C-c #'specific-command-prefix)
+
+(in-package "user")
+#| ---- from $XYZZY/lisp/Gates.l ---------------------------------- |#
+(in-package "editor")
+
+; files
+(global-set-key #\C-n 'new-file)
+(global-set-key #\C-o 'open-file-dialog)
+(global-set-key #\C-s 'save-buffer-dialog)
+(global-set-key #\C-p 'print-selected-buffer-dialog)
+(global-set-key #\M-F4 'kill-xyzzy)      ; Alt+F4
+
+; edit
+(global-set-key #\C-z 'undo)
+(global-set-key #\C-y 'redo)
+;(global-set-key #\C-x 'kill-selection-to-clipboard)
+;(global-set-key #\C-c 'copy-selection-to-clipboard)
+(global-set-key #\C-v 'paste-from-clipboard)
+(global-set-key #\C-a 'selection-whole-buffer)
+
+; search
+(global-set-key #\C-f 'search-dialog)
+(global-set-key #\C-r 'replace-dialog)
+(global-set-key #\F3 'repeat-forward-search)
+(global-set-key #\S-F3 'repeat-backward-search)
+
+; move
+; chars
+(global-set-key #\S-Left 'selection-backward-char)
+(global-set-key #\S-Right 'selection-forward-char)
+; lines
+(global-set-key #\S-Up 'selection-previous-virtual-line)
+(global-set-key #\S-Down 'selection-next-virtual-line)
+; bol/eol
+(global-set-key #\Home 'beginning-of-virtual-line)
+(global-set-key #\End 'end-of-virtual-line)
+(global-set-key #\S-Home 'selection-beginning-of-virtual-line)
+(global-set-key #\S-End 'selection-end-of-virtual-line)
+; words
+(global-set-key #\C-Left 'backward-word)
+(global-set-key #\C-Right 'forward-word)
+(global-set-key #\S-C-Left 'selection-backward-word)
+(global-set-key #\S-C-Right 'selection-forward-word)
+; page
+(global-set-key #\S-PageUp 'selection-previous-page)
+(global-set-key #\S-PageDown 'selection-next-page)
+; bob/eob
+(global-set-key #\C-Home 'beginning-of-buffer)
+(global-set-key #\C-End 'end-of-buffer)
+(global-set-key #\S-C-Home 'selection-beginning-of-buffer)
+(global-set-key #\S-C-End 'selection-end-of-buffer)
+
+; buffers
+(global-set-key #\C-F4 'close-selected-buffer)
+(global-set-key #\S-C-F24 'previous-buffer)       ; Shift+Ctrl+Tab
+(global-set-key #\C-F24 'next-buffer)             ; Ctrl+Tab
+(set-extended-key-translate-table exkey-S-C-tab #\S-C-F24)
+(set-extended-key-translate-table exkey-C-tab #\C-F24)
+
+(in-package "user")
+    ))
+#| ---- for ruby-mode --------------------------------------------- |#
+(in-package "editor")
+;;; ruby.l
+(export '(ruby-mode))
+(autoload 'ruby-mode "ruby" t)
+(pushnew '("\\.rbw?$" . ruby-mode) *auto-mode-alist* :test #'equal)
+(pushnew '("\\.rake$" . ruby-mode) *auto-mode-alist* :test #'equal)
+(pushnew '("/Rakefile$" . ruby-mode) *auto-mode-alist* :test #'equal)
+;;; ruby-doc.l
+(autoload 'ruby-doc-minor-mode "ruby-doc" t)
+;;; ruby-debug.l
+(autoload 'ruby-debug "ruby-debug" t)
+(autoload 'ruby-debug-minor-mode "ruby-debug" t)
+;;; ruby-lister.l
+(autoload 'ruby-lister "ruby-lister" t)
+;;; ruby-misc.l
+(autoload 'ruby-syntax-check "ruby-misc" t)
+(autoload 'ruby-run-script "ruby-misc" t)
+(autoload 'ruby-information "ruby-misc" t)
+;;;
+(add-hook '*ruby-mode-hook*
+          #'(lambda ()
+              (define-key *ruby-mode-map* '(#\C-c #\d) 'ruby-doc-minor-mode)
+              (define-key *ruby-mode-map* '(#\C-x #\d) 'ruby-debug)
+              (define-key *ruby-mode-map* #\C-F4 'ruby-lister)
+              (define-key *ruby-mode-map* '(#\C-c #\m) 'ruby-lister-make-rtags)
+              (define-key *ruby-mode-map* '(#\C-c #\w) 'ruby-syntax-check)
+              (define-key *ruby-mode-map* '(#\C-c #\x) 'ruby-run-script)
+              (define-key *ruby-mode-map* #\S-F1 'ruby-information)))
+
+(in-package "user")
+#| ---- for php-mode ---------------------------------------------- |#
+(in-package "editor")
+(export '(php-mode))
+(autoload 'php-mode "php-mode" t)
+(pushnew '("\\.php$" . php-mode) *auto-mode-alist* :test #'equal)
+(autoload 'php-doc-function "php-misc" t)
+(autoload 'php-show-html-help "php-misc" t)
+(autoload 'php-unit-create-skelton "php-misc" t)
+(add-hook '*php-mode-hook*
+          #'(lambda ()
+              (define-key *php-mode-map* #\F1 'php-doc-function)
+              (define-key *php-mode-map* #\S-F1 'php-show-html-help)
+              (define-key *php-mode-map* '(#\C-c #\s) 'php-unit-create-skelton)))
+
+(in-package "user")
+#| ---- for junk-library ------------------------------------------ |#
+(require "junk/http")
+
+#| ---- for www-mode ---------------------------------------------- |#
+(defpackage "www"
+  (:use "lisp" "editor"))
+(in-package "www")
+(setq *www-config-file* (merge-pathnames ".www" (si:system-root)))
+(in-package "user")
+(autoload 'www "www/www" t)
+(autoload 'www-open-url "www/www" t)
+(autoload 'www-open-local-file "www/www" t)
+(autoload 'www-open-current-buffer "www/www" t)
+
+#| ---- for 2ch-mode ---------------------------------------------- |#
+(defpackage "2ch"
+  (:use "lisp" "editor"))
+(in-package "2ch")
+(setq *base-directory* (merge-pathnames ".2ch" (si:system-root)))
+(in-package "user")
+(autoload '2ch "2ch/main" t)
+
+#| ---- for xml-parser-modoki ------------------------------------- |#
+(require "xml-parser-modoki")
+
+#| ---- for rss-mode ---------------------------------------------- |#
+(require "rss/defs")
+(in-package "rss")
+(setq *rss-directory* (merge-pathnames ".rss" (si:system-root)))
+(setq *rss-menu-file* (merge-pathnames "rss-menu.dat" *rss-directory*))
+(setq *rss-config-file* (merge-pathnames "config.l" *rss-directory*))
+(setq *rss-group-file* (merge-pathnames "group-menu.dat" *rss-directory*))
+(setq *rss-clip-file* (merge-pathnames "clip-list.dat" *rss-directory*))
+(setq *rss-history-file* (merge-pathnames "history-list.dat" *rss-directory*))
+(add-hook '*rss-start-hook*
+          #'(lambda ()
+              (require "rss/open-www")))
+(in-package "user")
+(provide "rss/open")            ;; *modules* に登録し load を阻止
+(autoload 'rss "rss/main" t)
+(autoload 'rss-toggle "rss/main" t)
+(autoload 'rss-add-feed "rss/main" t)
+
+#| ---- for topmost ----------------------------------------------- |#
+(require "topmost")
+
+#| ---- for explorer ---------------------------------------------- |#
+(require "explorer")
+
+#| ---- for chini ------------------------------------------------- |#
+(require "chini")
+;; 印刷設定と *chini-popup-menu* を追加
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              ;; フォント
+              ;(chini-font-insert-menu-items :head-sep t)
+              ;; 色
+              ;(chini-color-insert-menu-items :head-sep t)
+              ;; 印刷
+              (chini-print-insert-menu-items :pre-tag 'ed::print-selected-buffer-dialog)
+              ;; ファイラ
+              ;(chini-filer-insert-menu-items :head-sep t)
+              ;; バッファセレクタ
+              ;(chini-bufselector-insert-menu-items :head-sep t)
+              ;; Misc
+              ;(chini-misc-insert-menu-items :head-sep t)
+              ;; *chini-popup-menu*
+              (chini-insert-menu-items :head-sep t :access-key #\0)) t)
+
+#| ---- for buf2html ---------------------------------------------- |#
+(require "buf2html")
+(buf2html-set-app-menu)
+(buf2html-set-app-popup-menu)
+
+#| ---- for popup-mode-memo --------------------------------------- |#
+(require "popup-mode-memo")
+(global-set-key #\C-F12 'popup-mode-memo)
+(set-function-bar-label #\C-F12 "memo")
+
+; 設定
+(setq *popup-mode-memo-view-minormode-bindings* t)
+(setq *popup-mode-memo-view-local-bindings* t)
+(setq *popup-mode-memo-view-global-bindings* nil)
+(setq *popup-mode-memo-one-side-local* nil)
+
+#| ---- for clickable-uri ----------------------------------------- |#
+(require "clickable-uri")
+;; 強調表示は「表示色4 (青)」＋アンダーライン
+(setq *clickable-uri-keyword-color* '(:color 4 0 :underline))
+;; オープン時の強調表示は「文字色4(青)」「アンダーライン」「ボールド」
+(setq *clickable-uri-open-attribute* '(:foreground 4 :underline t :bold t))
+;; オープン時の強調表示時間は 0.2 秒
+(setq *clickable-uri-open-attribute-timeout* 0.2)
+;; 設定変更を反映
+(clickable-uri-set-regexp)
+
+(global-set-key #\C-l 'clickable-uri-recenter)
+(global-set-key '(#\C-c #\C-l) 'clickable-uri-emphasis-force)
+(global-set-key '(#\C-c #\C-o) 'clickable-uri-open)
+
+#| ---- for pickup-pattern ---------------------------------------- |#
+(require "pickup-pattern")
+(global-set-key '(#\C-c #\p #\s) 'pickup-pattern-set-input)
+(global-set-key '(#\C-c #\p #\C-s) 'pickup-pattern-set-input-detail)
+(global-set-key '(#\C-c #\p #\r) 'pickup-pattern-refresh-select)
+(global-set-key '(#\C-c #\p #\C-r) 'pickup-pattern-refresh-all)
+(global-set-key '(#\C-c #\p #\u) 'pickup-pattern-unset-select)
+(global-set-key '(#\C-c #\p #\C-u) 'pickup-pattern-unset-all)
+(global-set-key '(#\C-c #\p #\d) 'pickup-pattern-delete-select)
+(global-set-key '(#\C-c #\p #\C-d) 'pickup-pattern-delete-all)
+(global-set-key '(#\C-c #\p #\l) 'pickup-pattern-list-show)
+(global-set-key #\M-s 're-search-forward-pickup)
+(global-set-key #\M-C-s 're-search-backward-pickup)
+(setq *pickup-pattern-fg* 1)
+(setq *pickup-pattern-bg* 3)
+(setq *pickup-pattern-bold* t)
+(setq *pickup-pattern-underline* nil)
+(setq *pickup-pattern-strike-out* nil)
+(setq *pickup-pattern-regexp* t)
+(setq *pickup-pattern-overlap* nil)
+(setq *pickup-pattern-pre-search-unset* t)
+(setq *pickup-pattern-search-pattern-add* nil)
+
+#| ---- for ggrep ------------------------------------------------- |#
+(require "ggrep")
+
+#| ---- for diff-detail ------------------------------------------- |#
+(require "diff-detail")
+
+#| ---- for sort-line --------------------------------------------- |#
+(require "sort-line")
+
+#| ---- for csv-mode ---------------------------------------------- |#
+(in-package "editor")
+(export '(csv-mode tsv-mode))
+(autoload 'csv-mode "csv-mode" t)
+(autoload 'tsv-mode "csv-mode" t)
+(pushnew '("\\.csv$" . csv-mode) *auto-mode-alist* :test #'equal)
+(pushnew '("\\.tsv$" . csv-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for mayu-mode --------------------------------------------- |#
+(in-package "editor")
+(export 'mayu-mode)
+(autoload 'mayu-mode "mayu-mode" t)
+(pushnew '("\\.mayu$" . mayu-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for bat-mode ---------------------------------------------- |#
+(in-package "editor")
+(export 'bat-mode)
+(autoload 'bat-mode "bat-mode" t)
+(pushnew '("\\.bat$" . bat-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for ini-mode ---------------------------------------------- |#
+(in-package "editor")
+(export 'ini-mode)
+(autoload 'ini-mode "ini-mode" t)
+(pushnew '("\\.ini$" . ini-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for manued-mode ------------------------------------------- |#
+(require "manued-mode")
+
+#| ---- for box-fixation-mode ------------------------------------- |#
+(require "box-fixation-mode")
+
+#| ---- for keep-window-line -------------------------------------- |#
+(require "keep-window-line")
+
+#| ---- for function-bar-label ------------------------------------ |#
+(require "function-bar-label")
+
+#| ---- for insert-directory-tree --------------------------------- |#
+(require "insert-directory-tree")
+
+#| ---- for multiple-replace -------------------------------------- |#
+(require "multiple-replace")
+
+#| ---- for chcolor ----------------------------------------------- |#
+(require "chcolor/chcolor")
+
+#| ---- for buf-menu-plus ----------------------------------------- |#
+(require "buf-menu-plus")
+
+#| ---- for bufmenu ----------------------------------------------- |#
+(require "bufmenu")
+
+#| ---- for clipselect -------------------------------------------- |#
+(require "clipselect")
+
+#| ---- for du-d -------------------------------------------------- |#
+(require "du-d")
+
+#| ---- for filer-extapart ---------------------------------------- |#
+(setq *extapart-use-select_directory* nil)
+(require "filer-extapart")
+
+#| ---- for info-modoki-mode -------------------------------------- |#
+(require "info-modoki-mode")
+
+#| ---- for OutlineX ---------------------------------------------- |#
+(require "outlinex")
+
+#| ---- for rv-region --------------------------------------------- |#
+(require "rv-region")
+(global-set-key #\C-@ 'rv-set-mark-command)
+
+#| ---- for ttl-mode ---------------------------------------------- |#
+(in-package "editor")
+(export 'ttl-mode)
+(autoload 'ttl-mode "ttl-mode" t)
+(pushnew '("\\.ttl$" . ttl-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for winbatch-mode ----------------------------------------- |#
+(in-package "editor")
+(export 'winbatch-mode)
+(autoload 'winbatch-mode "winbatch-mode" t)
+(pushnew '("\\.btw$" . winbatch-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for ese-fortune ------------------------------------------- |#
+(require "ese-fortune")
+(setq *ese-fortune-enable* nil)
+
+#| ---- for ruby-refe --------------------------------------------- |#
+(in-package "editor")
+(require "ruby-refe")
+(add-hook '*ruby-mode-hook*
+          #'(lambda ()
+              (define-key *ruby-mode-map* #\F1 'ruby-refe-point)
+              ;; (setf (symbol-function 'refe) #'ruby-refe)
+              ))
+(in-package "user")
+
+#| ---- for reference --------------------------------------------- |#
+(load-file (merge-pathnames "site-lisp/ni-autoload/reference.chm.l" (si:system-root)))
+(load-file (merge-pathnames "site-lisp/ni-autoload/lisp-keywords.l" (si:system-root)))
+(setq *lisp-keyword-highlight* t)
+
+#| ---- for funsig ------------------------------------------------ |#
+(autoload 'funsig-show-signature "funsig" t)
+(autoload 'funsig-apply "funsig")
+(define-key ed::*lisp-mode-map* #\C-\; 'funsig-show-signature)
+(define-key ed::*lisp-interaction-mode-map* #\C-\; 'funsig-show-signature)
+
+#| ---- for markdown ---------------------------------------------- |#
+(autoload 'markdown-mode "markdown" t nil)
+
+#| ---- for refer-for --------------------------------------------- |#
+(require "refer-for")
+
+#| ---- for restore ----------------------------------------------- |#
+(require "restore")
+(setq *restore-directory* (merge-pathnames "restore" (si:system-root)))
+
+#| ---- for psearch ----------------------------------------------- |#
+(require "psearch")
+(global-set-key #\M-F5 'psearch-popup-list-again)
+;(global-set-key #\C-] 'psearch-popup-string-list)
+;(global-set-key #\M-] 'psearch-popup-list-again)
+;(global-set-key #\C-: 'psearch-popup-string-list-word-search)
+;(global-set-key #\M-: 'psearch-popup-list-again-word-search)
+;(global-set-key #\C-M-] 'psearch-goto-return-point)
+
+(setq *psearch-string-synchronization* t)
+
+;(global-set-key '(#\C-c #\:) 'psearch-popup-list-again-regexp)
+
+(setq *psearch-coloring* t)
+(global-set-key '(#\C-c #\]) 'psearch-delete-attributes)
+(add-hook '*show-match-hook* 'psearch-coloring)
+
+#| ---- for open-backup ------------------------------------------- |#
+(require "open-backup")
+;(global-set-key '(#\C-x #\o #\1) 'open-backup-file-new)
+;(global-set-key '(#\C-x #\o #\d) 'open-backup-dialog)
+;(setq *open-backup-no-date-duplication* nil)
+
+#| ---- for ee ---------------------------------------------------- |#
+(require "ee")
+(setq *ee-edict-dictionary-path* (merge-pathnames "edict/pdwd/" (si:system-root)))
+(global-set-key '(#\C-c #\g) 'ee-lookup-e2j-dictionary-selection)
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              (insert-menu-item *dictionary-popup-menu* 4 nil "英々(&G)"
+                                'ee-lookup-e2j-dictionary-selection)))
+;ALT+中ボタンで英々を表示
+;(global-set-key #\M-MBtnDown 'ee-edict-cursor-lookup)
+;edict-mode で英々を表示
+;(define-key ed::*edict-mode-map* #\MouseMove 'ee-edict-mouse-lookup)
+;(define-key ed::*edict-mode-map* #\C-MouseMove 'ee-edict-mouse-lookup-conjugation)
+
+#| ---- for changelogmemo ----------------------------------------- |#
+(require "changelogmemo/defs")
+(in-package "changelogmemo")
+(setq *cl-file* (merge-pathnames "cl/changelogmemo.txt" (si:system-root)))
+(setq *cl-history-directory* (merge-pathnames "cl/history/" (si:system-root)))
+(in-package "user")
+(require "changelogmemo/main")
+;("名前" . "設定ファイル") のリスト(複数指定可)
+;(setq *cl-config-file-alist*
+;      '(("changelogmemo" . "~/cl/config.l")))
+;(add-hook '*post-startup-hook* 'cl-start)
+;ツールバーを使う
+(defun cl-tool-bar ()
+  (create-tool-bar 'cl-tool-bar (merge-pathnames "toolbar.bmp" (etc-path))
+                   `(("clmemo" 38
+                      ,#'(lambda () (interactive) (funcall cl::*tool-bar-function*))
+                      ,#'(lambda () (funcall cl::*tool-bar-check-function*))))))
+(define-command-bar 'cl-tool-bar "CLメモ(&M)")
+
+#| ---- for banner ------------------------------------------------ |#
+(require "banner")
+
+#| ---- for bnf-mode ---------------------------------------------- |#
+(in-package "editor")
+(export '(bnf-mode))
+(autoload 'bnf-mode "bnf-mode" t)
+(pushnew '("\\.[ae]?bnf$" . bnf-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for ci-mode ----------------------------------------------- |#
+(in-package "editor")
+(export '(ci-mode))
+(autoload 'ci-mode "ci-mode" t)
+(pushnew '("\\.ー$" . ci-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for is-mode ----------------------------------------------- |#
+(in-package "editor")
+(export '(is-mode))
+(autoload 'is-mode "is-mode" t)
+(pushnew '("\\.rul$" . is-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for mof-mode ---------------------------------------------- |#
+(in-package "editor")
+(export '(mof-mode))
+(autoload 'mof-mode "mof-mode" t)
+(export '(mof-make-command))
+(autoload 'mof-make-command "mof-mode" t)
+(pushnew '("\\.\\(mof\\|mfl\\)$" . mof-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for nsis-mode --------------------------------------------- |#
+(in-package "editor")
+(export '(nsis-mode))
+(autoload 'nsis-mode "nsis-mode" t)
+(pushnew '("\\.ns[ih]$" . nsis-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for properties-mode --------------------------------------- |#
+(in-package "editor")
+(export '(properties-mode))
+(autoload 'properties-mode "properties-mode" t)
+(pushnew '("\\.properties$" . properties-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for word-tools -------------------------------------------- |#
+(require "word-tools")
+
+#| ---- for java-scrapbook ---------------------------------------- |#
+(require "java-scrapbook")
+
+#| ---- for natural-compare --------------------------------------- |#
+(require "natural-compare")
+
+#| ---- for cygwin-mount ------------------------------------------ |#
+(require "cygwin-mount")
+(cygwin-mount-activate)
+
+#| ---- for guidgen ----------------------------------------------- |#
+(require "guidgen")
+(guidgen-setup-app-popup-menu)
+
+#| ---- for rimo.tv.xyzzy ----------------------------------------- |#
+;; (require "rimo.tv.xyzzy")
+;; (use-package "rimo")
+
+#| ---- for drive-info -------------------------------------------- |#
+(require "drive-info")
+
+#| ---- for diff-backup ------------------------------------------- |#
+(require "diff-backup")
+
+#| ---- for chocoa-mode ------------------------------------------- |#
+(require "chocoa-mode")
+(pushnew '("\\.csf$" . chocoa-mode) *auto-mode-alist* :test #'equal)
+
+#| ---- for quote-menu -------------------------------------------- |#
+(require "quote-menu/quote-menu")
+
+#| ---- for scriptMAKI-mode --------------------------------------- |#
+(in-package "editor")
+(export '(scriptMAKI-mode))
+(autoload 'scriptMAKI-mode "scriptMAKI/scriptMAKI-mode" t)
+(setq *scriptMAKI-mc-path* "mc.exe")
+(pushnew '("\\.m$" . scriptMAKI-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for svn-mode ---------------------------------------------- |#
+(require "svn/svn")
+
+#| ---- for ghci-mode --------------------------------------------- |#
+(in-package "editor")
+(export '(ghci-mode))
+(autoload 'ghci-mode "ghci" t)
+(in-package "user")
+
+#| ---- for popup-key --------------------------------------------- |#
+(require "popup-key")
+
+#| ---- for www-search -------------------------------------------- |#
+(require "www-search")
+
+#| ---- for sztab ------------------------------------------------- |#
+(require "sztab")
+
+#| ---- for fiofeo ------------------------------------------------ |#
+(require "fiofeo")
+
+#| ---- for dmemo ------------------------------------------------- |#
+(require "dmemo")
+
+#| ---- for save-place -------------------------------------------- |#
+(require "save-place")
+
+#| ---- for regrep ------------------------------------------------ |#
+(require "regrep")
+
+#| ---- for gmark-select ------------------------------------------ |#
+(in-package "editor")
+(export '(gmark-select
+          gmark-select-set
+          gmark-select-search-forward
+          gmark-select-search-backward))
+(autoload 'gmark-select-set "gmark-select" t)
+(autoload 'gmark-select     "gmark-select" t)
+(autoload 'gmark-select-search-forward  "gmark-select" t)
+(autoload 'gmark-select-search-backward "gmark-select" t)
+(in-package "user")
+
+#| ---- for describe-bindings-mode -------------------------------- |#
+(require "describe-bindings-mode")
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              (delete-menu (get-menu *app-menu* 'ed::help) 0 t)
+              (insert-menu-item (get-menu *app-menu* 'ed::help) 0 nil "キー割り当て一覧 (&K)" 'describe-bindings-mode)))
+
+#| ---- for scope ------------------------------------------------- |#
+(require "scope")
+
+#| ---- for ac-mode ----------------------------------------------- |#
+(require "ac-mode")
+
+#| ---- for virtual-file ------------------------------------------ |#
+(require "virtual-file/virtual-file")
+
+#| ---- for virtual-file-ftp -------------------------------------- |#
+(require "virtual-file/virtual-file-ftp")
+
+#| ---- for virtual-file-archive ---------------------------------- |#
+(require "virtual-file/virtual-file-archive")
+
+#| ---- for virtual-file-pscp ------------------------------------- |#
+(require "virtual-file/virtual-file-pscp")
+
+#| ---- for complete+ --------------------------------------------- |#
+(require "complete+")
+(use-package "complete+")
+
+#| ---- for grouping-symbol-mode ---------------------------------- |#
+(require "grouping-symbol-mode")
+(add-hook '*lisp-mode-hook* 'grouping-symbol-mode-on)
+(add-hook '*lisp-interaction-mode-hook* 'grouping-symbol-mode-on)
+
+#| ---- for snippet ----------------------------------------------- |#
+(require "snippet")
+
+#| ---- for ffap -------------------------------------------------- |#
+(require "ffap")
+(ffap-bindings)
+
+#| ---- for lisp-minibuffer-mode ---------------------------------- |#
+(require "lisp-minibuffer-mode")
+
+#| ---- for monday ------------------------------------------------ |#
+(require "monday")
+
+#| ---- for highlight --------------------------------------------- |#
+(require "highlight")
+(global-set-key '(#\C-c #\h #\w) 'highlight-current-word)
+(global-set-key '(#\C-c #\h #\r) 'highlight-regexp)
+(global-set-key '(#\C-c #\h #\c) 'highlight-clear)
+
+#| ---- for hateda-mode ------------------------------------------- |#
+(require "hateda-mode")
+
+#| ---- for indent-to-token+ -------------------------------------- |#
+(require "indent-to-token+")
+
+#| ---- for generic-comment-toggle -------------------------------- |#
+(require "generic-comment-toggle")
+
+#| ---- for todo -------------------------------------------------- |#
+(require "todo")
+
+#| ---- for odoc -------------------------------------------------- |#
+(require "odoc/setup")
+
+#| ---- for anything ---------------------------------------------- |#
+(provide "anything/api/isearch")
+(require "anything/anything")
+(require "anything/sources")
+(require "anything/menu")
+
+#| ---- for nippo-mode -------------------------------------------- |#
+(in-package "editor")
+(export '(nippo-mode *nippo-directory*))
+(setq *nippo-directory* (merge-pathnames "nippo" (si:system-root)))
+(autoload 'nippo-mode "nippo" t)
+(in-package "user")
+
+#| ---- for lleee ------------------------------------------------- |#
+(in-package "editor")
+(export '(lleee *lleee-file-name*))
+(setq *lleee-file-name* (merge-pathnames "lleee.txt" (si:system-root)))
+(autoload 'lleee "lleee" t)
+(in-package "user")
+
+#| ---- for loop.l ------------------------------------------------ |#
+;; (require "loop")
+;; (use-package "loop")
+
+#| ---- for yaml-mode --------------------------------------------- |#
+(in-package "editor")
+(export '(yaml-mode))
+(autoload 'yaml-mode "yaml-mode" t)
+(pushnew '("\\.ya?ml$" . yaml-mode) *auto-mode-alist* :test #'equal)
+(in-package "user")
+
+#| ---- for arrange-line ------------------------------------------ |#
+(require "arrange-line")
+
+#| ---- for nadesiko-mode ----------------------------------------- |#
+(autoload 'nadesiko-mode "nadesiko-mode" t)
+(pushnew '("\\.nako" . nadesiko-mode) *auto-mode-alist* :test #'equal)
+
+#| ---- for merge-tags -------------------------------------------- |#
+(require "merge-tags")
+
+#| ---- for hatena-haiku-mode ------------------------------------- |#
+(require "hatena-haiku-mode")
+
+#| ---- for xtal-mode  -------------------------------------------- |#
+(require "xtal-mode")
+(pushnew '("\\.xtal$" . xtal-mode::xtal-mode) *auto-mode-alist* :test #'equal)
+
+#| ---- for lpp.l ------------------------------------------------- |#
+(require "lpp")
+
+#| ---- for twitter-mode ------------------------------------------ |#
+;; (require "twitter/defs")
+;; (in-package "twitter")
+;; (setq *base-directory* (merge-pathnames ".twitter" (si:system-root)))
+;; (setq *config-file* (merge-pathnames "config.l" *base-directory*))
+;; (in-package "user")
+
+#| ---- for hatena-bookmark --------------------------------------- |#
+(in-package "editor")
+(defparameter *hatena-bookmark-basedir* (merge-pathnames ".hatena" (si:system-root)))
+(autoload 'hatena-bookmark "hatena-bookmark" t)
+(autoload 'hatena-bookmark-add "hatena-bookmark" t)
+(in-package "user")
+
+#| ---- for blog-mode --------------------------------------------- |#
+(defpackage "blog"
+  (:use "lisp" "editor"))
+(in-package "blog")
+(defparameter *base-directory* (merge-pathnames ".blog" (si:system-root)))
+(in-package "user")
+(autoload 'blog-mode "blog/defs" t)
+(autoload 'blog-toggle "blog/defs" t)
+
+#| ---- for insert-character -------------------------------------- |#
+(require "insert-character")
+
+#| ---- for update-keywords --------------------------------------- |#
+(require "update-keywords")
+
+#| ---- for hatena-keyword-autolink ------------------------------- |#
+(autoload 'hatena-keyword-autolink "hatena-keyword-autolink" t)
+(autoload 'hatena-keyword-autolink-selection "hatena-keyword-autolink" t)
+
+#| ---- for outputz ----------------------------------------------- |#
+;; (require "outputz")
+;; (setq outputz::*outputz-api-key* "復活の呪文")
+
+#| ---- for surround ---------------------------------------------- |#
+(require "surround")
+
+#| ---- for xy-phrase --------------------------------------------- |#
+(in-package "editor")
+(defparameter *xy-phrase-dir* (merge-pathnames "site-lisp/xy-phrase/snippet/" (si:system-root)))
+(in-package "user")
+(require "xy-phrase/xy-phrase")
+
+#| ---- for bfmc -------------------------------------------------- |#
+(in-package "editor")
+(export '(bfmc-menu bfmc-menu-frame))
+(autoload 'bfmc-menu "bfmc" t)
+(autoload 'bfmc-menu-frame "bfmc" t)
+(in-package "user")
+
+#| ---- for ibuki ------------------------------------------------- |#
+;; (defpackage "ibuki" (:use "lisp" "editor"))
+;; (in-package "ibuki")
+;; (export '(ibuki-mode) "ibuki")
+;; (autoload 'ibuki-mode "ibuki" t)
+;; (in-package "user")
+
+#| ---- for embedded-grep ----------------------------------------- |#
+(require "embedded-grep")
+
+#| ---- for key-chord --------------------------------------------- |#
+;; (require "key-chord")
+;; (in-package "editor")
+;; (add-hook '*pre-command-hook* 'key-chord)
+;; (in-package "user")
+
+#| ---- for aozora-view ------------------------------------------- |#
+(in-package "editor")
+(export '(aozora-view))
+(autoload 'aozora-view "aozora-view" t)
+(in-package "user")
+
+#| ---- for habuki ------------------------------------------------ |#
+;; (defpackage "habuki" (:use "lisp" "editor"))
+;; (in-package "habuki")
+;; (export '(habuki-mode *habuki-normal-rule* *habuki-abbrev-rule*))
+;; (autoload 'habuki-mode "habuki" t)
+;; (setq *habuki-normal-rule* (list (merge-pathnames "dict/habuki.rl" (si:system-root))
+;;                                  (merge-pathnames "dict/habuki-kanji.rl" (si:system-root)))
+;;       *habuki-abbrev-rule* (merge-pathnames "dict/habuki-abbrev.rule" (si:system-root)))
+;; (in-package "user")
+
+#| ################################################################ |#
+(si:*load-library "packaged/after" :if-does-not-exist nil) (gc)

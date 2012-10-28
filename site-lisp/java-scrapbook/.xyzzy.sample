@@ -1,0 +1,4 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; java-scrapbook
+(require "java-scrapbook")

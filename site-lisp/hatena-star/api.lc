@@ -1,0 +1,6 @@
+(lisp::in-package-1 :user)
+(require "hatena-star/api/about")
+(require "hatena-star/api/types")
+(require "hatena-star/api/api")
+(require "hatena-star/api/future")
+(provide "hatena-star/api")

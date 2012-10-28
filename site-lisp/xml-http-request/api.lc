@@ -1,0 +1,4 @@
+(lisp::in-package-1 :user)
+(require "xml-http-request/request")
+(require "xml-http-request/response")
+(provide "xml-http-request/api")

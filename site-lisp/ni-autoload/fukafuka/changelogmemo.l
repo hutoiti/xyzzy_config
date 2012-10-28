@@ -1,0 +1,23 @@
+;;; -*- Mode: Lisp -*-
+;;;
+;;; changelogmemo.l --- for ni-autoload
+;;;
+;;; Last updated: "2006-03-08"
+;;;
+
+(require "changelogmemo/main")
+;("名前" . "設定ファイル") のリスト(複数指定可)
+;(setq *cl-config-file-alist*
+;      '(("changelogmemo" . "~/cl/config.l")))
+;(add-hook '*post-startup-hook* 'cl-start)
+;ツールバーを使う
+;(defun cl-tool-bar ()
+;  (create-tool-bar
+;   'cl-tool-bar
+;   (merge-pathnames "toolbar.bmp" (etc-path))
+;   `(("clmemo" 38
+;      ,#'(lambda () (interactive) (funcall cl::*tool-bar-function*))
+;      ,#'(lambda () (funcall cl::*tool-bar-check-function*))))))
+;(define-command-bar 'cl-tool-bar "CLメモ(&M)")
+
+;;;

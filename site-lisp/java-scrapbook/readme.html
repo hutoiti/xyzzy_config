@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>java-scrapbook - Java のコード片を実行する</title>
+<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+<style type="text/css" media="screen,all">
+<!--
+/* @import styles/document.css
+ * @date Tue Sep 14 02:03:04 2004
+ */
+
+/* ======== @import "article.css"; ======== */
+@charset "Shift_JIS";
+
+/* body */
+body {
+    margin: 2em;
+    padding: 0;
+}
+
+/* heading */
+h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+/* lists */
+ul, ol {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+dd ul {
+    padding-left: 0;
+    margin-left: 1em;
+}
+
+dd ul ul {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+li {
+    line-height: 1.2;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0.2em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd, dd p, li p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+pre {
+    padding: 0.4em;
+    margin: 1em;
+    font-size: 90%;
+    overflow: auto;
+}
+
+p {
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+code, kbd, dfn {
+    font-size: 100%;
+}
+
+/* ======== end @import "article.css"; ==== */
+
+
+/* ======== @import "color.css"; ======== */
+body {
+    color: black;
+    font-family: Verdana;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #005a9c;
+    font-family: Verdana;
+}
+h1 {
+    font-size: 260%;
+}
+h2 {
+    font-size: 200%;
+}
+h3 {
+    font-size: 160%;
+}
+h4 {
+    font-size: 140%;
+}
+h5 {
+    font-size: 120%;
+}
+h6 {
+    font-size: 100%;
+}
+
+pre {
+    color: #000;
+    background: #f6f6ff;
+    border: 1px solid #99f;
+}
+
+dt {
+    border-bottom: 1px solid #eef;
+}
+
+dt code {
+    font-family: Verdana;
+}
+
+a:link {
+    color: #00C;
+    background: transparent;
+}
+a:visited {
+    color: #609;
+    background: transparent;
+}
+a:active, a:hover {
+    color: #C00;
+    background: transparent;
+}
+
+/*
+ * class
+ */
+
+.label-not-found {
+    color: white;
+    background: red;
+}
+
+/* ======== end @import "color.css"; ==== */
+
+-->
+</style>
+</head>
+<body>
+<h1><a name="" href="#"></a> <a name="label-0">java-scrapbook - Java のコード片を実行する</a></h1><!-- RDLabel: "java-scrapbook - Java のコード片を実行する" -->
+
+<ul>
+<li>Author:  miyamuko <a href="mailto:miyamuko (at) mtb.biglobe.ne.jp">&lt;URL:mailto:miyamuko (at) mtb.biglobe.ne.jp&gt;</a></li>
+<li>URL: <a href="http://miyamuko.s56.xrea.com/xyzzy/java-scrapbook.html">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/java-scrapbook.html&gt;</a></li>
+<li>Version: $Id: java-scrapbook.l,v 1.11 2004/09/13 17:02:06 miyamuko Exp $</li>
+</ul>
+<h2><a name="1" href="#1">1</a> <a name="label-1">説明</a></h2><!-- RDLabel: "説明" -->
+
+<p>Java のコード片を実行します。</p>
+<p>ちょっとしたコードの実行結果を知りたい場合に便利です。
+名前からもわかるとおり Eclipse にある ScrapBook のぱくりです。</p>
+<h2><a name="2" href="#2">2</a> <a name="label-2">できること</a></h2><!-- RDLabel: "できること" -->
+
+<ul>
+<li>簡単に Java ソースを生成しコンパイル → 実行できる。</li>
+<li>import 文を指定できる。</li>
+<li>classpath を指定できる。
+<ul>
+<li>eclipse の .classpath 読み込める。</li>
+</ul></li>
+</ul>
+<h2><a name="3" href="#3">3</a> <a name="label-3">これからやるかもしれないこと</a></h2><!-- RDLabel: "これからやるかもしれないこと" -->
+
+<ul>
+<li>メソッド定義</li>
+<li>クラス定義</li>
+<li>package 名の指定</li>
+<li>バッファを作らずに実行結果をカーソル位置に挿入する
+<ul>
+<li>エラーになったら表示する</li>
+</ul></li>
+<li>複数の jdk を簡単に切り替え可能にする
+<ul>
+<li>同じコードを複数の jdk で実行して結果を全部表示
+<ul>
+<li>実行結果はバージョンごとにバッファを作ることもできる (diff しやすい)</li>
+</ul></li>
+</ul></li>
+<li>package-list を読み込んでワイルドカードで import 指定</li>
+</ul>
+<h2><a name="4" href="#4">4</a> <a name="label-4">インストール</a></h2><!-- RDLabel: "インストール" -->
+
+<p><a href="http://www.mirai.ne.jp/~gyo/xyzzy/ni.html">NetInstaller</a> でインストールした場合は 3 以降を、
+NetInstaller + <code>ni-autoload</code> を使っている人は 4 以降で OK です。</p>
+<ol>
+<li><p>アーカイブをダウンロードします。</p>
+<p><a href="http://miyamuko.s56.xrea.com/xyzzy/archives/java-scrapbook.zip">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/archives/java-scrapbook.zip&gt;</a></p></li>
+<li>アーカイブを展開して、$XYZZY/site-lisp 配下にファイルをコピーします。</li>
+<li><p>~/.xyzzy または $XYZZY/site-lisp/siteinit.l に以下のコードを追加します。</p>
+<pre>;; java-scrapbook
+(require "java-scrapbook")</pre></li>
+<li><p>設定を反映させるため xyzzy を再起動してください。</p>
+<p>※siteinit.l に記述した場合には再ダンプが必要です。</p></li>
+<li><p>実行したいコード片をリージョンで指定して <kbd> M-x java-scrapbook-region </kbd>、
+    または <kbd> M-x java-scrapbook-oneliner </kbd>、<kbd> M-x java-scrapbook-display </kbd>
+    でミニバッファから一行入力して実行します。</p>
+<p>例: システムプロパティを表示する例 (java-scrapbook-oneliner で入力)。</p>
+<pre>System.getProperties().list(System.out);</pre></li>
+</ol>
+<h2><a name="5" href="#5">5</a> <a name="label-5">リファレンス</a></h2><!-- RDLabel: "リファレンス" -->
+
+<h3><a name="5.1" href="#5.1">5.1</a> <a name="label-6">関数</a></h3><!-- RDLabel: "関数" -->
+
+<dl>
+<dt><a name="label-7" id="label-7"><code>java-scrapbook-current-kill</code></a></dt><!-- RDLabel: "java-scrapbook-current-kill" -->
+<dd>
+kill ring の文字列を java コード片として実行します。</dd>
+<dt><a name="label-8" id="label-8"><code>java-scrapbook-clipboard</code></a></dt><!-- RDLabel: "java-scrapbook-clipboard" -->
+<dd>
+クリップボードの文字列を java コード片として実行します。</dd>
+<dt><a name="label-9" id="label-9"><code>java-scrapbook-buffer</code></a></dt><!-- RDLabel: "java-scrapbook-buffer" -->
+<dd>
+バッファ全体を Java コードを実行します。</dd>
+<dt><a name="label-10" id="label-10"><code>java-scrapbook-region</code></a></dt><!-- RDLabel: "java-scrapbook-region" -->
+<dd>
+リージョンの Java コードを実行します。</dd>
+<dt><a name="label-11" id="label-11"><code>java-scrapbook-oneliner</code></a></dt><!-- RDLabel: "java-scrapbook-oneliner" -->
+<dd>
+ミニバッファから Java のコードを一行入力して実行します。</dd>
+<dt><a name="label-12" id="label-12"><code>java-scrapbook-display</code></a></dt><!-- RDLabel: "java-scrapbook-display" -->
+<dd>
+<p>ミニバッファから Java の式を一行入力してその評価結果を表示します。</p>
+<p>入力した値はそのまま System.out.println の引数に渡します。
+よって入力するのは Java の式である必要があります。
+(= セミコロンはいらない)</p></dd>
+</dl>
+<h3><a name="5.2" href="#5.2">5.2</a> <a name="label-13">変数</a></h3><!-- RDLabel: "変数" -->
+
+<dl>
+<dt><a name="label-14" id="label-14"><code>*java-scrapbook-template*</code></a></dt><!-- RDLabel: "*java-scrapbook-template*" -->
+<dd>
+<p>生成するソースファイルのテンプレートを指定します。</p>
+<p>テンプレートは以下の引数を与えられ format されます。</p>
+<ol>
+<li><p>import 宣言のリスト</p>
+<p><a href="#label-15">*java-scrapbook-import-list*</a> で指定したリストです。</p></li>
+<li>コード片中に書いてある import 宣言のリスト</li>
+<li>クラス名</li>
+<li>実行する Java コード片</li>
+</ol></dd>
+<dt><a name="label-15" id="label-15"><code>*java-scrapbook-import-list*</code></a></dt><!-- RDLabel: "*java-scrapbook-import-list*" -->
+<dd>
+<p>import 宣言のリストです。</p>
+<p>デフォルトは Java 1.4 の java. で始まり
+AWT と Applet 以外のパッケージです。</p>
+<p>Java 1.2 or 1.3 を利用している人は以下のようにしてください。</p>
+<pre>(setf *java-scrapbook-import-list* *java-scrapbook-java1.3-import-list*)</pre>
+<p>新しく追加する場合は以下のようにしてください。</p>
+<pre>(pushnew "javax.accessibility.*" *java-scrapbook-import-list* :test #'equal)
+(pushnew "javax.crypto.*" *java-scrapbook-import-list* :test #'equal)</pre></dd>
+<dt><a name="label-16" id="label-16"><code>*java-scrapbook-java1.3-import-list*</code></a></dt><!-- RDLabel: "*java-scrapbook-java1.3-import-list*" -->
+<dt><a name="label-17" id="label-17"><code>*java-scrapbook-java1.4-import-list*</code></a></dt><!-- RDLabel: "*java-scrapbook-java1.4-import-list*" -->
+<dd>
+それぞれ Java 1.2/1.3 と Java1.4 の import 宣言のリストです。</dd>
+<dt><a name="label-18" id="label-18"><code>*java-scrapbook-substitute-alist*</code></a></dt><!-- RDLabel: "*java-scrapbook-substitute-alist*" -->
+<dd>
+<p>生成する Java コードの置換リストです。</p>
+<p>デフォルトでは sout と serr がそれぞれ
+System.out.println と System.err.println に置換されるように
+なっています。</p>
+<p>新しく追加する場合は以下のようにしてください。</p>
+<pre>(pushnew '("regexp" . "replacement") *java-scrapbook-substitute-alist*)</pre>
+<p>例:</p>
+<pre>(pushnew '("ae" . "assertEquals") *java-scrapbook-substitute-alist*)</pre></dd>
+<dt><a name="label-19" id="label-19"><code>*java-scrapbook-keep-file-p*</code></a></dt><!-- RDLabel: "*java-scrapbook-keep-file-p*" -->
+<dd>
+<p>生成した Java ファイルを保存・削除を決定するフラグです。</p>
+<p>生成したファイルを削除しないなら以下のように <var>non-nil</var> を指定してください。</p>
+<pre>(setq *java-scrapbook-keep-file-p* t)</pre>
+<p>生成先は環境変数 <var>%Temp%</var> 配下（たぶん）の Scrap_～.book
+というディレクトリです。</p>
+<p>デフォルトは nil （削除する）です。</p></dd>
+<dt><a name="label-20" id="label-20"><code>*java-scrapbook-source-buffer-name*</code></a></dt><!-- RDLabel: "*java-scrapbook-source-buffer-name*" -->
+<dt><a name="label-21" id="label-21"><code>*java-scrapbook-javac-buffer-name*</code></a></dt><!-- RDLabel: "*java-scrapbook-javac-buffer-name*" -->
+<dt><a name="label-22" id="label-22"><code>*java-scrapbook-java-buffer-name*</code></a></dt><!-- RDLabel: "*java-scrapbook-java-buffer-name*" -->
+<dd>
+<p>それぞれ生成したソースコード、コンパイル結果、実行結果を
+書き込むバッファ名です。</p>
+<p>デフォルトはすべて同じで <var>*Java Scrap*</var> です。</p></dd>
+<dt><a name="label-23" id="label-23"><code>*java-scrapbook-java-command*</code></a></dt><!-- RDLabel: "*java-scrapbook-java-command*" -->
+<dt><a name="label-24" id="label-24"><code>*java-scrapbook-javac-command*</code></a></dt><!-- RDLabel: "*java-scrapbook-javac-command*" -->
+<dd>
+<p>Java の実行コマンドとコンパイルコマンドを指定します。</p>
+<p>文字列以外を指定すると適当に文字列に変換します。
+関数を指定した場合 funcall するので動的に値を変更できます。</p></dd>
+<dt><a name="label-25" id="label-25"><code>*java-scrapbook-before-java-hook*</code></a></dt><!-- RDLabel: "*java-scrapbook-before-java-hook*" -->
+<dt><a name="label-26" id="label-26"><code>*java-scrapbook-before-javac-hook*</code></a></dt><!-- RDLabel: "*java-scrapbook-before-javac-hook*" -->
+<dd>
+<p>なんとなく用意したフックです。
+プリプロセッサに通したいとか ajc したいとかに使えるかも。</p>
+<p>それぞれ java コマンドの前と javac コマンドの前に
+<code>run-hook-with-args-while-success</code> で実行します。
+フックが <var>nil</var> を返すとその時点ですべての実行を中断します。</p>
+<p>フックの引数は次のとおりです。</p>
+<ol>
+<li>生成したソースファイルの絶対パス</li>
+<li>クラス名</li>
+</ol></dd>
+<dt><a name="label-27" id="label-27"><code>*java-scrapbook-search-eclipse-classpath-p*</code></a></dt><!-- RDLabel: "*java-scrapbook-search-eclipse-classpath-p*" -->
+<dd>
+<p>Eclipse の .classpath ファイルを読み込むかどうかを指定します。
+<var>nil</var> を指定した場合、読み込みません。</p>
+<p>.classpath の検索はカレントディレクトリから上位に探します。</p></dd>
+<dt><a name="label-28" id="label-28"><code>*java-scrapbook-classpath*</code></a></dt><!-- RDLabel: "*java-scrapbook-classpath*" -->
+<dd>
+<p>クラスパスを指定します。
+デフォルト値は環境変数 CLASSPATH の値です。</p>
+<p><a href="#label-27"> *java-scrapbook-search-eclipse-classpath-p* </a> に <var>non-nil</var>
+を指定した場合 Eclipse の .classpath ファイルを読み込んでクラスパスの
+先頭に追加します。</p></dd>
+<dt><a name="label-29" id="label-29"><code>*java-scrapbook-erase-output-buffer*</code></a></dt><!-- RDLabel: "*java-scrapbook-erase-output-buffer*" -->
+<dd>
+javac コマンドや java コマンド実行前にバッファの内容を削除する場合 t
+(デフォルト <var>nil</var>)。</dd>
+</dl>
+<h2><a name="6" href="#6">6</a> <a name="label-30">ライセンス</a></h2><!-- RDLabel: "ライセンス" -->
+
+<p>java-scrapbook は修正 BSD ライセンスに基づいて利用可能です。</p>
+<pre>Copyright (C) 2003-2004 MIYAMUKO Katsuyuki. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1 Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer as the first lines
+  of this file unmodified.
+
+2 Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.</pre>
+
+</body>
+</html>

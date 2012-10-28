@@ -1,0 +1,132 @@
+(provide "test")
+(defvar *test-mode-hook* nil)
+
+;(defun test-mode ()
+ ; (interactive)
+  ;(switch-to-buffer "*Test*");無ければバッファを作成する。
+;  (kill-all-local-variables);ほとんどの変数をリセットする
+;  (setq buffer-mode 'test-mode)
+;  (setq mode-name "Test")
+ ; (use-keymap *test-mode-map*)
+ ; (make-local-variable 'need-not-save);カレントバッファでシンボルの束縛をつくる
+;  (setq need-not-save t);作ったシンボルにtを入れておく
+;  (make-local-variable 'auto-save)
+ ; (setq auto-save nil);作ったシンボルにtを入れておく
+  ;(run-hooks '*test-mode-hook*));フックを実行する
+;test-mode
+(defun sample-insert-headstring ()
+  (interactive "*")
+  (beginning-of-buffer)
+  (replace-string "。" "、" t)
+  (beginning-of-buffer)
+  (replace-string "，" "，" t)
+  (beginning-of-buffer)
+  ;;今日の日時の有無で区切りを変える処理
+  (if
+      (scan-buffer (format-date-string "%Y年%m月%d日"))
+      ;今日の日時を検索，あればt
+    (progn
+      (end-of-buffer)
+	(if
+	    (scan-buffer
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" :reverse t)
+;	(beginning-of-line)--- が下から見てあるかどうか
+	(progn;あったときは
+	  (if
+	    (equal (char-before(point)) #\");その次の記号がダブルクォーテーション？
+	      (progn (end-of-buffer)
+	(insert
+	 "\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n")
+	 (insert (format-date-string "%H時"))
+	 (insert
+       "\n　"))
+	  (progn (end-of-buffer)(insert
+				 "\n\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\n")
+				 (insert (format-date-string "%H時"))
+				 (insert
+       "\n　"))))))
+    (progn
+      (end-of-buffer)
+      
+	  (scan-buffer
+    "\niiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\n" :reverse t)
+	  (char-after (point))
+	(end-of-buffer)
+;      (copy-region-as-kill (mark) (point-max))
+	(copy-region-to-clipboard (mark)(point-max))
+	(unless
+	    (call-process "evernote.exe /Task:PasteClipboard")
+	  (insert "evernote errorです、環境変数か、そもそも入っていないかの問題だと考えられます。"))
+      (insert
+       "\niiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\n")
+      (insert (format-date-string "%Y年%m月%d日"))
+      (insert
+       "\n　"))))
+
+(defun page-incrimental-date()
+  (interactive "*")
+  (if
+      (scan-buffer "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" :reverse t)
+      (backward-char)))
+
+;;キーマップ
+(defvar *test-mode-map* nil)
+;*test-mode-map*
+(unless *test-mode-map*
+  (setq *test-mode-map* (make-sparse-keymap))
+  (define-key *test-mode-map* #\C-7 'sample-insert-headstring)
+  (define-key *test-mode-map* #\C-q 'page-incrimental-date)
+);(keymap)というリストを返す関数
+;(keymap)
+;*test-mode-map*
+;(keymap)
+;キーワードの設定
+;キーワードだけでなく、シンタックステーブルもモードごとに作る必要があるらしい
+(defvar *test-keyword-hash-table* nil);これには今後*test-keyword-file*の結果を当てはめる。
+;*test-keyword-hash-table*
+(defvar *test-keyword-file* "Test")
+;*test-keyword-file*
+;シンタックス
+(defvar *test-mode-syntax-table* nil)
+;*test-mode-syntax-table*
+;(unless *test-mode-syntax-table*
+ ; (setq *test-mode-syntax-table* (make-syntax-table)))
+;#<syntax-table 68817896>
+;(unless *test-mode-syntax-table*
+ ; (setq *test-mode-syntax-table* (make-syntax-table))
+;  (set-syntax-start-comment *test-mode-syntax-table* #\/ t)
+ ; (set-syntax-end-comment *test-mode-syntax-table* #\LFD t t)
+;  )
+(defvar *test-mode-syntax-table* nil)
+(unless *test-mode-syntax-table*
+  (setq *test-mode-syntax-table* (make-syntax-table))
+(do ((x #x21 (1+ x)))
+      ((>= x #x7f))
+    (let ((c (code-char x)))
+      (unless (alphanumericp c)
+	(set-syntax-punctuation *test-mode-syntax-table* c))))
+  (set-syntax-start-comment *test-mode-syntax-table* #\# t)
+  (set-syntax-string *test-mode-syntax-table* #\")
+  (set-syntax-end-comment *test-mode-syntax-table* #\LFD nil t))
+;  (set-syntax-start-comment *perl-mode-syntax-table* #\#)
+(defun test-mode ()
+  (interactive)
+  (kill-all-local-variables)
+  (setq buffer-mode 'test-mode)
+  (setq mode-name "Test")
+  (use-keymap *test-mode-map*);使用するキーマップを指定している。
+  ;;現在(keymap)となっている。
+  (use-syntax-table *test-mode-syntax-table*);使用するシンタックステーブルをしてしている。
+  (and *test-keyword-file*;Test
+       (null *test-keyword-hash-table*);nil kara t
+       (setq *test-keyword-hash-table*;test-keyword-hash-tableがなければ割り当てる。
+	     (load-keyword-file *test-keyword-file* t)));キーワードファイルをロードする。test-keyword-fileは、test
+  ;;andは、上から順にnil稼動かチェックし実行する
+  ;;nilがあれば、終了する
+  (when *test-keyword-hash-table*
+    (make-local-variable 'keyword-hash-table);独自の値を持てるようにする
+    (setq keyword-hash-table *test-keyword-hash-table*)
+    )
+  ;フックの実行
+  (run-hooks '*test-mode-hook*))
+

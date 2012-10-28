@@ -1,0 +1,55 @@
+(provide "test")
+(defvar *test-mode-hook* nil)
+
+;(defun test-mode ()
+ ; (interactive)
+  ;(switch-to-buffer "*Test*");無ければバッファを作成する。
+;  (kill-all-local-variables);ほとんどの変数をリセットする
+;  (setq buffer-mode 'test-mode)
+;  (setq mode-name "Test")
+ ; (use-keymap *test-mode-map*)
+ ; (make-local-variable 'need-not-save);カレントバッファでシンボルの束縛をつくる
+;  (setq need-not-save t);作ったシンボルにtを入れておく
+;  (make-local-variable 'auto-save)
+ ; (setq auto-save nil);作ったシンボルにtを入れておく
+  ;(run-hooks '*test-mode-hook*));フックを実行する
+;test-mode
+;;キーマップ
+(defvar *test-mode-map* nil)
+;*test-mode-map*
+
+(unless *test-mode-map*
+  (setq *test-mode-map* (make-sparse-keymap)));(keymap)というリストを返す関数
+;(keymap)
+;*test-mode-map*
+;(keymap)
+;キーワードの設定
+;キーワードだけでなく、シンタックステーブルもモードごとに作る必要があるらしい
+(defvar *test-keyword-hash-table* nil);これには今後*test-keyword-file*の結果を当てはめる。
+;*test-keyword-hash-table*
+(defvar *test-keyword-file* "Test")
+;*test-keyword-file*
+;シンタックス
+(defvar *test-mode-syntax-table* nil)
+;*test-mode-syntax-table*
+(unless *test-mode-syntax-table*
+  (setq *test-mode-syntax-table* (make-syntax-table)))
+;#<syntax-table 68817896>
+(defun test-mode ()
+  (interactive)
+  (kill-all-local-variables)
+  (setq buffer-mode 'test-mode)
+  (setq mode-name "Test")
+  (use-keymap *test-mode-map*);使用するキーマップを指定している。
+  ;;現在(keymap)となっている。
+  (use-syntax-table *test-mode-syntax-table*);使用するシンタックステーブルをしてしている。
+  (and *test-keyword-file*;Test
+       (null *test-keyword-hash-table*);nil kara t
+       (setq *test-keyword-hash-table*;test-keyword-hash-tableがなければ割り当てる。
+	     (load-keyword-file *test-keyword-file* t)));キーワードファイルをロードする。test-keyword-fileは、test
+  ;;andは、上から順にnil稼動かチェックし実行する
+  ;;nilがあれば、終了する
+  (when *test-keyword-hash-table*
+    (make-local-variable 'keyword-hash-table);独自の値を持てるようにする
+    ))
+(run-hooks '*test-mode-hook*))

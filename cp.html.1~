@@ -1,0 +1,2592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- -*- Mode: html -*- -->
+<!-- Time-stamp: &lt;Wed, 10 Oct 2012 00:18:38 +0900> -->
+<!-- Created by buf2html-0.0.0.15 -->
+<HTML lang="ja">
+  <HEAD>
+    <META name="GENERATOR" content="buf2html-0.0.0.15">
+    <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    <LINK href="xyzzy.css" rel="stylesheet" type="text/css">
+    <META http-equiv="Content-Style-Type" content="text/css">
+    <STYLE type="text/css">
+      <!--
+        A.buf2html {
+          text-decoration: none;
+        }
+        -->
+    </STYLE>
+    <TITLE>日記.nk</TITLE>
+  </HEAD>
+  <BODY class="bgcolor">
+<PRE>
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年07月10日
+小西医療器　
+研修を通して
+気づいたこと，思ったこと，そこから学んだこと，特に学んだことを重点的に，
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+19時
+　ミニバッファですでにプログラムが動いているときには，他の処理はできない
+一度ミニバッファから，中止してからでないとだめ
+(defun call-terminal ()
+  	  (call-process <SPAN class="string">&quot;C:/Users/hutoiti/Downloads/ckw-0.8.10-mod-bin/ckw-0.8.10-mod-bin/ckw.exe &quot;</SPAN>))
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+22時
+　大人になりたい
+林田さんも野田さんも赤野さんもみんな大人だ
+自慢しない，自分の話ばかりしない，人の話を傾聴している
+自分の意見を持っている，自分の意見をぶつけるのではなく聞かれたらその自分の意見を話す，
+自分の意見も単純に好き嫌いだけではない，むしろそういう意味ではなく
+自分はこうこうこういう風に考え，その結果どうなるのか
+なにが必要なのかを言うことができる，
+弱みを全くはかない，
+自分が弱音を吐いたとき，無理しないでください，本当に大変なんですね
+手伝いましょうかなどいろいろ，相手してくれるのに，自分以上に仕事を抱えている，
+それでも全く弱音を吐かない，
+考えていることも大人である，好き嫌いではなく，すべての人が幸せに生きれるためにはどのような
+環境が必要か，そのためには何をすることが必要なのか，
+集中力
+自分の性格は
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+22時
+29日　27日に帰られるようにチケットを買っておく，
+
+ろうディスクれぱんしー試験巣の生成法
+バンでるからぷと　準乱数を用いてパイの計算をする，
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月11日
+　めんどくさい　人間関係　仕事の連携が取れない　迷惑かかる
+要するに自分が何も考えれていない　何も考えていないのにリーダーになってるから
+スケジュールがとれてなくて迷惑かかる
+余計，仕事が進まなくなる，嫌に思う人が増える，
+でも仕事は増える，なんで？
+単純に人手がいないから，人手がある場合は逆に誰も頼まなくなる，
+どっちもどっち，必要とされなくなる，
+ストレスをふるまうのが自分の長所，
+人と話してても，相手はつらいだけ
+なぜなら，自分の話ばかりしてしまうから，なら聞き手になればいいという話になるが
+聞き手ができない，興味を持って聞くことができない，そもそも相手が何言っているのか理解できない時がある
+神経の障害があるから，自分に余裕があれば聞き手になれるが余裕がないんだと思う
+どうしようと考えながら聞くからダメになる，
+あと，これまでに付き合ってきた人が幼稚すぎたのも問題だろう
+やっぱり友達は選ぶべきだ，お話にならない，さすが工大，さすが工業高校，さすがF欄
+普通の23歳と話すと，話題が大人すぎてびっくりする，
+これは渋いとか，おじさんっぽいとか，もしくは話をすり替えるのが，僕が言っている友人だろう，
+本来なら，その話題についていけ，その話題を通じて何を言いたいのか理解ししっかりとした返答をするのだろう，
+今のこの自分を残念に思う，情けなくも思う，
+今後，普通の23と話すとき，急に幼稚園児レベルから23歳のレベルへ変えて話することは可能なんだろうか
+この3か月間そうなるよう，ふるまおうとした，結果，話すら聞けていない状態になった，
+もともと日本の今後とか経済とか，会社経営などそれなりのレベルであるから，
+考えながら心がけながら話すとダメなのだろう，
+まず語彙がない，面白いほどに語彙がない，一言ごとに平均1単語わからない単語が含まれてくる，
+話題がおとなだが，語彙すらないとそれはそれではなしにならない，
+やはり，青木が大人だったんだ，成績のいい人が正しいわけではない，社会性がない，
+成績が良くても，ただそれだけ，だからなんなのだというひとがこの大学には多すぎる，
+いや，むしろ，私の付き合った人々に幼稚な人が多すぎるのだ，
+親も幼いと思う，いや，親は大人だが幼稚な話し方の自分に対してはレベルを下げて話してくれていたのだろう，
+それは思い込みではない，これくらいしっていないといけないということが社会にはたくさんあるが
+その状態でしっかり生活できているという時点で私よりも当然，数倍大人である，
+テレビをみればよかったと思う，あと新聞だ，昔の若者は新聞を読んでいたからそこまで大人なんだろうか，
+自分の意見をしっかりもっていたし，この日本を自分としてはどのようにしていけばいいのか考えれていたからだと思う，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+16時
+　人にいい顔をしないというより，人のことなんか気にしないという生き方をしていかないと
+，このままでは自分の意見が出せないまま，いろいろ気に留めたまま生活することになってしまう，
+人の言われるがままに動いていると，当然嫌なこともしないといけなくなる，
+人に指図されたくないのであれば，自分で考えて行動し，反対意見，独自の意見を出せるようにならないといけない
+生きるのがつらいことになってしまう，
+なんでみんなつらくないんだろうか，そもそもなんで生きているのかなんでしなないのか
+みんなそれぞれに目標があるからだと思う，
+自分の場合はパソコン使えるようになりたいから，システムエンジニアになりたいからという目標がある
+それは，なにか人に頼まれたとき，すぐにでもその技術を提供できるようになりたいというものだ，
+しかしWeb勉強会は，技術というより，デザインだ，もっというと，アイデア出しの勉強をすることもある
+その価値が見いだせない，
+でも，人にいい顔しないといけないからか，やめられないのだ，
+プレゼンナイトも，人にいい顔するためにやっている，いや，見出そうと思えば見いだせるものなのかもしれない，
+プレゼンかっこいいからできる用意なりたいとか，いろいろ，
+なんででているんだろうというような勉強会が結構ある，
+とくに定例会はそうだ，
+つまらない，興味がない，Web勉強会もだんだんと，定例会っぽくなってきた，参加者の一人に意見の強い人がいると
+その人に合わせるようになってしまう，
+その時に合わせてしまうと，ずっとそのまま，その意見が反映されてしまう，
+アジャイルもそうだ，といっても，それは運営者の自由だから，
+仕方ないことだが，出たいなといいつつも，当日でないというのが一番，八方美人っぽい，
+その話を振られたとき，あんまり興味がない，
+といえれば，まわりはそこまで個人に対して，興味を持っているわけではないから特に変な考えは持たないだろう
+変に演技するから，おかしくなるわけであって，正直に周りに接していれば逆に誠実に思ってくれるようになるかもしれない，
+プロジェクトの場合は，途中で投げ出したら，ほかの人に危害が行くから，ダメだ，
+しかし，単純にこの日は参加できないというだけなら，問題ないように思える，
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　どうしたら楽に生活できるのか
+いやなことでも，楽しいと演技して仕事するから
+嫌な仕事がどんどん降ってくるのだろう，
+嫌なことは嫌だといえないとダメだ，もしくは，どうしたら楽しくなれるのか
+なぜ提案されたその仕事をやりたくないのか意見できるようにならないと，
+自分の意見もたないとだめだ，
+まわりは，嫌そうな仕事が出たら，関わろうとしない方法をとっている，
+それでもいいのか
+プレゼンナイトは，相手がばりばり自分の意見を出す人だったからけんかになった，
+自分の思い通りにならないとだめというひともいる，
+思考がループ，あるいは逸れてしまっている，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+　
+ログインの仕組み
+セッション
+ステートな通信
+sequel sqema plagui
+ハッシュ化したやつを
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月12日
+　タスク
+環境構築
+    ckw
+    cygwin…nyarosでは，使いにくいコマンドがある
+    ckwを簡単に呼び出せるようにしたい，
+    xyzzy上で呼び出すとか，どうだろうか，
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://dl.dropbox.com/u/50051362/ENIMAGE1341984165508.jpg"><SPAN class="fg4 bg0"><SPAN class="underline">http://dl.dropbox.com/u/50051362/ENIMAGE1341984165508.jpg</SPAN></SPAN></A></SPAN></SPAN>
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月14日
+　あんまりあやまらない，
+何一人で抱え込んでるのというかんじになる，
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　2012年7月14日（土）
+U-moa定例会議事録
+
+＜参加者＞
+木村
+野田
+一ノ瀬
+葵
+唐澤
+
+
+
+＜議題＞
+LoveSpreading
+Wiki
+webサイト
+タスク管理
+ASOBITARINIGHT03
+BOQUERIAイベント
+囮
+KANAZAWAアプリコンテストアプリ案
+1分間スピーチ
+KPT
+
+＜LoveSpreading＞
+バックエンドは完了
+フロントエンドの進捗が不明
+
+＜Wiki＞
+完成済
+使い方:
+	Doropbox→共有資料→IDのことなら俺に聞け.rtf
+ファイルを参照
+
+＜webサイト＞
+担当の赤野さん不在のためパス
+
+＜タスク管理＞
+進捗なし
+
+＜ASOBITARINIGHT03＞
+7/28
+進捗情報を共有しましょう
+わからないことは野田さんがフォローしてくださいます
+
+＜BOQUERIAイベント＞
+林田さんに確認
+
+＜囮＞
+必ず受ける
+演出をオーダーに合わせて行う，
+詳細は後日
+Facebookでグループを作る，
+参加者と相手の演出家と打ち合わせ，
+予算が出る，
+
+＜KANAZAWAアプリコンテストアプリ案＞
+アプリ案，生活している中で困ったことを出し合った，
+・朝起きれない友達から，その友人が朝twitterでつぶやきをしていなかったら，モーニングコールをするように頼まれている，
+	→朝，勝手に電話から声が聞こえるアプリがほしい，
+・iPhoneなどでのブラウジングが止まらない，気づくと時間がたっている，
+	→各アプリを起動している時間を教えてくれるアプリ
+・ニュースを見ないから，様々な話題を得られない，
+・自分の好きなものを簡単に広告にできるアプリ
+	→広告のデザインも見てほしい，個人で簡単にかっこいい，プロっぽいものを作れるもの，
+	→広告をテンプレートを使ってデザインすると，実現できそう，
+	→iPhoneアプリ「poster」が参考になるかも，
+
+＜1分間スピーチ＞
+・herokuに代わる新しい無料のVPSサーバーを使えるサービス「コストワンフリー」
+・windousのコマンドプロンプトの使い勝手を改善するソフト「ckw」，「nyaos」を導入しました，
+	→cygwin+teratermが野田的おすすめ
+・エンジニアは，アプリの設定ファイル「.なんちゃら」をgithubなどにまとめてあげておくと，環境構築が簡単にできる，
+・「AIZU ONLINE JUDGE」プログラミング大会の問題があり，勉強になる，
+
+＜KPT＞
+Keep
+1分間スピーチが盛り上がった
+Problem
+特になし
+Try
+議事録を誰が書くかを，会の開始時に確認する
+前回のKPTを振り返る，プロジェクターを使う，
+来ていない人に連絡を取る，誰かがその時に，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+　＜参加者＞
+
+    一ノ瀬
+    紺谷
+    野田
+    林田
+    前川
+    牧垣
+    由谷
+    五十川
+
+ 
+
+＜議題＞
+
+    ラブスプ
+    wiki
+    タスク管理
+    ASOBITARINIGHT03 
+    U-moaWebサイト
+    スマホアプリ
+
+    １分スピーチ
+    ふりかえり
+
+ 
+
+＜ラブスプ＞ 
+
+    今週の進捗：
+    開発リーダー：野田
+    lovesp.u-moa.info：唐澤
+
+ 
+
+＜wiki＞
+
+    今週の進捗：いろいろ試してみた(林田)
+    来週のタスク：サーバにwiki立てる
+
+ 
+
+ 
+
+＜タスク管理＞
+
+    今週の進捗：
+    そもそもマネジメントできてる？
+    現状の問題点の把握 
+
+個々のメンバのプライオリティ
+
+マネージャがいない場合がある
+
+定例会以外でコミュニケーションがない→LINE/skype/facebookグループ
+
+ 
+
+ 
+
+＜ASOBITARINIGHT03＞
+
+    今週の進捗：現状確認→把握してなし
+    7/28本番
+
+ 
+
+＜U-moaWebサイト＞
+
+    現状の進捗：河西にデザイン確認するの忘れてた（林田）
+    どんなコンテンツ詰めるか
+    wordpressベース
+
+ 
+
+ 
+
+＜スマホアプリ＞
+
+    今週の進捗
+    なんかやろう
+
+ 
+
+ 
+
+＜１分スピーチ＞
+
+    tsudoi（林田）
+    haiku（紺谷）
+    五十川堂会員登録システム（五十川）
+    創ル部浴衣祭（紺谷）
+
+ 
+
+ 
+
+＜ふりかえり＞
+
+    keep
+
+    KPTやってる
+
+ 
+
+    problem
+
+    wikiいれる
+    タスク管理作る
+    定例会は2段構え
+    議事録とる人がプロジェクタ使う
+    ホワイトボードの場所をカウンタ前にする
+    次回は赤野が進行役
+
+ 
+
+    try
+
+    プロジェクタ使ってない
+    奥の席の人が発言できない
+    定例会にどれくらい時間かかるか分からない
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月16日
+　ruby プログラミングは野田さんにのっとって
+cygwin,teraterm,vimで開発するか，
+    そのために必要なこと
+    kaoriya版vimをcygwinで開けるよう設定
+    cygwinへrubyのインストール
+    teratermから開けるように設定
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+03時
+　cygwinではなく，ckw,nyaosに落ち着いた，
+いろいろ遠回りした，以外とunixっぽい動作ってwindowsでは難しいんだな
+nyaosかcygwinでないと達成できない，
+しかし，cygwinはcygwinであとあとめんどくさいようだ，
+例えばwindowsのディレクトリではないとか，編集はwindowsディレクトリなのにもかかわらず
+rubyプログラミング，どうせならwindowsアプリとかも作ってみたいが
+cygwinのほうからではうまくいかない，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+03時
+　なにかLISPプログラム作りたい，
+webアプリケーショ
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+11時
+　LISPの続き
+前回の質問
+　どんな計算ができるのか
+複数の引き算
+文法として最初の数からどんどんひいていく
+1+2-3-4
+(+ 1 (- 2 3 4))
+そして，なにができるのか
+clozer-clは，ライブラリが多いらしい，
+
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+13時
+clackはWebアプリケーションのCGI
+
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　予定変更
+(defun enter-fullscreen-mode ()
+  (interactive)
+  (setf *fullscreen-mode-p* t)
+  (let ((hwnd (get-window-handle))) <SPAN class="comment">;ウィンドウのハンドル(出力されているウィンドウの番号)を返す，
+</SPAN>    (setf *last-current-menu* (current-menu))<SPAN class="comment">;現在表示されているメニューを返す
+</SPAN>    <SPAN class="comment">;;最後のメニューを保存しておく，
+</SPAN>    (setf *last-command-bar* (current-command-bar))<SPAN class="comment">;関数をlast-command-barに入れるということはtoggleではない？今後のこの変数の使い方に注目，
+</SPAN>    <SPAN class="comment">;;setfは代入作業を行う際左から順に評価していき代入する，current-command-barを評価するとどうなる，
+</SPAN>    (setf *last-window-style* (get-window-style hwnd))<SPAN class="comment">;last-window-styleにsetfしているのはget-window-style
+</SPAN>    <SPAN class="comment">;;この画面のハンドルを用いてget-window-styleする，これを本体関数make-fullscreen-styleで使う，
+</SPAN>    (setf *last-window-rect* (get-window-rect hwnd))
+    <SPAN class="comment">;;窓の大きさを保存している，
+</SPAN>    (set-menu nil)<SPAN class="comment">;メニューの非表示
+</SPAN>    (mapc <SPAN class="string">'hide-command-bar *last-command-bar*)	; それぞれのコマンドバーへ非表示を指定，
+    (layered-window-set-opacity 100)
+    (set-window-style hwnd (make-fullscreen-style *last-window-style*));make-fullscreen-styleの引数である,last-window-style
+    ;;make-fullscreen-styleは，全画面にする本体か，
+    ;(move-window hwnd 0 0 1493 900) ;; FIXMEw
+    (move-window hwnd 0 0 1600 900) ;; FIXMEw
+    
+    ))
+&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;
+17時
+今回の発表の目標
+LISPの理解を深める
+理解してもらう，
+使いやすいという点で理解してもらう，
+
+先日の発表で言われたこと
+LISP言語の疑問点
+
+足し算引き算を組み合わせた式はどうなるの？
+行列計算とかできるのか，
+どんなことに生かせるのか
+
+どうやるのか，
+1-2-3
+(- 1 2 3)
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+21時
+　フックを最初に作る
+そのあとにタイトル
+
+プレゼン内容　近クルージョン
+キーワードで3つ，5つ
+目次ではない
+
+おまけ　なにかおすすめ，
+アウトらいんきのう
+
+&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;
+22時
+　ファジーな処理はできるかどうか，
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+22時
+　自分の意見を思い出してくれるような
+プレゼンをやる，
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年07月17日
+　shellを起動したときに立ち上がる，プロンプトをタスクトレイに入れたい
+alt-tabのとき邪魔だから
+
+&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;
+07時
+　みんな大人すぎる
+大人ぶってるんじゃなくて素だとおもう．
+素で，コンテスト参加，勉強会開催が好きでやっているんだろう
+僕のように，今後を考えてとか人付き合いとか考えているのではない
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+07時
+　起動時　小窓にする．
+情報の平たん化　
+思考の連続性
+現実世界を模倣する表現
+アフォーダンス　思考の誘導
+情報と戯れるか　とっつきにくさを消す
+デスクトップ
+個人情報入力は
+技術ではなく，考え方，行動の仕方
+テクノロジーを隠す
+問題起きればボタン押せばいい．
+CPUとして問題解決そのものよりも，インタフェースをうまくするほうが，優先度は高い
+
+できることが，いかに使いやすくできるか
+わかりやすく，みやすく，
+そのために，必要な部分のみのこし，ひつようでないものは消す．
+コンシューミング感覚を養うために，
+
+ノン・リニアな操作，つまり非線形な操作
+コンシューミング感覚を訓練する
+自分で考えて生活する　情報ダイエット
+わくわくするために，夢中になれる技術を探す．
+周囲にどんなメリットをもたらせるか．続けられるか．
+やってて楽しいか．
+自分の，情報を集めたうえで直感を信じる．
+情報を集めておかないと，だめ．
+マルチスキルを持つ
+　IT技術は手段である．そゆーしょんって何をするの？
+創ったものが意味のあるものでないといけない．
+他にぎじゅつ力，
+自分たちのDNA，もてなしを海外ではできないレベル
+&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;
+15時
+　ruby installerで入れなおすか．
+
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年07月18日
+　consolas鮮やかすぎ．きれい．惚れる．
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+13時
+　北陸ITpro勉強会
+　先生の件
+　コンピュータセキュリティの仕事をされていた
+　林あきら先生にコネクションがある　セキュリティつながり
+どうしようか
+　話をしてもらうとつまらない
+　何かをやる
+　話し合いとか　プログラム開発系のなにか　ハッカソンみたいな
+　ツールを作るとか　みんなで考える系　継続できるもの
+　身の丈で．
+先生とともに何か．北陸先端の先生に押し掛ける．
+エクエスエス　xssチャレンジ
+攻撃のパターンがあったらどうやったら検出するか
+CTF，xss登山会のような　
+実力は五十嵐研のみんなで話し合う．
+攻撃に対して，どのように守るかがとっかかりが多すぎる
+⇒　だから攻撃をたくさん
+CTF練習　勝ちたい．
+登山界はその時だけ集中する感じでやってみるのも
+てっじーさんを招いてみる
+CTFとかセキュリティの実践勉強会
+セキュリティキャンプの問題を解く
+問題のコードを動かすところから作る．
+ノートパソコンをみんな
+80386で動かしてみたら　8085ではなく
+unix，アセンブラの知識がなければ，CTFは難しい．
+9月　CTF，セキュリティキャンプの問題を解く会を身内でやる
+夏休みに有志で集まる．短時間　水曜にやるとか．
+第2の五十川堂セキュリティ版　楽をする
+USBにインストールしてあるubuntuで問題を解く．
+GDBの使い方を勉強するとか．それのGUI版もある．
+さっそく次からやってみる．
+ddd gdbのGUIラッパー
+来週水曜日もしくは，都合のいい日
+火曜，水曜，木曜
+
+
+&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;
+18時
+　kitpro
+
+10月の土曜日　できれば27日
+先生二人決定それぞれ一時間ずつ
+午後から勉強会(先生の一人が遠くからくるということでそれに合わせる)
+
+先生二人決定それぞれ一時間ずつ
+ライトニングトーク
+最後にポスターセッション
+面先生にみんなで会いに行く．
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年07月19日
+　一覧
+xyzzyでスケジュールツール　分間隔のもの
+感想レポート　
+15分
+15分
+20分
+課題スライド作成　30分
+shellの色分け
+周りの位置づけを知っておくことで今後が変わってくる．
+位置づけ，重要
+LSIとか基盤が印刷業のようになってきた，
+昔は，そこらへんが手作業だった．
+日本が半導体強い，．電子工学，物理工学，昔は．
+貿易摩擦問題も起きていたが，
+今は半導体企業，みんな倒産，えるびーだとか，
+今は韓国，台湾，中国．
+どこでも大量に作れるから，日本以外で作るようになった
+ポストPCは今25ドル，今は80円　つまり2000円
+今度はソフト，100人で作ってもコピーで済む
+それぞれ1000万の年収書けていても
+1億回ダウンロードされれば，一つ50円で済む
+映画と同じで，何十億かけても，広がると一つ一つが安くなる，にこにことか．
+プライベートと業務を一緒にすると，コンプライアンスに問題がある
+制約に問題がある．
+業務用のメールとプライベートをどう分けるか．
+冷蔵庫バーコードを使うといるかもしれない　スマホ　出したときどうする？
+iwatchがほしい．
+手袋に端末の情報を表示する　ここからクラウドにつなげることができれば，解決できるかもしれない．
+細川さんが，演説するときスクリーンを見て話すということをしている．
+
+言語のシンタックスを加えたい．
+実現するためにはどうすればいいのかを考えることはおもしろいからやってみてほしい
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年07月20日
+　総合力演習３
+xyzzyはどうしたら学習してくれるか，LISPならなんとかできるのではないかと考えている
+リチウムイオン　は2000年と比べて2008年には8割から3割程度　日本企業
+ipod電子部材，70%日本の企業だったものが，
+ipadでは外国会社がほとんど
+itソリューション　日本は86万人世界の7.6%　にほんは強くない．アメリカの独壇場
+世界的にみても売り上げはあるが，利益がない
+苦戦の原因は
+標準化，オープン化されたとたんに，日本のシェアがなくなった．
+ハードディスク，VTRがオープンされてから，
+オープン化すれば，どこでも同じものが作れるようになる
+SDN　ソフトウェアドリブンネットワーク　シスコも危うい．
+厳しいときにも金を投資していた韓国と違い
+日本は投資がなかった．利益確保のため．
+日本では消費税を上げることはよくないという話があるが
+法人税が，世界的にみると日本は高すぎる．これが投資に影響している．
+日本は強くならないといけない．自分の周りのことばかり考えていては
+日本はどんどん悪くなっていく．どうひっくり返すか．
+都合の悪いことは他人が考えて，自分は楽なほうだけ考えるというのはどうだろうか．
+日本の市場は大きいから，内向き志向でやってきた．世界を相手にすることに慣れていない．
+教材配信システムにレポートがアップされるため，解く．
+29日　30日'</SPAN>
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月21日
+ 今日こそ，ruby 再インストール
+というか，消せないので，インストールをほかのディレクトリに行って
+c:/rubyは放置したい． d:/rubyって感じにしてもいいのだろう
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月22日
+　Rubyの保管がしたい　クォーテーション
+  インデントできるように直したい　日記モード
+　shellの仕組みを簡単に調べる　dosを隠したい．
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月23日
+　do the simulation homework
+  buy the chicket
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　シミュレーションレポート
+1.  モンテカルロ法における誤差の減少法を３つあげよ．（15点）
+負の相関法，制御変量法，回帰分析法
+
+2.  準モンテカルロ法の利点をあげよ．また準乱数の生成法を３つあげよ．（20点）
+計算回数が少なくて済む
+halton列を生成する
+sobol<SPAN class="string">'列を生成する'</SPAN>
+faure列を生成する
+
+3.  第1週の授業の演習で用いた，モンテカルロ法によるπの計算のCプログラムで，乱数rand()
+の代わりに，van der Corput列を用いてπの値を計算せよ．作成したプログラムのソースコード
+も添付しなさい．（20点）
+
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+21時
+　29日　30日　に泊まる　1泊2日
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月25日
+　javascriptを簡単に使う
+HTML　の書き換え
+UIイベントの検知
+AJAXリクエストの送信
+　ブラウザを変えずに，サーバにリクエストを送る
+startコマンド　使える．
+
+
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月26日
+　
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月25日
+　javascriptを簡単に使う
+HTML　の書き換え
+UIイベントの検知
+AJAXリクエストの送信
+　ブラウザを変えずに，サーバにリクエストを送る
+startコマンド　使える．
+
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月25日
+　javascriptを簡単に使う
+HTML　の書き換え
+UIイベントの検知
+AJAXリクエストの送信
+　ブラウザを変えずに，サーバにリクエストを送る
+startコマンド　使える．
+
+
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月26日
+　
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月25日
+　javascriptを簡単に使う
+HTML　の書き換え
+UIイベントの検知
+AJAXリクエストの送信
+　ブラウザを変えずに，サーバにリクエストを送る
+startコマンド　使える．
+
+#include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+
+ int hoge(int i)<SPAN class="comment">;
+</SPAN>
+ int main(void)
+ {
+   hoge(1)<SPAN class="comment">;hoge(2);
+</SPAN>   hoge(
+        5)<SPAN class="comment">;
+</SPAN>
+   exit(EXIT_SUCCESS)<SPAN class="comment">;
+</SPAN> }
+
+ int hoge(int i)
+ {
+   int result = 1<SPAN class="comment">;
+</SPAN>   for(<SPAN class="comment">;i &gt; 0; i--){
+</SPAN>     result *= i<SPAN class="comment">;
+</SPAN>   }
+   fprintf(stdout,<SPAN class="string">&quot;result = %d\n&quot;</SPAN>,result)<SPAN class="comment">;
+</SPAN>   return result<SPAN class="comment">;
+</SPAN>擦り合わせ設計とは，製品を最適なもので設計する
+建築　英語
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月27日
+　ソリューションって　いろんなところで意味が変わってくる
+日本は古いものを大切にするところが多い．これは一方では弱点．ガラパゴス化
+昔，日本の半導体が人気すぎて，半導体摩擦が起きた．　今は，
+　家電メーカ R&amp;Dは研究開発投資
+大量生産できるようになって，どこでも簡単に手に入るようになり，だれでも作れるようになってくる
+効率を上げることによってコストが浮く　
+ITソリューション　日本よりアメリカのほうが強い理由
+　トップの企業がものすごく強い．べき級数の法則
+ソフトウェアは，みんながやっている奴に合わせて作りたくなる，
+企業の活動効率をよくするソフトウェアのシステム，ビジネスプロセスを確信させる．
+日本ではあまり進んでいない，なぜか，日本の場合，ビジネスプロセス，各会社が独自に行っている
+創業者が言ったことを基本として，基本的な経営システムに会社向けにカスタマイズ，
+すると，環境ごとにコストがかかる．ビジネスプロセスというものは，標準化させていけば，
+効果はあるが，日本の会社に併せてしまうと逆にお金がかかってしまう
+暴論でいい．
+世界に対する競争力を持つ　日本ではなく世界と競争していく
+ソリューション
+新興国　ちょっと遅れている国　人口が多い　東南アジアの国々　
+インド10億人，中国とか
+これまでのことをかんがえると発展性がない．
+新しいところにどうつなげていくか考えていかないと発展しない．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+11時
+　dp,sis,scm
+  ビッグデータ，やった経歴何もかも記録が残る．
+　レストランシステム，itサービスマネージメント,sla titl
+　ライト・コンシューミング，情報経済革新戦略
+「ソーシャルメディアで社会へのインパクトは大　さて，経済にはどんなインパクト？」
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月28日
+　vim使いやすそう
+ただ，もうemacsで習得しちゃってるから
+つらい．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+03時
+　ruby 
+(setq *eshell* <SPAN class="string">&quot;C:/Users/hutoiti/Downloads/ckw-0.8.10-mod-bin/ckw-0.8.10-mod-bin/ckw.exe&quot;</SPAN>)
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年07月31日
+セッションの基礎勉強のための簡単なログインアプリケーション
+CSRF実践
+攻撃の一般的な対策方法を考える
+　gem シミュレーション特論レポート２.docxexi
+Nihongo Yet Another Open Shell 3.3.3_1 (c) 2001-12 by HAYAMA,Kaoru
+[C:webdeb]
+$ heroku create dr-heroku-sinatra-<SPAN class="keyword1">test</SPAN>
+Enter your Heroku credentials.
+Email: <SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="mailto:kimura.taiti@gmail.com"><SPAN class="fg4 bg0"><SPAN class="underline">kimura.taiti@gmail.com</SPAN></SPAN></A></SPAN></SPAN>
+Password (typing will be hidden):
+ !    Name is already taken
+[C:webdeb]
+$ heroku create myapps
+ !    Name is already taken
+[C:webdeb]
+$ heroku create hutoiti
+Creating hutoiti... done, stack is cedar
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://hutoiti.herokuapp.com/"><SPAN class="fg4 bg0"><SPAN class="underline">http://hutoiti.herokuapp.com/</SPAN></SPAN></A></SPAN></SPAN> | <SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="mailto:git@heroku.com"><SPAN class="fg4 bg0"><SPAN class="underline">git@heroku.com</SPAN></SPAN></A></SPAN></SPAN>:hutoiti.git
+[C:webdeb]
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　頭がかゆいので帰りたい
+　帰りに極楽の湯でちょっといいシャンプー使いたいけど，とにかく風呂入りたい．
+　まぁ家でいいか．
+　そのあとは，カラオケにでも行きたい
+　そして，rubyを複数立ち上げてみたい
+　ログをとれる環境にしたいので，apacheをつかいたい．　
+　
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月02日
+　csrf
+sinatraのプログラムを書き換えて
+アクセスすると，ss.rbのログインパスワードを変更させるプログラムを作る
+
+ss.rbはパスワード変更という機能がまだないので，書き加えてやる．
+ログインしたら，パスワード変更リンクが現れ，クリックするとパスワード変更ページが現れる
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月03日
+　速読トレーニングはxyzzyでも作れそうな気がする．
+ただ，作ってどうする？という問題がある．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+10時
+　去年と中身は違う抗議だった
+学校でやってる話とだいぶ違う，情報の分野が広い，行く業種によて違う
+しくみ，クラウドをサポートするための技術，データベースの管理方法
+そしてそのための，セキュリティ問題など
+話が広いが，サービスのソリューションxyzzy
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+10時
+　情報の技術ってたくさんあるけど，もとは同じ，そこで歴史を学ぶことに意味がある．
+びぐでーたのログデータを解析するとか，ビッグデータを扱うための端末がたくさんでてきた
+データが入るところから，すべてどのようにむきあっていくか．
+ロケーションバリュー，
+CRM，取引だけじゃなく
+hadoop
+ITサービスマネージメント，情報はサービス．
+そしてそれをマネージメント，どのようなサービスを提供するか約束をする
+契約をしっかりとする．それが世界のスタンダード．
+そしてライトコンシューミング，ポストPC時代の到来
+ヒューマンインタフェース，どこも，
+ポケットｐｃ，
+この方面は，世界が変わりやすい，長所でも短所でもある
+情報革新を頑張らないといけない．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+10時
+  マイナンバー
+国民背番号制，国民に投資番号，国民全員に番号を振って，データベースとかで管理する
+税金を払っているか，生活保護をもらっているか．
+いい面はたくさんある．プライバシーや管理の問題は？
+だれが作るか．東京電力よりも規模が大きくなるかもしれない．
+そして，スマートフォンの時代，センシング
+情報システムの進化 dp mis es sis crm.
+歴史的な流れを知ることによって，歴史に沿った進み方があるので未来を考えることに参考になる．
+
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+12時
+　パスワード変更できるようになった
+パスワードが違いますと表示するように書き換えてみたい．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+12時
+　ログインをしている状態で，パスワードが間違っているとされた場合は，強制ログアウトか
+onload = document.csrf1.submit()<SPAN class="comment">;の意味とは？
+</SPAN>onload...読み込み時にスクリプトを起動する
+document.csrf1.submit()<SPAN class="comment">;...
+</SPAN><SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+13時
+　カラオケのリモコンと同様の曲選択の流れをyoutubeでもやりたい．
+お気に入りか，何かのyoutubeの機能で自分のアカウントにおすすめ動画がある．
+右側に，曲リストのようなものがあるが，曲リストばかりだと飽きる．
+カラオケの時みたいに柔軟に曲選択がしたい．
+動画が右の曲リストを下から順に読み込んでいく．再生が始まると一番下の動画が消える．
+上には検索エンジンがついている，キーワードを打つと自分の登録動画がgoogle検索のような感じで出てくる
+
+
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+13時
+　アカウント削除のほうがわかりやすいか
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　docment.alertとは．詳細は．rackとはなにがちがうか
+session idとは．
+cookieは生成されている，ハッシュ化している場合，とうぜん，パスワードはぐちゃぐちゃな文字列である
+ハッシュ化しない場合，どうなっているか．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月04日
+　サイバーテロの技法の通り動かない．
+　やっぱり再現できないといけないので，できるだけ避けたかったが，linuxを走らせることにする
+いや，ここでcygwinを使うか．
+1 0 1
+2 1 2
+3 2 0
+4 0 1 
+5 1 2
+6 2 0
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月08日
+　昨日もエディタの調整ばかりしていた．
+いろいろ終わってる．楽しいけど．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+02時
+　なんとなくlispプログラミングしたい．
+rubyで作ったプログラムをxyzzy lispで書き直す
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　ネガティブついーとをしたくなったら，そのついーとのポジティブな面をついーとする．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+16時
+　素直になりたい
+　勇気の引力　勇気の引力
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月09日
+　りファラー…リンクからジャンプしたときのリンク元のページのこと
+netanal
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　csrf 参考ページ
+■  参考 URL
+IPA：  知っていますか？脆弱性  (ぜいじゃくせい)  「3. CSRF (クロスサイト・リクエスト・フォージェリ)」
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.ipa.go.jp/security/vuln/vuln_contents/csrf.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.ipa.go.jp/security/vuln/vuln_contents/csrf.html</SPAN></SPAN></A></SPAN></SPAN>
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.ipa.go.jp/security/vuln/vuln_contents/csrf_flash.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.ipa.go.jp/security/vuln/vuln_contents/csrf_flash.html</SPAN></SPAN></A></SPAN></SPAN> 
+IPA：  セキュア・プログラミング講座  「リクエスト強要（CSRF）対策」
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/301.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/301.html</SPAN></SPAN></A></SPAN></SPAN>
+産業技術総合研究所  高木浩光：  「CSRF」と「Session Fixation」の諸問題について
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.ipa.go.jp/security/vuln/event/documents/20060228_3.pdf"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.ipa.go.jp/security/vuln/event/documents/20060228_3.pdf</SPAN></SPAN></A></SPAN></SPAN>
+IPA：  情報セキュリティ白書  2006 年度版  「ウェブサイトを狙う CSRF の流行」
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.ipa.go.jp/security/vuln/documents/2005/ISwhitepaper2006.pdf"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.ipa.go.jp/security/vuln/documents/2005/ISwhitepaper2006.pdf</SPAN></SPAN></A></SPAN></SPAN> 
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+18時
+バッファロー 001d73　nicをつくっている組織
+11m　54m
+周波数　チャネル
+2.4G
+5.6G
+PLC　LANとして使う．　
+<SPAN class="string">' or '</SPAN>A<SPAN class="string">' == '</SPAN>A<SPAN class="string">' --
+'</SPAN>
+メンタル弱い人は勇気を出してボコボコにされ続けてみろよ
+継続は力なりって言うけどあれはほんとだよ 
+勇気を出してがポイント？
+うつ病になりそうな気がする．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月10日
+　CSRFを自動検出するプログラムをよんで勉強する．
+あと，cookieの勉強が足りない．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　cookieとは
+ブラウザがサーバから受信した内容をテキストファイルとして
+クライアントマシンに保存しておき，更新の都度
+テキストファイル内の情報を，Webサーバに送ることにより
+更新状態を保持する技術
+
+使用例として
+IDや，パスワードを，cookieで覚えさせることで，2回目以降のログインを何も入力しなくても
+すむ便利な方法．
+
+
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月11日
+love spreading
+ 印刷の確認
+ デザインの確認
+ 
+囮
+ 石畳灯篭
+　月金，
+森の青　空アート
+　懇親会，キャンプファイヤー　でメディアアート
+SONIC　工大祭  vj
+アプリコンテスト あと半月
+webサイト
+ 進捗0
+タスク管理
+ 
+一分スピーチ　
+tmux
+
+20日クリエイティブキャンプ　朝8時
+
+シンボリックリンク　.vimrc 
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+12時
+　まずは，自分らで作ってみる．そのあとで業者に．
+ロゴだけ作って，印刷は自分の方で大学のプリンターで量産
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月12日
+　csrf検出方法，答えを見る前に考えることをしなければ
+　ただのパクリになってしまう．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　bitnamiを止める．いったんun install.
+そして，burp proxy を使って，csrf脆弱性の検出になにがいいのか考える．
+一応再起動
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+
+リクエスト
+GET /Part2/2-1.php HTTP/1.1
+Host: 192.168.11.121
+User-Agent: Mozilla/5.0 (Windows NT 6.1<SPAN class="comment">; Win64; x64; rv:12.0) Gecko/20120427 Firefox/12.0
+</SPAN>Accept: text/html,application/xhtml+xml,application/xml<SPAN class="comment">;q=0.9,*/*;q=0.8
+</SPAN>Accept-Language: ja,en-us<SPAN class="comment">;q=0.7,en;q=0.3
+</SPAN>Accept-Encoding: gzip, deflate
+Proxy-Connection: keep-alive
+Cookie: name=GIJOE<SPAN class="comment">; pass=1234
+</SPAN>
+レスポンス
+HTTP/1.1 200 OK
+Date: Sun, 12 Aug 2012 08:22:20 GMT
+Server: Apache/2.2.14 (Unix) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l PHP/5.3.1 mod_perl/2.0.4 Perl/v5.10.1
+X-Powered-By: PHP/5.3.1
+Content-Length: 762
+Content-Type: text/html<SPAN class="comment">; charset=EUC-JP
+</SPAN>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=<SPAN class="string">&quot;content-type&quot;</SPAN> content=<SPAN class="string">&quot;text/html; charset=EUC-JP&quot;</SPAN> /&gt;
+    &lt;title&gt;\μ\o\×\e\2\1\E\O\A\￣&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form action=<SPAN class="string">&quot;/Part2/2-1.php&quot;</SPAN> method=<SPAN class="string">&quot;post&quot;</SPAN>&gt;
+      ああ:
+      &lt;input type=<SPAN class="string">&quot;text&quot;</SPAN> name=<SPAN class="string">&quot;name&quot;</SPAN> value=<SPAN class="string">&quot;GIJOE&quot;</SPAN> /&gt;
+      &lt;br /&gt;AeI?:
+      &lt;input type=<SPAN class="string">&quot;text&quot;</SPAN> name=<SPAN class="string">&quot;title&quot;</SPAN> /&gt;
+      &lt;br /&gt;AaIA:
+      &lt;br /&gt;
+      &lt;textarea name=<SPAN class="string">&quot;body&quot;</SPAN> rows=<SPAN class="string">&quot;4&quot;</SPAN> cols=<SPAN class="string">&quot;40&quot;</SPAN>&gt;&lt;/textarea&gt;
+      &lt;br /&gt;\N\1\i!?\E:
+      &lt;input type=<SPAN class="string">&quot;password&quot;</SPAN> name=<SPAN class="string">&quot;pass&quot;</SPAN> size=<SPAN class="string">&quot;8&quot;</SPAN> value=<SPAN class="string">&quot;&quot;</SPAN> /&gt;
+      &lt;br /&gt;&lt;br /&gt;
+      &lt;input type=<SPAN class="string">&quot;submit&quot;</SPAN> name=<SPAN class="string">&quot;dopost&quot;</SPAN> value=<SPAN class="string">&quot;Ae1A&quot;</SPAN> /&gt;
+      &lt;input type=<SPAN class="string">&quot;reset&quot;</SPAN> value=<SPAN class="string">&quot;\e\≫\A\E&quot;</SPAN> /&gt;
+    &lt;/form&gt;
+    &lt;hr /&gt;
+    &lt;form action=<SPAN class="string">&quot;/Part2/2-1.php&quot;</SPAN> method=<SPAN class="string">&quot;post&quot;</SPAN>&gt;
+      μ-≫oNo.
+      &lt;input type=<SPAN class="string">&quot;text&quot;</SPAN> name=<SPAN class="string">&quot;id&quot;</SPAN> size=<SPAN class="string">&quot;4&quot;</SPAN> /&gt;
+      \N\1\i!?\E
+      &lt;input type=<SPAN class="string">&quot;password&quot;</SPAN> name=<SPAN class="string">&quot;pass&quot;</SPAN> size=<SPAN class="string">&quot;8&quot;</SPAN> value=<SPAN class="string">&quot;&quot;</SPAN> /&gt;
+      &lt;input type=<SPAN class="string">&quot;submit&quot;</SPAN> name=<SPAN class="string">&quot;delete&quot;</SPAN> value=<SPAN class="string">&quot;μ-≫ooi?u&quot;</SPAN> /&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　隠しカメラでこれまでのあほな行動全部見られていることに気づいてしまった．
+csrf脆弱性　検出方法
+りファラーチェック法
+ワンタイムチケット法　(ワンタイムトークン法)
+POST利用法
+余裕があれば，チェックして問題があるところを修復する方向で行きたい．
+修復するためには構文解析をする必要がある
+部分修復，たぶんちょうむずい
+これができるのであれば，xssも修復できるようになるはず．
+お盆中にこれらをチェックできるようになりたい．
+cookie+URLの後ろにつけるトークン
+で認証することで，複数の攻撃が必要になる．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　windowsのmod_securityはインストールは難しくないかもしれないらしいかも．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月16日
+それぞれの対策がきちんとなっているか調べる．
+アクセスしたときのログで調べられるだろうか．
+cookieを確かめる．
+構文解析でないと難しい？
+ワンタイムトークンを考えるには，複数回フォーム送信ページへアクセスする必要がある．
+これまでは，フォーム送信ページ一つに対して，複数回アクセスということをしてきた
+今回は，フォーム送信ページでワンタイムトークンを出して
+それをフォーム送信ページへアクセスして，通用するかどうかという
+2段階のアクセスが必要になる．
+構文解析で直接読んだ方が早いか，それとも直接攻撃したほうが早いか．
+これまで作ってきたシステムに加えるということであれば，直接攻撃がよさそうだが，
+どうだろうか．
+直接攻撃は，先ほども書いた通り，フォームサイト自体アクセスするたびに
+ワンタイムトークンがhiddenで振られてなければならない．
+いや，それでは目的が違う．csrf脆弱性があるかどうかであって
+ワンタイムトークンがhiddenで振られているかどうかではない，それ以外にもいろんな
+対策法があるからだ．
+いろんな偽装をして攻撃，その攻撃が通用するか．
+偽装とは何か，
+CSRFは，Webアプリが設計儒想定していない画面遷移をたどられることによって起きる．
+Webアプリが想定している画面遷移しか許さないようにすればいい．
+ワンタイムトークンを採用していない場合，どのような被害が生まれるか．
+同じブラウザで同じユーザで，同じサイトに不正にアクセスされてしまう
+リンクを不正に作ってアクセスさせる．
+なら，そのリンクでアクセス成功してしまう通ってしまう脆弱性をなくす必要があるのではないか．
+そのためには，りファラーチェック法，get,postでワンタイムトークンをつかう必要がある
+ここは，簡単に創作できない．
+cookieだけをつかうからうまくいかないのだ．
+一度アクセスして，トークンを振られ，それを使ってアクセスする．
+
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　アンダーラインとか色付けする機能がほしい．自動キーワード追加．　
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月17日
+　QRコードが横に並べられるようにrubyで作り直す．
+そのまえに，rubyで扱う，googleのimguriは，画像として使えるかどうか
+htmlで作る．~/<SPAN class="keyword1">test</SPAN>.html
+コメント大目に
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月18日
+問題点　早起きして，定例会起きれそうだったが，参加しなかった．
+        でも定例会は，ちゃんとやってて，野田さん，林田さんが参加していた．
+        参加して，野田さん，林田さんがいない事態を避けたいということが理由だったが，
+        どうすればよかったか．
+　今日の反省
+        質問をする．だれに？
+        質問しやすいような環境を作る
+        普段から，五十川堂に行きやすい環境を作っておく
+        でもそれはいやだ，五十川さんが嫌いだから．
+        お互いに，そりが合わないと考えているところにはいかないほうがいい．
+        林田さん，野田さんと会うために行っている
+        一番は，定例会の会場を変えてほしいということ．
+        定例会の会場を変更すれば，赤野さんも戻ってくるような気がする
+        一番は，自分はもとから参加しなければよかったと思っている．
+        自分が参加したから，みんなが離れていったと考えているし
+        実際，離れていく原因の一つがそれではないかと考えたり．
+        なら，なんで離れていったのか．
+	まわりが，それほど，自分と話してて苦痛だから
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+　直感で行動してほしい人もいる．即断即決
+  なるほど．
+  体育会系はそういう人が多い．
+  経験を積んで，一目でわかるようになってほしい．
+  早指しができるようになるような感じで．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月19日
+　windows server 2008でrubyを使う．sinatra js erbでつくる．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+11時
+　一気に，複数の画像を作る．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+13時
+　地域の人と，学生を混ぜる
+  学生のいる店はうるさい
+  地域のいる人は，離れていく．
+  学生のいない時期に地域の人を増やす
+  地域の人，学生が学び合うことができる
+  そして宣伝をしない．バイラルマーケティング
+  大人も，学系も地域の人も呼びたい
+  変に，勉強に最適とか書くと，その人しか入ってこなくなる可能性がある．
+  女子会やる子や，勉強しに来る人や
+  折り紙折る人たちや，本当カオス
+  それで，なんでコワーキングなのか
+  コワーキングは，五十川さんは最初知らなかった．
+  日本で盛り上がっている．
+  スタートアップウィーケンドにみんなで参加した
+  そこではじめて，コワーキングを知った
+  facebookのこわーきんぐグループにいつの間にか登録されていた
+  しかし，これは気持ちの問題のようで，あんまり気にしなくてもいい？
+  コワーキングをやっていたからコワーキングになった．
+  来てる人に自発的に部活のようなものを開いてほしい
+  いろんな層が来てて，共通の話題で接することができる
+  勉強会としてはu-moa「すべてをもっと面白く」
+  u-moaってなんで生まれたの？
+  友達を集めてきて勉強会しようというものが，
+  電通プロジェクトの集まりが，五十川堂に集まった．
+  そして，アイデア出しの勉強会が開かれる．
+  u-moaのおかげで，宮田さんともつながった．
+  u-moaで考えたプロジェクトを宮田さんにプレゼンした
+  デジタルサイネージ，そのあと，スタートアップウィーケンド　熱をもらう
+  五十川堂で，なにか本格的に立ち上げたいと思い
+  アイデア出しの勉強を頑張る．
+  金沢でも，やりたいと話して，そこで宮田さんと会うことができた．
+  そして，u-moa，もであう
+  来てる人のラッキーな点は，何か浮かんだアイデアを話に行く場所がある
+  現在，u-moaは，メディアアート，アイデアを実現する．の2本
+  根幹は面白くするということ．
+  イベントで人を集めて大きな流れを作り出してみたい．
+  #わからなくなったら聞くことができるところがポイント  
+  プランZ　うまくいかない時にこれをやる．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月20日
+　インセプションデッキ
+パッケージデザインを作る．
+これをすることで，最初に何が必要なのか，目標はなにか
+われわれはなぜここにいるのか．災害　救助
+プレスリリースをまず発表する．
+リスクが小さいところで帰れるように，
+リリースを早めにする．
+問題点がわかっていないと，プレゼンがうまくならない
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月21日
+  会話もプレゼンテーション
+  なにをする？
+  windowsへ　mod securityのインストール
+  うまく動くように調整
+  CSRFテストツールへの改造　<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+18時
+　apacheインストール完了　次 mod_security　インストール
+httpd -k start で立ち上げられるが，localhost
+を開くと，XAMPPが立ち上がった．前に入れたxamppのapacheが立ち上がっていたのだ
+先ほど入れたapacheを使いたかったので,xamppはアンインストール
+しかし，xamppを消すと
+Could not reliably determine the server<SPAN class="string">'s fully qualified domain name, using 192.168.11.136 for ServerName'</SPAN>
+というエラーが出て立ち上がらない．
+etc/hostsをかきかえてやればいいらしい
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+  hostsの書き換えができないので，apache側を書き換える
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+20時
+　apacheがうまく動かないので，apache，xamppすべて消した状態で
+それっぽいレジストリを全部消すことにする．
+mod_security+proxy で作る
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月22日
+　今日の予定
+髪切りたい　縮毛？
+研究したい？時間があれば
+洗濯したい．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　結局，洗濯以外，何も達成していない．
+  とりあえず，研究だけでも．
+  今日の目標，apacheにmod_security mod_proxyインストール
+  何を解決したいか．
+  脆弱性を検出したい．
+  検出率の向上？とくにCSRF．SQLインジェクションも検出率の向上
+  ご検出を減らす．
+  とにかくやる．アジャイル開発．あとからなんぼでも変更する．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+21時
+C:\Users\hutoiti\Documents&gt;httpd -l
+Compiled in modules:
+  core.c
+  mod_win32.c
+  mpm_winnt.c
+  http_core.c
+  mod_so.c
+-lで，常時動いているモジュールを確認できる．
+csrfの検出方法，が単純すぎる．これだけ？
+CSRFの高度な攻撃方法とはどんなものか調べる
+検出方法が従来のものではピントがずれているという話を聞いた．
+なぜなのか，実際の検出ツールを使って調べてみる
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+23時
+CSRFテスト　チェック項目
+　処理を実行するページを POST メソッドでアクセスするようにし，その「hidden パラメータ」に秘密情報が挿入されるよう，前のページを自動生成して，実行ページではその値が正しい場合のみ処理を実行する．
+処理を実行する直前のページで再度パスワードの入力を求め，実行ページでは，再度入力されたパスワードが正しい場合のみ処理を実行する．
+Refererが正しいリンク元かを確認し，正しい場合のみ処理を実行する．
+
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+23時
+　セッションフィクセーションも対象としたい
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月23日
+　parosのために，jre32bit版をインストール中．
+ライバルであるparosのcsrf脆弱性，検出方法を観察する，細部にわたるまで
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+12時
+  あれをインストール
+  cygwinを用いてratproxy
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+14時
+　自動検出ツールの代表である，parosでは，csrf検出をやっていないようです
+CSRFは，検出したとして，簡単に修正できない脆弱性だからなのか
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://bakera.jp/ebi/topic/3994"><SPAN class="fg4 bg0"><SPAN class="underline">http://bakera.jp/ebi/topic/3994</SPAN></SPAN></A></SPAN></SPAN>
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+14時
+　今日の夜には，作り始めたい．ppt
+ほかのサイトから対象サイトにpostできるとしてもそれは脆弱性とは言えない
+ログイン処理が必要なサイトでないと，脆弱性とは言わない
+一度アクセスして，ログイン処理のWebサイトかどうか判別し
+セッションキーを得る処理であれば，cookieを使った処理であれば，csrfの検出テスト
+を行う．
+csrfは，POSTの反応だけで確かめられるわけではない
+ログイン情報が書き換えられてしまうかどうか
+つまり，データベースとかが書き換えられてしまうかどうか
+データベースを確認してやる必要がある．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　とにかく，apacheに，mod_proxyをインストールする．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+18時
+　グレーボックステスト，
+動的に攻撃して見つけた脆弱性が本物かどうか，ホワイトボックステストで確かめる．
+エージェントの仕組みはよくわからないし，DBのログを取るのも方法がよくわからない
+とったとして，どうするのかもわからない．
+ただ，ホワイトボックステスト，ブラックボックステストをそれぞれやる方法はわかっている
+では，グレーボックスはできるのではないかと．
+これで，ご検出が減ると思う．
+どうやって？
+例えば，CSRFの場合は，sessionを使っているかどうか
+sqlインジェクションは，掲示板で，動きとしては，入力された内容を，そのまま書き加えるという
+動きになっている，
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+19時
+　やっぱそうだ，自分オスタープロジェクトに惚れてる
+プロキシ　localhost:8080で使えます．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月24日
+  Webアプリケーション　作ったことありますか
+  興味があるけど，作ったことのない方が多いのではないでしょうか
+  Webアプリケーションは，セキュリティ対策が非常に面倒だし
+  作って，問題が起きた時の責任追及とかあるし，，，
+  私自身，セキュリティの研究室を卒業しても，作りたいです．
+  そこで，セキュリティ初心者にやさしい脆弱性検出ツール
+　これまでに研究でやったことを説明します
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+13時
+  対象：22歳，セキュリティに興味のある，これから社会人 + セキュリティに興味のあるベテランの教授
+  スライドの期間は短く
+  話しすぎないようにする
+  シンプル
+  人を引き付ける
+  よい内容　内容があるもの
+  視覚的に訴える　
+  ストーリーを語る
+  
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+13時
+  今回のプレゼンの引き込みとは
+  
+  自分は何を伝えたくて，相手は何を聞きたいのか
+  自分は，新しく作るシステム，研究何をするのか，研究することでなにを達成することができるのか
+  なんで，それを作るのか
+  相手は，研究なにをするのか，どのようにするのか，わかりやすい説明が聞きたい
+  取り残されたくない，楽しいプレゼンを見たい，技術を聞きたい，アイデアを聞きたい
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+14時
+  背景
+  無駄な背景は語らない．
+  必要な背景とは，入門者はPHPを使う．
+  セキュリティに疎いけど，Webアプリケーションは作る
+  結果，問題のある，Webアプリケーションが野放しになっている
+  #IPAの表をもとに語る
+  結果，セキュリティホールの多い，Webアプリが多い．
+  対象をPHPを中心とした，webアプリケーションの脆弱性検出
+  似たようなシステムに，burp，rat proxyがある．
+  しかし，どれも，導入が難しかったり，ご検出があったり．
+  BURPは，攻撃を自分で考えなければならない，
+  rat proxyは，検出されたものが本当に脆弱性なのか，自分で考えなければいけない
+  というように，どこかで自分で考える必要が出てくる
+  そこで考えたものが，五十嵐研究室で作った脆弱性検出ツール
+  この検出ツールの問題点は，ご検出が多いといところであった
+  この問題点を消すために，動的に攻撃を行って問題点が出た所を，静的コード解析
+  を行うことで，ご検出を出さないようにする．
+  
+
+#  検出された脆弱性をもとに，プログラムの修正案を出そうかと考えています
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+  聴衆は，セキュリティ勉強したい人たち
+  そして，彼らは日々勉強している
+  私に期待していることは，レベルの高い研究，レベルの高い発表，だけどわかりやすい解説
+  聴衆に，楽しんでほしい，理解してほしいが納得してほしい
+  根本的な目的は，研究の進行具合の説明
+  究極のメッセージは，言い換えると
+  「もし，プレゼン後にたった一つの単語しか，聴衆の記憶に残らないとしたらそれは何か．」
+  聴衆の方々は，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+15時
+　バックトラックの勉強会
+
+私は，インターネットをよくします．
+昔，とあるサイトを見ようとしたら，ほかのサイトにいつの間にか飛ばされていたことが
+ありました．
+なぜでしょう．
+Webサイトに不正なスクリプトという罠が仕掛けられていたからです．
+世の中のWebサイトは二つに分けられます．
+罠を仕掛けやすいサイト，仕掛けにくいサイトです．
+仕掛けにくいサイトは，セキュリティに関する知識がしっかりしている人が作っているのだと思います．
+
+Webアプリケーションは　仕組みが複雑です．　複雑だからこそ注意してないと脆弱性ができやすく
+脆弱性が発生したときの被害の規模も大きくなってしまいます．
+
+初心者は，PHPをよく使う．
+なぜなら，簡単に使えるツールがたくさんあるからです「」
+PHPも使いこなせる人が創れば，問題ないアプリができるが，
+使いこなせない人が作ると，セキュリティホールの多いものができてしまいます．
+3年前，PHPの開発者はこういっていました．
+最近の
+そこで，PHPを使ったWebアプリケーションの脆弱性をWeb知識に疎い人でも対策できるツールを作ることにしました
+それが研究テーマです．
+おととし，Webアプリケーションの脆弱性検出ツールを作りました．
+その脆弱性検出ツールは前年の発表後の反省をもとに考えると，簡単に言うと三つの問題点がありました．
+#一枚ずつ紹介
+セッション関係の脆弱性は検出できない．「」
+全体的に誤検出が多い．「頑張って絵で示す」
+どこを修正すればいいのかわかりにくい．「」
+今回これらの問題点を克服したいと考えています．
+具体的におととしのシステムの構造をお見せします「」
+一つ目の問題点は，セッション関係の脆弱性は検出できないというものです．
+セッションとは，ログイン処理した後にもう一度そのドメインにアクセスすると，
+「だれだれ様ようこそ」のような表示がされるというものです．
+これは，ブラウザがどのブラウザなのか認識させるために
+ブラウザ，Webアプリそれぞれにセッションキーという見分けるための変数があるからなのですが
+この仕組みを悪用して，違う人が成りすましたり，きづかないうちに勝手に設定を書き換えられる
+ことがあります．これらを言い直すと，セッションハイジャック，クロスサイトリクエストフォージェリといいます
+これの脆弱性を検出したいと考えています．
+セッション関係は，ログイン処理が必要なWebアプリケーションでないと脆弱性と言わないということや
+そもそもこの攻撃の防止方法が複雑かつ多々あるため，あまり，自動検出という観点では注目されて来ませんでした．
+しかし，SNSが流行ってきた今，需要があると考え，これに対応しようと考えています．
+肝心な検出方法ですが，この送信するしくみのぶぶんでPOSTデータを書き換えるだけでなく
+ヘッダを書き換えて攻撃します
+例えば，ログインされている状態で，違うWebサイト，URLからアクセスされた場合反応してしまうかどうか
+言い直すと，refererを書き換えて攻撃します．
+もう一つは，再度該当サイトにアクセスして，デフォルトのトークンが変化しているかどうか
+変化している場合，ワンタイムトークンを利用していると考え，CSRF対策がしてあると考えます．
+CSRF脆弱性の対策は，アクセスするたびに，ブラウザに対して，新しく生成したトークンを渡して置き，
+Webアプリにも同じトークンを持っておきます．
+そして，そこから，リクエストをするさいに，そのトークンを送ることで，間違いなくそのブラウザなのか
+ということを確かめます．
+だから，CSRFのような，全く違うサイトからリンクで飛ばされるという事象が起こった時でも
+refereは偽造できても，その時のトークンまでは偽造できないため，CSRFにワンタイムトークンは有効であるのです
+そして，そのワンタイムトークンを，POSTデータとして送信するだけでなく，cookieの値の一つに含ませておくことで，かなりの信頼性が生まれます．
+そこで，一段階のrefereを書き換えた攻撃の後に，もう一度，最初のページにアクセスして，
+デフォルトの状態でリクエストを送信したとき，目標サイトがそのリクエストを受け付けた場合
+脆弱性があると判断します．
+今までのところをまとめると，これまでは単に，リクエストデータを書き換えて攻撃するものだったのが
+アクセス，リクエストをやりなおすという，2段階のテスト方法に変更しました．
+
+二つ目の問題点は，ブラックボックステストで脆弱性検出後，長谷川先輩が作った
+静的コード解析もとい，ホワイトボックステストを用いて，本当にそれは脆弱性なのかどうか
+確かめます．こうした，ブラックボックスとホワイトボックステストを組み合わせた検出方法を
+グレーボックステストといいます．
+こうすることで，脆弱性のご検出を減らします．
+三つ目の脆弱性の発生箇所がわかりにくいという問題点は
+グレーボックステスト方式にしたことで，ソースコードのどこが悪いのか明確に示すことでカバーします．
+
+次に，現在の進行具合ですが
+これを動かすための環境整備をやっているところで
+ログを取るためのmod_securityのインストールをしているところです．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月25日
+
+  イベントのウォールに振り返りがある
+  プロジェクト，
+  ・森の青空アート
+    下見に行った．
+    インスタレーションに使う布を使って，実験をいろいろやっている．
+    紺谷さんが映像作る
+    林田さんたちが，イベント盛り上げるかかり
+  ・SONIC
+    9月15日VJ　    土曜の夜
+    メディアアート　石畳塘路のようなことをやってほしいといわれているが
+    PCが林田さん一つなので困っている
+    ちょっと苦しい？
+    なんとか人を集めないといけない
+  ・囮
+    進捗なし
+    現状，五十川さん，林田さんがやっている
+    メディアアートやりたい人がいたら参加ししてほしい
+    来週は，コンテンツをいかに作るか話し合い
+    キネクトとは2台
+    現状，何をつくればいいかわからない．
+    月曜，金曜に話し合いやっちえうrので
+  ・スマホアプリ
+    締切まで，一週間しかない
+    creativecampで3人がアイデアを考えた．
+    アイデア部門で勝てば2万円分の商品券がもらえる
+  ・LoveSpreading
+    現状進捗なし
+  ・フライヤー
+    松山さん，前川さん，五十川さんの間で盛り上がっていた．
+    A4のサイズだと，大きすぎる．
+    フライヤーをおしゃれに見せるには，どんなサイズがいいのか
+    A5かはがきサイズがいいか？
+    u-moaのフライヤー大会でも開くか？
+    ただ，なにを載せるのか，決まっていない．
+    なにを載せたいか，材料がないと厳しい．
+    五十川さんに林田さんが投げた紙をもとにする？
+    紙の材質はなににするか．5000円で1000～2000枚とか
+    最終的な値段，たくさんすればするほど安くなるので，対して値段は変わらない
+  ・SNS関連
+    毎晩，u-moaのページをアップするということを林田さんがやった
+    結果2倍になった．
+    伸びた．
+    当日　u-moaの作業の様子を上げてほしい．
+#    自分のウォールでも，やってほしい？
+    時間も気を付けて，夜9時から10時で
+    たくさん友達を招待する．
+  ・Webサイト
+    あまり進んでいない．
+    現状維持！
+    フライヤーからホームページを見る人がいる．
+
+
+    目の前の仕事を進めていきましょう．
+    u-moaが発表してます！みたいな感じで．
+    一分間スピーチ
+    ・教育…ゲームTOEICのゲームなど，英語のアプリは結構やれている
+    結構続く
+    英語勉強系の勉強会がやりたい．
+    ・一分間スピーチで英語やる
+    ・世界地図アプリ　林田さんがはまっている．
+    ニュースがわかりやすくなる．ALTは南米の人が来る．
+    ずっと使える知識．
+    ・マッシュフィード　MUSHFEEDS　尾島さんのアプリ
+    2chまとめのアプリ
+    ・金沢　バスビューワ
+    自分の乗りたいバス停と行きたいバス停を地図上でタッチすると時刻表が見られるアプリ
+    五十川堂facebookにﾘﾝｸを貼ってある
+    ・LINEのマネタイズにあたっての，友達同士でクーポンを送りあうことができる
+    ・入れたアプリ，ナナというアプリ，五十川さんの知り合いが作ったアプリ
+    日本の人が作ったアプリ，動画がすごかった．
+    自分のアップした曲に，他の人がどんどんオーバーラップさせることができる
+    エフェクト，エコーとか付けれる．
+    ・facebookアプリがバージョンアップして早くなった．
+    ・FC2のWIFI　サーバーを自宅に置くことで
+    応募すると抽選でフリーアクセスポイントのオーナーになれる．
+    前川さんが当選した．
+    ・トータルスペース
+    OS X Lionの「Mission Control」を，以前の「Spaces」のように上下左右に切り替えられる
+    ようにするアプリケーション．    ライオンでSNOWLEPAD．
+    トータルファインダーとかのシリーズ
+    ・sublime text2　emacs，VIMが事実上のスタンダードだったのが乗り換える人が多い
+    最初から，いろんな機能がそろっている．
+    textmateの次のもの?
+    ・u-moaのgmailのアカウント，
+ 
+keep
+議事録を書く人を最初に決める
+プロジェクターを使う
+おやつ（朝食）
+
+problem
+プロジェクトリーダ不在
+人少ない．⇒ポストぐらいしかできてない，
+
+try
+メンバと飯を食う
+連絡つかない人に個別に連絡　
+人少ない
+キャラクター作戦．ニシコ君，ゆるきゃら選手権でも出場している．youtubeでも見られる．
+フライヤーもやる．
+facebookから，u-moaへのメールが来ない．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+21時
+個人的には言語が違うとプログラムできないような人材は要らないと思ってるんですが．　Mats
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+21時
+Webアプリケーションを創る際の一番ポイントは，セキュリティです．
+いろんな人が関わるアプリですので，事故が起きないようセキュリティの観点で丁寧に
+作る必要があります．
+しかし，多重なセキュリティ対策を行うのは面倒ですし，コードが汚くなります．
+また，初心者の方々は，プログラムを書く際に，セキュリティの知識が薄いです．
+
+結果，プログラミング初心者の方が作ったWebアプリはPHP言語が多く
+脆弱性の多いものがどんどん生産されています．
+
+このまえ，PHP言語でしらべていたところこのような記事がありました．
+
+「特に「PHPは初心者に学びやすい(と言われていることが問題である)」という部分に共感する． PHPは初心者に簡単かもしれないが，初心者による手を抜いたWebアプリケーションは PHPが作られた当初はともかく，現代では害悪ではないだろうか．
+
+Webアプリケーションをなめるな」
+また，この記事に対して，とある日記サイトでこのような投稿もありました．
+
+「XSSだのSQLインジェクションだのなんだかんだ．でもこの手の説明って本当に初心者には分かりにくい説明ばっかりで，高木浩光にしたって長い上に何言ってるのかさっぱり分からない」
+「「初心者がPHPで作ったウェブアプリの危なさ」をさんざん煽ってよ？初心者プログラマ萎えさせて何が楽しいんだ」
+
+PHPでWebアプリを作る人はセキュリティ意識が低いという問題点から考えたことは
+初心者でも，セキュリティに詳しくなくても，セキュリティに強いプログラムを作りたいを考えました．
+
+それが研究テーマです．
+おととし，Webアプリケーションの脆弱性検出ツールを作りました．
+その脆弱性検出ツールは前年の発表後の反省をもとに考えると，簡単に言うと三つの問題点がありました．
+#一枚ずつ紹介
+セッション関係の脆弱性は検出できない．「」
+全体的に誤検出が多い．「頑張って絵で示す」
+どこを修正すればいいのかわかりにくい．「」
+今回これらの問題点を克服したいと考えています．
+具体的におととしのシステムの構造をお見せします「」
+一つ目の問題点は，セッション関係の脆弱性は検出できないというものです．
+セッションとは，ログイン処理した後にもう一度そのドメインにアクセスすると，
+「だれだれ様ようこそ」のような表示がされるというものです．
+これは，ブラウザがどのブラウザなのか認識させるために
+ブラウザ，Webアプリそれぞれにセッションキーという見分けるための変数があるからなのですが
+この仕組みを悪用して，違う人が成りすましたり，きづかないうちに勝手に設定を書き換えられる
+ことがあります．これらを言い直すと，セッションハイジャック，クロスサイトリクエストフォージェリといいます
+これの脆弱性を検出したいと考えています．
+セッション関係は，ログイン処理が必要なWebアプリケーションでないと脆弱性と言わないということや
+そもそもこの攻撃の防止方法が複雑かつ多々あるため，あまり，自動検出という観点では注目されて来ませんでした．
+しかし，SNSが流行ってきた今，需要があると考え，これに対応しようと考えています．
+肝心な検出方法ですが，この送信するしくみのぶぶんでPOSTデータを書き換えるだけでなく
+ヘッダを書き換えて攻撃します
+例えば，ログインされている状態で，違うWebサイト，URLからアクセスされた場合反応してしまうかどうか
+言い直すと，refererを書き換えて攻撃します．
+もう一つは，再度該当サイトにアクセスして，デフォルトのトークンが変化しているかどうか
+変化している場合，ワンタイムトークンを利用していると考え，CSRF対策がしてあると考えます．
+CSRF脆弱性の対策は，アクセスするたびに，ブラウザに対して，新しく生成したトークンを渡して置き，
+Webアプリにも同じトークンを持っておきます．
+そして，そこから，リクエストをするさいに，そのトークンを送ることで，間違いなくそのブラウザなのか
+ということを確かめます．
+だから，CSRFのような，全く違うサイトからリンクで飛ばされるという事象が起こった時でも
+refereは偽造できても，その時のトークンまでは偽造できないため，CSRFにワンタイムトークンは有効であるのです
+そして，そのワンタイムトークンを，POSTデータとして送信するだけでなく，cookieの値の一つに含ませておくことで，かなりの信頼性が生まれます．
+そこで，一段階のrefereを書き換えた攻撃の後に，もう一度，最初のページにアクセスして，
+デフォルトの状態でリクエストを送信したとき，目標サイトがそのリクエストを受け付けた場合
+脆弱性があると判断します．
+今までのところをまとめると，これまでは単に，リクエストデータを書き換えて攻撃するものだったのが
+アクセス，リクエストをやりなおすという，2段階のテスト方法に変更しました．
+
+二つ目の問題点は，ブラックボックステストで脆弱性検出後，長谷川先輩が作った
+静的コード解析もとい，ホワイトボックステストを用いて，本当にそれは脆弱性なのかどうか
+確かめます．こうした，ブラックボックスとホワイトボックステストを組み合わせた検出方法を
+グレーボックステストといいます．
+こうすることで，脆弱性のご検出を減らします．
+三つ目の脆弱性の発生箇所がわかりにくいという問題点は
+グレーボックステスト方式にしたことで，ソースコードのどこが悪いのか明確に示すことでカバーします．
+
+次に，現在の進行具合ですが
+これを動かすための環境整備をやっているところで
+ログを取るためのmod_securityのインストールをしているところです．
+
+PHPは初心者に人気⇒Webアプリによくつかわれます
+⇒脆弱性の多いWebアプリが量産されている．⇒初心者用検出ツール
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+22時
+
+　Rubyで有名なまつもとゆきひろさん
+PHPについて語ってた
+#| ---- for anything ---------------------------------------------- |#
+(require :anything/anything)
+(require :anything/sources)
+(require :anything/menu)
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月27日
+　スマホアプリコンテスト
+
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月28日
+　常識を持ちたい
+でも持てない，なぜ
+常識を，もってるひとはなぜもててるのか
+テレビを見ているから，一般のメディアをよく読むから
+社会経験をしているから
+ここでいう常識とは，社会の方面，
+だとすると，どういうときにhookとするか
+普段，ドリルでやるというのは，ありきたりだし，本当に必要な問題が出てこないかもしれない
+常識はどうやって勉強するもの？
+人にその時に教えてもらう　それは嫌だ
+エンターテイメントメディア　
+yahooとか，
+話題アプリ
+人によって，興味のある話題は違う
+
+GPS　
+最近治してほしいことを投稿していく
+
+他の人は？
+その人のおかしいところを教え合うアプリ
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年08月29日
+　知的財産権はありません．でいいのでしょうか
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+23時
+　大人になるとちょっとした迷惑を起こした当人は，
+その問題が何か気づいていないとき，だれからも注意されないことが多くなる
+特に，当人もこうした問題を治したいと考えているが，それがなんなのか
+気づくことができず，互いにストレスを感じ合ってしまうという事象が多くある
+当人は，なかなか気づけないが，気づきたいと考えているひとも多くいる．
+
+大人になると，自覚できないミスは，他人から注意されなくなる．
+自覚できないミスが，癖になっていた場合，周りの人々は離れていく．
+周りに注意する他人がいれば，そのミスを修正することもできるのだが
+関係悪化を気にして誰も注意しない．
+本人は，なにが問題点かわからなくて，悩んでいる場合もある．
+
+まとめると，
+・関係悪化を避けて，直接本人にに物事を注意できるアプリ
+
+
+この問題を解決したい．
+
+ここでの簡単なこととは，片方が耐えることで，その場を乗り越えられる程度の
+その人の問題点です．
+例えば，おすすめなソフトウェアがあってそれを，いつも人に勧めているとする
+そのソフトウェアが必要だと思う人は，喜びますが
+必要性を感じていない人にとっては，無理に喜んだり，話を無理に合わせようとする
+ことが多いと考えられます．
+
+実際，
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月01
+
+VJ無料素材
+　パーティクルの映像を30個そろえる　解像度800x600
+もしくは，プロセッシング⇒アーティスト向け　動画開発環境
+無料素材のサイトを5つ
+無料　商用利用可
+open　フレームワークス
+クォーツコンポーザー
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月01日
+　
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://amano.haru.gs/sozai/souko.htm"><SPAN class="fg4 bg0"><SPAN class="underline">http://amano.haru.gs/sozai/souko.htm</SPAN></SPAN></A></SPAN></SPAN> 商業利用不可
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.studio-lab01.com/freebies.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.studio-lab01.com/freebies.html</SPAN></SPAN></A></SPAN></SPAN> フリー商業利用可？
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.namaewallpaper.com/movie/rule.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.namaewallpaper.com/movie/rule.html</SPAN></SPAN></A></SPAN></SPAN> 完璧
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://thecliparchive.com/"><SPAN class="fg4 bg0"><SPAN class="underline">http://thecliparchive.com/</SPAN></SPAN></A></SPAN></SPAN> 商業利用不可？
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://morimorisozai.net/about.php"><SPAN class="fg4 bg0"><SPAN class="underline">http://morimorisozai.net/about.php</SPAN></SPAN></A></SPAN></SPAN> 完璧
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www7b.biglobe.ne.jp/~deigan/"><SPAN class="fg4 bg0"><SPAN class="underline">http://www7b.biglobe.ne.jp/~deigan/</SPAN></SPAN></A></SPAN></SPAN> 完璧
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://stockmovies.blog102.fc2.com/category1-1.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://stockmovies.blog102.fc2.com/category1-1.html</SPAN></SPAN></A></SPAN></SPAN> 商用利用の場合，相談必要
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://footage.openspc2.org/HDTV/footage/HD/60i/CG/particle/index.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://footage.openspc2.org/HDTV/footage/HD/60i/CG/particle/index.html</SPAN></SPAN></A></SPAN></SPAN> 完璧
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+22時
+　fillは2つの引数の時はグレースケール　30と書いてあれば
+回ってくるたびに，
+(defun foo ()
+  <SPAN class="string">'(+ 1 2))'</SPAN>
+(foo)
+(+ 1 2)
+hjklでブラウジングモード，ノーマルモード使い分けられるようにしたい．
+→viモードを勉強する
+　hjklのみ以外が押されたら，その時のバッファの位置で書き込み開始となる．
+───────────────
+<SPAN class="keyword1">test</SPAN>
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月04日
+　まいった．anything，使い方ぜんぜんわからん．動かない．
+sourcesいじればいいと思って，
+とりあえずあきらめた．諦めも肝心？婚だけかかると，あきらめもかんじん．
+価値のあることならいいが，妥協案を考えることも．
+関数一覧を，anythingで出すことはあきらめた．ファイラのインタフェースで
+十分使いやすい．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+22時
+　<SPAN class="keyword1">test</SPAN>.lは，lispディレクトリの中vある，変更した後は，siteinit.lをコンパイルしないとうまくいかない．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+22時
+　ちょっち疲れた.
+messageを表示するようにしてないと，わけわからない
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月05日
+　さて何をするか．．．
+研究，ラブスプ，vi-modeのとき，IMEはとめておく，マウスは端へ
+vi-modeもどきは修正完了．
+ラブスプしますか．せっかく，html-modeつかえるようにしたので．
+ラブスプ，ちょっとやる気しない
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月06日
+　常に全力でやるとして，何が一番か．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月08日
+　統合揮発環境にはさすがに負けるのか．
+プロジェクトのビルド，デバッグは，さすがに
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　other-windowのとき，行数をカウントして，ストレスをためないようにする．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+20時
+　xyzzyリファレンスを，ここから開くのはプロキシ的に難しいか．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　(<SPAN class="keyword1">progn</SPAN>
+  (other-window)
+  (get-window-line(selected-window)))
+scratchになにか書き込まれていた場合，日記に残す．オートセーブ．
+頑張って作ったデータが消えるのは嫌．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+20時
+　(let (x)
+(<SPAN class="keyword1">progn</SPAN>
+  (other-window)
+  (buffer-lines(selected-buffer))
+  setq )
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+21時
+　(<SPAN class="keyword1">progn</SPAN>
+  (other-window)
+  (<SPAN class="keyword3">if</SPAN> (&gt; (window-lines)(buffer-lines))
+      (enlarge-window (-(buffer-lines) (window-lines)))))
+<SPAN class="comment">;なぜか，片方のウィンドウのばっふぁが移動してしまう．
+</SPAN><SPAN class="keyword1">test</SPAN>
+other-window
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月09日
+　C#を学ぶ？
+C#の基礎を学んで，
+やっぱり構文解析，簡単なコンパイラを作る．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+18時
+　22 or 23 is mr.hama 
+22日，23日，勉強
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月10日
+　さて明日はいよいよ，手術，
+手術で後遺症は残らないか，研究はその後もできるか，すぐに復帰できるか，
+痛くないか，いろいろ心配だったりする．
+そしてやっぱり，白のほうが見やすい．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月16日
+　本気でやれば，相手も振り向いてくれると思いたい．あとわからないところはどんどん聞く方向でやっていく
+今日は，ソースコードを読む，
+c#の絵本を呼んでC＃をわかるようにする．
+さもないと就職したときに使い物にならない．
+firefoxの一発で，プロキシオンオフするあどいんとかないものか．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+13時
+　意味のわからない言葉を，意味が分からないということにも気づかずに使いたくない
+使うような人になりたくない．
+こういう人は嫌だ，こういう人になりたい．という理想をもっと的確にもちたい．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　なぜ自分は，鬱になったのか
+昔自分はどうやって，こういう面倒を切り抜けてきた．
+目標を持つと，
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+15時
+　自分を受容することがカウンセリングでのゴール
+つまり，自分自身の悪いところもいいところも受け入れること．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　もっと否定しろ．周りをほめすぎるなという人がいるが
+それが自分だ．何が悪い．
+自分は自分に対してほめてくれる人が好きだ．
+強い言葉で否定してくる人，自分以外でもどう見ても頑張ってる人に対して
+自分は何もやってないくせに，否定する人は大っ嫌いだ．
+こう思っているということは，自分は否定したい対象があるというわけで
+すべてにおいて，イエスマンではないことがわかる．
+だから，自分はその考えは正常だ．
+自分を受け入れたい．自分は，情報技術に長いこと関わってきたのにも
+関わらず，知識が劣っていることが悔しかった
+そこで，シスアド，C言語といった資格を取って，自信をつけ
+一時的にも，自分を受け入れることができた．
+ならなぜ今，自分は自分を受け入れることができなくなってしまったのか．
+なんで？
+資格を取っていても，実際に仕事をするとどうしても勝てない
+誰にも勝てない，話にならないことが分かったから．
+好きじゃないことだけど，自分が選んだ道，最終的に「好きだからやってます(本当は違うけど)」
+と自分にうそをついてそのことをやり続けたら，周りに「それすきなんだ，これもおすすめ」
+といわれるものがたくさん出てきた．しかし，どれをやっても苦痛．
+そして，それをやり続けた．
+とうぜん，やる気は出ないわけで，結果を見せてと言われた時だけ，その発表の直前あたりに
+プライドだけで作品を作った．
+しかし，上司は認めてくれない．「努力しているのはわかるけど，これでは話にならない，やる気ないの？」
+「やる気ないのなら，その研究やめたら？なんでやめないの？
+そもそも，なんで院にいるの？やりたくないんでしょう？」
+研究だけでなく，講義，それ以外の会話でも認めてもらえなくなってきた．
+「なんでこんな簡単なことができないの」「木村君，話聞いてる？」「木村君ていろいろ問題だよね」
+「無駄な努力しているよね」「木村君の言うことはでたらめばかり，適当なこと言ってるでしょ」
+「木村君，変わっているねって言われない？」
+「君の言ってることが理解できない，君の話は分かりにくいから聞きたくない，もう授業中止ね」
+その他，自分と接する人みんな，最初は仲良くしてくれて，あとから，たくさん否定されるという
+パターンが続いた．
+自分に原因があるのはわかっているから，そこを修正すればいいのはわかっているが．
+簡単に直せない．今井やおかやん，父親のようなものだ．
+それぞれ，みんな，馬が合わない人が多いな，どうしたらいいんだろうと悩んでるかもしれないが
+ながく，その付き合い方でやってきたので修正できない．自分もそうだ
+前田君が言っていたのはそのことだろう．
+前田君は，お前はかなり変わっているが，どこがどう変わっているのか説明できない
+僕も，今井，岡やんに対して，どこがどう変わっててどう直せばいいのか言えない．
+全体的におかしいから．自分たちの共通点として，あまり人と付き合ってこなかったことが原因だと思う
+そこで，今人と付き合うことを多くしようといろんな経験をしているが，最近はそういうことが多いが，
+治すどころか痛みが強くなっていっている．就職に苦労はしなかったが．ユニークということでポジティブに
+見られたのだろう．
+就職の研修では一般の方と話が全くかみ合わなかった．自分が悪い．
+普段でている勉強会では周りのレベルが高すぎて，話がかみ合わない．自分が悪い．
+勉強会のコンセプトをあまり考えずに入ってしまったことが問題だ．
+抜けたほうがいいかもしれない．またも，やりたくないことをやらされそうになっている．
+すると，研究と同じで自分にうそついてることになる．
+自分のやりたいことはいったい何なのか．今はプログラミングも好きではないみたい．
+Lispプログラミングだけは好きで続けている．
+むしろ，なにかLispでできることはないか探しており，見つけたら，やらないといけないことを
+投げて，そっちを優先する．
+しかし，それもかなり局所的，プログラミングが好きといっても，とある部分が好きで
+他は嫌いだったり面倒な部分ばかり．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+16時
+　まとめると，これまで自信を失っていた時にはそれを改善するために
+技術がなければ関連する資格をとってきた．
+今は，技術力＋コミュ障を改善するために，技術の勉強会に出ているが，
+改善がコンセプトの勉強会じゃないため，ついていけず，うまくいってない．
+そして，勉強会から抜けれなくて，ストレスが積み重なり続けている．
+そのうち，何もやる気でなくなり，勉強会も，研究も，遊びもやらなくなった．
+しかし，プライドはあるので結果発表の直前だけ頑張っている状況．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　どうすればいい？
+たしかに，勉強会続けていれば，技術力もコミュ障も改善すると思うが，ついていけない．
+今の経験は無駄にならないと思うが，明確な目標がないから，達成感がなく，
+仕事が多すぎる．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+16時
+　一度に二つのことを改善しようとするから，あやふやになってしまう．
+なら，一つずつ，改善していけばいいんじゃないのか？
+改善方法だけでも，それぞれ勉強できるのなら，勉強会でも活かせるかもしれない．
+まずは，コミュ障から
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　コミュ障の改善ポイント，人を好きになること．
+<SPAN class="comment">;自分に一番親しくしてくれてたり，話してくれる人に積極的に話しかけるようにした
+;ここで重要なのがもしかなり仲良くなったとして自分と友達になれるようなイメージが持てる人物を選ぶこと
+;表面上だけ仲良くしてるようなやつだとあとから煙たがられるからな
+;そんでここで大事にしたのがやっぱり積極的ながらも「楽しむ」ってことな
+;楽しむことができれば自然と笑顔が増えるし，顔が引きつることもかなり減った
+;当然だけど
+;自分が会話が楽しいと思えば相手も楽しいと思えるし
+;自分が会話にストレス抱えながら会話すると，相手にもいい印象が与えられないってのがわかった
+</SPAN>つまり，だれとでも仲良くはなるなということか．
+仲良くなれそうな人は大事にする．
+無理な人は無理だから，無理して仲良くならなくてもいい．
+今自分は，苦手な人が周りにいる．仲良く接するイメージが全くない．
+表面だけ仲良くしようとしているのは，わかる．
+そのかわり，自分と会いそうなひとも探したらいるかもしれないから探すこと．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+　shellが無ければ起動するだけのLisp(<SPAN class="keyword3">if</SPAN>(find-buffer <SPAN class="string">&quot;*Shell*&quot;</SPAN>)(set-buffer(find-buffer <SPAN class="string">&quot;*Shell*&quot;</SPAN>))(<SPAN class="keyword1">progn</SPAN>(shell)(set-buffer(find-buffer <SPAN class="string">&quot;*Shell*&quot;</SPAN>)))) #xyzzy
+低レベルなLISPプログラムだな，恥ずかしくないのかな．
+ただ，見てると結構低レベルなものが多いので，
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+18時
+<SPAN class="comment">;●その1：批判的な話題を一切しない
+;たとえば，芸能人やその場にいないひとの話題でも「あのひとってバカみたい」とか「能力不足よね」などと批判的なことを言うと，「いつ自分が批判されるかわからない」と身を固くし，あなたを恐れて距離をとります．
+;「コミュ障」なひとの前では，批判的な意見を一切言わないようにしましょう．
+;●その2：態度を類似させる
+;自分と似た態度をとるひとには，安心感を感じ，親密になりやすいという心理傾向があります．話し言葉や，ちょっとした仕草を同じものにしてみましょう．
+;●その3：「単純接触の効果」を利用する
+</SPAN><SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+23時
+　二日目は鬱になりやすい．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+23時
+　snippetすごすぎわらった．
+snippet二日目は
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月17日
+  thisは，その時のクラスを指す
+抽象メソッドは，継承先でオーバーライドをすることを予定したメソッド
+抽象メソッドを持ったクラスを抽象クラスという
+基本クラスでは定義することがない場合に有効
+たくさんの派生クラスができる基本クラスの場合，抽象クラスを作るときれいなプログラムになる．
+派生クラスでは，抽象メソッドに対しても同様にoverrideと書いてオーバーライドをする．
+インタフェースの場合，オーバーライドするとき，overrideと書かなくていい．
+インタフェースを使えば，public abstractを省略できる．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　カーソルを消すことはできないが，背景の色に変更することはできる．
+これをviのアイデアに．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+22時
+(<SPAN class="keyword1">progn</SPAN> (setf a (funcall ed::build-summary-function)))(print a))
+(funcall ed::build-summary-function)
+(defun toggle-app-menu ()
+  (interactive)
+  (set-menu (unless (current-menu)
+	      *app-menu*))
+    )
+(defun syutyu ()
+  (interactive)
+<SPAN class="comment">;  (toggle-app-menu)
+</SPAN>  (toggle-fullscreen-mode) (show-tool-bar <SPAN class="string">'buffer-bar :top))
+(global-set-key #\F8 '</SPAN>syutyu)
+(<SPAN class="keyword1">progn</SPAN>
+(delete-<SPAN class="keyword3">if</SPAN>
+                                     #<SPAN class="string">'(lambda(x)(or
+                                                  (string-match &quot;^ &quot; x)
+                                                  (string-match *anything-buffer* x)))
+ (mapcar #'</SPAN>buffer-name (buffer-list))))
+(dolist (x <SPAN class="string">'((10 &quot;lisp-build-summary-of-functions&quot;) (39 &quot;lisp-maketags&quot;)))
+  (progn
+    (setf y (append y (list(concat (format nil &quot;~A &quot; (car x)) (car(cdr x))))))))
+(dolist (x '</SPAN>((10 <SPAN class="string">&quot;lisp-build-summary-of-functions&quot;</SPAN>) (39 <SPAN class="string">&quot;lisp-maketags&quot;</SPAN>)))
+  (<SPAN class="keyword1">progn</SPAN>
+    (setf y (append y (list(concat (format nil <SPAN class="string">&quot;~A &quot;</SPAN> (car x)) (car(cdr x))))))))
+(delete-<SPAN class="keyword3">if</SPAN>
+                                     #<SPAN class="string">'(lambda(x)(or
+                                                  (string-match &quot;^ &quot; x)
+                                                  (string-match *anything-buffer* x)))
+                                     (mapcar #'</SPAN>buffer-name (buffer-list)))
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+22時
+　android マウス
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月19日
+　歯科医に出血が気になるため駐車してほしいといわれ，打つ．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月21日
+ プロキシの立ち上げ方　Prgram →void main→メインform→ブラウズ操作データ管理class
+→ブラウザウィンドウ管理クラス
+プロキシメイン受信classの中のコールバック受信メソッド
+Httpクライアント側リーダClass クライアントリーダ = new Httpクライアント側リーダClass(this, クライアント, スレッド番号)の後に
+クライアントリーダ.プロキシ送受信主処理で呼び出している．
+コールバック受信メソッドはプロキシリクエスト受信で呼び出されている？
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　プロキシサーバはインストールしてある．
+mod_secrityのインストール
+localhost 8080で動く．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+15時
+　mod_proxy2.soはいれた．confもいれた．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+16時
+　modsecurity_crs_10_config.confの設定に
+SecRuleEngineの記述があるらしい．そもそもmodsecurity_crs_10_config.confとはなんなのか．
+libxml2のインストールが必要らしい．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月22日
+　iphone用のWebシミュレータはAdobe airというソフトがないと動かないようだ．
+adobe airをインストールする
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+09時
+Lovespreading 
+CSSをもちいて，Webデザインをしている，今後すべてのサイトを完成させたい
+タグは，自分たちでとりあえず作ってみる
+囮　26日，27日，28日　18時から下見　しめのの稽古場
+これまでに，アイデアを考えておきましょう
+sonic vj　機材が動かない nevermind つぎから機材の確認はしましょう
+工大祭　
+19，20日，21日のどれかで，なにかする
+メディアアートの勉強のため
+Creative Campを開く
+10月8日
+Webサイト　
+もうそろそろ進めたい
+10月6日リリースを目指す
+wordpressの勉強会を開いて9日の13時から
+林田さんの代替わり，誰にするか
+komado　
+androidのアプリ　マルチディスプレイとして使える．
+iosはサブディスプレイ
+全国告白白書　
+全国の女性が告白する音声を聞ける
+女子高生は有料
+u-moaメンバーが東京ゲームショウに向かっている．
+尾島さん
+のリリースしたゲームアプリ「The One Column 」
+keep
+problem
+人少ない
+定着しない　⇒　プロジェクトの話がわからない．
+try
+型にはめる
+外部イベントから，直接u-moaに誘う．
+Webサイトを完成させる．(9月29日13時からWebサイトを作るための勉強会を開く)
+→新メンバーが来たら飯を食う
+→そのほか，新メンバーと一緒になにかコミュニケイトする企画をする．
+ちょっとイベントを開く
+&lt;参加者&gt;
+紺谷
+五十川
+林田
+前川
+大西さん
+&lt;森の青空アート&gt;
+・データの引き渡しする
+（keynoteで作った映像，Flikcer経由での画像渡し)
+・Wikiで振り返る
+・インスタレーションの映像作成する
+&lt;SONIC&gt;
+・映像まだ未完成
+・14時出発
+&lt;囮&gt;
+・高木さんからメールが来ました
+・今度，プロジェクションマッピングの
+ことも含めて突然IKAGAWADOに来るみたいです．
+&lt;工大祭&gt;
+日付は10/19(金)，20(土)，21(日)
+U-moaのメンバーを集める宣伝的なコンテンツでも良いかも
+当日配るフライヤー，媒体が必要．
+&lt;LoveSpreading&gt;
+保留
+&lt;紺谷企画&gt;
+10/6はジョブスの一周忌
+「終わりの日」を「はじまる日」に．
+何かリリース・開発しよう！
+実施案１：CountShare
+KANAZAWA スマホアプリコンテストに提出したサービス．
+実施案２：特撮アプリ
+&lt;フライヤー&gt;
+内容も大事だけどセンスも必要．
+&lt;webサイト&gt;
+フライヤーと一緒
+【一分間スピーチ】
+BootstrapのUIがドラッグアンドドロップだけで組める！最速でウェブのユーザーインターフェースが構築できるエディタ「Jetstrap」 
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.chrome-life.com/html5/5648/"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.chrome-life.com/html5/5648/</SPAN></SPAN></A></SPAN></SPAN>
+MINIの試乗
+１時間￥1,000
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://www.g-minimum.co.jp/main/?page_id=2681"><SPAN class="fg4 bg0"><SPAN class="underline">http://www.g-minimum.co.jp/main/?page_id=2681</SPAN></SPAN></A></SPAN></SPAN>
+iphone5 オンライン予約
+<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://lnd.online-reserve.mb.softbank.jp/ors/html/index.html"><SPAN class="fg4 bg0"><SPAN class="underline">http://lnd.online-reserve.mb.softbank.jp/ors/html/index.html</SPAN></SPAN></A></SPAN></SPAN>
+keep
+・議事録を最初に決める
+・プロジェクターを使う
+・おやつ
+problem
+・人がくるきっかけがない
+try
+・イベントに参加して，誘致
+・活動を増やして，発信する
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月23日
+　今日やること
+・ラブスプ
+iPhone，ほかのスマートフォンで出力の形式を変える方法
+・mod_securiy インストール
+mod_secrityの説明を読む．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　リキッドレイアウト...どんな解像度でもきれいに表示できる
+スクロールバーは，今どの辺にいるのか視覚的に わかりやすい．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月24日
+　mod_security xml2c
+Copy the libxml2.dll &lt;skip: have file in bin already) and lua5.1.dll to the Apache bin directory.
+libiconvをインストールして
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+19時
+　
+C:\Program Files (x86)\Apache Software Foundation\Apache2.2&gt;httpd -k start
+httpd: Syntax error on line 59 of C:/Program Files (x86)/Apache Software Foundation/Apache2.2/conf/httpd.conf: Cannot load C:/Program Files (x86)/Apache Software Foundation/Apache2.2/modules/mod_security2/mod_security2.so into server: \x8ew\x92\xe8\x82\xb3\x82\xea\x82\xbd\x83v\x83\x8d\x83V\x81[\x83W\x83\x83\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81B  
+C:\Program Files (x86)\Apache Software Foundation\Apache2.2&gt;
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+20時
+gemが動くから，zlibはうごくのかな．このまま
+PCREもいれてみる．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+20時
+　<SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://sitifukuzin.com/blog/?p=10758"><SPAN class="fg4 bg0"><SPAN class="underline">http://sitifukuzin.com/blog/?p=10758</SPAN></SPAN></A></SPAN></SPAN>
+<SPAN class="comment">;libxml2.dllとpcre.dllの2つのファイルをApache2.2がインストールされているフォルダの中にある，binフォルダの中へコピーします．
+</SPAN>動かない．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月25日
+　自分で治していかないと，だれも指摘してくれない．
+指摘されて逆切れするんでなく，治さないと成長しない．
+相手の身になって考えることが自分課題である．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+13時
+　毎日，続けていれば，本当になる．
+今日は，相手のことを最優先として考える．細かいことに対して．
+自分に関する大事になことであれば，自分を優先するが，空気の問題など
+相手が一番心地いいと思うようなコミュニケイトを気を付ける．
+示野南127番
+西尾倉庫　パチンコE-Zoneの隣
+林田さんと20:00に集合
+メディアアート　
+10月6日　囮　演劇．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月26日
+　静かに，パソコンを使う.　
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月27日
+　藤田さんのプロキシ，普通のブラウザでも使えるのかテストする
+使えるのであれば，その部分だけもらってきて，自分用に改造したい．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+14時
+　普通にプロキシとして使えている．
+プロキシの部分だけ本気で読んでみようかな．
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　やっぱり，ちょっとつらいので，cygwinでインストールしてチャレンジしてみる．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+19時
+　---------------------------
+Web ページからのメッセージ
+---------------------------
+xss-quiz.int21h.jp
+---------------------------
+OK   
+---------------------------
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年09月29日
+　macを借りる．
+キネクト,openFrameworks ofxkinectをインストール
+ビル，
+ヒトラー，原爆といった歴史関係
+日　VPTの勉強．
+月　macbook pro　その他のユーザを作っていじってもらう．　保管する．
+火　
+水
+木
+金
+土
+後ろの映像を作る．
+10月1日
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+14時
+　月曜日
+19:00~22:00
+動画というよりか，プレゼンテーションソフトを使うことも考える
+観えればいい．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年10月01日
+　作業用BGMを自分から探して自動的に再生していくシステム
+youtubeで．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+14時
+　人間の成長する過程
+歴史に忠実に
+人間の成長
+歴史？友達と遊ぶ風景？
+何を表現したい？？人間というより，人類の成長過程．
+シンがないといけない
+歩いているとき，みんな子供から成長して大人？人間社会に出ていく．
+そして，廉と猿の二人に．
+産業革命⇒発明⇒明治維新⇒ナチス・ドイツ⇒戦争⇒原爆⇒戦後の風景
+⇒高度経済成長期⇒大阪万博⇒ビル群⇒工場⇒平和の生き地獄⇒漫画？
+⇒ジョブズ
+絵の方が面白い
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+18時
+　main
+using System<SPAN class="comment">;
+</SPAN>using System.Collections.Generic<SPAN class="comment">;
+</SPAN>using System.Linq<SPAN class="comment">;
+</SPAN>using System.Text<SPAN class="comment">;
+</SPAN>using System.Net<SPAN class="comment">;
+</SPAN>using System.Net.Sockets<SPAN class="comment">;
+</SPAN>using System.IO<SPAN class="comment">;
+</SPAN>using System.Diagnostics<SPAN class="comment">;
+</SPAN>namespace HttpServerApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Debug の設定
+            Debug.Listeners.Add(new ConsoleTraceListener())<SPAN class="comment">;//トレースを出力デバッグ出力！！一行まとめて
+</SPAN>            DefaultTraceListener dtl = (DefaultTraceListener)Debug.Listeners[<SPAN class="string">&quot;Default&quot;</SPAN>]<SPAN class="comment">;
+</SPAN>            dtl.LogFileName = <SPAN class="string">&quot;C:/Users/hutoiti/proxy/debug.txt&quot;</SPAN><SPAN class="comment">; // ファイルへ出力　↑のとセットで，デバッグ結果をtxtで出力
+</SPAN>            HttpServer server = new HttpServer()<SPAN class="comment">;
+</SPAN>            server.Start()<SPAN class="comment">;
+</SPAN>            while (true)
+            {
+                string str = Console.ReadLine()<SPAN class="comment">;//入力を読み込む
+</SPAN>                <SPAN class="keyword3">if</SPAN> (str.ToLower().Equals(<SPAN class="string">&quot;end&quot;</SPAN>))//endが入力されているかどうか．
+                    break<SPAN class="comment">;//endが入力されたら終わり．
+</SPAN>            }
+            server.Stop()<SPAN class="comment">;//終了．
+</SPAN>        }
+    }
+    class HttpServer
+    {
+        HttpListener listener<SPAN class="comment">;
+</SPAN>        public HttpServer()
+        {
+        }
+        public void Start()
+        {
+            Debug.WriteLine(<SPAN class="string">&quot;Start&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>)<SPAN class="comment">;
+</SPAN>            Console.WriteLine(<SPAN class="string">&quot;Start&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>)<SPAN class="comment">;
+</SPAN>            <SPAN class="keyword3">if</SPAN> (listener == null)
+            {
+                listener = new HttpListener()<SPAN class="comment">;
+</SPAN>                listener.Prefixes.Add(string.Format(<SPAN class="string">&quot;</SPAN><SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://"><SPAN class="fg4 bg0"><SPAN class="underline">http://</SPAN></SPAN></A></SPAN></SPAN><SPAN class="string">{0}:{1}/&quot;</SPAN>, IPAddress.Loopback, 8080))<SPAN class="comment">;
+</SPAN>            }//localhostで
+            listener.Start()<SPAN class="comment">;
+</SPAN>            listener.BeginGetContext(OnGetContext, listener)<SPAN class="comment">;
+</SPAN>        }
+        public void Stop()
+        {
+            listener.Stop()<SPAN class="comment">;
+</SPAN>            Debug.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>)<SPAN class="comment">;
+</SPAN>            Console.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>)<SPAN class="comment">;
+</SPAN>        }
+        private void OnGetContext(IAsyncResult ar)
+        {
+            try
+            {
+                HttpListenerContext context = ((HttpListener)ar.AsyncState).EndGetContext(ar)<SPAN class="comment">;
+</SPAN>                //上の一文は，非同期の通信を完了させ，その結果をcontextへ投げている．
+                OnRequest(context)<SPAN class="comment">;
+</SPAN>                Console.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>)<SPAN class="comment">;
+</SPAN>                listener.BeginGetContext(OnGetContext, listener)<SPAN class="comment">;
+</SPAN>            }
+            catch (HttpListenerException e)
+            {
+                Debug.WriteLine(e)<SPAN class="comment">;
+</SPAN>            }
+        }
+        private void OnRequest(HttpListenerContext context)
+        {
+            Debug.WriteLine(context.Request.RawUrl)<SPAN class="comment">; // 加工されてないアドレス
+</SPAN>            Debug.WriteLine(context.Request.UserHostAddress)<SPAN class="comment">; // どこから接続されたか
+</SPAN>            //Debug.WriteLine(context.Request.InputStream)<SPAN class="comment">;
+</SPAN>            HttpWebRequest webRequest = WebRequest.Create(context.Request.RawUrl) as HttpWebRequest<SPAN class="comment">; // そのまま取得
+</SPAN>            // <SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="ftp://"><SPAN class="fg4 bg0"><SPAN class="underline">ftp://</SPAN></SPAN></A></SPAN></SPAN> とかのリクエストにも対応できるはず
+            // リクエストラインとヘッダの設定．ある程度しかしていない．
+            webRequest.Method = context.Request.HttpMethod<SPAN class="comment">;
+</SPAN>            webRequest.ProtocolVersion = context.Request.ProtocolVersion<SPAN class="comment">;
+</SPAN>            webRequest.KeepAlive = context.Request.KeepAlive<SPAN class="comment">;
+</SPAN>            <SPAN class="keyword3">if</SPAN> (context.Request.UrlReferrer != null)
+                webRequest.Referer = context.Request.UrlReferrer.OriginalString<SPAN class="comment">;
+</SPAN>            webRequest.UserAgent = context.Request.UserAgent<SPAN class="comment">;
+</SPAN>            webRequest.CookieContainer = new CookieContainer()<SPAN class="comment">;
+</SPAN>            webRequest.CookieContainer.Add(webRequest.RequestUri, context.Request.Cookies)<SPAN class="comment">;
+</SPAN>            byte[] buffer = new byte[8192]<SPAN class="comment">;
+</SPAN>            // ボディあったら送受信
+            <SPAN class="keyword3">if</SPAN> (context.Request.HasEntityBody)
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;Request.HasEntityBody&quot;</SPAN>, context.Request.RawUrl)<SPAN class="comment">;
+</SPAN>                webRequest.ContentType = context.Request.ContentType<SPAN class="comment">;
+</SPAN>                <SPAN class="keyword3">if</SPAN> (context.Request.ContentLength64 &gt;= 0)
+                    webRequest.ContentLength = context.Request.ContentLength64<SPAN class="comment">;
+</SPAN>                // transfer-encoding: chunked のことは考えていない
+                Stream input = context.Request.InputStream<SPAN class="comment">;
+</SPAN>                Stream output = webRequest.GetRequestStream()<SPAN class="comment">;
+</SPAN>                while (true)
+                {
+                    int read = input.Read(buffer, 0, buffer.Length)<SPAN class="comment">;
+</SPAN>                    <SPAN class="keyword3">if</SPAN> (read == 0)
+                        break<SPAN class="comment">;
+</SPAN>                    output.Write(buffer, 0, read)<SPAN class="comment">;
+</SPAN>                }
+                output.Flush()<SPAN class="comment">;
+</SPAN>                input.Close()<SPAN class="comment">;
+</SPAN>                output.Close()<SPAN class="comment">;
+</SPAN>            }
+            // レスポンス取得
+            HttpWebResponse webResponse = null<SPAN class="comment">;
+</SPAN>            try
+            {
+                webResponse = webRequest.GetResponse() as HttpWebResponse<SPAN class="comment">;
+</SPAN>            }
+            catch (WebException e)
+            {
+                Debug.WriteLine(e)<SPAN class="comment">;
+</SPAN>            }
+            // だめだった時の処理．てきとう
+            <SPAN class="keyword3">if</SPAN> (webResponse == null)
+            {
+                context.Response.ProtocolVersion = HttpVersion.Version11<SPAN class="comment">;
+</SPAN>                context.Response.StatusCode = 503<SPAN class="comment">;
+</SPAN>                context.Response.StatusDescription = <SPAN class="string">&quot;Response Error&quot;</SPAN><SPAN class="comment">;
+</SPAN>                context.Response.ContentLength64 = 0<SPAN class="comment">;
+</SPAN>                context.Response.Close()<SPAN class="comment">;
+</SPAN>                return<SPAN class="comment">;
+</SPAN>            }
+            // ブラウザへ返すレスポンスの設定．あるていど．
+            context.Response.ProtocolVersion = webResponse.ProtocolVersion<SPAN class="comment">;
+</SPAN>            context.Response.StatusCode = (int)webResponse.StatusCode<SPAN class="comment">;
+</SPAN>            context.Response.StatusDescription = webResponse.StatusDescription<SPAN class="comment">;
+</SPAN>            context.Response.AddHeader(<SPAN class="string">&quot;Server&quot;</SPAN>, webResponse.Server)<SPAN class="comment">;
+</SPAN>            context.Response.ContentType = webResponse.ContentType<SPAN class="comment">;
+</SPAN>            <SPAN class="keyword3">if</SPAN> (webResponse.ContentLength &gt;= 0)
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;Content-Length=&quot;</SPAN> + webResponse.ContentLength, context.Request.RawUrl)<SPAN class="comment">;
+</SPAN>                context.Response.ContentLength64 = webResponse.ContentLength<SPAN class="comment">;
+</SPAN>            }
+            <SPAN class="keyword3">if</SPAN> (webResponse.GetResponseHeader(<SPAN class="string">&quot;Transfer-Encoding&quot;</SPAN>).ToLower().Equals(<SPAN class="string">&quot;chunked&quot;</SPAN>))
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;chunked&quot;</SPAN>, context.Request.RawUrl)<SPAN class="comment">;
+</SPAN>                context.Response.SendChunked = true<SPAN class="comment">;
+</SPAN>            }
+            context.Response.KeepAlive = context.Request.KeepAlive<SPAN class="comment">;
+</SPAN>            // ボディの送受信
+            Stream instream = webResponse.GetResponseStream()<SPAN class="comment">;
+</SPAN>            Stream outstream = context.Response.OutputStream<SPAN class="comment">;
+</SPAN>            try
+            {
+                // これでうまくいくんだ・・・．ブロッキングせずにちゃんと 0 が返ってくるな．
+                // 切断まで 0 は返ってこないからブロッキングするとおもってたけど・・・．
+                while (true)
+                {
+                    int read = instream.Read(buffer, 0, buffer.Length)<SPAN class="comment">;
+</SPAN>                    Debug.WriteLine(read + <SPAN class="string">&quot; bytes received&quot;</SPAN>, context.Request.RawUrl)<SPAN class="comment">;
+</SPAN>                    <SPAN class="keyword3">if</SPAN> (read == 0)
+                        break<SPAN class="comment">;
+</SPAN>                    outstream.Write(buffer, 0, read)<SPAN class="comment">;
+</SPAN>                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e)<SPAN class="comment">;
+</SPAN>            }
+            try
+            {
+                webResponse.Close()<SPAN class="comment">;
+</SPAN>                context.Response.Close()<SPAN class="comment">;
+</SPAN>            }
+            catch (InvalidOperationException e)
+            {
+                Debug.WriteLine(e)<SPAN class="comment">;
+</SPAN>            }
+            catch (HttpListenerException he)
+            {
+                Debug.WriteLine(he)<SPAN class="comment">;
+</SPAN>            }
+        }
+    }
+}
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+23時
+　メモ帳，軽いプログラミングにはxyzzy
+プロジェクトレベルの重いプログラミングにはvisual studioがいいと思った
+なにせ，使いやすすぎる．これはやばい．思わず買ってしまうレベル．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年10月02日
+  フェルメール　1653
+ミレー　1814
+モネ　1840
+　ルノアール　1841  
+  ゴッホ　1853
+  ドガ　1874
+　セザンヌ　1906
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+15時
+　自分が憂鬱になったのは，ここ最近ではない．
+u-moaにはいって，最初のくりえぃてぃぶキャンプ
+みんながラブスプについて語り合ってるが，まったく話についていけなかった．
+まわりが，ラブスプをよく知っていて，わからないのは当然というわけではない．
+単純に，どのようなプレゼンをするのか，マネージメントはどうするのか
+いろいろ話してた，シェアとは何か
+なんでラブスプをやるのかについて，五十川さん，野田さん，松山さん，赤野さんが話してた．
+自分も意見を言わないといけないが，周りの語彙が多く(専門用語ではなく，普通の単語だと思う)
+全くついていけない，仕方がないから，理解したつもり考えているような顔をして朝まで過ごしていた．
+そして，技術ならわかると，野田さんと技術の話，何を作るかの話をした．
+全く話についていけなかったが，一文はなされるごとに2，3単語わからない言葉が続く
+会話が成り立たないので，わかったふりをしていた．
+わかったふりをしていても，やっぱり会話は成り立たない．
+質問したら，難しい言葉で返してくる(当人にとっては普通の技術用語)
+もはや，u-moaでは，自分は技術も単純に何をやりたいかの会議も何もできなかった．
+自分は必要ない．
+何かできると話すと相手も喜んでその話題に乗ってくる，当然相手の方ができる．
+自分の中でできると思っていたことは相手にとってはできて当然レベルのものばかり．
+自分が何かできるとは言わないほうがいい．何もできないのだから無理に背伸びしなくてもいいことが分かった．
+就職活動の時とはマ反対．就職してからが怖い．同じことになるに決まっている．
+そのうち，赤野さんが自信なくなっていて，自分と同じなんだと分かりうれしくなった
+そこでいったん回復したような気がする．
+そのうち，VJ案件が増えてきて，アプリ開発案件は消えた．
+アプリ開発は，何を作るのかアイデア出しが必要となる
+話し合いは苦手だ，自分は必要ない人間だから．
+自分はいないものとして，話は進んでいく，何か言ってほしいという空気になり
+自分が発言すると，さらに微妙な空気になるが，せっかく木村が意見してくれたんだという空気になり
+自分のアイデアが採用される．
+どう考えても他の人が話していたアイデアのほうが面白いのに．
+会議成り立たないし，自分はいないほうがいい．
+と考えていたら，察したのか，どんどん人が減っていった．
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+21時
+　映写
+現状を報告する．
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年10月04日
+　気に入らない部分があれば自分でカスタマイズしていく．
+まつもとゆきひろ
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+21時
+　相手の話を理解する
+自ら考え行動する
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+23時
+　赤ちゃん，親子で料理，入学式,受験勉強
+<SPAN class="keyword1">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</SPAN>
+2012年10月05日
+　人形遊び　小学５年生 ３Dメガネ　駄菓子屋　誕生日　祭　プール　体育　竹やり　
+注意点
+　自分も初心者であり，これを通して，みんなで成長していきたいと考えている．
+　なにか，わからないことがあれば，みんなで考えて解決していきたい．
+emacsインストール
+簡単な，カスタマイズ？
+では，
+LISPの超超入門
+lisp　概論
+Lisp　文法
+Lisp　文法を理解するために，簡単な，プログラムの作成 ＋ 問題の演習
+早速演習開始
+アトムの概念 atom
+リストの概念 　　　()←リスト　nullという関数
+S式とは　リスト，アトムのこと
+リストの中にあるそれぞれの要素は，S式である．
+はじめての関数
+carとは
+問題
+では，問題2　リストがさらに入れ子になっている場合
+問題3　空リストの場合
+nil 
+nilとはなにか．
+問題4　(((hotdogs)) (and) (pickele) relesh)
+実際に動かしてもらう
+cdrとは
+問題　
+いまのところ，car,cdrというリストから要素を取り出すことをやってきました．
+つぎは，リストを組み立てる関数を使います．
+consです．
+cons は　アトム，リストをつなげるものです
+アトム　シンボルの順に書いてやらないとうまく動きません．
+common LISPでは，文法のミスとなりますが　emacs lisp common lisp では，動きます．
+自分も理解不足なので，ここの詳しい説明は省きます．
+cons，car,cdrを使ってプログラムを作る演習をします．
+問題
+(setq s <SPAN class="string">'a)
+(setq l '</SPAN>((b) c d)
+と，変数を定義して，
+(a b)を出力してみてください．
+できたら(a c d)を出力させてみてください
+ここでコラム
+実際使ってみてわかると思いますが，emacs　xyzzy 大変使いにくかったと思います．
+このエディタは，カスタマイズしないと使いにくいです，
+C-hでdeleteできない．
+まつもとゆきひろさんも言ってました．
+参考ページです．
+簡単な設定をしてみましょう．
+そのほか，関数の紹介
+eq,atom,null
+(cond	(条件1 式...)
+	(条件2 式...)
+	(条件3 式...)
+	(条件4 式...)
+	...
+)
+cond elseの紹介
+eqの紹介
+これらを使って関数を作ってみましょう．
+演習　
+リストの1番目を返す関数
+(defun firster (l)
+  (car l))
+リストの2番目を返す関数
+(defun firster (l)
+  (car (cdr l)))
+リストの3番目から最後までのリストを返す関数
+を作ってみましょう
+(defun firster (l)
+  (cdr (cdr l)))
+orの紹介
+再起プログラムの説明
+例えば，こんな仕様の関数があるとします．
+atom listが引数として
+listのなかに，引数のatomがあるかどうか．調べるというもの．
+これまでに教えた
+car cdr eq or cond nullで作るとするとどうなりますか．
+あとで解説しますので，作ってみてください．
+5分後に，解説します．
+このようになります．
+(defun member1 (a lat)
+  (cond
+   ((null lat) nil)
+   (t (or (eq (car lat) a)
+	  (member1 a (cdr lat))))))
+(setq lat <SPAN class="string">'(emacs vim xyzzy))
+(emacs vim xyzzy)
+(setq a '</SPAN>xyzy)
+関数の定義の途中で，自分自身を呼び出しています．
+これについて，解説していきます．
+次の問題です．
+先ほど解説した関数を改造して
+member1がtのとき，ａをのぞいたリストを返すようにしてみてください．
+(rember a lat)
+文法の勉強　終了
+Emacs　の改造ができたらやりたい．
+emacsの改造方法の説明
+emacs改造に必要そうな関数の紹介．
+mac User/hayashidaに.emacsを置けばいい．
+１，キーバインドの変更　C-hでバックスペース
+w(define-key global-map (kbd <SPAN class="string">&quot;C-h&quot;</SPAN>) <SPAN class="string">'delete-backword-char)
+２，日時の入力をワンタッチで．
+３，記入者を載せる，冒頭に．
+以上
+プロジェクター　３台 5000ルーメン
+mac ２台
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年10月08日
+　
+((b) c d)
+(cons s (car l))
+(a b)g
+(setq s ())
+nil
+(lat s)
+関数が定義されていません: lat
+(else s)
+関数が定義されていません: else
+(or s l)
+((b) c d)
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+2012年10月09日
+　'</SPAN>
+プロキシはstart　メソッドから
+debug等に，start 
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+　postを取ってこれるように書き換えたプロキシが実際に取得できるのか
+xammpを相手に確かめる
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+　audit_logの再発明
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+17時
+~audit_log~
+POST <SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://192.168.215.59/cook/login.php"><SPAN class="fg4 bg0"><SPAN class="underline">http://192.168.215.59/cook/login.php</SPAN></SPAN></A></SPAN></SPAN> HTTP/1.1
+Host: 192.168.215.59
+User-Agent: Mozilla/5.0 (X11<SPAN class="comment">; U; Linux i686; ja; rv:1.9.2.8) Gecko/20100723 Ubuntu/10.04 (lucid) Firefox/3.6.8
+</SPAN>Accept: text/html,application/xhtml+xml,application/xml<SPAN class="comment">;q=0.9,*/*;q=0.8
+</SPAN>Accept-Language: en-us,en<SPAN class="comment">;q=0.5
+</SPAN>Accept-Encoding: gzip,deflate
+Accept-Charset: Shift_JIS,utf-8<SPAN class="comment">;q=0.7,*;q=0.7
+</SPAN>Keep-Alive: 115
+Proxy-Connection: keep-alive
+Referer: <SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://192.168.215.59/cook/login.php"><SPAN class="fg4 bg0"><SPAN class="underline">http://192.168.215.59/cook/login.php</SPAN></SPAN></A></SPAN></SPAN>
+Cookie: cooking[usr_id]=syaru<SPAN class="comment">; cooking[usr_pw]=1234; PHPSESSID=ev0g1l8qmefv3kl8bp0h9ohl97
+</SPAN>Content-Type: application/x-www-form-urlencoded
+Content-Length: 64
+<SPAN class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</SPAN>
+17時
+postなのか，getなのかがない
+User-Agentの指定
+acceptがない．
+refererがない←　どうする
+<SPAN class="fg1 bg0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SPAN>
+23時
+　メニューにカラー印刷を追加する。
+(defun cp)カレントバッファをカラー印刷する。</PRE>
+  </BODY>
+</HTML>

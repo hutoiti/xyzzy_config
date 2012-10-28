@@ -1,0 +1,50 @@
+(provide "sample-minor-mode")
+(defvar *sample-minor-mode* nil)
+(in-package "user")
+;; マイナーモード用のキーマップを保持する変数を宣言
+;; (defvar で宣言された変数は、グローバルなスペシャル変数になる)
+
+(export '(*sample-minor-mode*
+          sample-minor-mode))
+;; 宣言した変数にキーマップをセットする (これはメジャーモードと同じ)
+;; この処理は、1度だけ実行される
+(defvar *sample-minor-mode-map* nil)
+(defun walk-up ()
+  (interactive)
+    (or (scroll-window -1)
+    (previous-virtual-line 1)
+    (goto-line (buffer-lines))))
+
+(defun walk-down ()
+  (interactive)
+    (let ((goal (goal-column))
+          (test (save-window-excursion (scroll-window (window-lines)))))
+      (set-goal-column goal)
+      (if test
+          (scroll-window 1)
+        (or (next-virtual-line 1)
+            (goto-line 0)))))
+(unless *sample-minor-mode-map*
+  (setq *sample-minor-mode-map* (make-sparse-keymap))
+  (define-key *sample-minor-mode-map* #\h 'previous-buffer)
+  (define-key *sample-minor-mode-map* #\j 'walk-down)
+  (define-key *sample-minor-mode-map* #\l #'(lambda() (interactive) (if (> (count-windows) 1) (other-window) (next-buffer))))
+  (define-key *sample-minor-mode-map* #\k 'walk-up)
+  (define-key *sample-minor-mode-map* #\g 'beginning-of-buffer)
+  (define-key *sample-minor-mode-map* #\G 'end-of-buffer)
+  (define-key *sample-minor-mode-map* #\i 'sample-minor-mode))
+
+;; マイナーモードの切り替えを行う関数
+(defun sample-minor-mode (&optional (arg nil sv))
+  (interactive "p")
+  (ed::toggle-mode '*sample-minor-mode* arg sv)
+  (update-mode-line t)
+  (if *sample-minor-mode*
+      (set-minor-mode-map *sample-minor-mode-map*)
+    (unset-minor-mode-map *sample-minor-mode-map*))
+  t)
+
+;; マイナーモードを有効にした時の、モードライン表示の設定
+;; (この例だと、"SampleMinor" という文字列が表示されるようになる)
+(pushnew
+ '(*sample-minor-mode* . "SampleMinor") *minor-mode-alist* :key #'car)

@@ -1,0 +1,7 @@
+(require "junk/defs")
+(provide "junk/macro")
+(lisp::in-package-1 "junk")
+(system:*putprop 'modify-read-only-buffer 1 'lisp-indent-hook)
+(system:*fset 'modify-read-only-buffer '(macro (&body body) (block modify-read-only-buffer (list* 'let '((buffer-read-only nil)) '(declare (special buffer-read-only)) body))))
+(system:*putprop 'interval-message 1 'lisp-indent-hook)
+(system:*fset 'interval-message '(macro ((interval) &body body) (block interval-message (list 'let (cons (list '#1=#:last-tick (list '+ '(get-internal-real-time) interval)) '((#2=#:tick))) (list* 'flet (list (list 'message '(&rest args) '(setq #2# (get-internal-real-time)) (list* 'when '(> #2# #1#) (list 'setq '#1# (list '+ '#2# interval)) '((apply #'message args))))) body)))))

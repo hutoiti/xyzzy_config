@@ -1,0 +1,60 @@
+2004-08-29  MIYAMUKO Katsuyuki  <miyamuko@zzy.yzzzzyz.zz.zz>
+
+	* insert-rabbit-menu: メニューをローカルメニューにした。
+
+2004-08-22  MIYAMUKO Katsuyuki  <miyamuko@zzy.yzzzzyz.zz.zz>
+
+	* rabbit-make-process: internal buffer として作成したバッファを普通
+	のバッファにする方法がわからなかったので、エラー時のみバッファを表
+	示する件はあきらめた。
+
+2004-08-18  MIYAMUKO Katsuyuki  <k-miyamuko@zx.xx.xxz.zxx>
+
+	* rabbit-preview-begin-end: =begin から =end を全部集めてプレビュー
+
+2004-08-17  MIYAMUKO Katsuyuki  <k-miyamuko@yz.zz.zzx.xzz>
+
+	* rabbit-setup-menu: {ファイル,バッファ}サイズが 0 の場合、rabbit
+	を実行するメニューを disable するようにした。
+
+	* rabbit-make-process: make-process を実行するときに :incode と
+	:outcode を指定するようにした
+
+	* rabbit-mark-slide: 現在のスライドをマーク
+
+	* rabbit-preview-*: 範囲 (現在のスライド、リージョン、セレクション)
+	を指定してプレビュー
+
+	* rabbit-copy-current-slide: 現在のスライドをコピーして挿入
+
+	* rabbit-copy-slide: スライド一覧からスライドを選択してコピーして挿入
+
+2004-08-16  MIYAMUKO Katsuyuki  <k-miyamuko@yz.zz.zzx.xzz>
+
+	* rabbit-narrow-to-slide: C-c n で現在のスライドを narrowing
+
+	* rabbit-execute-rabbit-argf: バッファのファイル名がない場合 rabbit を
+	--type argf で実行する。
+
+	* rabbit-kill-slide: C-M-k で現在のスライドを kill する。
+
+	* rabbit-move-up-slide, rabbit-move-down-slide: C-M-p, C-M-n でスラ
+	イドを上下に移動する。
+
+2004-08-12  MIYAMUKO Katsuyuki  <miyamuko@yyy.yyyyyyy.yy.yy>
+
+	* rabbit-mode: rabbit 編集用モードにすることにした。
+
+	* rabbit-build-summary-of-functions: list-function でスライドの一
+	覧がでるようにした。
+
+2004-08-10  MIYAMUKO Katsuyuki  <k-miyamuko@zy.yy.yyx.xyy>
+
+	* rabbit-make-process: 実行したコマンドを message で表示するようにした。
+
+	* rabbit-buffer-encoding: char-encoding-name が utfxxx を返した場合、
+	--encoding は指定しないようにする。
+
+2004-08-09  MIYAMUKO Katsuyuki  <k-miyamuko@zy.yy.yyz.zyy>
+
+	* 初期リリース

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>rabbit-mode - rabbit のフロントエンド</title>
+<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+<style type="text/css" media="screen,all">
+<!--
+/* @import styles/document.css
+ * @date Sun Aug 29 19:10:15 2004
+ */
+
+/* ======== @import "article.css"; ======== */
+@charset "Shift_JIS";
+
+/* body */
+body {
+    margin: 2em;
+    padding: 0;
+}
+
+/* heading */
+h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+/* lists */
+ul, ol {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+dd ul {
+    padding-left: 0;
+    margin-left: 1em;
+}
+
+dd ul ul {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+li {
+    line-height: 1.2;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0.2em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd, dd p, li p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+pre {
+    padding: 0.4em;
+    margin: 1em;
+    font-size: 90%;
+    overflow: auto;
+}
+
+p {
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+code, kbd, dfn {
+    font-size: 100%;
+}
+
+/* ======== end @import "article.css"; ==== */
+
+
+/* ======== @import "color.css"; ======== */
+body {
+    color: black;
+    font-family: Verdana;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #005a9c;
+    font-family: Verdana;
+}
+h1 {
+    font-size: 260%;
+}
+h2 {
+    font-size: 200%;
+}
+h3 {
+    font-size: 160%;
+}
+h4 {
+    font-size: 140%;
+}
+h5 {
+    font-size: 120%;
+}
+h6 {
+    font-size: 100%;
+}
+
+pre {
+    color: #000;
+    background: #f6f6ff;
+    border: 1px solid #99f;
+}
+
+dt {
+    border-bottom: 1px solid #eef;
+}
+
+dt code {
+    font-family: Verdana;
+}
+
+a:link {
+    color: #00C;
+    background: transparent;
+}
+a:visited {
+    color: #609;
+    background: transparent;
+}
+a:active, a:hover {
+    color: #C00;
+    background: transparent;
+}
+
+/*
+ * class
+ */
+
+.label-not-found {
+    color: white;
+    background: red;
+}
+
+/* ======== end @import "color.css"; ==== */
+
+-->
+</style>
+</head>
+<body>
+<h1><a name="" href="#"></a> <a name="label-0">rabbit-mode - rabbit のフロントエンド</a></h1><!-- RDLabel: "rabbit-mode - rabbit のフロントエンド" -->
+
+<ul>
+<li>Author:  miyamuko <a href="mailto:miyamuko (at) mtb.biglobe.ne.jp">&lt;URL:mailto:miyamuko (at) mtb.biglobe.ne.jp&gt;</a></li>
+<li>URL: <a href="http://miyamuko.s56.xrea.com/xyzzy/rabbit.html">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/rabbit.html&gt;</a></li>
+<li>Version: $Id: rabbit-mode.l,v 1.11 2004/08/29 10:09:35 miyamuko Exp $</li>
+</ul>
+<h2><a name="1" href="#1">1</a> <a name="label-1">説明</a></h2><!-- RDLabel: "説明" -->
+
+<p>Ruby で書かれたプレゼンツールの
+<a href="http://www.cozmixng.org/~rwiki/?cmd=view;name=Rabbit%3A%3AREADME.ja">rabbit</a>
+を少し便利に使えるようにするフロントエンドです。</p>
+<p>rd ファイルを編集しながら xyzzy から rabbit を起動できます。</p>
+<h2><a name="2" href="#2">2</a> <a name="label-2">できること</a></h2><!-- RDLabel: "できること" -->
+
+<ul>
+<li>rabbit をフルスクリーンモードで起動できる。</li>
+<li>rabbit を起動できる。</li>
+<li>タイトルページのテンプレートを挿入できる。</li>
+<li>ファイル名がなくても実行できる</li>
+<li>スライド単位での編集
+<ul>
+<li>スライド一覧を表示して jump (list-function)</li>
+<li>スライド数とかを表示しつつスライド単位での移動 (C-M-n, C-M-p)</li>
+<li>非表示スライドをトグル</li>
+</ul></li>
+<li>特定範囲のプレビュー
+<ul>
+<li>範囲
+<ul>
+<li>現在のスライドのみ</li>
+<li>リージョン内のスライドのみ</li>
+<li>セレクション内のスライドのみ</li>
+</ul></li>
+<li>ただしタイトルページは含まれる。
+<ul>
+<li>スライド数指定で起動とかできないかな?</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2><a name="3" href="#3">3</a> <a name="label-3">やらない (できない) こと</a></h2><!-- RDLabel: "やらない (できない) こと" -->
+
+<ul>
+<li>テーマ作成用モード</li>
+</ul>
+<h3><a name="3.1" href="#3.1">3.1</a> <a name="label-4">これからやるかもしれないこと</a></h3><!-- RDLabel: "これからやるかもしれないこと" -->
+
+<ul>
+<li>サブタイトルとかを interactive に入力</li>
+<li>save-as-image</li>
+<li>テーマ名の補完</li>
+<li>tdiary theme から rabbit theme に変換できるとかっこいい。
+<ul>
+<li>背景画像とかは指定できない(?)
+<ul>
+<li>できるらしい。
+<ul>
+<li>・・・ってこれは lisp じゃなくて ruby で実装して rabbit 本体に取り込んでもらったほうがよさげ。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>rabbit がエラーを出力したときのみバッファを作るようにする
+<ul>
+<li>現状は *rabbit-output-buffer* にバッファ名を指定すればそこに出力する。
+    ただし、エラーが出なくてもバッファは作成してしまう。</li>
+</ul></li>
+<li>rd 書き支援
+<ul>
+<li>rd 支援は ruby-doc-minor-mode に任せようと思ったけどやろうかな。</li>
+<li>rd に特化した rd-mode をいい加減にちゃんとつくる。</li>
+<li>箇条書き支援</li>
+</ul></li>
+<li>既存 rd 文書を rabbit 化 (rabbitalize ?)
+<ul>
+<li>箇条書きのトップレベルをスライドのタイトルにする
+<ul>
+<li>この変換を rabbit 実行時にやる。
+<ul>
+<li>箇条書きを変換して{プレビュー,実行}
+<ul>
+<li>箇条書きでひたすら書きたい場合に便利。(たとえばこの todo リスト)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>見出しレベル2 (==) をスライドのタイトルに</li>
+</ul></li>
+<li>プレビューサイズ設定</li>
+<li>テンプレートを指定して新しいスライドの作成 (C-m)</li>
+<li>テンプレートの充実
+<ul>
+<li>普通のスライド</li>
+<li>mimeTex</li>
+<li>image
+<ul>
+<li>keep_scale、relative_width などの補完</li>
+</ul></li>
+<li>最終スライド</li>
+<li>テンプレートのテキストファイル化
+<ul>
+<li>テキストファイルで作ってどこかに置くとメニューに出てくる。</li>
+</ul></li>
+</ul></li>
+<li>Sigma: や sum: の実体参照（Rabbit独自拡張）の補完</li>
+<li>「ここをクリックして xxx を追加」の上でクリックするとなにか起きる。</li>
+<li>目的別スライドショー
+<ul>
+<li>必要なスライド（名 or 番号) を定義して (どうやって? 特殊なコメント?) そこだけスライドショー</li>
+</ul></li>
+<li>xyzzy を http サーバにして RWiki/Hiki のようにページソースの提供
+<ul>
+<li><p>以下のようなケースで役に立ちそう。</p>
+<ul>
+<li>rwiki を簡単に立てられない</li>
+<li>発表マシンに rabbit が入っている</li>
+<li>スライド作成マシンと発表マシンが違う (作成: Win, 発表: Linux とか)</li>
+</ul>
+<p>・・・必要ないか。</p></li>
+<li>RWiki 互換にする場合 soap.l も作らないとだめそう</li>
+</ul></li>
+<li>rabbit-mode のときのみメニュー表示
+<ul>
+<li>rd-mode をマイナーモードにして rabbit-mode をメジャーモード</li>
+<li>rd-mode をメジャーモードにして rabbit-mode はモード継承</li>
+</ul></li>
+<li>xyzzy から rabbit の操作
+<ul>
+<li>rabbit を FindWindow して sendKey する</li>
+<li>追従モード
+<ul>
+<li>スライド単位で移動した場合は自動的に SendKey する</li>
+<li>ページ数が 2 桁ある場合は無理 (?)</li>
+</ul></li>
+</ul></li>
+<li>=begin, =end の削除</li>
+<li>zphoto などの外部ツールとの連携</li>
+<li>スライドごとに分割して 01.txt などに保存して less プレゼン (rabbit2less)</li>
+</ul>
+<h2><a name="4" href="#4">4</a> <a name="label-5">インストール</a></h2><!-- RDLabel: "インストール" -->
+
+<p><a href="http://www.mirai.ne.jp/~gyo/xyzzy/ni.html">NetInstaller</a> でインストールした場合は
+3 以降で OK です。</p>
+<ol>
+<li><p>アーカイブをダウンロードします。</p>
+<p><a href="http://miyamuko.s56.xrea.com/xyzzy/archives/rabbit.zip">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/archives/rabbit.zip&gt;</a></p></li>
+<li>アーカイブを展開して、$XYZZY/site-lisp 配下にファイルをコピーします。</li>
+<li><p>~/.xyzzy または $XYZZY/site-lisp/siteinit.l に以下のコードを追加します。</p>
+<pre>;; rabbit-mode
+(require "rabbit-mode")
+(pushnew '("\\.rb$" . rabbit-mode) *auto-mode-alist* :test 'equal)</pre></li>
+<li><p>設定を反映させるには xyzzy を再起動してください。</p>
+<p>※siteinit.l に記述した場合には再ダンプが必要です。</p></li>
+<li>ruby.exe にパスを通していない場合は <a href="#label-20">*rabbit-command*</a> を設定します。</li>
+<li>rd ファイルを開きメニューから rabbit を起動してください。</li>
+</ol>
+<h2><a name="5" href="#5">5</a> <a name="label-6">リファレンス</a></h2><!-- RDLabel: "リファレンス" -->
+
+<h3><a name="5.1" href="#5.1">5.1</a> <a name="label-7">キー割り当て</a></h3><!-- RDLabel: "キー割り当て" -->
+
+<dl>
+<dt><a name="label-8" id="label-8"><kbd>F5</kbd></a></dt><!-- RDLabel: "F5" -->
+<dd>
+スライドショーを開始します。
+</dd>
+<dt><a name="label-9" id="label-9"><kbd>C-c n</kbd></a></dt><!-- RDLabel: "C-c n" -->
+<dd>
+カーソル下のスライドをナローイングします。
+</dd>
+<dt><a name="label-10" id="label-10"><kbd>C-c h</kbd></a></dt><!-- RDLabel: "C-c h" -->
+<dd>
+カーソル下のスライドの表示・非表示をトグルします。
+</dd>
+<dt><a name="label-11" id="label-11"><kbd>C-c c</kbd></a></dt><!-- RDLabel: "C-c c" -->
+<dd>
+カーソル下のスライドをコピーして挿入します。
+</dd>
+<dt><a name="label-12" id="label-12"><kbd>C-c C-c</kbd></a></dt><!-- RDLabel: "C-c C-c" -->
+<dd>
+スライド一覧から選択したスライドをコピーして挿入します。
+</dd>
+<dt><a name="label-13" id="label-13"><kbd>C-M-n</kbd></a></dt><!-- RDLabel: "C-M-n" -->
+<dd>
+次のスライドに移動します。
+</dd>
+<dt><a name="label-14" id="label-14"><kbd>C-M-p</kbd></a></dt><!-- RDLabel: "C-M-p" -->
+<dd>
+前のスライドに移動します。
+</dd>
+<dt><a name="label-15" id="label-15"><kbd>C-M-k</kbd></a></dt><!-- RDLabel: "C-M-k" -->
+<dd>
+現在のスライドを kill します。
+</dd>
+<dt><a name="label-16" id="label-16"><kbd>C-M-Up</kbd></a></dt><!-- RDLabel: "C-M-Up" -->
+<dd>
+現在のスライドをひとつ上に移動します。
+</dd>
+<dt><a name="label-17" id="label-17"><kbd>C-M-Down</kbd></a></dt><!-- RDLabel: "C-M-Down" -->
+<dd>
+現在のスライドをひとつ下に移動します。
+</dd>
+<dt><a name="label-18" id="label-18"><kbd>M-NUL</kbd></a></dt><!-- RDLabel: "M-NUL" -->
+<dd>
+現在のスライドをマークします。
+</dd>
+</dl>
+<h3><a name="5.2" href="#5.2">5.2</a> <a name="label-19">変数</a></h3><!-- RDLabel: "変数" -->
+
+<dl>
+<dt><a name="label-20" id="label-20"><code>*rabbit-command*</code></a></dt><!-- RDLabel: "*rabbit-command*" -->
+<dd>
+<p>rabbit を実行するコマンドを指定します。デフォルトは <code>ruby -S rabbit</code> です。</p>
+<p>ruby.exe にパスを通していない場合やオプションを指定したい場合は
+ここで設定します。</p>
+<p>例:</p>
+<pre>(setf *rabbit-command* "C:/ruby181/bin/ruby.exe -S rabbit")</pre>
+<p>パス名に空白文字が入っているとうまくいかないと思います。</p></dd>
+<dt><a name="label-21" id="label-21"><code>*rabbit-author*</code></a></dt><!-- RDLabel: "*rabbit-author*" -->
+<dt><a name="label-22" id="label-22"><code>*rabbit-institution*</code></a></dt><!-- RDLabel: "*rabbit-institution*" -->
+<dd>
+rabbit-insert-title-template でタイトルページを挿入するときの
+作者 (author) と 所属 (institution) を指定します。</dd>
+</dl>
+<h2><a name="6" href="#6">6</a> <a name="label-23">関連するかもしれないページ</a></h2><!-- RDLabel: "関連するかもしれないページ" -->
+
+<dl>
+<dt><a name="label-24" id="label-24">rabbit</a></dt><!-- RDLabel: "rabbit" -->
+<dd>
+<a href="http://www.cozmixng.org/~rwiki/?cmd=view;name=Rabbit%3A%3AREADME.ja">&lt;URL:http://www.cozmixng.org/~rwiki/?cmd=view;name=Rabbit%3A%3AREADME.ja&gt;</a>
+</dd>
+<dt><a name="label-25" id="label-25">Ruby-GNOME2 Project Website</a></dt><!-- RDLabel: "Ruby-GNOME2 Project Website" -->
+<dd>
+<a href="http://ruby-gnome2.sourceforge.jp/ja/index.html">&lt;URL:http://ruby-gnome2.sourceforge.jp/ja/index.html&gt;</a>
+</dd>
+<dt><a name="label-26" id="label-26">RAA - rabbit</a></dt><!-- RDLabel: "RAA - rabbit" -->
+<dd>
+<a href="http://raa.ruby-lang.org/project/rabbit/">&lt;URL:http://raa.ruby-lang.org/project/rabbit/&gt;</a>
+</dd>
+<dt><a name="label-27" id="label-27">RAA - ruby-gnome2</a></dt><!-- RDLabel: "RAA - ruby-gnome2" -->
+<dd>
+<a href="http://raa.ruby-lang.org/project/ruby-gnome2/">&lt;URL:http://raa.ruby-lang.org/project/ruby-gnome2/&gt;</a>
+</dd>
+</dl>
+<h2><a name="7" href="#7">7</a> <a name="label-28">ライセンス</a></h2><!-- RDLabel: "ライセンス" -->
+
+<p>rabbit-mode は修正 BSD ライセンスに基づいて利用可能です。</p>
+<pre>Copyright (C) 2004 MIYAMUKO Katsuyuki. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1 Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer as the first lines
+  of this file unmodified.
+
+2 Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.</pre>
+
+</body>
+</html>

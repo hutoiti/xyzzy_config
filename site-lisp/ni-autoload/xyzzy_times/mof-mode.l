@@ -1,0 +1,5 @@
+(export 'ed::mof-mode "ed")
+(autoload 'ed::mof-mode "mof-mode" t)
+(export 'ed::mof-make-command "ed")
+(autoload 'ed::mof-make-command "mof-mode" t)
+(pushnew '("\\.\\(mof\\|mfl\\)$" . mof-mode) *auto-mode-alist* :test 'equal)

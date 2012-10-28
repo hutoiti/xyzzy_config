@@ -1,0 +1,5 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; ci-mode
+(require "ci-mode")
+(pushnew '("\\.Å[$" . ci-mode) *auto-mode-alist* :test 'equal)

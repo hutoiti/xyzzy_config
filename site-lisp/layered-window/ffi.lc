@@ -1,0 +1,6 @@
+(lisp::in-package-1 :user)
+(require "layered-window/ffi/package")
+(require "layered-window/ffi/types")
+(require "layered-window/ffi/user32")
+(require "layered-window/ffi/kernel32")
+(provide "layered-window/ffi")

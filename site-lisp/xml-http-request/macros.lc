@@ -1,0 +1,7 @@
+(require "xml-http-request/package")
+(lisp::in-package-1 :xml-http-request)
+(system:*fset 'with-gensyms '(macro (syms &body body) (block with-gensyms (list* 'let (mapcar #'(lambda (sym) (cons sym '((gensym)))) syms) body))))
+(system:*putprop 'with-gensyms 'let 'lisp-indent-hook)
+(system:*fset 'type-error '(macro (expected-type datum) (block type-error (list 'error ''type-error ':expected-type expected-type ':datum datum))))
+(system:*fset 'alias '(macro (new original) (block alias (list 'defun new '(&rest args) (list* 'apply (list 'quote original) '(args))))))
+(provide "xml-http-request/macros")

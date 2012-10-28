@@ -1,0 +1,3 @@
+:pscp "C:/bin/putty/pscp.exe"
+:host "bar"
+:options "-scp"

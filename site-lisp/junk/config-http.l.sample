@@ -1,0 +1,21 @@
+;;; -*- Mode: Lisp; Package: EDITOR -*-
+;;;
+;;; This file is not part of xyzzy.
+;;;
+; $Id: config-http.l.sample 769 2007-12-14 19:18:39Z torihat $
+;
+; config-http.l sample
+;
+
+(in-package "junk")
+
+; PROXY のホスト
+;(setq *junk-http-proxy-host* "proxy.host.name")
+; PROXY のポート
+;(setq *junk-http-proxy-port* 8080)
+; PROXY を経由しないホストのリスト
+;(setq *junk-http-direct-connect-list* nil)
+
+; PROXY認証
+;(setq *junk-http-proxy-user* "proxy-user-name")
+;(setq *junk-http-proxy-pass* "proxy-user-password")

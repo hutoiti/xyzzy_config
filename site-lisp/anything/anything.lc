@@ -1,0 +1,2 @@
+(require :anything/api/setup)
+(provide :anything/anything)

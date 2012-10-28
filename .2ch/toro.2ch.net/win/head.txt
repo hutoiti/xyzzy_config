@@ -1,0 +1,26 @@
+<b>【<font color="red">必読！</font>Windows板ガイド】</b>
+<ul><li>OS WindowsやWindows対応ソフトの話題を扱っています。<br><b>あなただけのための掲示板ではありません。</b>
+<font size="2"><ul>
+<li><b>パソコンの初歩的な質問や話題　→　「<a href="http://hibari.2ch.net/pcqa/">PC初心者板</a>」</b>
+<li>パソコン一般の質問や話題　→　「<a href="http://hibari.2ch.net/pc/">パソコン一般板</a>」
+<li>様々なプラットフォームに対応したソフトの質問や話題　→　「<a href="http://hibari.2ch.net/software/">ソフトウェア板</a>」
+<li>Webコンテンツ制作（ソフト）の質問や話題　→　「<a href="http://hibari.2ch.net/hp/">Web制作板</a>」
+<li>18禁ソフト（エロゲー）の質問や話題　→　「<a href="http://kilauea.bbspink.com/hgame/">エロゲー板（21歳以上）</a>」
+<li>Windowsユーザを建設的議論無しにただ罵倒したい　→　「<a href="http://toki.2ch.net/tubo/">最悪板</a>」
+</ul><br><font size="3"><li>質問をしたいときは既存の質問用スレッドを検索して適切なスレッドに書き込んで下さい。</font><br>
+<b>単発質問スレッド・無意味なスレッドは<font color="red">絶対禁止！</font>建てても無視されます。<br>
+立てる前にCtrl+Fで「<a href="/win/subback.html">スレッド一覧</a>」を検索！！</b>
+<br><div style="width:45%;float:left;"><ul>
+<li>「<a href="../test/read.cgi/win/1297513337/l50">Windows9x・Me質問スレッド</a>」
+<li>「<a href="../test/read.cgi/win/1268242073/l50">Windows2000質問スレッド</a>」
+<li>「<a href="../test/read.cgi/win/1313160824/l50">Windows XP質問スレッド</a>」
+</ul></div><div style="width:45%;float:left;"><ul>
+<li>「<a href="../test/read.cgi/win/1139036655/l50">くだらない質問は>>1-20を読んでから！</a>」
+<li>「<a href="../test/read.cgi/win/1263831618/l50">Outlook Express質問スレッド</a>」
+</ul></div><div style="clear:left;">
+<li>Microsoftの会社としての従来からある批判(独占・Security・会社姿勢など)は、<a href="../test/read.cgi/win/1032153361/l50">Microsoft総合スレッド</a>、
+各Windowsバージョン間の自慢・批判・言い争いは<a href="../test/read.cgi/win/1033478098/l50">Windows総合スレッド</a>でどうぞ(新規スレッド禁止)。
+<li>板違い、スレ違い、重複、単発質問スレッドなどは<b>やさしく誘導</b>、
+<a href="http://www.2ch.net/accuse2.html">荒らし</a>は<b>完全放置</b>の上でどちらの場合も<a href="http://qb5.2ch.net/saku/"><b>削除依頼</b></a>をするようお願いします。
+<b>煽る貴方も<a href="http://www.2ch.net/accuse2.html">荒らし</a></b>です。
+</ul></div></font>

@@ -1,0 +1,129 @@
+= Description
+odoc おれおれドキュメント Publisher
+テキストを html に置き換える xyzzy lisp です。
+日付でメモを取っていくと日記ツールにもなるかと思います。
+
+= Install
+site-lisp に odoc 以下を放り込む。
+.xyzzy siteinit.l に
+
+ $lisp$
+  (require "odoc")
+
+= odoc-mode
+
+ [foo] RET で新しく foo.od を作成します。
+ [index] RET で編集中のディレクトリの ~.od を集めてきて表示
+
+| keybind | function |
+| C-c p   | publish  |
+| C-c i   | index    |
+| RET     | action   |
+
+= Format
+書式は以下
+
+  ^=..       h
+  ^-..       ol (space2 つで入れ子)
+  ^*..       ul (space2 つで入れ子)
+  ^|..|      table
+  ^ ..       pre
+  ^..        p  (閉じる時は空行にする)
+  ^----      hr
+  ^:. :.     dl
+  ^>..       blockquote
+  http://    absolute link
+  [http://..|name] absolute link
+  [name]     relative link
+  [img|x,y|path|alt]    img link
+   \[fug] \http:// はエスケープ
+
+== 要素 のオプション
+
+ol,ul,table,pre,p,dl,blockquote の書式に従って書いた始めの行に
+$...$ , %...% を指定しておくと要素を <div> で囲み、
+囲まれた文字は class と id 名になります。
+
+class は 
+$foo$ => <div class="foo"> 二行目 ..</div>
+
+id は 
+%bar% => <div id="bar"> 二行目 ..</div>
+
+(注) 囲まれた文字以降は無視されます。エスケープは \%~% ,\$~$ です。
+
+== list
+入れ子にすることはできますが、階層をとばすとタグをきちっと閉じられない
+バグがあるので気をつけて下さい。
+
+= Config File
+publish 用設定ファイル odoc/.odocrc に好みの設定を書く、もしくは編集して
+いるディレクトリに .odocrc を作ればそれを読み込みます。
+
+:#: comment line
+:%site_title: Site タイトル名
+:%site_sub: Site の簡単な説明
+:%header: html の head 内を記述しておく
+:%encode: エンコードを xyzzy の定数を使って指定 例 *encoding-utf8n*
+:%footer: フッター
+:%date:  フッターに表示する日付
+:%macro: 置換文字 TAB で区切る
+:%regex: 正規表現置換 TAB で区切る
+:%author: 著者
+:%host: \http://ホスト名  (Feed を吐き出す場合に使います)
+:%mail: メールアドレス your_address@example.com
+:%menu: Publish した HTML に menu{toc,recent,..}
+:%menu plugins: menu の recent 以下に追加するもの
+が設定できます。
+
+= UI
+* odoc-publish で html index.html recent.html atom rss 作成
+* odoc-inedx で現在の作業ディレクトリの ~.od を集めて来ます。
+* odoc-mode ~.od を色分け
+* odoc-config-mode .odocrc を色分け
+
+= Customize
+publish 後に html+-mode でインデントしてもらう場合
+.xyzzy 等に
+
+ $lisp$
+ (add-hook '*odoc-publish-hook*
+          #'(lambda()
+              (indent-region(point-min)(point-max))))
+
+== odoc-mode
+~/odoc/.odoc-mode の始めに(in-package :odoc-mode)を追加して
+lisp を書いていく必要があります。 
+add-toggle-switch,add-action,add-action-list
+
+=== toggle switch
+
+任意の文字列二文字以上で {*} => {-} => { } 等を RET で変更する。
+追加したい場合の例
+
+ $lisp$
+ (add-toggle-switch 
+     '(("}?""}+""}*")
+      ("[+    ]""[++   ]""[+++  ]""[++++ ]" "[+++++]")))
+
+=== action
+任意の正規表現上で RET すると関数を呼び出して実行します。
+
+ $lisp$
+ ; 一つずつ追加する場合
+ (add-action regex function &optional delete goto)
+ ; まとめて追加する場合
+ (add-action-list '((regex func)
+                    (regex2 func2 1 1)))
+
+= diary
+日記風につけたい場合は、.xyzzy 等に
+
+ $lisp$
+ (defun diary()
+  (interactive)
+  (find-file(merge-pathnames
+             (concat (format-date-string "%Y-%m-%d") "." *odoc-extension*)
+             "~/oDiary")))
+ M-x diary
+

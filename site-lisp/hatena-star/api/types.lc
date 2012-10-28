@@ -1,0 +1,5 @@
+(lisp::in-package-1 :user)
+(require "hatena-star/api/types/bool")
+(require "hatena-star/api/types/blog")
+(require "hatena-star/api/types/entry")
+(provide "hatena-star/api/types")

@@ -1,0 +1,7 @@
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              (let ((toggle-app-menu *app-menu*))
+                (defun toggle-app-menu ()
+                  (interactive)
+                  (set-menu (setq toggle-app-menu
+                                  (unless toggle-app-menu *app-menu*)))))))

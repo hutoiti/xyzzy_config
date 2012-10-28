@@ -1,0 +1,6 @@
+(let ((xyzzycli "xyzzycli.exe")
+      (xyzzytail "xyzzytail.exe"))
+  (when (or (not (file-exist-p xyzzytail))
+            (yes-or-no-p "è„èëÇ´Ç∑ÇÈ? xyzzytail.exe"))
+    (copy-file xyzzycli xyzzytail :if-exists :overwrite)
+    (ni::add-installed-files (list xyzzytail))))

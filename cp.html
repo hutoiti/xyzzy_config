@@ -1,0 +1,237 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- -*- Mode: html -*- -->
+<!-- Time-stamp: &lt;Thu, 11 Oct 2012 00:19:14 +0900> -->
+<!-- Created by buf2html-0.0.0.15 -->
+<HTML>
+  <HEAD>
+    <META name="GENERATOR" content="buf2html-0.0.0.15">
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <LINK href="xyzzy.css" rel="stylesheet" type="text/css">
+    <META http-equiv="Content-Style-Type" content="text/css">
+    <STYLE type="text/css">
+      <!--
+        A.buf2html {
+          text-decoration: none;
+        }
+        -->
+    </STYLE>
+    <TITLE>Program.cs</TITLE>
+  </HEAD>
+  <BODY class="bgcolor">
+<PRE>
+<SPAN class="keyword1">using</SPAN> System;
+<SPAN class="keyword1">using</SPAN> System.Collections.Generic;
+<SPAN class="keyword1">using</SPAN> System.Linq;
+<SPAN class="keyword1">using</SPAN> System.Text;
+<SPAN class="keyword1">using</SPAN> System.Net;
+<SPAN class="keyword1">using</SPAN> System.Net.Sockets;
+<SPAN class="keyword1">using</SPAN> System.IO;
+<SPAN class="keyword1">using</SPAN> System.Diagnostics;
+
+<SPAN class="keyword1">namespace</SPAN> HttpServerApp
+{
+    <SPAN class="keyword1">class</SPAN> Program
+    {
+        <SPAN class="keyword1">static</SPAN> <SPAN class="keyword1">void</SPAN> Main(<SPAN class="keyword1">string</SPAN>[] args)
+        {
+            <SPAN class="comment">// Debug の設定
+</SPAN>            Debug.Listeners.Add(<SPAN class="keyword1">new</SPAN> ConsoleTraceListener());<SPAN class="comment">//トレースを出力デバッグ出力！！一行まとめて
+</SPAN>            DefaultTraceListener dtl = (DefaultTraceListener)Debug.Listeners[<SPAN class="string">&quot;Default&quot;</SPAN>];
+            dtl.LogFileName = <SPAN class="string">&quot;C:/Users/hutoiti/proxy/debug.txt&quot;</SPAN>; <SPAN class="comment">// ファイルへ出力　↑のとセットで、デバッグ結果をtxtで出力
+</SPAN>
+            HttpServer server = <SPAN class="keyword1">new</SPAN> HttpServer();
+            server.Start();
+            <SPAN class="comment">//次のループは実行中ずっと動き続け、end と入力されるのを待っている。
+</SPAN>            <SPAN class="keyword1">while</SPAN> (<SPAN class="keyword1">true</SPAN>) <SPAN class="comment">//永久ループ　
+</SPAN>            {
+                <SPAN class="keyword1">string</SPAN> str = Console.ReadLine();<SPAN class="comment">//入力を読み込む
+</SPAN>                <SPAN class="keyword1">if</SPAN> (str.ToLower().Equals(<SPAN class="string">&quot;end&quot;</SPAN>))<SPAN class="comment">//endが入力されているかどうか。
+</SPAN>                    <SPAN class="keyword1">break</SPAN>;<SPAN class="comment">//endが入力されたら終わり。
+</SPAN>            }
+            server.Stop();<SPAN class="comment">//終了。
+</SPAN>        }
+    }
+    <SPAN class="keyword1">class</SPAN> HttpServer
+    {
+        HttpListener listener;
+
+        <SPAN class="keyword1">public</SPAN> HttpServer()
+        {
+        }
+
+        <SPAN class="keyword1">public</SPAN> <SPAN class="keyword1">void</SPAN> Start()
+        {
+            <SPAN class="comment">//server開始時「HttpServer:start」と印字される
+</SPAN>            Debug.WriteLine(<SPAN class="string">&quot;Start&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>);
+            Console.WriteLine(<SPAN class="string">&quot;Start&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>);
+            <SPAN class="keyword1">if</SPAN> (listener == <SPAN class="keyword1">null</SPAN>)
+            {
+                listener = <SPAN class="keyword1">new</SPAN> HttpListener();
+                listener.Prefixes.Add(<SPAN class="keyword1">string</SPAN>.Format(<SPAN class="string">&quot;</SPAN><SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="http://"><SPAN class="fg4 bg0"><SPAN class="underline">http://</SPAN></SPAN></A></SPAN></SPAN><SPAN class="string">{0}:{1}/&quot;</SPAN>, IPAddress.Loopback, 8080));
+            }<SPAN class="comment">//localhostで
+</SPAN>            listener.Start();
+            listener.BeginGetContext(OnGetContext, listener);<SPAN class="comment">//httplistener.begingetcontext()
+</SPAN>        }
+
+        <SPAN class="keyword1">public</SPAN> <SPAN class="keyword1">void</SPAN> Stop()
+        {
+            listener.Stop();
+            Debug.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>);
+            Console.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>);
+        }
+
+        <SPAN class="keyword1">private</SPAN> <SPAN class="keyword1">void</SPAN> OnGetContext(IAsyncResult ar)
+        {
+            <SPAN class="keyword1">try</SPAN>
+            {
+                HttpListenerContext context = ((HttpListener)ar.AsyncState).EndGetContext(ar);
+                <SPAN class="comment">//上の一文は、非同期の通信を完了させ、その結果をcontextへ投げている。
+</SPAN>                OnRequest(context);
+                Console.WriteLine(<SPAN class="string">&quot;Stop&quot;</SPAN>, <SPAN class="string">&quot;HttpServer&quot;</SPAN>);
+                listener.BeginGetContext(OnGetContext, listener);
+            }
+            <SPAN class="keyword1">catch</SPAN> (HttpListenerException e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
+        <SPAN class="keyword1">private</SPAN> <SPAN class="keyword1">void</SPAN> OnRequest(HttpListenerContext context)
+        {
+            Debug.WriteLine(context.Request.RawUrl); <SPAN class="comment">// 加工されてないアドレス
+</SPAN>            Debug.WriteLine(context.Request.UserHostAddress); <SPAN class="comment">// どこから接続されたか
+</SPAN>            System.IO.Stream body = context.Request.InputStream; <SPAN class="comment">//postデータがほしい！！
+</SPAN>            System.Text.Encoding encoding = context.Request.ContentEncoding;
+            System.IO.StreamReader reader = <SPAN class="keyword1">new</SPAN> System.IO.StreamReader(body, encoding);
+            <SPAN class="keyword1">if</SPAN> (context.Request.ContentType != <SPAN class="keyword1">null</SPAN>)
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;Client data content type {0}&quot;</SPAN>, context.Request.ContentType);
+            }
+            Debug.WriteLine(<SPAN class="string">&quot;Client data content length {0}&quot;</SPAN>, context.Request.ContentLength64);
+            Debug.WriteLine(<SPAN class="string">&quot;Start of client data:&quot;</SPAN>);
+            <SPAN class="comment">// Convert the data to a string and display it on the console.
+</SPAN>            <SPAN class="keyword1">string</SPAN> s = reader.ReadToEnd();
+            Debug.WriteLine(s);
+            Debug.WriteLine(<SPAN class="string">&quot;End of client data:&quot;</SPAN>);
+            body.Close();
+            reader.Close();
+            HttpWebRequest webRequest = WebRequest.Create(context.Request.RawUrl) <SPAN class="keyword1">as</SPAN> HttpWebRequest; <SPAN class="comment">// そのまま取得
+</SPAN>            <SPAN class="comment">// </SPAN><SPAN class="fg4 bg0"><SPAN class="underline"><A class="buf2html" href="ftp://"><SPAN class="fg4 bg0"><SPAN class="underline">ftp://</SPAN></SPAN></A></SPAN></SPAN><SPAN class="comment"> とかのリクエストにも対応できるはず
+</SPAN>
+            <SPAN class="comment">// リクエストラインとヘッダの設定。ある程度しかしていない。
+</SPAN>            webRequest.Method = context.Request.HttpMethod;
+            webRequest.ProtocolVersion = context.Request.ProtocolVersion;
+            webRequest.KeepAlive = context.Request.KeepAlive;
+            <SPAN class="keyword1">if</SPAN> (context.Request.UrlReferrer != <SPAN class="keyword1">null</SPAN>)
+                webRequest.Referer = context.Request.UrlReferrer.OriginalString;
+            webRequest.UserAgent = context.Request.UserAgent;
+            webRequest.CookieContainer = <SPAN class="keyword1">new</SPAN> CookieContainer();
+            webRequest.CookieContainer.Add(webRequest.RequestUri, context.Request.Cookies);
+
+            <SPAN class="keyword1">byte</SPAN>[] buffer = <SPAN class="keyword1">new</SPAN> <SPAN class="keyword1">byte</SPAN>[8192];
+            <SPAN class="comment">// ボディあったら送受信
+</SPAN>            <SPAN class="keyword1">if</SPAN> (context.Request.HasEntityBody)
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;Request.HasEntityBody&quot;</SPAN>, context.Request.RawUrl);
+                webRequest.ContentType = context.Request.ContentType;
+                <SPAN class="keyword1">if</SPAN> (context.Request.ContentLength64 &gt;= 0)
+                    webRequest.ContentLength = context.Request.ContentLength64;
+                <SPAN class="comment">// transfer-encoding: chunked のことは考えていない
+</SPAN>                Stream input = context.Request.InputStream;
+                Stream output = webRequest.GetRequestStream();
+
+                <SPAN class="keyword1">while</SPAN> (<SPAN class="keyword1">true</SPAN>)
+                {
+                    <SPAN class="keyword1">int</SPAN> read = input.Read(buffer, 0, buffer.Length);
+                    <SPAN class="keyword1">if</SPAN> (read == 0)
+                        <SPAN class="keyword1">break</SPAN>;
+                    output.Write(buffer, 0, read);
+                }
+
+                output.Flush();
+                input.Close();
+                output.Close();
+            }
+
+            <SPAN class="comment">// レスポンス取得
+</SPAN>            HttpWebResponse webResponse = <SPAN class="keyword1">null</SPAN>;
+            <SPAN class="keyword1">try</SPAN>
+            {
+                webResponse = webRequest.GetResponse() <SPAN class="keyword1">as</SPAN> HttpWebResponse;
+            }
+            <SPAN class="keyword1">catch</SPAN> (WebException e)
+            {
+                Debug.WriteLine(e);
+            }
+
+            <SPAN class="comment">// だめだった時の処理。てきとう
+</SPAN>            <SPAN class="keyword1">if</SPAN> (webResponse == <SPAN class="keyword1">null</SPAN>)
+            {
+                context.Response.ProtocolVersion = HttpVersion.Version11;
+                context.Response.StatusCode = 503;
+                context.Response.StatusDescription = <SPAN class="string">&quot;Response Error&quot;</SPAN>;
+                context.Response.ContentLength64 = 0;
+                context.Response.Close();
+                <SPAN class="keyword1">return</SPAN>;
+            }
+
+            <SPAN class="comment">// ブラウザへ返すレスポンスの設定。あるていど。
+</SPAN>            context.Response.ProtocolVersion = webResponse.ProtocolVersion;
+            context.Response.StatusCode = (<SPAN class="keyword1">int</SPAN>)webResponse.StatusCode;
+            context.Response.StatusDescription = webResponse.StatusDescription;
+
+            context.Response.AddHeader(<SPAN class="string">&quot;Server&quot;</SPAN>, webResponse.Server);
+            context.Response.ContentType = webResponse.ContentType;
+            <SPAN class="keyword1">if</SPAN> (webResponse.ContentLength &gt;= 0)
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;Content-Length=&quot;</SPAN> + webResponse.ContentLength, context.Request.RawUrl);
+                context.Response.ContentLength64 = webResponse.ContentLength;
+            }
+            <SPAN class="keyword1">if</SPAN> (webResponse.GetResponseHeader(<SPAN class="string">&quot;Transfer-Encoding&quot;</SPAN>).ToLower().Equals(<SPAN class="string">&quot;chunked&quot;</SPAN>))
+            {
+                Debug.WriteLine(<SPAN class="string">&quot;chunked&quot;</SPAN>, context.Request.RawUrl);
+                context.Response.SendChunked = <SPAN class="keyword1">true</SPAN>;
+            }
+            context.Response.KeepAlive = context.Request.KeepAlive;
+
+            <SPAN class="comment">// ボディの送受信
+</SPAN>            Stream instream = webResponse.GetResponseStream();
+            Stream outstream = context.Response.OutputStream;
+
+            <SPAN class="keyword1">try</SPAN>
+            {
+                <SPAN class="comment">// これでうまくいくんだ・・・。ブロッキングせずにちゃんと 0 が返ってくるな。
+</SPAN>                <SPAN class="comment">// 切断まで 0 は返ってこないからブロッキングするとおもってたけど・・・。
+</SPAN>                <SPAN class="keyword1">while</SPAN> (<SPAN class="keyword1">true</SPAN>)
+                {
+                    <SPAN class="keyword1">int</SPAN> read = instream.Read(buffer, 0, buffer.Length);
+                    Debug.WriteLine(read + <SPAN class="string">&quot; bytes received&quot;</SPAN>, context.Request.RawUrl);
+                    <SPAN class="keyword1">if</SPAN> (read == 0)
+                        <SPAN class="keyword1">break</SPAN>;
+                    outstream.Write(buffer, 0, read);
+                }
+            }
+            <SPAN class="keyword1">catch</SPAN> (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+
+            <SPAN class="keyword1">try</SPAN>
+            {
+                webResponse.Close();
+                context.Response.Close();
+            }
+            <SPAN class="keyword1">catch</SPAN> (InvalidOperationException e)
+            {
+                Debug.WriteLine(e);
+            }
+            <SPAN class="keyword1">catch</SPAN> (HttpListenerException he)
+            {
+                Debug.WriteLine(he);
+            }
+        }
+    }
+}
+</PRE>
+  </BODY>
+</HTML>

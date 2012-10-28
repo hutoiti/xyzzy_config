@@ -1,0 +1,765 @@
+;;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;;    shell-alt.l : shell-mode を X68000ライクに拡張   by シバ某
+;;
+;;【目的】
+;;  X68000 + command.x + history.x で作者が普段使っている機能(のみ)を実現する。
+;;  試験環境 Windows98SE + command.com と WindowsXP(SP2) + cmd.exe (2006/04以降)
+;;            環境変数 PROMPT=$p$g 前提
+;;
+;;  参考にした 服部さん作の shell3.l との最大の違いは、ファイル名/ヒストリの補完を、
+;;  候補が複数あっても X68000 の様に、
+;;         ・・・・
+;;  1件ずつフル表示する所（その場で再度補完キーを押すと次候補を表示）
+;;    他のドライブ・ディレクトリも探しにいけます
+;;
+;;■【キーバインド】 ファイル/ヒストリ補完の動作詳細は各関数定義のコメントを参照のこと
+;;  TAB 	ファイル名を補完 → shell-complete-file
+;;  C-w 	ヒストリ補完 最新から順に検索 → shell-history-search  (shell3 では C-r)
+;;  C-e 	ヒストリ補完 最古から順に検索
+;;      ヒストリ補完中は C-w/C-e で方向転換可能
+;;
+;; 以下は shell3 比の 新規追加機能（or 機能変更）
+;;  C-a 	現在行のコマンド行頭(プロンプト直後) or 実行中プログラムの最終表示位置 に移動
+;;  C-Up	shellバッファ上で、ひとつ前のコマンド行 行末へジャンプ
+;;  F3      カーソル以前までの入力は残して、以降に前回コマンド文字列をかぶせる
+;;           コマンド行にいない場合はジャンプして既入力分は全て削除して前回コマンド
+;;           文字列を表示(X68000でいう「テンプレート」。但し他キーとの連係はなし)
+;;  End 	前回のコマンドを再実行 (Redo)  コマンド行にいなくても実行可
+;;
+;;      利便性向上の為、前回分として記憶される文字列は プロンプト と 非プロンプト で
+;;      区別されますが、ヒストリバッファについては共同扱い(X68000はこちらも区別)
+;;
+;;  M-l 	ヒストリを表示(PopUp) / M-x shell-show-history<ret> で他バッファへ挿入も可能
+;;
+;;  shell3 の C-r相当が C-w になってるのは X68000 のキーバインドに合わせる為です
+;;  カーソル上下 はコピペの為にバッファ内を自由に動きたかったので 機能を外しました
+;;
+;;    尚、bash とかは使ったことがないので対応もテストもしていません
+;;
+;;■【導入方法】
+;;  shell3.l の導入方法と同じです
+;;  (1)$XYZZY/site-lisp に shell-alt.l を置く
+;;  (2).xyzzy に以下のように記述（他の方法はよく分かりません）
+;;    (require "shell3")
+;;    (require "shell-alt")
+;;  と shell3 よりも後に書く
+;;  ( shell3.l を導入していない人は、一つ目は "shell" でも OKみたいです )
+;;
+;;  (3) shell起動方法は shell3.l と同じです : M-x shell<ret>
+;;
+;; tips
+;;  (1)あらかじめ、よく使うコマンドをヒストリに登録しておけます
+;;    例  .xyzzy に (shell-add-history "C:\\STOOL\\xyzzy\\xyzzycli.exe " )
+;;   （require 宣言より後に記述すること。繰り返して 複数登録も可能）
+;;  (2)補完するファイル名拡張子追加は *shell-add-suffixes* をいじってください
+;;
+;;  後、shellから実行したコンソールアプリがキー入力を求める場合、xyzzy上 から
+;;  操作しても反応しない場合、別途作られている Dos窓をアクティブにしてキーを
+;;  押すと反応する場合があります（それでも駄目だったり、WindowsXPでは動くけど
+;;  98SEでは駄目なケースもあります)。
+;;
+;;  STDOUT(標準出力)は 512byte程度バッファリングされて xyzzy 側に遅延表示
+;;  されるので、使い物にならないコンソールアプリもあります。
+;;  STDERR(標準エラー出力)は即時表示されるので、コンソールアプリを自作して使うなら
+;;  全て STDERR 出力で作る手もあります。
+;;
+;;#TAB 4
+;;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+(export '(shell-send-input-history
+		  shell-show-history  shell-add-history  *skip-hyphen-chars*
+		  shell-sync-path  *shell-add-suffixes*  *shell-input-max* ))
+
+
+(setq *shell-prompt-regexp* "^[A-Z]:[^#$%>?\n]*[#$%>?] *" )
+; 正規表現を変更するのは、前提環境でもうすこし厳しくマッチさせるため。
+; 例えば shell-preline で遡ろうとすると元のままでは dirコマンドが出力した
+; "<DIR>" にもマッチしてしまう(元の正規表現の動作はよく理解してない)
+
+;----------------------------------------------------------------------
+;  ファイル補完/ヒストリに使う内部変数
+; 公開(export)してないものは *scratch* から例えば ed::*last-cmd* (C-j)
+; とすれば参照できる
+;----------------------------------------------------------------------
+(defvar *his-mode*    nil)  ; switch ヒストリ状態 nil = OFF
+(defvar *last-cmd*    "")   ; 前回の commandline /  nil だといきなり Redo の時 Error
+(defvar *last-input*  "")   ; 前回の 入力
+(defvar *his-lastpos* nil)  ; 前回の 候補表示終了位置
+(defvar *his-lastcmd* nil)  ; 前回の 候補commandline
+
+(defvar *his-word*  nil)    ; 補完する単語 / 元に戻す文字列
+(defvar *hresult*   nil)    ; for debug
+(defvar *hlist-new* nil)    ; 残り候補list 新しい順
+(defvar *hlist-old* nil)    ; 残り候補list 古い順
+(defvar *hlist-org* nil)    ; for debug / 全match候補保存用
+(defvar *hprefix*   nil)    ; for debug
+(defvar *history-buffer* nil)  ; ヒストリ文字列記録リスト
+
+; ---- for ファイル名補完 ----
+(defvar *fcompmode* nil )  ; switch 補完状態 nil = OFF
+(defvar *fnword*   "" )    ; 補完する元の単語 ～ 後始末文字列
+(defvar *add-word* "" )    ; 補完関数に渡す path文字列
+(defvar *cur-ep*    nil )  ; 行末位置(=単語末)
+(defvar *fresult*   nil )  ; for debug
+(defvar *flist*     nil )  ; 残り候補list
+(defvar *flist-org* nil )  ; for debug / 全マッチ候補
+(defvar *fprefix*   nil )  ; for debug / ファイルのパス名
+(defvar *lastpos*   nil )  ; ファイル表示後のカーソル位置
+
+(defvar *shell-curdir* nil) ; shell上のカレントディレクトリ文字列 Drive付
+(defvar *shell-curdrv* nil) ; *shell-curdir* からドライブ番号 "@:" だけ抜き出したもの
+(defvar *add-path*     nil) ; 補完用temp変数
+(defvar *bgn-pos*      nil) ; 候補表示開始位置
+(defvar *skip-pos*     nil) ; スイッチskipモード '-' を見つけてずらした場合のカーソル位置
+
+; 以下、公開変数
+(defvar *skip-hyphen-chars* 2)  ; '-'の後ずらす文字数  0でオフ
+(defvar *shell-add-suffixes* '( "*.exe" ) ) ; 追加補完する拡張子リスト
+(defvar *shell-input-max*  256) ; ヒストリに記録する最大入力文字数
+
+
+;------------------------------------------------------------
+;  shell3.l のキーマップ一部解除(shell-history-search に統合)
+;------------------------------------------------------------
+(undefine-key *shell-mode-map* #\Up)   ;'shell-history-previous
+(undefine-key *shell-mode-map* #\C-p)  ;'shell-history-previous
+(undefine-key *shell-mode-map* #\Down) ;'shell-history-next
+(undefine-key *shell-mode-map* #\C-n)  ;'shell-history-next
+(undefine-key *shell-mode-map* #\C-r ) ;'shell-history-search-backward
+
+;------------------------------------------------------------
+;  shell-alt.l キーマップしなおし
+;------------------------------------------------------------
+(define-key *shell-mode-map* #\RET  'shell-send-input-history)
+(define-key *shell-mode-map* #\TAB  'shell-complete-file)
+(define-key *shell-mode-map* #\C-a  'shell-goto-bop)
+;(define-key *shell-mode-map* #\C-w  'shell-history-search)
+;(define-key *shell-mode-map* #\C-e  #'(lambda () (interactive)(shell-history-search t)) )
+;                     引数付けるための細工  ↑
+(define-key *shell-mode-map* #\End  'shell-redo)
+(define-key *shell-mode-map* #\C-Up 'shell-preline)
+(define-key *shell-mode-map* #\M-l  'shell-show-history)
+;(define-key *shell-mode-map* #\C-Down 'input-filename)  ; 初期版なので削除
+(define-key *shell-mode-map* #\F3   'shell-tiny-F3)
+
+
+
+;;======================================================================
+;;  現在行から shellプロンプトの curdir（カレントディレクトリ）
+;;    文字列を取得して *shell-curdir* にセット
+;;
+;; 2005/09/23(Fri) 機能分割
+;; 2006/08/27(Sun) カーソル位置保存 +
+;;      失敗しても *shell-curdir* に使えるものを代入する(Non-prompt対応)
+;;======================================================================
+(defun shell-get-curdir ()
+  (interactive)
+  (let ( (curp (point))  bgn  (tempdir "") (retval nil) )
+	(goto-bol)
+	(setq bgn (point))
+	(skip-chars-forward "^>" )	; '>'以外をskip
+	(setq tempdir (buffer-substring bgn (point)) )  ; curdir候補文字列取得
+	(if (eq 0 (string-match "^[a-zA-Z]:" tempdir) )  ; 先頭文字列check
+	  (setq retval t)  ; then 
+	  (setq tempdir (default-directory)) ; else
+	)
+; --- 末尾が常に '\' '/' で終わる様に加工(rootの時だけ '\' がついてるから) -----
+    (message (concat "curdir [" tempdir "]" ))  ; for debug
+	(setq *shell-curdir* (append-trail-slash tempdir) )
+	(goto-char curp)
+	retval
+  )
+)
+
+
+;;================================================================================
+;;  自分好みのファイル名補完( X68000 command.x + history.x 指向 )
+;;    作成/試験環境 Windows98SE + command.com  環境変数 PROMPT=$p$g(例 "C:\>" "C:\temp>" )
+;;
+;;【仕様:X68000 に似せた点】(キーバインドで TAB以外に変更可能)
+;;・TAB押したときに、行の一番最後の単語についてファイル名補完する
+;;  行末移動後、カーソル左がプロンプト('>') or SPC なら、カレントディレクトリ
+;;  (以下 curdir)内のファイルが検索対象
+;;  curdirは shell が表示しているプロンプト文字列から取得
+;;    (cd しても xyzzy上のカレントディレクトリは変化していないから)
+;;
+;;・カーソル移動していなければ、2回目以降 TABを押すたびに次の候補を表示する
+;;  xyzzyの通常補完方法と異なり、候補ファイル名は【最後まで】表示する
+;;  候補がなくなったら最初に表示されていた文字列に戻る(但し、'/' は '\'に
+;;  変更したまま)
+;;
+;;【仕様:X68000 と違う部分】
+;;・ステータス行左下に残り候補数が表示される
+;;
+;;・*do-completion の仕様？により、特定の拡張子のファイルは表示されない
+;;  作者が必須と思っている実行ファイル(*.EXE)は追加される様に細工済
+;;  default は "*.exe" => 変数 *shell-add-suffixes* で変更・追加可能
+;
+;;・補完したい単語末尾を '*' や '?' にしておくと、追加拡張子ファイル
+;;  だけを候補表示する (上記細工における副作用)
+;;
+;;・ディレクトリが候補表示される場合は末尾に '\' がつく
+;;  その下を探しに行きたい場合は一旦カーソルを左に動かしてから TAB
+;;  （頭文字が分かっているなら '\'に続けて入力してから TAB）。
+;;  X68000は '\' が付かないので表示されたのがディレクトリなのか、拡張子
+;;  のないファイルなのか判別できない。こっちの方が分かりやすい筈
+;;
+;;・補完する単語先頭が '-'の場合、コマンドラインのスイッチと見なして
+;;  変数 *skip-hyphen-chars* で指定した文字数だけ飛ばした位置を単語先頭とする
+;;  （ -f<filename> 等、のスイッチに続けてファイル名指定する場合に便利）
+;;  '/'はパス区切りと解釈して '\'に変換するのでスイッチ指定に '/'を使用する人は
+;;  注意すること
+;;
+;;【その他】
+;;・カーソルが shellプロンプト行にない場合やプロンプト文字列が破壊
+;;  されている時の動作は未保証
+;
+;;・補完候補がひとつもない時にエラーウィンドウ(Dialog)が表示される場合がある
+;;
+;;・shell上でドライブ移動した場合、別ドライブの curdirは shellと xyzzyの
+;;  管理しているものが一致するとは限らないので注意（そうした場合、R:\～ と
+;;  絶対指定した方がよい）
+;;  また、ドライブ移動に自動追従すると（リムーバブルメディア系）ヤバそうなので、
+;;  xyzzyの管理している (default-directory) は変更していない
+;;  不一致の為にタグジャンプが働かない場合は ★ M-x shell-sync-path で
+;;  shellの curdir に合わせることができる
+;;
+;;
+;;・処理の都合上、前回の補完と同じカーソル位置で TABを押すと続きとみなして
+;;  次候補を表示するので、色々編集後に偶然カーソル位置が同じになった場合、
+;;  意図しない動作になることがある
+;;
+;;・SPCを含んでいるファイル名やディレクトリ名については想定外
+;;  対応させる予定全くなし
+;;
+;;・その他、作者が普段使ってない想定外の操作 について未保証
+;;  不具合不都合見つけたら自分の好みに改造すること
+;;
+;; 2005/09/06(Tue) begin
+;; 2005/09/08(Thu) かなり完成
+;; 2005/09/10(Sat) .xyzzy から移動
+;;================================================================================
+(defun shell-complete-file ()
+  (interactive)
+  (unless (eq *lastpos* (point) )  ; カーソルが動いていたら最初から
+	(setq *fcompmode* nil)
+	(message " differ CURSOR") ; for debug
+  )
+
+  (unless *fcompmode*
+	(shell-get-curdir)	; カレントディレクトリ文字列取得
+
+	(setq *fcompmode* t)
+	(setq *shell-curdrv* (substring *shell-curdir* 0 2) )	; 最初の2文字 '@:'
+	(setq *add-path* *shell-curdir*)	; 後で *fnword* 内容によって変化
+
+; --- 行末にある 単語をget -----
+	(setq *fnword* "" )
+	(goto-eol)
+	(setq *cur-ep* (point) )
+	(unless (bolp)		; 行頭でなければ 単語get
+	  (let ((bchar (char-after (- (point) 1 ) ) ))  ; カーソル左の文字get
+		(unless (or (eq bchar #\>) (eq bchar #\SPC ) )
+		  (skip-chars-backward "^[ >]" )	; spc/プロンプトが来るまで左へ
+		  (setq *fnword* (buffer-substring (point) *cur-ep* ) )
+		)
+	  )
+	)
+;--- *fnword* 先頭文字チェック ---
+	(setq *skip-pos* 0)  ; buffer先頭にはこない筈
+	(when (and (string-match "^-"  *fnword*) ( >= (length *fnword*) *skip-hyphen-chars*) )
+	  (setq *fnword* (substring *fnword* *skip-hyphen-chars*))
+	  (goto-char (+ (point) *skip-hyphen-chars*))  ; switch文字skip
+	  (setq *skip-pos* (point))  ; skip後の位置記録
+	)
+
+; ---- { '/ 'のままでは DOS側が失敗するので強制的・不可逆的に '\' に変更 ----
+	(setq *fnword* (map-slash-to-backslash *fnword*) )
+	(kill-line)
+	(insert *fnword*)   ; } ここまで。 '/' も OKな shell なら不要
+
+;------------------------------------------------------------
+;  単語 *fnword* から Drv / dir(path)指定の有無chk
+;  有無で色々動作を変えないといけない
+;------------------------------------------------------------
+	(cond
+		( (equal *fnword* "" ) t )
+
+		( (string-match "^[\\/]"  *fnword*)	; いきなり root指定(絶対指定)
+			(setq *add-path* *shell-curdrv*) ) ; '@:' だけにする
+
+		( (string-match "^[a-zA-Z]:[\\/]"  *fnword*)  ; Drv+root指定(絶対指定)
+			(setq *add-path* "") ) ; *fnword* だけで補完
+
+		( (string-match "^[a-zA-Z]:"  *fnword*)	; Drv指定付き 相対指定
+			(if ( string-equal *shell-curdrv* (substring *fnword* 0 2) )
+			  (setq *fnword* (substring *fnword* 2) ) ; 同Drvなら *fnword*から'@:'削除
+			  (setq *add-path* "")  ; else  別Drvなら *fnword* で補完
+			) )
+	)
+;---- 候補表示位置の調整 ----
+	(goto-eol)
+	(skip-chars-backward "^[ >:\\/]" )	; 後ろから探す
+	(setq *bgn-pos* (max (point) *skip-pos*) ) ; 現位置と '-' skip後で、後の方が基準
+
+	(setq *add-word* (concat *add-path* *fnword* ) )  ; 補完の引数文字列作成
+	(setq *fnword* (buffer-substring *bgn-pos* *cur-ep*) ) ; 最終戻し文字列として再設定
+
+;--------------------------------------------------
+;  *add-word* にマッチするファイル名候補を取得
+;--------------------------------------------------
+	(multiple-value-bind ( result lists prefix )
+	  (*do-completion *add-word* :exist-file-name )
+	  (setq *fresult*  result )  ; for debug
+	  (setq *flist-org* lists )  ; lists はファイル名だけのリスト
+	  (setq *flist*     lists )
+	  (setq *fprefix*  prefix )  ; for debug
+	)
+
+;----------------------------------------------------------------------
+;  ファイル名候補取得その２
+; *do-completion は拾ってくれないファイル種(拡張子)があり、需要のある
+; 実行ファイル等を追加するため、directoryをコール
+; directory は directory で、動作が若干異なるので、二段階構成になった
+; *shell-add-suffixes* で拡張子追加可能
+;----------------------------------------------------------------------
+	(let ( (extlist *shell-add-suffixes*) (sext) )
+	  (while (< 0 (length extlist) )
+		(setq sext (pop extlist) )
+		(when (string-match "^*\."  sext ) ; 先頭が "*."になってないのは無視
+		  (setq sext (concat *add-word* sext) )
+		  (setq *flist* (append *flist* (directory sext :FILE-ONLY t) ) ) )
+	  )    ; --- 「list+list(=list)」 は append, 「list に要素一つ追加」は push
+	)
+  )
+
+
+;------------------------------------------------------------
+;	補完２回目以降（初回も上から合流）
+; 表示の際は path区切り '/' -> '\' が必要
+;------------------------------------------------------------
+  (goto-char *bgn-pos*)
+  (kill-line)	; カーソル以降の行末まで削除 = 前回候補消去
+  (if *flist*
+	(progn  ;  候補あり  '\' 使った表現でファイル名挿入
+	  (insert (map-slash-to-backslash (pop *flist*) ) )
+	  (message (format nil "file残り候補 ~D" (length *flist*)) )
+	)
+
+	(progn  ;  候補なし OFF & 元の文字列に戻す
+	  (setq *fcompmode* nil)
+	  (insert *fnword*)
+	)
+  )
+  (setq *lastpos* (point))	; 新しいカーソル位置記録
+)
+
+
+;;============================================================
+;;  現在行がプロンプト行かどうかを判定する
+;;  そうなら プロンプトの次位置を返す else nilを返す
+;;    ヒストリ記録先切替用
+;;
+;; 2006/08/27(Sun)  Non-prompt対応のために設置
+;;============================================================
+(defun shell-is-prompt ()
+  (interactive)
+  (let ( (curp (point)) (retval nil) )
+
+	(goto-bol)
+	(when (looking-at *shell-prompt-regexp*)  ; promptなら '>'以外をskip
+;;	  (skip-chars-forward "^>" )   ; 汎用にするなら "^>" → "^[#$%>]" ?
+;;	  (forward-char)
+;;	  (setq retval (point))
+	  (setq retval (match-end 0))  ; 上の3行と同じ動作らしい
+	)
+
+	(goto-char curp)  ; カーソル位置元に戻す
+	retval
+  )
+)
+
+
+;;============================================================
+;;  現在カーソル位置が shell 最終表示位置より後なら
+;;  最終表示位置(数値)を返す else nilを返す
+;;
+;; 2006/08/27(Sun)  Non-prompt対応のために設置
+;;    shell-send-input の冒頭を参考に
+;;============================================================
+(defun shell-is-lastpos ()
+  (interactive)
+  (let ((process (buffer-process (selected-buffer)))) ; 現bufferのプロセス情報代入
+	(if (and process (eq (process-status process) :run)   ; プロセス有 && shell実行中 &&
+		  (>= (point) (marker-point (process-marker process))))  ; 現在位置が 最終表示位置 より後ろ
+
+		(marker-point (process-marker process))  ; then 最終表示位置を返り値に
+    )  ; else 節ないけど nilを返す => 返り値
+  )
+)
+
+
+;;============================================================
+;;  現在行に プロンプトがあればカーソルを > の次の位置に移動
+;;   or 最終表示行なら最終表示位置に移動
+;;  (bop == Begin-Of-Prompt)
+;;
+;; 2006/08/27(Sun) Non-prompt対応に修正 処理分割
+;;============================================================
+(defun shell-goto-bop ()
+  (interactive)
+  (let ( (target (shell-is-lastpos)) )
+
+	(unless target (setq target (shell-is-prompt)) )
+
+	(if target (goto-char target) )
+  )
+)
+
+
+;;================================================================================
+;;  改行→コマンドライン送信の代替処理
+;;    shell3 との分離のため、ヒストリ処理を先にやってから shell-send-input に渡す
+;;
+;; 2006/12/30(Sat)  shell3 との分離のため新設
+;;================================================================================
+(defun shell-send-input-history ()
+  (interactive)
+  (let ( (curp (point)) start end  (cmd ""))
+	(shell-goto-bop) (setq start (point))  ; プロンプト開始pos get
+	(goto-eol)       (setq end   (point))  ; 行末pos get
+	(goto-char curp)  ; 元の位置に戻す
+
+	(setq cmd (buffer-substring start end))  ; これが恐らくコマンドライン
+;------------------------------------------------------------
+;  ヒストリ登録作業
+;    お好みで 「delete 常に実行」「～常に実行しない」 もあり
+;------------------------------------------------------------
+	(when ( < 1 (length cmd) *shell-input-max* )  ; 文字が 2以上 *shell-input-max* 未満なら登録
+	  (unless (equalp *last-input* cmd)  ; 前回と同じなら登録しない
+		(setq *last-input* cmd)
+		(if (shell-is-prompt) (setq *last-cmd* cmd))  ; 真のコマンドラインなら記録
+		(if (equalp *his-lastcmd* cmd) (delete cmd *history-buffer*  :test 'equalp) ) ; 同一物を消す
+
+		(push cmd *history-buffer*)  ; リスト先頭に登録(しなおす)
+	  )
+	)
+;  (なくてもいい) アホほど長かったら異常と判断して送信しない
+	(if ( < (length cmd) *shell-input-max* ) (shell-send-input) )
+  )
+)
+
+
+
+
+;;============================================================
+;;  '表現の 評価式に使うためのカプセル関数
+;;    *his-word* 2文字目からの文字列でサーチ
+;;    string-matchp は大文字小文字区別しないが 正規表現有
+;;============================================================
+(defun sub-shell-findstr (str)
+  (let ( (fstr (substring *his-word* 1) ) )
+	(string-matchp fstr str) )
+)
+
+
+;;================================================================================
+;; X68000 command.x + history.x を真似たヒストリ動作
+;;  作成/試験環境 Windows98SE + command.com  環境変数 PROMPT=$p$g(例 "C:\>" "C:\temp>" )
+;;
+;;  ヒストリを最新から遡って探す (shell3 での C-r相当)
+;;      引数 dirsw = nil or 省略時、 dirsw = tでは 最古から逆向きに探す
+;;
+;;【仕様:X68000 に似せた点】(キーバインドで C-w以外に変更可能)
+;;・コマンド行に打ちこんだ(行末までの)文字列に合致するものを、ヒストリの新しい
+;;  ものから順に補完（入力ゼロならヒストリ全部が候補) 
+;;  文字列の大文字小文字は区別しないが、「打ちこんだ文字列で始まる」ものでないと
+;;  マッチしない
+;;  特殊モードとして、入力行1文字目を ' '(SPC) にした場合、
+;;  「2文字目以降の文字列を含む」ヒストリを新しい方から探す
+;
+;;・カーソル移動していなければ、2回目以降 C-wを押すたびに次の候補を表示する
+;;  C-e で逆に戻ることも可能 (C-eから始めた場合は古い方から補完)
+;;
+;;【仕様:X68000 と違う部分】
+;;・ステータス行左下に残り候補数が表示される
+;;
+;;・先頭を ' ' にしたときの文字列解釈は 正規表現 となる（大文字小文字は
+;;  区別しないが、ファイル名に含まれる '\' とか '.' の意味が変るので注意）
+;;  （丁度いい関数が分からなかった為 → sub-shell-findstr で処理 ）
+;;
+;;・ヒストリ履歴のスリム化の為、呼び出したヒストリを編集せずに実行した場合、
+;;  ヒストリ履歴から同一内容は消去されて最新に登録し直される。
+;;  従って真の意味でのコマンド実行順記録にはならない。
+;;  shell-send-input-history のヒストリ記録処理を修正すれば変更可能
+;;
+;;【その他】
+;;・カーソルが shellプロンプト行にない場合やプロンプト文字列が破壊
+;;  されている時の動作は未保証
+;;
+;;・処理の都合上、前回の補完と同じカーソル位置で C-wを押すと続きとみなして
+;;  次候補を表示するので、色々編集後に偶然カーソル位置が同じになった場合、
+;;  意図しない動作になることがある
+;;
+;;・その他、作者が普段使ってない想定外の操作 について未保証
+;;================================================================================
+(defun shell-history-search ( &optional dirsw )
+  (interactive)
+  (unless (eq *his-lastpos* (point) )  ; カーソルが動いていたら最初から
+	(setq *his-mode* nil)
+	(message " [HIS] differ CURSOR")  ; for debug
+  )
+  (unless *his-mode*
+    (setq *his-mode* t)
+    (goto-eol)
+    (let ( (curp (point)) )
+	  (shell-goto-bop)
+	  (setq *his-word* (buffer-substring (point) curp) )
+	)
+
+	(cond
+	  ( (or (equal *his-word* "") (not (eq (schar *his-word* 0) #\SPC)) )
+;--------------------------------------------------
+;  *his-word* にマッチする候補を取得
+;--------------------------------------------------
+		(multiple-value-bind ( result lists prefix )
+		  (*do-completion *his-word*  :list-ignore-case nil *history-buffer*)
+		  (setq *hresult*   result )	; for debug
+		  (setq *hlist-org* lists  )	; 検索結果 左から古い順
+		  (setq *hprefix*   prefix )	; for debug
+		) )
+
+; --- 先頭が ' ' なら単語サーチに切替  評価式は自作可能↓
+		(t (setq *hlist-org*  (remove-if-not 'sub-shell-findstr *history-buffer*) )
+		   (setq *hlist-org* (reverse *hlist-org*) ) )  ; *do-complete と逆順なので合わせる
+	)
+	(setq *his-lastcmd* nil)	; ← 初回動作の為に重要
+	(if dirsw
+	  (progn	; --- from old
+		(setq *hlist-new* nil )
+		(setq *hlist-old* *hlist-org* ) )
+	  (progn	; --- from new
+		(setq *hlist-new* (reverse *hlist-org*) )  ; 要素順番ひっくり返す
+		(setq *hlist-old* nil) )
+	)
+	(unless *hlist-org*  (message "his no match") )
+  )
+
+;------------------------------------------------------------
+;  ２回目以降（初回も上から合流）
+;------------------------------------------------------------
+  (shell-goto-bop)
+  (kill-line)
+  (when (if dirsw *hlist-old* *hlist-new* )  ; 候補があるなら
+	(if dirsw
+	  (progn	; --- old / ↓(push nil nil変数) => (nil) <nilに非ず> になるのを回避
+		(if *his-lastcmd*  (push *his-lastcmd* *hlist-new*) )
+		(setq *his-lastcmd* (pop *hlist-old*))
+		(message (format nil "his残り候補 ~D" (length *hlist-old*)) ) )
+
+	  (progn	; --- new
+		(if *his-lastcmd*  (push *his-lastcmd* *hlist-old*) )
+		(setq *his-lastcmd* (pop *hlist-new*))
+		(message (format nil "his残り候補 ~D" (length *hlist-new*)) ) )
+	)
+	(insert *his-lastcmd*)
+	(setq *his-lastpos* (point))	; 新しいカーソル位置記録
+	(return-from shell-history-search)
+  )
+; ---- 候補なし ----
+  (setq *his-mode* nil)
+  (setq *his-lastcmd* "")
+  (insert *his-word* )
+)
+
+
+
+;;======================================================================
+;;  現在行がプロンプト行なら行末に移動する
+;;  違うなら1行前に戻って繰り返し  バッファ先頭まで来たら停止
+;;
+;; 2005/09/23(Fri) 分割
+;;======================================================================
+(defun shell-goto-pline ()
+  (interactive)
+	(while (not (bobp))
+	  (goto-bol)
+	  (if  (looking-at *shell-prompt-regexp*) (return t))
+	  (previous-line)
+	)
+	(goto-eol)
+)
+
+
+;;======================================================================
+;;  ヒストリの初期代用品(shellモードで使用)
+;;  現在行より前のプロンプト行 の行末に移動する
+;;  なければバッファ先頭で停止
+;;
+;; 2005/08/28(Sun)
+;; 2005/09/10(Sat) .xyzzy から移動
+;; 2005/09/23(Fri) 動作分割
+;;======================================================================
+(defun shell-preline ()
+  (interactive)
+  (previous-line)
+  (shell-goto-pline)
+)
+
+
+
+
+;;============================================================
+;;  最後に実行したコマンドを実行
+;; →バッファ末尾に移動し、最後に入力したコマンドを実行(改行付)
+;;
+;; 2005/09/10(Sat) オマケ
+;; 2005/09/24(Sat) プロンプト行への移動をもう少しまじめに
+;; 2006/08/27(Sun) shell-last-cmd と分割 for Non-prompt対応
+;;============================================================
+(defun shell-redo ()
+  (interactive)
+
+  (shell-last-cmd)
+  (shell-send-input)
+)
+
+
+;;============================================================
+;;  (必ず)バッファ末尾に移動し、
+;;  (条件が合えば)最後に入力したコマンドを表示
+;;    既に入力されていた文字列は消去される
+;;
+;; 2006/08/27(Sun) 分割 + Non-prompt対応
+;;============================================================
+(defun shell-last-cmd ()
+  (interactive)
+  (let (target)
+	(goto-char (point-max))           ;; バッファ最終に移動
+	(setq target (shell-is-lastpos))  ;; 最終位置以降の筈だが
+	(when target
+	  (goto-char target)
+	  (kill-line)
+	  (insert (if (shell-is-prompt) *last-cmd*  *last-input* ))
+	)
+  )
+)
+
+
+;;============================================================
+;;  command.x Tiny F3
+;;    バッファ末尾で作業中ならプロンプトからカーソル手前までは
+;;    入力を残して以降を 前回実行コマンドで補完
+;;    もっと上に戻っている時に実行する場合は shell-last-cmd へ
+;; 2006/08/27(Sun) Non-prompt対応で実装
+;;============================================================
+(defun shell-tiny-F3 ()
+  (interactive)
+  (let  ( (target (shell-is-lastpos) )
+		  (basestr (if (shell-is-prompt) *last-cmd*  *last-input*)))
+
+	(if (and target (> (length basestr) (- (point) target)))
+	  (progn (kill-line) (insert (substring basestr (- (point) target)))) ; then
+
+	  (shell-last-cmd)  ; else
+	)
+  )
+)
+
+
+
+;;============================================================
+;;  登録されているヒストリを新しい順に表示
+;;    shell-mode から呼んだ場合は PopUp表示 (M-l)
+;;
+;; 2005/09/10(Sat) オマケ
+;; 2005/09/23(Fri) shell中は PopUp 表示 に変更
+;;============================================================
+(defun shell-show-history ()
+  (interactive)
+  (let ( (hismsg (format nil "====== ヒストリ 履歴 ======\n~{~A\n~}" *history-buffer*)) )
+	(if (equalp mode-name "Shell")
+	  (popup-string  hismsg (point) ) ; shell-mode なら Popup
+	  (insert hismsg) )  ; 以外ならバッファに送る
+  )
+)
+
+
+
+;;======================================================================
+;;  引数が文字列ならばヒストリにコマンドライン追加する
+;;    外部から環境設定する為のオマケ
+;;
+;; 2005/09/12(Mon)
+;;======================================================================
+(defun shell-add-history (cmd)
+  (if (stringp cmd)
+	  (push cmd *history-buffer*) )  ; リスト先頭に登録
+)
+
+
+;;======================================================================
+;;  shell-modeバッファの curdirを shell(command.com)のそれに一致させる
+;;    コンパイルした時のエラーメッセージ行に移動して TAGジャンプできない
+;;    (fileが見つけられないのか 'エラーはありません' と出る )時に使う
+;;    shell起動した後で別ディレクトリにcd してコンパイルすると起きる？
+;;
+;;    shell-mode のバッファからしか機能させない
+;;    カーソル位置復帰は save-excursion でもできるはず
+;;
+;; 2005/09/23(Fri)
+;;======================================================================
+(defun shell-sync-path ()
+  (interactive)
+  (let ( ( savepos (point) ) )
+	(when (equalp mode-name "Shell")
+	  (goto-char (point-max))
+	  (shell-goto-pline)	; 一番後ろ(最新)のプロンプト行に移動
+	  (shell-get-curdir)
+	  (cd *shell-curdir*)
+
+	  (goto-char savepos)  ) ; 元の位置に戻す
+  )
+)
+
+
+
+;;======================================================================
+;;  ファイル名補完入力の初期代用品(shellモードで使用)
+;;
+;; 2005/08/28(Sun)
+;; 2005/09/10(Sat) .xyzzy から移動、path削除を外した
+;;   xyzzy組みこみ機能を使用しているので一部拡張子のファイルは見えない
+;; 2005/09/20(Tue) 不使用に
+;;======================================================================
+(defun input-filename (fname)
+  (interactive "fFname:" )
+
+  (insert (map-slash-to-backslash (namestring fname) ))
+)
+
+
+;;================================================================================
+;; $HISTORY 【履歴】
+;; 2005/09/10(Sat)  ファイル名補完が使えるレベルになったので shell4.l 立ち上げ
+;; 2005/09/12(Mon)  shell-add-history 追加
+;; 2005/09/13(Tue)  *skip-hyphen-chars* *shell-add-suffixes* 追加
+;; 2005/09/16(Fri)  ～4 を名乗る程の出来でもないので shell-alt.l に名前変更
+;; 2005/09/17(Sat)  ヒストリサーチを両方向移動可能に拡張。
+;;      X68000 で使ったことなかったけど、先頭SPC のサーチ 可能に
+;; 2005/09/19(Mon)  *word* 変数名変更 '-'スキップ処理スマートに
+;; 2005/09/20(Tue)  input-filename をキーバインドから外す
+;; 2005/09/23(Fri)  M-l (ESC L) に shell-show-history 割り当て + PopUp化
+;;      shell-sync-path 追加
+;;
+;; ----- ここから作成・テスト環境が WindowsXP + cmd.exe に移行 ------
+;;
+;; 2006/08/06(Sun)  cmd(コマンドライン)にペーストなどで異常に長い文字列が渡って
+;;      しまった時にヒストリ記録とshell実行を禁止した (定数 *shell-input-max*)
+;; 2006/08/27(Sun)  shell-modeからでもなんとか利用可能な DOS窓対話型プログラムで
+;;      ヒストリ及びファイル名補完 が正常動作する様に修正(【Non-prompt対応】)
+;;
+;; 2006/12/30(Sat)  shell3.l と分離して、後からパッチ当てする形に修正
+;;      1文字コマンドはヒストリに溜まるばかりなので、記録しないようにした
+;;      http://www.geocities.jp/altshibabou/ で公開
+;;================================================================================

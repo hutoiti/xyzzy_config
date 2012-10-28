@@ -1,0 +1,10 @@
+2005-07-10  MIYAMUKO Katsuyuki  <miyamuko@xxy.yxxxxyx.xx.xx>
+
+	* natural-compare 0.1 リリース
+
+	* ni-autoload/xyzzy_times/natural-compare.l: ni-autoload 用
+	ファイルの追加。
+
+2005-07-04  MIYAMUKO Katsuyuki  <miyamuko@zzy.yzzzzyz.zz.zz>
+
+	* natural-compare.l: 初版作成

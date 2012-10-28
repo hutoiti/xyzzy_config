@@ -1,0 +1,16 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; nsis-mode
+(require "nsis-mode")
+(pushnew '("\\.ns[ih]$" . nsis-mode) *auto-mode-alist* :test 'equal)
+
+;; インデントの幅(下図で _ の部分, default=2)
+(setq *nsis-indent-level* 4)
+
+;; 継続行のオフセット(下図で - の部分, default=4)
+(setq *nsis-continued-statement-offset* 4)
+
+;; Section "Modern User Interface" SecContribModernUI
+;; ____SetOutPath "$INSTDIR" \
+;; ____----"\Examples\Modern UI"
+;; EndSection

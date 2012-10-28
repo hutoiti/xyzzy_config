@@ -1,0 +1,1 @@
+(require "grouping-symbol-mode")

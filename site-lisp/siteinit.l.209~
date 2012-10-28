@@ -1,0 +1,1936 @@
+;(require "C:/Users/hutoiti/xyzzy/lisp/wip/winapi.l")
+(require "/wip/winapi.l")
+(require 'konata-mouse)
+;;; $Id: siteinit.l 362 2009-03-15 08:32:51Z raido $
+;;;
+
+;(si:*load-library "packaged/before" :if-does-not-exist nil) (gc)
+#| ################################################################ |#
+
+;(require "optprop")
+
+;(in-package "editor")
+;;; 共通設定の「[...]はワイルドカード」の項目をヒストリ変数に追加
+;(register-history-variable '(*brackets-is-wildcard-character*))
+
+; (in-package "user")
+; (if (find-load-path "packaged/keybind")
+;     (require "packaged/keybind")
+;   (progn
+; #| ---- from $XYZZY/lisp/winkey.l --------------------------------- |#
+; (in-package "editor")
+; 
+; ;(defvar *default-selection-keymap*
+; ;  (let ((keymap (make-sparse-keymap)))
+ ;    (define-key keymap #\C-c 'copy-selection-to-clipboard)
+;  ;   (define-key keymap #\C-x 'kill-selection-to-clipboard)
+;   ;  keymap))
+; 
+; 
+; (in-package "user")
+; #| ---- from $XYZZY/lisp/Gates.l ---------------------------------- |#
+; (in-package "editor")
+; p
+; ; files
+; 
+; (in-package "user")
+;     ))
+#| ---- for ruby-mode --------------------------------------------- |#
+(in-package "editor")
+;;; ruby.l
+(export '(ruby-mode))
+(autoload 'ruby-mode "ruby" t)
+(pushnew '("\\.rbw?$" . ruby-mode) *auto-mode-alist* :test #'equal)
+(pushnew '("\\.rake$" . ruby-mode) *auto-mode-alist* :test #'equal)
+(pushnew '("/Rakefile$" . ruby-mode) *auto-mode-alist* :test #'equal)
+;;; ruby-doc.l
+(autoload 'ruby-doc-minor-mode "ruby-doc" t)
+;;; ruby-debug.l
+(autoload 'ruby-debug "ruby-debug" t)
+(autoload 'ruby-debug-minor-mode "ruby-debug" t)
+;;; ruby-lister.l
+(autoload 'ruby-lister "ruby-lister" t)
+;;; ruby-misc.l
+(autoload 'ruby-syntax-check "ruby-misc" t)
+(autoload 'ruby-run-script "ruby-misc" t)
+(autoload 'ruby-information "ruby-misc" t)
+;;;
+(add-hook '*ruby-mode-hook*
+          #'(lambda ()
+              (define-key *ruby-mode-map* '(#\C-c #\d) 'ruby-doc-minor-mode)
+              (define-key *ruby-mode-map* '(#\C-x #\d) 'ruby-debug)
+              (define-key *ruby-mode-map* #\C-F4 'ruby-lister)
+              (define-key *ruby-mode-map* '(#\C-c #\m) 'ruby-lister-make-rtags)
+              (define-key *ruby-mode-map* '(#\C-c #\w) 'ruby-syntax-check)
+              (define-key *ruby-mode-map* '(#\C-c #\x) 'ruby-run-script)
+              (define-key *ruby-mode-map* #\S-F1 'ruby-information)))
+
+(in-package "user")
+#| ---- for php-mode ---------------------------------------------- |#
+(in-package "editor")
+(export '(php-mode))
+(autoload 'php-mode "php-mode" t)
+(pushnew '("\\.php$" . php-mode) *auto-mode-alist* :test #'equal)
+(autoload 'php-doc-function "php-misc" t)
+(autoload 'php-show-html-help "php-misc" t)
+(autoload 'php-unit-create-skelton "php-misc" t)
+(add-hook '*php-mode-hook*
+          #'(lambda ()
+              (define-key *php-mode-map* #\F1 'php-doc-function)
+              (define-key *php-mode-map* #\S-F1 'php-show-html-help)
+              (define-key *php-mode-map* '(#\C-c #\s) 'php-unit-create-skelton)))
+
+(in-package "user")
+#| ---- for junk-library ------------------------------------------ |#
+;(require "junk/http")
+
+#| ---- for www-mode ---------------------------------------------- |#
+(defpackage "www"
+  (:use "lisp" "editor"))
+(in-package "www")
+(setq *www-config-file* (merge-pathnames ".www" (si:system-root)))
+(in-package "user")
+(autoload 'www "www/www" t)
+(autoload 'www-open-url "www/www" t)
+(autoload 'www-open-local-file "www/www" t)
+(autoload 'www-open-current-buffer "www/www" t)
+
+#| ---- for 2ch-mode ---------------------------------------------- |#
+(defpackage "2ch"
+  (:use "lisp" "editor"))
+(in-package "2ch")
+(setq *base-directory* (merge-pathnames ".2ch" (si:system-root)))
+(in-package "user")
+(autoload '2ch "2ch/main" t)
+
+#| ---- for xml-parser-modoki ------------------------------------- |#
+;(require "xml-parser-modoki")
+
+#| ---- for rss-mode ---------------------------------------------- |#
+; (require "rss/defs")
+; (in-package "rss")
+; (setq *rss-directory* (merge-pathnames ".rss" (si:system-root)))
+; (setq *rss-menu-file* (merge-pathnames "rss-menu.dat" *rss-directory*))
+; (setq *rss-config-file* (merge-pathnames "config.l" *rss-directory*))
+; (setq *rss-group-file* (merge-pathnames "group-menu.dat" *rss-directory*))
+; (setq *rss-clip-file* (merge-pathnames "clip-list.dat" *rss-directory*))
+; (setq *rss-history-file* (merge-pathnames "history-list.dat" *rss-directory*))
+; (add-hook '*rss-start-hook*
+;           #'(lambda ()
+;               (require "rss/open-www")))
+; (in-package "user")
+; (provide "rss/open")            ;; *modules* に登録し load を阻止
+; (autoload 'rss "rss/main" t)
+; (autoload 'rss-toggle "rss/main" t)
+; (autoload 'rss-add-feed "rss/main" t)
+; 
+; #| ---- for topmost ----------------------------------------------- |#
+; (require "topmost")
+; 
+#| ---- for explorer ---------------------------------------------- |#
+(require "explorer")
+
+#| ---- for chini ------------------------------------------------- |#
+(require "chini")
+;; 印刷設定と *chini-popup-menu* を追加
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              ;; フォント
+              ;(chini-font-insert-menu-items :head-sep t)
+              ;; 色
+              ;(chini-color-insert-menu-items :head-sep t)
+              ;; 印刷
+              (chini-print-insert-menu-items :pre-tag 'ed::print-selected-buffer-dialog)
+              ;; ファイラ
+              ;(chini-filer-insert-menu-items :head-sep t)
+              ;; バッファセレクタ
+              ;(chini-bufselector-insert-menu-items :head-sep t)
+              ;; Misc
+              ;(chini-misc-insert-menu-items :head-sep t)
+              ;; *chini-popup-menu*
+              (chini-insert-menu-items :head-sep t :access-key #\0)) t)
+
+#| ---- for buf2html ---------------------------------------------- |#
+(require "buf2html")
+(setq *buf2html-date-format* "%a, %d %b %Y %H:%M:%S %Z")
+(setq *buf2html-time-stamp-start* "Time-stamp: &lt;")
+(buf2html-set-app-menu)
+(buf2html-set-app-popup-menu)
+; 
+#| ---- for popup-mode-memo --------------------------------------- |#
+;(require "popup-mode-memo")
+;(global-set-key #\C-F12 'popup-mode-memo)
+;(set-function-bar-label #\C-F12 "memo")
+
+; 設定
+; (setq *popup-mode-memo-view-minormode-bindings* t)
+; (setq *popup-mode-memo-view-local-bindings* t)
+; (setq *popup-mode-memo-view-global-bindings* nil)
+; (setq *popup-mode-memo-one-side-local* nil)
+; 
+#| ---- for clickable-uri ----------------------------------------- |#
+(require "clickable-uri")
+;; 強調表示は「表示色4 (青)」＋アンダーライン
+(setq *clickable-uri-keyword-color* '(:color 4 0 :underline))
+;; オープン時の強調表示は「文字色4(青)」「アンダーライン」「ボールド」
+(setq *clickable-uri-open-attribute* '(:foreground 4 :underline t :bold t))
+;; オープン時の強調表示時間は 0.2 秒
+(setq *clickable-uri-open-attribute-timeout* 0.2)
+;; 設定変更を反映
+(clickable-uri-set-regexp)
+
+(global-set-key #\C-l 'clickable-uri-recenter)
+(global-set-key '(#\C-c #\C-l) 'clickable-uri-emphasis-force)
+(global-set-key '(#\C-c #\C-o) 'clickable-uri-open)
+
+#| ---- for pickup-pattern ---------------------------------------- |#
+; (require "pickup-pattern")
+; (global-set-key '(#\C-c #\p #\s) 'pickup-pattern-set-input)
+; (global-set-key '(#\C-c #\p #\C-s) 'pickup-pattern-set-input-detail)
+; (global-set-key '(#\C-c #\p #\r) 'pickup-pattern-refresh-select)
+; (global-set-key '(#\C-c #\p #\C-r) 'pickup-pattern-refresh-all)
+; (global-set-key '(#\C-c #\p #\u) 'pickup-pattern-unset-select)
+; (global-set-key '(#\C-c #\p #\C-u) 'pickup-pattern-unset-all)
+; (global-set-key '(#\C-c #\p #\d) 'pickup-pattern-delete-select)
+; (global-set-key '(#\C-c #\p #\C-d) 'pickup-pattern-delete-all)
+; (global-set-key '(#\C-c #\p #\l) 'pickup-pattern-list-show)
+; (global-set-key #\M-s 're-search-forward-pickup)
+; (global-set-key #\M-C-s 're-search-backward-pickup)
+; (setq *pickup-pattern-fg* 1)
+; (setq *pickup-pattern-bg* 3)
+; (setq *pickup-pattern-bold* t)
+; (setq *pickup-pattern-underline* nil)
+; (setq *pickup-pattern-strike-out* nil)
+; (setq *pickup-pattern-regexp* t)
+; (setq *pickup-pattern-overlap* nil)
+; (setq *pickup-pattern-pre-search-unset* t)
+; (setq *pickup-pattern-search-pattern-add* nil)
+
+#| ---- for ggrep ------------------------------------------------- |#
+; (require "ggrep")
+; 
+; #| ---- for diff-detail ------------------------------------------- |#
+; (require "diff-detail")
+; 
+; #| ---- for sort-line --------------------------------------------- |#
+; (require "sort-line")
+; 
+#| ---- for csv-mode ---------------------------------------------- |#
+; (in-package "editor")
+; (export '(csv-mode tsv-mode))
+; (autoload 'csv-mode "csv-mode" t)
+; (autoload 'tsv-mode "csv-mode" t)
+; (pushnew '("\\.csv$" . csv-mode) *auto-mode-alist* :test #'equal)
+; (pushnew '("\\.tsv$" . csv-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for mayu-mode --------------------------------------------- |#
+; (in-package "editor")
+; (export 'mayu-mode)
+; (autoload 'mayu-mode "mayu-mode" t)
+; (pushnew '("\\.mayu$" . mayu-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for bat-mode ---------------------------------------------- |#
+; (in-package "editor")
+; (export 'bat-mode)
+; (autoload 'bat-mode "bat-mode" t)
+; (pushnew '("\\.bat$" . bat-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+; #| ---- for ini-mode ---------------------------------------------- |#
+; (in-package "editor")
+; (export 'ini-mode)
+; (autoload 'ini-mode "ini-mode" t)
+; (pushnew '("\\.ini$" . ini-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+; #| ---- for manued-mode ------------------------------------------- |#
+; (require "manued-mode")
+; 
+#| ---- for box-fixation-mode ------------------------------------- |#
+;(require "box-fixation-mode")
+
+#| ---- for keep-window-line -------------------------------------- |#
+;(require "keep-window-line")
+
+#| ---- for function-bar-label ------------------------------------ |#
+;(require "function-bar-label")
+
+#| ---- for insert-directory-tree --------------------------------- |#
+; (require "insert-directory-tree")
+; 
+; #| ---- for multiple-replace -------------------------------------- |#
+; (require "multiple-replace")
+; 
+#| ---- for chcolor ----------------------------------------------- |#
+;(require "chcolor/chcolor")
+; 
+; #| ---- for buf-menu-plus ----------------------------------------- |#
+; (require "buf-menu-plus")
+; 
+; #| ---- for bufmenu ----------------------------------------------- |#
+; (require "bufmenu")
+; 
+; #| ---- for clipselect -------------------------------------------- |#
+ (require "clipselect")
+; 
+#| ---- for du-d -------------------------------------------------- |#
+;(require "du-d")
+
+#| ---- for filer-extapart ---------------------------------------- |#
+; (setq *extapart-use-select_directory* nil)
+; (require "filer-extapart")
+; 
+#| ---- for info-modoki-mode -------------------------------------- |#
+;(require "info-modoki-mode")
+
+#| ---- for OutlineX ---------------------------------------------- |#
+;(require "outlinex")
+
+#| ---- for rv-region --------------------------------------------- |#
+(require "rv-region")
+(global-set-key #\C-@ 'rv-set-mark-command)
+
+#| ---- for ttl-mode ---------------------------------------------- |#
+; (in-package "editor")
+; (export 'ttl-mode)
+; (autoload 'ttl-mode "ttl-mode" t)
+; (pushnew '("\\.ttl$" . ttl-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for winbatch-mode ----------------------------------------- |#
+; (in-package "editor")
+; (export 'winbatch-mode)
+; (autoload 'winbatch-mode "winbatch-mode" t)
+; (pushnew '("\\.btw$" . winbatch-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for ese-fortune ------------------------------------------- |#
+; (require "ese-fortune")
+; (setq *ese-fortune-enable* nil)
+; 
+#| ---- for ruby-refe --------------------------------------------- |#
+(in-package "editor")
+(require "ruby-refe")
+(load-library "automatic-close-brace.l") 
+(add-hook '*ruby-mode-hook*
+          #'(lambda ()
+              (define-key *ruby-mode-map* #\F1 'ruby-refe-point)
+	      (define-key *ruby-mode-map* #\( 'electric-brace-insert)
+              ;; (setf (symbol-function 'refe) #'ruby-refe)
+              ))
+(in-package "user")
+
+#| ---- for reference --------------------------------------------- |#
+(load-file (merge-pathnames "site-lisp/ni-autoload/reference.chm.l" (si:system-root)))
+(load-file (merge-pathnames "site-lisp/ni-autoload/lisp-keywords.l" (si:system-root)))
+(setq *lisp-keyword-highlight* t)
+
+#| ---- for funsig ------------------------------------------------ |#
+; (autoload 'funsig-show-signature "funsig" t)
+; (autoload 'funsig-apply "funsig")
+; (define-key ed::*lisp-mode-map* #\C-\; 'funsig-show-signature)
+; (define-key ed::*lisp-interaction-mode-map* #\C-\; 'funsig-show-signature)
+; 
+#| ---- for markdown ---------------------------------------------- |#
+;(autoload 'markdown-mode "markdown" t nil)
+
+#| ---- for refer-for --------------------------------------------- |#
+(require "refer-for")
+
+#| ---- for restore ----------------------------------------------- |#
+; (require "restore")
+; (setq *restore-directory* (merge-pathnames "restore" (si:system-root)))
+; 
+
+; 
+; #| ---- for open-backup ------------------------------------------- |#
+;(require "open-backup")
+;(global-set-key '(#\C-x #\o #\1) 'open-backup-file-new)
+;(global-set-key '(#\C-x #\o #\d) 'open-backup-dialog)
+;(setq *open-backup-no-date-duplication* nil)
+
+#| ---- for ee ---------------------------------------------------- |#
+; (require "ee")
+; (setq *ee-edict-dictionary-path* (merge-pathnames "edict/pdwd/" (si:system-root)))
+; (global-set-key '(#\C-c #\g) 'ee-lookup-e2j-dictionary-selection)
+; (add-hook '*init-app-menus-hook*
+;           #'(lambda ()
+;               (insert-menu-item *dictionary-popup-menu* 4 nil "英々(&G)"
+;                                 'ee-lookup-e2j-dictionary-selection)))
+;ALT+中ボタンで英々を表示
+;(global-set-key #\M-MBtnDown 'ee-edict-cursor-lookup)
+;edict-mode で英々を表示
+;(define-key ed::*edict-mode-map* #\MouseMove 'ee-edict-mouse-lookup)
+;(define-key ed::*edict-mode-map* #\C-MouseMove 'ee-edict-mouse-lookup-conjugation)
+
+#| ---- for changelogmemo ----------------------------------------- |#
+; (require "changelogmemo/defs")
+; (in-package "changelogmemo")
+; (setq *cl-file* (merge-pathnames "cl/changelogmemo.txt" (si:system-root)))
+; (setq *cl-history-directory* (merge-pathnames "cl/history/" (si:system-root)))
+; (in-package "user")
+; (require "changelogmemo/main")
+;("名前" . "設定ファイル") のリスト(複数指定可)
+;(setq *cl-config-file-alist*
+;      '(("changelogmemo" . "~/cl/config.l")))
+;(add-hook '*post-startup-hook* 'cl-start)
+;ツールバーを使う
+; (defun cl-tool-bar ()
+;   (create-tool-bar 'cl-tool-bar (merge-pathnames "toolbar.bmp" (etc-path))
+;                    `(("clmemo" 38
+;                       ,#'(lambda () (interactive) (funcall ; cl::*tool-bar-function*))
+;                       ,#'(lambda () (funcall cl::*tool-bar-check-function*))))))
+; (define-command-bar 'cl-tool-bar "CLメモ(&M)")
+; 
+#| ---- for banner ------------------------------------------------ |#
+;(require "banner")
+
+#| ---- for bnf-mode ---------------------------------------------- |#
+;(in-package "editor")
+; (export '(bnf-mode))
+; (autoload 'bnf-mode "bnf-mode" t)
+; (pushnew '("\\.[ae]?bnf$" . bnf-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for ci-mode ----------------------------------------------- |#
+; (in-package "editor")
+; (export '(ci-mode))
+; (autoload 'ci-mode "ci-mode" t)
+; (pushnew '("\\.ー$" . ci-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for is-mode ----------------------------------------------- |#
+; (in-package "editor")
+; (export '(is-mode))
+; (autoload 'is-mode "is-mode" t)
+; (pushnew '("\\.rul$" . is-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for mof-mode ---------------------------------------------- |#
+; (in-package "editor")
+; (export '(mof-mode))
+; (autoload 'mof-mode "mof-mode" t)
+; (export '(mof-make-command))
+; (autoload 'mof-make-command "mof-mode" t)
+; (pushnew '("\\.\\(mof\\|mfl\\)$" . mof-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+; #| ---- for nsis-mode --------------------------------------------- |#
+; (in-package "editor")
+; (export '(nsis-mode))
+; (autoload 'nsis-mode "nsis-mode" t)
+; (pushnew '("\\.ns[ih]$" . nsis-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for properties-mode --------------------------------------- |#
+; (in-package "editor")
+; (export '(properties-mode))
+; (autoload 'properties-mode "properties-mode" t)
+; (pushnew '("\\.properties$" . properties-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+; #| ---- for word-tools -------------------------------------------- |#
+; (require "word-tools")
+; 
+; #| ---- for java-scrapbook ---------------------------------------- |#
+; (require "java-scrapbook")
+; 
+; #| ---- for natural-compare --------------------------------------- |#
+; (require "natural-compare")
+; 
+; #| ---- for cygwin-mount ------------------------------------------ |#
+; (require "cygwin-mount")
+; (cygwin-mount-activate)
+; 
+; #| ---- for guidgen ----------------------------------------------- |#
+; (require "guidgen")
+; (guidgen-setup-app-popup-menu)
+; 
+#| ---- for rimo.tv.xyzzy ----------------------------------------- |#
+;; (require "rimo.tv.xyzzy")
+;; (use-package "rimo")
+
+#| ---- for drive-info -------------------------------------------- |#
+;(require "drive-info")
+
+#| ---- for diff-backup ------------------------------------------- |#
+;(require "diff-backup")
+
+#| ---- for chocoa-mode ------------------------------------------- |#
+; (require "chocoa-mode")
+; (pushnew '("\\.csf$" . chocoa-mode) *auto-mode-alist* :test #'equal)
+; 
+; #| ---- for quote-menu -------------------------------------------- |#
+ (require "quote-menu/quote-menu")
+; 
+; #| ---- for scriptMAKI-mode --------------------------------------- |#
+; (in-package "editor")
+; (export '(scriptMAKI-mode))
+; (autoload 'scriptMAKI-mode "scriptMAKI/scriptMAKI-mode" t)
+; (setq *scriptMAKI-mc-path* "mc.exe")
+; (pushnew '("\\.m$" . scriptMAKI-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for svn-mode ---------------------------------------------- |#
+;(require "svn/svn")
+
+#| ---- for ghci-mode --------------------------------------------- |#
+; (in-package "editor")
+; (export '(ghci-mode))
+; (autoload 'ghci-mode "ghci" t)
+; (in-package "user")
+; 
+#| ---- for popup-key --------------------------------------------- |#
+;(require "popup-key")
+
+#| ---- for www-search -------------------------------------------- |#
+;(require "www-search")
+
+#| ---- for sztab ------------------------------------------------- |#
+;(require "sztab")
+
+#| ---- for fiofeo ------------------------------------------------ |#
+(require "fiofeo")
+
+#| ---- for dmemo ------------------------------------------------- |#
+;(require "dmemo")
+
+#| ---- for save-place -------------------------------------------- |#
+(require "save-place")
+
+#| ---- for regrep ------------------------------------------------ |#
+; (require "regrep")
+; 
+; #| ---- for gmark-select ------------------------------------------ |#
+; (in-package "editor")
+; (export '(gmark-select
+;           gmark-select-set
+;           gmark-select-search-forward
+;           gmark-select-search-backward))
+; (autoload 'gmark-select-set "gmark-select" t)
+; (autoload 'gmark-select     "gmark-select" t)
+; (autoload 'gmark-select-search-forward  "gmark-select" t)
+; (autoload 'gmark-select-search-backward "gmark-select" t)
+; (in-package "user")
+; 
+; #| ---- for describe-bindings-mode -------------------------------- |#
+; (require "describe-bindings-mode")
+; (add-hook '*init-app-menus-hook*
+;           #'(lambda ()
+;               (delete-menu (get-menu *app-menu* 'ed::help) 0 t)
+;               (insert-menu-item (get-menu *app-menu* 'ed::help) 0 nil "キー割り当て一覧 (&K)" 'describe-bindings-mode)))
+
+#| ---- for scope ------------------------------------------------- |#
+; (require "scope")
+; 
+; #| ---- for ac-mode ----------------------------------------------- |#
+ (require "ac-mode")
+; 
+; #| ---- for virtual-file ------------------------------------------ |#
+(require "virtual-file/virtual-file")
+; 
+; #| ---- for virtual-file-ftp -------------------------------------- |#
+(require "virtual-file/virtual-file-ftp")
+; 
+; #| ---- for virtual-file-archive ---------------------------------- |#
+(require "virtual-file/virtual-file-archive")
+; 
+; #| ---- for virtual-file-pscp ------------------------------------- |#
+(require "virtual-file/virtual-file-pscp")
+; 
+#| ---- for complete+ --------------------------------------------- |#
+(require "complete+")
+(use-package "complete+")
+
+#| ---- for grouping-symbol-mode ---------------------------------- |#
+; (require "grouping-symbol-mode")
+; (add-hook '*lisp-mode-hook* 'grouping-symbol-mode-on)
+; (add-hook '*lisp-interaction-mode-hook* 'grouping-symbol-mode-on)
+; 
+; #| ---- for snippet ----------------------------------------------- |#
+; (require "snippet")
+; 
+; #| ---- for ffap -------------------------------------------------- |#
+ (require "ffap")
+ (ffap-bindings)
+; 
+#| ---- for lisp-minibuffer-mode ---------------------------------- |#
+;(require "lisp-minibuffer-mode")
+
+#| ---- for monday ------------------------------------------------ |#
+;(require "monday")
+
+#| ---- for highlight --------------------------------------------- |#
+; (require "highlight")
+; (global-set-key '(#\C-c #\h #\w) 'highlight-current-word)
+; (global-set-key '(#\C-c #\h #\r) 'highlight-regexp)
+; (global-set-key '(#\C-c #\h #\c) 'highlight-clear)
+; 
+; #| ---- for hateda-mode ------------------------------------------- |#
+; (require "hateda-mode")
+; 
+#| ---- for indent-to-token+ -------------------------------------- |#
+;(require "indent-to-token+")
+
+#| ---- for generic-comment-toggle -------------------------------- |#
+(require "generic-comment-toggle")
+
+#| ---- for todo -------------------------------------------------- |#
+;(require "todo")
+
+#| ---- for odoc -------------------------------------------------- |#
+;(require "odoc/setup")
+
+
+#| ---- for nippo-mode -------------------------------------------- |#
+; (in-package "editor")
+; (export '(nippo-mode *nippo-directory*))
+; (setq *nippo-directory* (merge-pathnames "nippo" (si:system-root)))
+; (autoload 'nippo-mode "nippo" t)
+; (in-package "user")
+; 
+#| ---- for lleee ------------------------------------------------- |#
+; (in-package "editor")
+; (export '(lleee *lleee-file-name*))
+; (setq *lleee-file-name* (merge-pathnames "lleee.txt" (si:system-root)))
+; (autoload 'lleee "lleee" t)
+; (in-package "user")
+; 
+#| ---- for loop.l ------------------------------------------------ |#
+;; (require "loop")
+;; (use-package "loop")
+
+#| ---- for yaml-mode --------------------------------------------- |#
+; (in-package "editor")
+; (export '(yaml-mode))
+; (autoload 'yaml-mode "yaml-mode" t)
+; (pushnew '("\\.ya?ml$" . yaml-mode) *auto-mode-alist* :test #'equal)
+; (in-package "user")
+; 
+#| ---- for arrange-line ------------------------------------------ |#
+;(require "arrange-line")
+
+#| ---- for nadesiko-mode ----------------------------------------- |#
+; (autoload 'nadesiko-mode "nadesiko-mode" t)
+; (pushnew '("\\.nako" . nadesiko-mode) *auto-mode-alist* :test #'equal)
+; 
+#| ---- for merge-tags -------------------------------------------- |#
+;(require "merge-tags")
+
+#| ---- for hatena-haiku-mode ------------------------------------- |#
+;(require "hatena-haiku-mode")
+
+#| ---- for xtal-mode  -------------------------------------------- |#
+; (require "xtal-mode")
+; (pushnew '("\\.xtal$" . xtal-mode::xtal-mode) *auto-mode-alist* :test #'equal)
+; 
+#| ---- for lpp.l ------------------------------------------------- |#
+;(require "lpp")
+
+#| ---- for twitter-mode ------------------------------------------ |#
+;; (require "twitter/defs")
+;; (in-package "twitter")
+;; (setq *base-directory* (merge-pathnames ".twitter" (si:system-root)))
+;; (setq *config-file* (merge-pathnames "config.l" *base-directory*))
+;; (in-package "user")
+
+#| ---- for hatena-bookmark --------------------------------------- |#
+; (in-package "editor")
+; (defparameter *hatena-bookmark-basedir* (merge-pathnames ".hatena" ; (si:system-root)))
+; (autoload 'hatena-bookmark "hatena-bookmark" t)
+; (autoload 'hatena-bookmark-add "hatena-bookmark" t)
+; (in-package "user")
+; 
+; #| ---- for blog-mode --------------------------------------------- |#
+; (defpackage "blog"
+;   (:use "lisp" "editor"))
+; (in-package "blog")
+; (defparameter *base-directory* (merge-pathnames ".blog" (si:system-root)))
+; (in-package "user")
+; (autoload 'blog-mode "blog/defs" t)
+; (autoload 'blog-toggle "blog/defs" t)
+; 
+; #| ---- for insert-character -------------------------------------- |#
+; (require "insert-character")
+; 
+#| ---- for update-keywords --------------------------------------- |#
+;(require "update-keywords")
+
+#| ---- for hatena-keyword-autolink ------------------------------- |#
+; (autoload 'hatena-keyword-autolink "hatena-keyword-autolink" t)
+; (autoload 'hatena-keyword-autolink-selection "hatena-keyword-autolink" t)
+; 
+#| ---- for outputz ----------------------------------------------- |#
+;; (require "outputz")
+;; (setq outputz::*outputz-api-key* "復活の呪文")
+
+#| ---- for surround ---------------------------------------------- |#
+(require "surround")
+
+#| ---- for xy-phrase --------------------------------------------- |#
+(in-package "editor")
+(defparameter *xy-phrase-dir* (merge-pathnames "site-lisp/xy-phrase/snippet/" (si:system-root)))
+(in-package "user")
+(require "xy-phrase/xy-phrase")
+
+#| ---- for bfmc -------------------------------------------------- |#
+; (in-package "editor")
+; (export '(bfmc-menu bfmc-menu-frame))
+; (autoload 'bfmc-menu "bfmc" t)
+; (autoload 'bfmc-menu-frame "bfmc" t)
+; (in-package "user")
+; 
+#| ---- for ibuki ------------------------------------------------- |#
+;; (defpackage "ibuki" (:use "lisp" "editor"))
+;; (in-package "ibuki")
+;; (export '(ibuki-mode) "ibuki")
+;; (autoload 'ibuki-mode "ibuki" t)
+;; (in-package "user")
+
+#| ---- for embedded-grep ----------------------------------------- |#
+;(require "embedded-grep")
+
+#| ---- for key-chord --------------------------------------------- |#
+;; (require "key-chord")
+;; (in-package "editor")
+;; (add-hook '*pre-command-hook* 'key-chord)
+;; (in-package "user")
+
+#| ---- for aozora-view ------------------------------------------- |#
+; (in-package "editor")
+; (export '(aozora-view))
+; (autoload 'aozora-view "aozora-view" t)
+; (in-package "user")
+; 
+#| ---- for habuki ------------------------------------------------ |#
+;; (defpackage "habuki" (:use "lisp" "editor"))
+;; (in-package "habuki")
+;; (export '(habuki-mode *habuki-normal-rule* *habuki-abbrev-rule*))
+;; (autoload 'habuki-mode "habuki" t)
+;; (setq *habuki-normal-rule* (list (merge-pathnames "dict/habuki.rl" (si:system-root))
+;;                                  (merge-pathnames "dict/habuki-kanji.rl" (si:system-root)))
+;;       *habuki-abbrev-rule* (merge-pathnames "dict/habuki-abbrev.rule" (si:system-root)))
+;; (in-package "user")
+
+#| ################################################################ |#
+;(si:*load-library "packaged/after" :if-does-not-exist nil) (gc)
+
+;(set-menu nil)
+;(global-set-key #\C-F8 'sample-insert-headstring);日記用
+; ; (defun sample-insert-headstring ()
+; ;   (interactive "*")
+; ;   (beginning-of-buffer)
+; ;   (replace-string "．" "．" t)
+; ;   (beginning-of-buffer)
+; ;   (replace-string "、" "，" t)
+; ;   (end-of-buffer)
+; ;   (insert
+; ;   aa "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
+; ;   (insert (format-date-string "%Y年%m月%d日"))
+; ;   (insert
+; ;    "\n "))
+(global-set-key #\M-n 'end-of-buffer);一番下
+(global-set-key #\M-p 'beginning-of-buffer);一番上
+; ; (defun sample-replace ()
+; ;   (interactive "*")
+; ;   (save-excursion
+; ;     (beginning-of-buffer)
+; ;     (replace-string "．" "．" t)
+; ;     (beginning-of-buffer)
+; ;     (replace-string "、" "，" t)))
+; ; (global-set-key #\C-F6 'sample-replace);．と、をかっこ良く置換
+; (global-set-key #\C-F7 'sample-insert-headstring2);日記用
+; (defun sample-insert-headstring2 ()
+;   (interactive "*")
+;   (beginning-of-buffer)
+;   (replace-string "．" "．" t)
+;   (beginning-of-buffer)
+;   (replace-string "、" "，" t)
+;   (end-of-buffer)
+;   (insert
+;    "\n***************************************************************************************\n"))
+; (global-set-key #\C-F9 'sample-insert-headstring3);日記用
+; (defun sample-insert-headstring3 ()
+;   (interactive "*")
+;   (beginning-of-buffer)
+;   (replace-string "．" "．" t)
+;   (beginning-of-buffer)
+;   (replace-string "、" "，" t)
+;   (end-of-buffer)
+;   (insert
+;    "\n---------------------------------------------------------------------------------------\n"))
+; (global-set-key #\C-F10 'sample-insert-headstring3);日記用
+; ; (defun sample-insert-headstring4 ()
+; ;   (interactive "*")
+; ;   (end-of-buffer)
+; ;   (insert
+; ;    "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"))
+; (global-set-key #\C-F11 'sample-insert-headstring5);日記用
+; (defun sample-insert-headstring5 ()
+;   (interactive "*")
+;   (beginning-of-buffer)
+;   (replace-string "．" "．" t)
+;   (beginning-of-buffer)
+;   (replace-string "、" "，" t)
+;   (end-of-buffer)
+;   (insert
+;    "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"))
+;(global-set-key #\C-q 'list-function)
+; (defun page-incrimental-date()
+;   (interactive "*")
+;   (scan-buffer ; "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" :reverse t)
+;   (backward-char))
+; (defun sample-insert-headstring ()
+;   (interactive "*")
+;   (beginning-of-buffer)
+;   (replace-string "．" "．" t)
+;   (beginning-of-buffer)
+;   (replace-string "，" "，" t)
+;   (beginning-of-buffer)
+;   ;;今日の日時の有無で区切りを変える処理
+;   (if
+;       (scan-buffer (format-date-string "%Y年%m月%d日"));今日の日時を検索，あればt
+;       (progn
+;      (end-of-buffer)
+;      (insert
+;      "\n---------------------------------------------------------------------------------------\n "))
+;     (progn
+;       (end-of-buffer)
+;       (insert
+;        "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
+;       (insert (format-date-string "%Y年%m月%d日"))
+;       (insert
+;        "\n "))))
+(defun sample-insert-headstring ()
+  (interactive "*")
+  (beginning-of-buffer)
+  (replace-string "。" "．" t)
+  (beginning-of-buffer)
+  (replace-string "、" "，" t)
+  (beginning-of-buffer)
+  ;;今日の日時の有無で区切りを変える処理
+  (if
+      (scan-buffer (format-date-string "%Y年%m月%d日"));今日の日時を検索，あればt
+    (progn
+      (end-of-buffer)
+     (if
+         (scan-buffer
+    "---------------------------------------------------------------------------------------" :reverse t)
+;     (beginning-of-line)
+     (progn
+       (if
+         (equal (char-before(point)) #\")
+           (progn (end-of-buffer)
+     (insert
+     "\n---------------------------------------------------------------------------------------\n")
+     (insert (format-date-string "%H時"))
+     (insert
+       "\n "))
+       (progn (end-of-buffer)(insert
+                    "\n\"---------------------------------------------------------------------------------------\"\n")
+                    (insert (format-date-string "%H時"))
+                    (insert
+       "\n "))))))
+    (progn
+      (end-of-buffer)
+      (insert
+       "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
+      (insert (format-date-string "%Y年%m月%d日"))
+      (insert
+       "\n "))))
+;(load-library "print-mode-line-mode")
+;(setq mode-line-format "[%i] %* %b (%M) |%/％,  %n |  [%k:%l] %P %f")
+(require "dabbrev")
+(global-set-key #\C-\- 'dabbrev-popup);
+(require "isearch")
+(add-hook '*init-app-menus-hook*
+         #'(lambda ()
+            (let ((toggle-app-menu *app-menu*))
+             (defun toggle-app-menu ()
+              (interactive)
+            (set-menu (setq toggle-app-menu
+                            (unless toggle-app-menu *app-menu*)))))))
+;とぐる　メニュー
+(defun popup-app-menu ()
+  (interactive)
+  (let ((menu (copy-menu-items *app-menu* (create-popup-menu))))
+    (track-popup-menu menu)))
+;(global-set-key #\M-Apps 'popup-app-menu)
+
+;(defun zensentaku ()		; 
+ ; (interactive "*")
+;  (beginning-of-buffer)
+  ;;最初から
+  ;;選択モード？に変更
+;  (end-of-buffer)
+  ;;最後まで
+;  )
+;(global-set-key '(#\C-x #\h) 'zensentaku)
+(global-set-key #\M-n 'end-of-buffer);一番下
+(global-set-key #\M-p 'beginning-of-buffer);一番上
+
+
+;(load-library "print-mode-line-mode")
+;(setq mode-line-format "[%i] %* %b (%M) |%/％,  %n |  [%k:%l] %P %f")
+
+;(global-set-key #\C-\- 'dabbrev-popup);
+(require "isearch")
+;(add-hook '*init-app-menus-hook*
+ ;        #'(lambda ()
+  ;          (let ((toggle-app-menu *app-menu*))
+   ;          (defun toggle-app-menu ()
+    ;          (interactive)
+     ;       (set-menu (setq toggle-app-menu
+      ;                      (unless toggle-app-menu *app-menu*)))))))
+;とぐる　メニュー
+;(defun popup-app-menu ()
+ ; (interactive)
+  ;(let ((menu (copy-menu-items *app-menu* (create-popup-menu))))
+   ; (track-popup-menu menu)))
+;(global-set-key #\M-Apps 'popup-app-menu)
+
+(global-set-key #\C-F7 #'(lambda ()
+			   (interactive)(toggle-app-menu)))
+
+
+;(global-set-key #\F7 'toggle-app-menu)
+#| ---- for buf-menu-plus ----------------------------------------- |#
+(require "buf-menu-plus")
+(require "paren")
+
+(turn-on-global-paren)
+;; layered-window
+(require "layered-window")
+;; リージョンを反転表示
+(load-library "rv-region")
+;;;    あらかじめ用意されたコマンド(rv-set-mark-command)実行時のみ、反転
+;;;    表示を開始する。以下の設定では、C-@ でマークを設定すると、リージョ
+;;;  x  ンの反転表示を開始する。M-SPC では、反転表示しない。
+        (global-set-key #\C-@ 'rv-set-mark-command)
+;;;    ・反転されていないリージョンに対し反転を開始する。(M-R)
+        (global-set-key #\M-R 'rv-region-start)
+;;;    ・反転されていないリージョンを一時的に反転する。(M-V)
+        (global-set-key #\M-V 'rv-region-check)
+;(add-hook '*post-startup-hook* #'(lambda ()(layered-window-set-opacity 88)))
+(setq *filer-directories*
+  (list
+    '("[スタートメニュー]"        . "C:/Users/hutoiti/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu")
+   '("[最近使ったファイル]        . "(get-special-folder-location :recent))
+  ))
+
+;; なんちゃって全画面表示モード for xyzzy
+;;
+;; - M-x toggle-fullscreen-mode
+;; - [表示] メニュー - [全画面表示]
+;; - メニューとコマンドバーも非表示にする
+;; - カーソルを画面上部に移動させるとメニューを表示する
+;; - ミニバッファ、ステータスバーは非表示にできない
+;; - モードライン、ルーラー、ステータスバー、行番号などはそのまま
+;; - こいつらも消して広くできるけど、さすがに不便だよね
+;;
+;; 既知のバグ:
+;;
+;; - セカンダリディスプレイで全画面化するとウィンドウが消える
+;; - ディスプレイ解像度を 1280x1024 で決め打ちしている
+;; 解像度は、パソコンによって変えればいい！！
+(defun cleanup-window()
+  (interactive)
+  (let((bufl (buffer-list));buffer-list 全バッファをリストで返す → bufl
+       buf name);おそらく、buf,nameは、それぞれnilがはいる。
+    (loop
+      (setq buf (pop bufl));popとは一番前の要素を名前どおり取り除く、リストの中身も減る
+      (if (null buf) (return nil));もし、bufが空になったら、nilで終了。
+      (setq name (buffer-name buf));bufに中身がある場合、その名前をnameへ格納
+      (if (member-if;member-ifの引数で、次の関数(lambda)でリストに当てはまるものがあればそこから返す。
+	   #'(lambda (str) (string= name str))
+	   '("*Help*" "*dictionary*" "*output*" "Buffer List*" "*Calendar*" "*Shell output*"))
+	  (delete-buffer buf)))
+    (delete-other-windows)))
+(global-set-key #\s-F11 'cleanup-window)
+;(defun mylispmode()
+;(global-set-key #\M-e 
+(global-set-key #\S-C-F24 'previous-buffer)       ; Shift+Ctrl+Tab
+(global-set-key #\C-F24 #'(lambda() (interactive) (if (> (count-windows) 1) (other-window) (next-buffer) )))             ; Ctrl+Tabw
+(set-extended-key-translate-table exkey-S-C-tab #\S-C-F24)
+(set-extended-key-translate-table exkey-C-tab #\C-F24)
+;toggle-fullscreen-modeこれを動かしたい。
+
+;(add-hook '*post-startup-hook* #'(lambda ()(layered-window-set-opacity 88)))
+(defun scratch-make()
+  (interactive)
+  (switch-to-buffer "*scratch*")
+  (execute-extended-command 'lisp-interaction-mode);関数:ミニバッファに入力
+  ;;↑注意、引数では文字列ではなく、シンボルを書く。
+  (setq need-not-save t);セーブする必要がない
+  )
+;; なんちゃって全画面表示モード for xyzzy
+;;
+;; - M-x toggle-fullscreen-mode
+;; - [表示] メニュー - [全画面表示]
+;; - メニューとコマンドバーも非表示にする
+;; - カーソルを画面上部に移動させるとメニューを表示する
+;; - ミニバッファ、ステータスバーは非表示にできない
+;; - モードライン、ルーラー、ステータスバー、行番号などはそのまま
+;; - こいつらも消して広くできるけど、さすがに不便だよね
+;;
+;; 既知のバグ:
+;;
+;; - セカンダリディスプレイで全画面化するとウィンドウが消える
+;; - ディスプレイ解像度を 1280x1024 で決め打ちしている
+;; 解像度は、パソコンによって変えればいい！！
+; 
+; (defparameter *last-current-menu* nil)
+; (defparameter *last-command-bar* nil)
+; (defparameter *last-window-style* nil)
+; (defparameter *last-window-rect* nil)
+; (defparameter *fullscreen-mode-p* nil)
+; 
+; (defun toggle-fullscreen-mode ()
+;   (interactive)
+;   (if *fullscreen-mode-p*;フルスクリーンモード　オンの時
+;       ; (progn(leave-fullscreen-mode)(win-user:move-cursor-window-lt));leave-fullscreen-modeをと; りやめる。
+;     (progn (enter-fullscreen-mode)(win-user:move-hindrance-cursor-window-lt))));nilな; らenter-fullscreen-modeを動かす？
+; 
+; (defun enter-fullscreen-mode ()
+;   (interactive)
+;   (setf *fullscreen-mode-p* t)
+;   (let ((hwnd (get-window-handle))) ;ウィンドウのハンドル(出力されているウィンドウの番; 号)を返す。
+;     (setf *last-current-menu* (current-menu));現在表示されているメニューを返す
+;     ;;最後のメニューを保存しておく。
+;     (setf *last-command-bar* (current-command-bar));関数をlast-command-barに入れるとい; うことはtoggleではない？今後のこの変数の使い方に注目。
+;     ;;setfは代入作業を行う際左から順に評価していき代入する。current-command-barを評価; するとどうなる。
+;     (setf *last-window-style* (get-window-style hwnd));last-window-styleにsetfしている; のはget-window-style
+;     ;;この画面のハンドルを用いてget-window-styleする。これを本体関数; make-fullscreen-styleで使う。
+;     (setf *last-window-rect* (get-window-rect hwnd))
+;     ;;窓の大きさを保存している。
+;     (set-menu nil);メニューの非表示
+;     (mapc 'hide-command-bar *last-command-bar*)	; それぞれのコマンドバーへ非表示; を指定。
+;     (layered-window-set-opacity 100)
+;     (set-window-style hwnd (make-fullscreen-style ; *last-window-style*));make-fullscreen-styleの引数である,last-window-style
+;     ;;make-fullscreen-styleは、全画面にする本体か。
+;    ; (move-window hwnd 0 0 1493 900) ;; FIXME
+;     (move-window hwnd 0 0 1600 900) ;; FIXME
+;     ))
+; 
+; (defun leave-fullscreen-mode ();;オンになったらこれが最初に動く。終了させる関数？
+;   (interactive)
+;   (setf *fullscreen-mode-p* nil);モードをnilに変更
+;   ;;以下でset-menuを初期ではnilと設定していることからやっぱりフル画面にする関数なのか？
+;   (let ((hwnd (get-window-handle)));windowハンドルを取得し、hwndに代入
+;     (set-menu *last-current-menu*);set-menuで*last-current-menu*をセット？？
+;     ;;nil→非表示にして大画面に備える？
+;     ;;というよりも,*last-current-menu*がnilなら、非表示というようなトグル。
+;     ;;また、初期設定ではnilなので非表示となる。
+;     (mapc 'show-command-bar *last-command-bar*);show-command-bar
+;     ;; mapcは一つ目の引数を関数として2つ目のそれぞれの引数に対して評価を行う
+;     ;; last-command-barは、初期にnilと定義している。それを、show-command-barに設定して; いることから
+;     ;; コマンドバーを非表示としている？→おそらくそうだろう。
+;     (set-window-style hwnd *last-window-style*);なにかわからんが、保存している？
+;     (move-window-rect hwnd *last-window-rect*)
+;     (layered-window-set-opacity 88)
+; ;    (winapi:ShowWindow hwnd winapi:WS_MAXIMIZE)
+;     ; (winapi:GetWindowRect (get-window-handle) rect)
+;     ;;保存後に、nilへ変更している。もう一度有効にしたとき、元通りにするため？
+;     (setf *last-current-menu* nil)
+;     (setf *last-command-bar* nil)
+;     (setf *last-window-style* nil)
+;     (setf *last-window-rect* nil)
+;     ))
+; ;;; 次の関数は、引数を指定していないが、lambdaでcommand-barを
+; ;;; 使っている。このあと、multiple-value-bindで使う。
+; ;;; しかし、command-barはここで初めて出てくる。
+; ;;; そして勘違い、mapcanがあるので、真の引数は、「ed::*command-bar-list*」だった。
+; ;;;　ed::*command-bar-list*は下に載せてある。
+; (defun current-command-bar ()
+;   (mapcan #'(lambda (command-bar);mapcanはリスト内にnilがあると、取り除く作用がある。
+;               (multiple-value-bind (pkg sym _ visible-p _ _ _ _)
+; 		  ;;multiple-value-bindは、その隣りの引数の分の戻り値を返す。
+;                   (values-list command-bar);values-listで返された値が上の値として使わ; れる。
+; 		;;command-barは、current-command-bar。つまり、初めて使う場合、すべてNIL; として扱われる
+; 		;;参考
+; 		;;pkg : (#1="editor" "std-tool-bar" "標準(&S)" nil nil nil nil nil)
+; 		;;sym : (#1# "buffer-bar" "バッファ(&B)" nil :right 0 0 117)
+; 		;;visible-p : (#1# "topmost-tool-bar" "最前面表示(&T)" nil nil nil nil ; nil)
+;                 (when visible-p;とはなにか…↑
+;                   (list (find-symbol sym pkg)))))
+; 	  ;; find-symbolの中身はbuiltin.l
+; 	  ed::*command-bar-list*));edパッケージのcommand-bar-listということなのでメジャ; ーなもの？
+; ;;;発見
+; ;;;
+; ; ; (set-default '*command-bar-list* '((#1="editor" "std-tool-bar" "標準(&S)" nil nil ; nil ; nil nil)
+; ; 				   (#1# "buffer-bar" "バッファ(&B)" nil :right 0 0 117)
+; ; 				   (#1# "pseudo-frame-bar" "フレーム(&F)" nil nil nil ; nil ; nil)
+; ; 				   (#1# "topmost-tool-bar" "最前面表示(&T)" nil nil nil ; nil ; nil)
+; ; 				   (#1# "explorer-tool-bar" "Explorer(&E)" nil nil nil ; nil ; nil)
+; ; 				   (#1# "ggrep-tool-bar" "GGrep(&G)" nil nil nil nil nil)
+; ; 				   ("sort-line" "sort-line-tool-bar" "行ソート(&L)" nil ; nil ; nil nil  nil)
+; ; 				   (#1# "box-fixation-tool-bar" "罫線編集(&H)" nil nil ; nil ; nil nil)
+; ; 				   (#2="user" "bufmenu-tool-bar" "bufmenu(&U)" nil nil ; nil ; nil nil)
+; ; 				   (#2# "cl-tool-bar" "CLメモ(&M)" nil nil nil nil nil)
+; ; 				   (#2# "svn-tool-bar" "SVN(&S)" nil nil nil nil nil)
+; ; 				   (#1# "popup-key-local-bar" "ローカルキー(&K)" nil nil ; nil ; nil  nil)
+; ; 				   (#1# "www-search-bar" "www-search(&W)" nil nil nil ; nil ; nil)
+; ; 				   (#2# "arrange-tool-bar" "arranges(&A)" nil nil nil ; nil nil)))
+; (defun make-fullscreen-style (current-style);current-styleとは、
+;   (logxor current-style;logxor ビットごとの排他的論理和を返す
+; 	  ; winapiとは、どうやって使うのか。パッケージはどうやって有効にするのか。
+;           (logior
+; 	   winapi:WS_CAPTION
+;            winapi:WS_BORDER
+;            winapi:WS_THICKFRAME
+;            winapi:WS_MAXIMIZE
+;            )))
+; ; (*define-dll-entry BOOL ShowWindow (HWND int) "user32")
+; (defun get-window-rect (hwnd)
+;   (let ((rect (winapi:make-RECT)))
+;     (winapi:GetWindowRect (get-window-handle) rect)
+;     (list (winapi:RECT-left rect)
+;           (winapi:RECT-top rect)
+;           (winapi:RECT-right rect)
+;           (winapi:RECT-bottom rect))))
+; 
+; (defun move-window-rect (hwnd rect)
+;   (multiple-value-bind (left top right bottom)
+;       (values-list rect)
+;     (let ((x left)
+;           (y top)
+;           (w (- right left))
+;           (h (- bottom top)))
+;       (move-window hwnd x y w h))))
+; 
+; (defun move-window (hwnd x y w h)
+;   (winapi:MoveWindow hwnd x y w h 1))
+; 
+; (defun set-window-style (hwnd style)
+;   (winapi:SetWindowLong hwnd winapi:GWL_STYLE style))
+; 
+; (defun get-window-style (hwnd)
+;   (winapi:GetWindowLong hwnd winapi:GWL_STYLE))
+; 
+; 
+; ;; マウスを画面上部に移動するとメニューを表示する
+; 
+; (defun fullscreen-mode-on-mouse-move ()
+;   (interactive)
+;   (when (and *fullscreen-mode-p*
+;              *last-current-menu*)
+;     (let ((y (second (get-cursor-position))))
+;       (if (< y 40)
+;           (set-menu *last-current-menu*)
+;         (set-menu nil)))))
+; (global-set-key #\MouseMove 'fullscreen-mode-on-mouse-move)
+; 
+; (defun get-cursor-position ()
+;   (let ((p (winapi:make-POINT)))
+;     (winapi:GetCursorPos p)
+;     (list (winapi:POINT-x p)
+;           (winapi:POINT-y p))))
+; 
+; ;; 表示メニューに追加
+; 
+; (defvar *fullscreen-mode-menu-tag* 'toggle-fullscreen-mode)
+; (defvar *fullscreen-mode-menu-name* "全画面表示(&X)")
+; (defun fullscreen-mode-setup-menu ()
+;   (let ((menu (get-menu *app-menu* 'ed::view)))
+;     (when menu
+;       (delete-menu menu *fullscreen-mode-menu-tag*)
+;       (add-menu-item menu
+;                       *fullscreen-mode-menu-tag*
+;                       *fullscreen-mode-menu-name*
+;                       'toggle-fullscreen-mode
+; #'(lambda () (if *fullscreen-mode-p* :check))))))
+; (global-set-key  #\C-8 'toggle-fullscreen-mode)
+;;;;;;;;;;;;;;;; ここから
+
+
+
+;; これに含まれるうちのどれかを入力したら、次に「C-x \」するまで一時解除。
+;; デフォルトはタブとスペースと改行と括弧類とか。
+;; nilに変えればC-gを押すまで一時解除すらされない。
+(defvar *chars-to-break-continuous-dabbrev-popup* "	 \n,(){}[]<>")
+
+;; tにすると、リスト表示時にC-gを押したときにキャンセルするだけでなくスペースも入力。
+;; nilならキャンセルするだけ。
+(defvar *insert-spc-when-c-g* nil)
+
+;; リストの先頭を現在入力中の単語にする。
+;; nilにしたら入力中の単語は表示しない。
+(defvar *insert-current-word-into-list* t)
+
+(defun toggle-continuous-dabbrev-popup ()
+  (interactive)
+  (unless (and (boundp 'continuous-dabbrev-popup)
+	       (local-variable-p 'continuous-dabbrev-popup (selected-buffer)))
+    (setup-continuous-dabbrev-popup))
+  (setq continuous-dabbrev-popup (not continuous-dabbrev-popup)
+	during-continuous-dabbrev-popup nil)
+  (if continuous-dabbrev-popup
+      (message "continuous-dabbrev-popup turns on.")
+    (message "continuous-dabbrev-popup turns off.")))
+
+(defun setup-continuous-dabbrev-popup ()
+  (setq continuous-dabbrev-popup nil
+	during-continuous-dabbrev-popup nil)
+  (make-variable-buffer-local 'continuous-dabbrev-popup)
+  (make-variable-buffer-local 'during-continuous-dabbrev-popup)
+  (local-set-key '(#\C-x #\\) 'start-continuous-dabbrev-popup)
+  (local-set-key #\C-g
+		 #'(lambda ()
+		     (interactive)
+		     (if (and *insert-spc-when-c-g*
+			      (buffer-local-value (selected-buffer) 'during-continuous-dabbrev-popup))
+			 (insert #\SPC))
+		     (setq during-continuous-dabbrev-popup nil)
+		     (quit)))
+  (dolist (key '(    #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\- #\=
+		 #\~ #\! #\@ #\# #\$ #\% #\^ #\& #\*         #\_ #\+
+		                 #\\     #\. #\/
+		                 #\|         #\?
+		 #\a #\b #\c #\d #\e #\f #\g #\h #\i #\j #\k #\l #\m
+		 #\n #\o #\p #\q #\r #\s #\t #\u #\v #\w #\x #\y #\z
+		 #\A #\B #\C #\D #\E #\F #\G #\H #\I #\J #\K #\L #\M
+		 #\N #\O #\P #\Q #\R #\S #\T #\U #\V #\W #\X #\Y #\Z
+		 ))
+    (local-set-key key 'continue-continuous-dabbrev-popup)))
+
+(defun start-continuous-dabbrev-popup ()
+  (interactive "*")
+  (if (buffer-local-value (selected-buffer) 'continuous-dabbrev-popup)
+      (setq during-continuous-dabbrev-popup t))
+  (dabbrev-popup))
+
+(defun continue-continuous-dabbrev-popup ()
+  (interactive)
+  (self-insert-command)
+  (save-excursion
+    (goto-char (1- (point)))
+    (let ((p-char (preceding-char)))
+      (dotimes (i (length *chars-to-break-continuous-dabbrev-popup*))
+	(when (char= p-char (schar *chars-to-break-continuous-dabbrev-popup* i))
+	  (setq during-continuous-dabbrev-popup nil)
+	  (return-from continue-continuous-dabbrev-popup)))))
+  (if (and (buffer-local-value (selected-buffer) 'continuous-dabbrev-popup)
+	   (buffer-local-value (selected-buffer) 'during-continuous-dabbrev-popup))
+      (if *insert-current-word-into-list*
+	  (dabbrev-popup-with-current-word)
+	(dabbrev-popup))))
+
+;; 入力中の単語も表示するようにオリジナルのdabbrev-popupを改造。
+(defun dabbrev-popup-with-current-word ()
+  (interactive "*")
+  (let* ((end (point))
+	 (start (save-excursion (ed::dabbrev-start))))
+    (when (= start end)
+      (return-from dabbrev-popup-with-current-word nil))
+    (let* ((abbrev (buffer-substring start end))
+	   (match-table (make-hash-table
+			 :test (if *dabbrevs-case-fold* #'equalp #'equal)))
+	   matches)
+      (setf (gethash abbrev match-table) start)
+      (setq matches (ed::dabbrev-find-all-expansion abbrev *dabbrevs-case-fold*
+						match-table start nil))
+      (push abbrev matches) ; この1行を追加したかっただけ。
+      (unless *dabbrev-popup-this-buffer-only*
+	(let ((curbuf (selected-buffer))
+	      (case-fold *dabbrevs-case-fold*)
+	      (syntax-table (syntax-table)))
+	  (with-set-buffer
+	    (with-interval-message (300)
+	      (save-excursion
+		(dolist (buffer (buffer-list))
+		  (unless (eq buffer curbuf)
+		    (message "Searching (~A)..." (buffer-name buffer))
+		    (set-buffer buffer)
+		    (save-excursion
+		      (let ((osyntax-table (syntax-table)))
+			(unwind-protect
+			    (progn
+			      (use-syntax-table syntax-table nil t)
+			      (setq matches (ed::dabbrev-find-all-expansion
+					     abbrev case-fold match-table nil matches)))
+			  (use-syntax-table osyntax-table nil t))))))))))
+	(clear-message))
+      (if matches
+	  (ed::popup-completion-list (sort matches #'string-lessp) start end)
+	(plain-error "ないよん")))))
+
+;;;;;;;;;;;;;;;; ここまで
+;dabbrev-popupをtabに設定したい。
+;グローバルだといろいろバッティングするのでいろんなものに追加。
+
+;(require "test")
+(setq *filer-directories*
+  (list
+   '("[スタートメニュー]"        . "C:/Users/hutoiti/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu")
+   '("[マイドキュメント]"        . "C:/Users/hutoiti/Documents")
+   (cons "[最近使ったファイル]" (get-special-folder-location :recent))
+   )
+      )
+;(load-library "test")
+
+(global-set-key #\M-\; 'generic-comment-toggle-region)
+(load-library "javascript-mode")
+(push '("\\.js$" . javascript-mode) *auto-mode-alist*)
+(global-set-key #\C-+ 'increase-text-font-size)
+(global-set-key #\C-- 'decrease-text-font-size)
+(load-library "automatic-close-brace.l")
+;(global-set-key #\{ 'electric-brace-insert) ;参考
+;-key ed::*c-mode-map* #\{ 'electric-brace-insert)
+(defun my-setting-c ()
+
+  (setq c-brace-offset -2)
+  (setq c-label-offset 0)
+  (abbrev-mode t)
+
+  (define-key ed::*c-mode-map* #\{ 'electric-brace-insert)
+  (define-key ed::*c-mode-map* #\( 'electric-brace-insert)
+  (define-key ed::*c-mode-map* #\[ 'electric-brace-insert)
+  
+  (define-key ed::*c-mode-map* #\TAB 'c-indent-line)
+  )
+
+(add-hook 'ed::*c-mode-hook* 'my-setting-c)
+; (defun my-setting-csharp ()
+; 
+;   (setq csharp-brace-offset -2)
+;   (setq csharp-label-offset 0)
+;   (abbrev-mode t)
+; 
+;   (define-key ed::*csharp-mode-map* #\{ 'electric-brace-insert)
+;   (define-key ed::*csharp-mode-map* #\( 'electric-brace-insert)
+;   (define-key ed::*csharp-mode-map* #\[ 'electric-brace-insert)
+;   (define-key ed::*csharp-mode-map* #\TAB 'c-indent-line)
+;   )
+; 
+; (add-hook 'ed::*csharp-mode-hook* 'my-setting-csharp)
+; 
+; 
+;;lisp keyword
+(defun my-setting-lisp()
+  (define-key ed::*lisp-mode-map* #\( 'electric-brace-insert)
+)
+
+
+(defun my-setting-lisp-interaction()
+  (define-key ed::*lisp-interaction-mode-map* #\( 'electric-brace-insert)
+)
+
+(add-hook 'ed::*lisp-mode-hook* 'my-setting-lisp)
+(add-hook 'ed::*lisp-interaction-mode-hook* 'my-setting-lisp-interaction)
+;のようにフック関数から呼んでください。
+(setq *next-buffer-in-tab-order* t)
+(setq *filer-primary-directory* "C:/Users/hutoiti/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu")
+(setq *filer-secondary-directory* "C:/Users/hutoiti/")
+
+;; *scratch* バッファをつくる
+(defun make-scratch-buffer ()
+  (interactive)
+  (set-buffer (switch-to-buffer "*scratch*"))
+  (execute-extended-command 'lisp-interaction-mode)
+  (setq need-not-save t))
+;(add-hook '*post-startup-hook* #'(lambda ()(toggle-fullscreen-mode)(show-command-bar 'buffer-bar)))
+;(add-hook '*post-startup-hook* #'(lambda ()(show-command-bar 'buffer-bar)))
+(defun my-filer-shell-execute ()
+  (ed::filer-shell-execute)
+  (ed::filer-cancel))
+(define-key filer-keymap '(#\C-j) 'my-filer-shell-execute)
+;;
+;; xyzzy でファイルの自動保存
+;;
+;; Emacsでファイルの自動保存
+;;   http://www.namazu.org/~satoru/unimag/12/index.html#label:9
+;; を移植したもの
+;;
+;; (require "auto-save-buffers")
+;;
+
+(provide "auto-save-buffers")
+(in-package "editor")
+
+(export '(auto-save-buffers
+          *auto-save-buffers-regexp*
+          *auto-save-buffers-p*
+          *auto-save-buffers-interval*))
+
+;; auto-save-buffers で対象とするファイルの正規表現
+(defvar *auto-save-buffers-regexp* ".nk"
+  "*Regexp that matches `buffer-file-name' to be auto-saved.")
+
+;; auto-save-buffers で保存中なら non-nil
+(defvar *auto-save-buffers-p* nil
+  "*non-nil if auto saveing")
+
+;; 自動保存するまでのアイドル時間
+(defvar *auto-save-buffers-interval* 0.5)
+
+(defun auto-save-buffers ()
+  "Save buffers if `buffer-file-name' matches `auto-save-buffers-regexp'."
+  (save-excursion
+    (dolist (buffer (buffer-list))
+      (set-buffer buffer)
+      (when (and (buffer-modified-p)
+                 (not buffer-read-only)
+                 (get-buffer-file-name)
+                 (file-writable-p (get-buffer-file-name))
+                 (string-match *auto-save-buffers-regexp* (get-buffer-file-name)))
+        (setf *auto-save-buffers-p* t)
+        (save-buffer)
+        (setf *auto-save-buffers-p* nil)))))
+
+(add-hook '*post-command-hook*
+          #'(lambda ()
+            (stop-timer 'auto-save-buffers)
+            (start-timer *auto-save-buffers-interval* 'auto-save-buffers t)))
+ (defun my-split-window (&optional arg vertical)
+   (interactive)
+   (split-window arg vertical)
+   (switch-to-buffer-other-window (other-buffer)))
+ 
+ (defun my-split-window-vertically (&optional arg)
+   (interactive)
+   (my-split-window arg t))
+ 
+ (define-key ctl-x-map #\2 'my-split-window)
+ (define-key ctl-x-map #\3 'my-split-window-vertically)
+
+
+;(layered-window-set-opacity 88)
+;(global-set-key #\F7 'toggle-app-menu) ;参考
+;scratchモード
+;; なんちゃって全画面表示モード for xyzzy
+;;
+;; - M-x toggle-fullscreen-mode
+;; - [表示] メニュー - [全画面表示]
+;; - メニューとコマンドバーも非表示にする
+;; - カーソルを画面上部に移動させるとメニューを表示する
+;; - ミニバッファ、ステータスバーは非表示にできない
+;; - モードライン、ルーラー、ステータスバー、行番号などはそのまま
+;; - こいつらも消して広くできるけど、さすがに不便だよね
+;;
+;; 既知のバグ:
+;;
+;; - セカンダリディスプレイで全画面化するとウィンドウが消える
+;; - ディスプレイ解像度を 1280x1024 で決め打ちしている
+;; 解像度は、パソコンによって変えればいい！！
+; 
+(defparameter *last-current-menu* nil)
+(defparameter *last-command-bar* nil)
+(defparameter *last-window-style* nil)
+(defparameter *last-window-rect* nil)
+(defparameter *fullscreen-mode-p* nil)
+
+(defun enter-fullscreen-mode ()
+  (interactive)
+  (setf *fullscreen-mode-p* t)
+  (let ((hwnd (get-window-handle))) ;ウィンドウのハンドル(出力されているウィンドウの番号)を返す、
+    (setf *last-current-menu* (current-menu));現在表示されているメニューを返す
+    ;;最後のメニューを保存しておく、
+    (setf *last-command-bar* (current-command-bar));関数をlast-command-barに入れるということはtoggleで; はない？今後のこの変数の使い方に注目、
+    ;;setfは代入作業を行う際左から順に評価していき代入する、current-command-barを評価するとどうなる、
+    (setf *last-window-style* (get-window-style hwnd));last-window-styleにsetfしているのは; get-window-style
+    ;;この画面のハンドルを用いてget-window-styleする、これを本体関数make-fullscreen-styleで使う、
+    (setf *last-window-rect* (get-window-rect hwnd))
+    ;;窓の大きさを保存している、
+    (set-menu nil);メニューの非表示
+    (mapc 'hide-command-bar *last-command-bar*)	; それぞれのコマンドバーへ非表示を指定、
+    (set-window-style hwnd (make-fullscreen-style *last-window-style*));make-fullscreen-styleの引数であ; る,last-window-style
+    ;;make-fullscreen-styleは、全画面にする本体か、
+;(move-window hwnd 0 0 1600 900) ;; FIXME
+    (move-window hwnd 0 0 1600 900) ;; FIXME
+    ))
+
+(defun leave-fullscreen-mode ();;オンになったらこれが最初に動く、終了させる関数？
+  (interactive)
+  (setf *fullscreen-mode-p* nil);モードをnilに変更
+  ;;以下でset-menuを初期ではnilと設定していることからやっぱりフル画面にする関数なのか？
+  (let ((hwnd (get-window-handle)));windowハンドルを取得し、hwndに代入
+    (set-menu *last-current-menu*);set-menuで*last-current-menu*をセット？？
+    ;;nil→非表示にして大画面に備える？
+    ;;というよりも,*last-current-menu*がnilなら、非表示というようなトグル、
+    ;;また、初期設定ではnilなので非表示となる、
+    (mapc 'show-command-bar *last-command-bar*);show-command-bar
+    ;; mapcは一つ目の引数を関数として2つ目のそれぞれの引数に対して評価を行う
+    ;; last-command-barは、初期にnilと定義している、それを、show-command-barに設定していることから
+    ;; コマンドバーを非表示としている？→おそらくそうだろう、
+    (set-window-style hwnd *last-window-style*);なにかわからんが、保存している？
+    (move-window-rect hwnd *last-window-rect*)
+    ;;保存後に、nilへ変更している、もう一度有効にしたとき、元通りにするため？
+    (setf *last-current-menu* nil)
+    (setf *last-command-bar* nil)
+    (setf *last-window-style* nil)
+    (setf *last-window-rect* nil)
+    ))
+;;; 次の関数は、引数を指定していないが、lambdaでcommand-barを
+;;; 使っている、このあと、multiple-value-bindで使う、
+;;; しかし、command-barはここで初めて出てくる、
+;;; そして勘違い、mapcanがあるので、真の引数は、「ed::*command-bar-list*」だった、
+;;;　ed::*command-bar-list*は下に載せてある、
+(defun current-command-bar ()
+  (mapcan #'(lambda (command-bar);mapcanはリスト内にnilがあると、取り除く作用がある、
+              (multiple-value-bind (pkg sym _ visible-p _ _ _ _)
+		  ;;multiple-value-bindは、その隣りの引数の分の戻り値を返す、
+                  (values-list command-bar);values-listで返された値が上の値として使われる、
+		;;command-barは、current-command-bar、つまり、初めて使う場合、すべてNILとして扱われる
+		;;参考
+		;;pkg : (#1="editor" "std-tool-bar" "標準(&S)" nil nil nil nil nil)
+		;;sym : (#1# "buffer-bar" "バッファ(&B)" nil :right 0 0 117)
+		;;visible-p : (#1# "topmost-tool-bar" "最前面表示(&T)" nil nil nil nil nil)
+                (when visible-p;とはなにか…↑
+                  (list (find-symbol sym pkg)))))
+	  ;; find-symbolの中身はbuiltin.l
+	  ed::*command-bar-list*));edパッケージのcommand-bar-listということなのでメジャーなもの？
+;;;発見
+;;;
+ (set-default '*command-bar-list* '((#1="editor" "std-tool-bar" "標準(&S)" nil nil nil nil nil)
+				   (#1# "buffer-bar" "バッファ(&B)" nil :right 0 0 117)
+				   (#1# "pseudo-frame-bar" "フレーム(&F)" nil nil nil nil  nil)
+				   (#1# "topmost-tool-bar" "最前面表示(&T)" nil nil nil nil  nil)
+				   (#1# "explorer-tool-bar" "Explorer(&E)" nil nil nil nil  nil)
+				   (#1# "ggrep-tool-bar" "GGrep(&G)" nil nil nil nil nil)
+				   ("sort-line" "sort-line-tool-bar" "行ソート(&L)" nil nil  nil nil   nil)
+				   (#1# "box-fixation-tool-bar" "罫線編集(&H)" nil nil nil  nil nil)
+				   (#2="user" "bufmenu-tool-bar" "bufmenu(&U)" nil nil nil  nil nil)
+				   (#2# "cl-tool-bar" "CLメモ(&M)" nil nil nil nil nil)
+				   (#2# "svn-tool-bar" "SVN(&S)" nil nil nil nil nil)
+				   (#1# "popup-key-local-bar" "ローカルキー(&K)" nil nil nil  nil  nil)
+				   (#1# "www-search-bar" "www-search(&W)" nil nil nil nil  nil)
+				   (#2# "arrange-tool-bar" "arranges(&A)" nil nil nil nil nil)))
+(defun make-fullscreen-style (current-style);current-styleとは、
+  (logxor current-style;logxor ビットごとの排他的論理和を返す
+;	  winapiとは、どうやって使うのか、パッケージはどうやって有効にするのか、
+          (logior
+	   winapi:WS_CAPTION
+           winapi:WS_BORDER
+           winapi:WS_THICKFRAME
+           winapi:WS_MAXIMIZE
+           )))
+
+(defun get-window-rect (hwnd)
+  (let ((rect (winapi:make-RECT)))
+    (winapi:GetWindowRect (get-window-handle) rect)
+    (list (winapi:RECT-left rect)
+          (winapi:RECT-top rect)
+          (winapi:RECT-right rect)
+          (winapi:RECT-bottom rect))))
+
+(defun move-window-rect (hwnd rect)
+  (multiple-value-bind (left top right bottom)
+      (values-list rect)
+    (let ((x left)
+          (y top)
+          (w (- right left))
+          (h (- bottom top)))
+      (move-window hwnd x y w h))))
+
+(defun move-window (hwnd x y w h)
+  (winapi:MoveWindow hwnd x y w h 1))
+
+(defun set-window-style (hwnd style)
+  (winapi:SetWindowLong hwnd winapi:GWL_STYLE style))
+
+(defun get-window-style (hwnd)
+  (winapi:GetWindowLong hwnd winapi:GWL_STYLE))
+
+
+;; マウスを画面上部に移動するとメニューを表示する
+
+(defun fullscreen-mode-on-mouse-move ()
+  (interactive)
+  (when (and *fullscreen-mode-p*
+             *last-current-menu*)
+    (let ((y (second (get-cursor-position))))
+      (if (< y 40)
+          (set-menu *last-current-menu*)
+        (set-menu nil)))))
+(global-set-key #\MouseMove 'fullscreen-mode-on-mouse-move)
+
+(defun get-cursor-position ()
+  (let ((p (winapi:make-POINT)))
+    (winapi:GetCursorPos p)
+    (list (winapi:POINT-x p)
+          (winapi:POINT-y p))))
+
+;; 表示メニューに追加
+
+(defvar *fullscreen-mode-menu-tag* 'toggle-fullscreen-mode)
+(defvar *fullscreen-mode-menu-name* "全画面表示(&X)")
+(defun fullscreen-mode-setup-menu ()
+  (let ((menu (get-menu *app-menu* 'ed::view)))
+    (when menu
+      (delete-menu menu *fullscreen-mode-menu-tag*)
+      (add-menu-item menu
+                      *fullscreen-mode-menu-tag*
+                      *fullscreen-mode-menu-name*
+                      'toggle-fullscreen-mode
+#'(lambda () (if *fullscreen-mode-p* :check))))))
+;(setq *print-completion-list-hook*;print-completion-list-hookは、補完リストを表示するために使用される、
+ ;     '(lambda (list prefix &optional string)
+  ;    (popup-string (format nil "Possible completions are ~D
+;items: \n~{\n~A~}" (length list) list) (point))))
+(define-key ed::*c-mode-map* #\TAB 'dabbrev-expand)
+
+(defun case-by-case-tabkey()
+  
+  (interactive "*")
+  ;  (backword-char)
+  ;  (if LFD			; 改行が前の文字
+  (if
+      (equal (char-before(point)) #\LFD);その次の記号がダブルクォーテーション？
+      ;     (or (equal (char-before(point)) #\LFD) (equal (char-before(point)) #\SPACE));その次の記号がダブルクォーテーション？
+      (c-indent-line)
+    (dabbrev-popup)
+    )
+  )
+(add-hook 'ed::*csharp-mode-hook* #'(lambda ()
+				      (ac-mode-on)))
+;				      (define-key ed::*csharp-mode-map* #\TAB 'case-by-case-tabkey)))
+(defun case-by-case-tabkey-lisp()
+  (interactive "*")
+  ;  (backword-char)
+  ;  (if LFD			; 改行が前の文字
+  (if
+      (equal (char-before(point)) #\LFD);その次の記号がダブルクォーテーション？
+      (lisp-indent-line)
+    (dabbrev-popup)
+    )
+  )
+; (defun case-by-case-tabkey-php()
+;   (interactive "*")
+;   ;  (backword-char)
+;   ;  (if LFD			; 改行が前の文字
+;   (if
+;       (equal (char-before(point)) #\LFD);その次の記号がダブルクォーテーション？
+;       (lisp-indent-line)
+;     (dabbrev-popup)
+;     )
+;   )
+(undefine-key editor::*ruby-mode-map* #\TAB)
+(global-set-key #\TAB 'case-by-case-tabkey)
+
+(define-key ed::*lisp-mode-map* #\TAB 'case-by-case-tabkey-lisp)
+;;(define-key ed::*php-mode-map* #\TAB 'case-by-case-tabkey-php)
+; (global-set-key #\Left 'other-window)
+; (global-set-key #\Right 'move-previous-window) 
+;    M-x generic-comment-toggle-region           : リージョンのコメントアウトorアンコメントを行う
+;(global-set-key #)
+
+(defun indent-selection ()
+  (interactive)
+  (if (get-selection-type)
+      (indent-region (selection-mark) (selection-point))
+    (save-excursion
+      (and (yes-or-no-p "バッファ全体を一発インデントしますよ、")
+           (indent-region (point-min) (point-max))))))
+
+;;(global-set-key #\C-\M-q 'indent-selection)
+(defun delete-word (Direction)
+  (save-excursion
+    (save-restriction
+      (let
+          ;#initialize variables
+          (
+           (BEGIN (point))
+           END
+           )
+        ;#programs
+        (progn
+          (if
+              (or (equal Direction #'backward-word) (equal Direction #'forward-word))
+              (progn ;then
+                (funcall Direction)
+                (setf END (point))
+                (delete-region BEGIN END)
+                );end then
+            );end if
+          );end programs
+        );end let
+      );end save-restriction
+    );end save-excursion
+  );end defun
+
+;\C-BackSpaceで後方Word削除
+(defun delete-backward-word ()
+  (interactive "*")
+  (delete-word #'backward-word)
+  );defun
+
+;\C-DELで前方Word削除
+(defun delete-forward-word ()
+  (interactive "*")
+  (delete-word #'forward-word)
+  );defun
+(set-extended-key-translate-table exkey-C-backspace #\F13)
+(global-set-key #\F13 'backward-kill-word)
+(require "shell3")
+(add-hook 'ed::*shell-mode-hook*
+#'(lambda ()
+    (set-buffer-colors #(#x00FF00 #x000000 #x008080 #x000000 #xffffff))
+;(set-buffer-colors #(#x00CD00 #x000000 #x008080 #x000000 #xffffff))
+(set-local-window-flags (selected-buffer) *window-flag-line-number* nil)
+(refresh-screen))) 
+(defun call-terminal ()
+  (interactive)
+  (let ((ckw (string "C:/Users/hutoiti/Downloads/ckw-0.8.10-mod-bin/ckw-0.8.10-mod-bin/ckw.exe -cd " ))
+	(path (default-directory)))
+    (call-process (concat (string ckw) (string path)))
+    ))
+(undefine-key ctl-x-map #\c)
+(undefine-key *global-keymap*  #\F2)
+(define-key ctl-x-map #\c 'call-terminal)
+(define-key ctl-x-map #\F2 'call-terminal)
+(require "shell-alt") 
+
+;  画面横幅を 半角96桁に変更
+(add-hook 'ed::*shell-mode-hook* 
+  #'(lambda () 
+    (set-buffer-fold-width 96)
+    (refresh-screen)  ; ←これは必要なのかよく分かってない
+  )
+)
+(setq mode-line-format "--%*- %b %/%% (%M) [%k:%l]  %f")
+
+(undefine-key *global-keymap*  #\C-z)
+(undefine-key *global-keymap*  #\C--)
+(global-set-key #\C-z #'(lambda ()
+			  (interactive)
+		       (winapi:ShowWindow (get-window-handle) 6)))
+(add-hook '*post-command-hook*
+	  #'(lambda ()
+	      (when (eql (get-selection-type) 2)
+		(message "Selected chars: ~D"
+			 (- (abs (- (selection-point)
+				    (selection-mark)))
+			    (abs (- (save-excursion (goto-char (selection-point)) (current-line-number))
+				    (save-excursion (goto-char (selection-mark)) (current-line-number)))))))))
+(setq *status-bar-format* "T")
+
+; (global-set-key #\C-+ 'increase-text-font-size)
+; (global-set-key #\C-- 'decrease-text-font-size)
+;
+; (define-key ed::*html+-mode-map* #\C-1 #'(lambda()
+; 					   (interactive)
+; 					   (shell-execute (get-buffer-file-name))))
+(defun kill-scratch ()
+  (interactive)
+  (let ((*kill-buffer-kills-scratch* t))
+    (switch-to-buffer "*scratch*")
+    (delete-buffer (selected-buffer))))
+(add-hook '*post-startup-hook* #'(lambda ()(show-command-bar 'buffer-bar)(set-menu nil)(layered-window-set-opacity 96)(winapi:MoveWindow (get-window-handle) 0 0 1300 600 1)(kill-scratch)(box-drawings-mode)));set-menuの引数nilで非表示
+;; 2 画面用
+(setq *filer-primary-file-mask* '("*"))
+(setq *filer-secondary-file-mask* '("*"))
+(setq *xyzzyenv-show-flag* :hide)
+(add-hook '*init-app-menus-hook*
+          #'(lambda ()
+              (set-filer-font :face "Meiryo UI" :size 14)))
+(export 'ed::html+-mode "ed")
+(autoload 'html+-mode "html+-mode" t)
+(pushnew '("\\.s?html?$" . html+-mode) *auto-mode-alist* :test 'equal)
+; (let ((*xyzzyenv-show-flag* :hide))
+;   (make-process "notepad" :show :maximize))
+;(load-library "smooth-scroll.l")
+(global-set-key '(#\C-x #\h) 'selection-whole-buffer)
+(load-library "html+-mode.l")
+(define-key ed::*html+-mode-map* #\C-1 #'(lambda()
+					   (interactive)
+					   (shell-execute (get-buffer-file-name))))
+(add-hook 'ed::*html+-mode-hook*
+#'(lambda ()
+    (set-buffer-colors #(#xffffff #x000000 #x008080 #x000000 #xffffff))))
+(add-hook 'ed::*ruby-mode-hook*
+#'(lambda ()
+    (set-buffer-colors #(#xffffff #x000000 #x008080 #x000000 #xffffff))))
+(defun walk-up ()
+  (interactive)
+    (or (scroll-window -1)
+    (previous-virtual-line 1)
+    (goto-line (buffer-lines))))
+
+(defun walk-down ()
+  (interactive)
+    (let ((goal (goal-column))
+          (test (save-window-excursion (scroll-window (window-lines)))))
+      (set-goal-column goal)
+      (if test
+          (scroll-window 1)
+        (or (next-virtual-line 1)
+            (goto-line 0)))))
+
+(defun walk-left ()
+  (interactive)
+    (if (zerop (current-column))
+        (goto-eol)
+      (backward-char 1)))
+
+(defun walk-right ()
+  (interactive)
+  (forward-char 1)
+  (if (zerop (current-column))
+    (previous-line 1)))
+(global-set-key #\Up 'walk-up)
+(global-set-key #\Down 'walk-down) 
+(global-set-key #\Left 'walk-left)
+(global-set-key #\Right 'walk-right) 
+(setq-default *paren-paren-attribute* '(:background 10))
+(defun match-paren (&optional arg)
+ "Go to the matching parenthesis if on parenthesis otherwise insert %."
+ (interactive "p")
+ (cond 
+   ((looking-at "[([{]") (forward-sexp 1) (backward-char))
+   ((looking-at "[])}]") (forward-char) (backward-sexp 1))
+   (t (self-insert-command (or arg 1)))))
+(global-set-key #\% 'match-paren)
+(provide "files+")
+(in-package "editor")
+(require "grepd")
+(export '(files+-grep))
+(defvar *files+-grep* nil)
+;;; ------------------------------------------------------------------------
+;;; 機能：フォルダをドラッグ＆ドロップするとファイラを起動
+;;; 注意：*drag-and-drop-hook*を置き換えてるのは他の拡張Lispに影響がある
+;;;       可能性有り
+(defun files+-open-directory (filename)
+  (when (and (file-directory-p filename)
+             (not *files+-grep*))
+    ; 経験的に待ちを入れる
+    (sit-for 0.01)
+    ; とりあえずプライマリだけ設定しなおしてファイラで開く。
+    (setq *filer-primary-directory* filename)
+    (message "files+-open-directory: ~A" filename)
+    (filer filename t "files+" t)
+    (error "files+-open-directory: done")))
+(add-hook '*before-find-file-hook* 'files+-open-directory)
+
+(defun files+-drag-and-drop-hook (window files)
+  ; プライマリとセカンダリの設定だけして
+  ; 実際のファイラのオープンはfiles+-open-directoryに任せる。
+  (when (and (car files)
+             (cadr files)
+             (file-directory-p (car files))
+             (file-directory-p (cadr files)))
+    (setq *filer-primary-directory* (car files))
+    (setq *filer-secondary-directory* (cadr files)))
+  (default-drag-and-drop-hook window files))
+(setq *drag-and-drop-hook* #'files+-drag-and-drop-hook)
+(load-library "shell-highlighting")
+(add-hook '*shell-mode-hook* 'shell-mode-enable-highlighting)
+(defparameter *layered-p* 0)
+(undefine-key *global-keymap*  #\F9)
+(global-set-key #\F9 #'(lambda ()
+			 (interactive)
+			 (cond ((= 0 *layered-p*)
+				(progn (layered-window-set-opacity 65)(setf *layered-p* 1)))
+			       ((= 1 *layered-p*)
+				(progn (layered-window-set-opacity 88)(setf *layered-p* 2)))
+			       ((< 1 *layered-p*)
+				(progn (layered-window-set-opacity 100)(setf *layered-p* 0))))))
+(setq title-bar-format "%b")
+(require "test")
+(undefine-key ed::*test-mode-map* #\TAB)
+(define-key ed::*test-mode-map* #\TAB 'case-by-case-tabkey)
+;(define-key ed::*test-mode-map* #\TAB 'dabbrev-expand)
+(push '("\\.nk$" . test-mode) *auto-mode-alist*)
+;(undefine-key *global-keymap* '(#\C-c #\C-c))
+;(global-set-key '(#\C-c #\c) 'vi)
+;(global-set-key '(#\C-c #\C-c) 'vi)
+(require "psearch")
+
+
+;xyzzyがアクティブになったとき、viモード、マウスは端に。
+;(global-set-key #\M-q #'(lambda () (interactive) (setq var-vi t)(vi)(set-buffer (find-buffer "日記.nk"))(end-of-buffer)))
+(global-set-key #\M-q #'(lambda () (interactive)(set-buffer (find-buffer "日記.nk"))(end-of-buffer)(toggle-ime t)))
+;(global-set-key #\M-a #'(lambda () (interactive) (setq var-vi t)(vi)(set-buffer (find-buffer "*Shell*"))))
+;(global-set-key #\M-a #'(lambda () (interactive) (set-buffer (find-buffer "*Shell*"))))
+(global-set-key #\M-a
+		#'(lambda ()
+		(interactive)
+		(if (find-buffer "*Shell*")
+		    (progn
+		    (set-buffer (find-buffer "*Shell*"))
+		      (end-of-buffer)(toggle-ime nil))
+		  (progn
+		    (shell)
+		    (set-buffer (find-buffer "*Shell*"))
+		    (end-of-buffer)(toggle-ime nil)))))
+(defparameter *buffer-bar-p* nil)
+(global-set-key #\F7 #'(lambda ()
+			 (interactive)
+			 (if *buffer-bar-p*
+			     (progn (hide-tool-bar 'buffer-bar )(setf *buffer-bar-p* nil))
+			   (progn (show-tool-bar 'buffer-bar :top)(setf *buffer-bar-p* t)))))
+(global-set-key #\F9 #'(lambda ()
+			 (interactive)
+			 (cond ((= 0 *layered-p*)
+				(progn (layered-window-set-opacity 65)(setf *layered-p* 1)))
+			       ((= 1 *layered-p*)
+				(progn (layered-window-set-opacity 88)(setf *layered-p* 2)))
+			       ((< 1 *layered-p*)
+				(progn (layered-window-set-opacity 100)(setf *layered-p* 0))))))
+(global-set-key #\C-F10 #'(lambda ()
+			    (interactive)
+			    (if *fullscreen-mode-p*
+				(progn
+;				  (setq var-vi t)
+;				  (vi);すぐに入力できるように。
+				  (delete-other-windows)
+				        (set-local-window-flags (selected-window)
+			      *window-flag-vscroll-bar* nil)
+				  (set-local-window-flags (selected-window)
+							  *window-flag-line-number* nil)
+				  (hide-tool-bar 'buffer-bar )(setf *buffer-bar-p* nil)
+				  (set-local-window-flags (selected-window)*window-flag-mode-line*  nil))
+			      (progn
+				(setf *fullscreen-mode-p* t) 
+				'toggle-fullscreen-mode
+;			      (setq var-vi t)
+;				  (vi);すぐに入力できるように。
+				  (delete-other-windows)
+				        (set-local-window-flags (selected-window)
+			      *window-flag-vscroll-bar* nil)
+				  (set-local-window-flags (selected-window)
+							  *window-flag-line-number* nil)
+				  (hide-tool-bar 'buffer-bar )(setf *buffer-bar-p* nil)
+				(set-local-window-flags (selected-window)*window-flag-mode-line*  nil)))))
+(defun toggle-app-menu ()
+  (interactive)
+
+  (set-menu (unless (current-menu)
+	      *app-menu*))
+    )
+(defun toggle-fullscreen-mode ()
+  (interactive)
+  (if *fullscreen-mode-p*;フルスクリーンモード　オンの時
+      (progn(leave-fullscreen-mode)(win-user:move-cursor-window-lt));leave-fullscreen-modeをと; りやめる。
+    (progn (enter-fullscreen-mode)(win-user:move-hindrance-cursor-window-lt)(layered-window-set-opacity 88)(setf *layered-p* 2))));nilな;
+(defun syutyu ()
+  (interactive)
+;  (toggle-app-menu)
+
+  (toggle-fullscreen-mode) (show-tool-bar 'buffer-bar :top))
+(global-set-key #\F8 'syutyu)
+;(use-package :anything.source.function)
+(load-file "C:/Users/hutoiti/xyzzy/site-lisp/function.l")
+#| ---- for psearch ----------------------------------------------- |#
+
+ (global-set-key #\C-] 'psearch-popup-string-list)
+ (global-set-key #\M-]  'psearch-popup-list-again)
+; (global-set-key #\M-F5 'psearch-popup-list-again)
+; (global-set-key #\C-] #'(lambda () (interactive) (vi)(psearch-popup-string-list)))
+; (global-set-key #\M-]  #'(lambda () (interactive)(vi)(psearch-popup-list-again)))
+;(global-set-key #\C-: 'psearch-popup-string-list-word-search)
+;(global-set-key #\M-: 'psearch-popup-list-again-word-search)
+;(global-set-key #\C-M-] 'psearch-goto-return-point)
+
+;(setq *psearch-string-synchronization* t)
+
+;(global-set-key '(#\C-c #\:) 'psearch-popup-list-again-regexp)
+
+;  (setq *psearch-coloring* t)
+;  (global-set-key '(#\C-c #\]) 'psearch-delete-attributes)
+;  (add-hook '*show-match-hook* 'psearch-coloring)
+(load-file "C:/Users/hutoiti/xyzzy/site-lisp/vi.l")
+;colorprint 
+(setf *temp-html-file-path* "c:/colorprint.html")
+(require "colorprint")

@@ -1,0 +1,5 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; rabbit-mode
+(require "rabbit-mode")
+(pushnew '("\\.rb$" . rabbit-mode) *auto-mode-alist* :test 'equal)

@@ -1,0 +1,130 @@
+; $Id: MOF,v 1.1 2003/10/15 16:32:04 miyamuko Exp $
+;; 2.2 Property Data Types
+boolean
+char16
+datetime
+real32
+real64
+sint16
+sint32
+sint64
+sint8
+string
+uint16
+uint32
+uint64
+uint8
+ref
+
+;*2
+;; 4.5.4 Class and Property Qualifiers
+;;   The recognized flavor types
+EnableOverride
+DisableOverride
+ToSubclass
+Restricted
+Translatable
+
+;*0
+;; Appendix A MOF SYNTAX GRAMMAR DESCRIPTION
+any
+as
+class
+false
+flavor
+instance
+method
+null
+of
+parameter
+property
+qualifier
+ref
+reference
+schema
+scope
+true
+
+
+;*1
+;; CIM Core Qualifiers 2.6
+Abstract
+Aggregate
+Aggregation
+Alias
+ArrayType
+Association
+BitMap
+BitValues
+Composition
+Counter
+Delete
+Deprecated
+Description
+DisplayName
+DN
+EmbeddedObject
+Expensive
+Experimental
+Gauge
+Ifdeleted
+In
+Indication
+Invisible
+Key
+Large
+MappingStrings
+Max
+MaxLen
+MaxValue
+Min
+MinValue
+ModelCorrespondence
+NonLocal
+NonLocalType
+NullValue
+Octetstring
+Out
+Override
+Propagated
+PropertyUsage
+Provider
+Read
+Required
+Revision
+Schema
+Source
+SourceType
+Static
+Syntax
+SyntaxType
+Terminal
+TriggerType
+Units
+UnknownValues
+UnsupportedValues
+ValueMap
+Values
+Version
+Weak
+Write
+
+;; CIM Core Qualifiers 2.7
+MinLen
+
+;; CIM Core Qualifiers 2.8
+Exception
+
+
+;*2
+;; 4.10 Compiler Directives
+;;   use regexp keyword
+; #pragma
+; include
+; instancelocale
+; locale
+; namespace
+; nonlocal
+; nonlocaltype
+; source
+; sourcetype

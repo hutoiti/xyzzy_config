@@ -1,0 +1,69 @@
+;;; -*- Mode: Lisp -*-
+; $Id: sample.www,v 1.5 2005/11/24 15:24:23 torihat Exp $
+;
+; sample.www for www-mode
+;
+; by HATTORI Masashi
+
+(in-package "www")
+
+; w3mでレンダリングする
+;(require "www/www-w3m")
+; w3mのパス
+;(setq *www-w3m-command*
+;      (map-slash-to-backslash "C:/cygwin/usr/bin/w3m.exe"))
+; w3m on
+;(www-w3m-toggle t)
+
+; スタートページ [*www-bookmark-file*]
+;(setq *www-start-page* "http://www.google.co.jp/")
+
+; ダウンロードするディレクトリ ["xyzzy"]
+;(setq *www-save-directory* "C:/Temp")
+
+; ブックマークファイル["xyzzy/etc/bookmark.html"]
+;(setq *www-bookmark-file* "~/bookmark.html")
+
+; PROXY のホスト
+;(setq *www-proxy-host* "your.proxy.server")
+; PROXY のポート
+;(setq *www-proxy-port* 8080)
+; PROXY を経由しないホストのリスト
+;(setq *www-direct-connect-list* '("direct1.host"
+;				   "direct2.host"))
+
+; Proxy Authorization
+;(setq *www-proxy-user* "proxy_user")
+;(defvar *www-proxy-pass* "proxy_password")
+
+; Anonymous FTP パスワード
+(setq *www-anon-ftp-pass* "your_email@example.com")
+
+; mailto: の設定（デフォルトは標準のメーラー）
+; KaMailを使う場合(KaMail-0.0.2.4以降)
+;(setq *www-mailer-func* #'(lambda (addr)
+;			    (user::kamail-mailto addr)))
+
+;リンクの色
+;(setq *www-link-fgcolor* 4)
+;(setq *www-link-fgcolor* nil)
+;(setq *www-overlay-fgcolor* 4)
+;(setq *www-overlay-bgcolor* 3)
+
+;Formの色
+;(setq *www-form-fgcolor* 1)
+
+;前ページのencodingを引き継ぐ
+;(setq *www-use-previous-encoding* t)
+
+;リストの行頭文字
+;(setq *www-tag-list-char* '("0 " "- " "* " "+ " "= "))
+
+;Cookieを食べる
+;(setq *www-cookie-enable* t)
+;CookieのHostが一致しないときには食べない
+;(setq *www-cookie-ignore-host-mismatch* t)
+;CookieのHostが一致しないときに警告
+;(setq *www-cookie-alert-host-mismatch* t)
+;Cookieを食べる時常に警告
+;(setq *www-cookie-alert-always* t)

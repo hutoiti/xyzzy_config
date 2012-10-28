@@ -1,0 +1,51 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; mof-mode
+(require "mof-mode")
+(pushnew '("\\.\\(mof\\|mfl\\)$" . mof-mode) *auto-mode-alist* :test 'equal)
+
+;; 補完キーの設定を Ctrl + . にする（デフォルト M-TAB)
+(add-hook '*mof-mode-hook*
+          '(lambda ()
+               (local-set-key #\C-. 'mof-completion)))
+
+;; wbemservices のコマンドを定義 (環境変数 WBEM_HOME を設定する必要があります。)
+;; mof2html を実行し HTML を生成してブラウザで開く
+(mof-define-command 'ed::mof-to-html
+                    (merge-pathnames "bin/mof2html.bat" (si:getenv "WBEM_HOME"))
+                    :name "JWS mof2html"
+                    :wait t
+                    :after-hook '(lambda (exit)
+                                  (when (zerop exit)
+                                    (shell-execute (merge-pathnames "bin/xml/index.html" (si:getenv "WBEM_HOME"))))))
+;; mof2bean を実行し Java ファイルを生成してファイラで開く
+(mof-define-command 'ed::mof-to-bean
+                    (merge-pathnames "bin/mof2bean.bat" (si:getenv "WBEM_HOME"))
+                    :opts (list "user" "pass" (merge-pathnames "bin/bean.txt" (si:getenv "WBEM_HOME")))
+                    :name "JWS mof2bean"
+                    :wait t
+                    :after-hook '(lambda (exit)
+                                  (when (zerop exit)
+                                    (multiple-value-bind (files ok)
+                                        (filer (merge-pathnames "bin/bean" (si:getenv "WBEM_HOME")) t)
+                                      (when ok
+                                        (find-file files))))))
+;; mofcomp する。コマンドの終了は待たない。
+(mof-define-command 'ed::mof-compile-jws
+                    (merge-pathnames "bin/mofcomp.bat" (si:getenv "WBEM_HOME"))
+                    :key #\F6
+                    :opts '("-u" "user" "-p" "pass")
+                    :name "JWS mofcomp"
+                    :before-hook '(lambda ()
+                                   (yes-or-no-p "本当に mofcomp するの?")))
+
+;; Include ディレクトリを追加
+(pushnew "D:/CIM_V28Prelim-MOFs/" *mof-include-directory-list*)
+
+;; CIM Schema v2.8 のインデントスタイル
+(setf *mof-indent-level* 3)
+(setf *mof-qualifier-offset* 3)
+
+;; CIM Schema v2.7 のインデントスタイル
+(setf *mof-indent-level* 4)
+(setf *mof-qualifier-offset* 4)

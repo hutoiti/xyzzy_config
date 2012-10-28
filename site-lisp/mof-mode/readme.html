@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>mof-mode - MOF ファイルを編集したりする</title>
+<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+<style type="text/css" media="screen,all">
+<!--
+/* @import styles/document.css
+ * @date Tue Aug 10 01:28:40 2004
+ */
+
+/* ======== @import "article.css"; ======== */
+@charset "Shift_JIS";
+
+/* body */
+body {
+    margin: 2em;
+    padding: 0;
+}
+
+/* heading */
+h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+/* lists */
+ul, ol {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+dd ul {
+    padding-left: 0;
+    margin-left: 1em;
+}
+
+dd ul ul {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+li {
+    line-height: 1.2;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0.2em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd, dd p, li p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+pre {
+    padding: 0.4em;
+    margin: 1em;
+    font-size: 90%;
+    overflow: auto;
+}
+
+p {
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+code, kbd, dfn {
+    font-size: 100%;
+}
+
+/* ======== end @import "article.css"; ==== */
+
+
+/* ======== @import "color.css"; ======== */
+body {
+    color: black;
+    font-family: Verdana;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #005a9c;
+    font-family: Verdana;
+}
+h1 {
+    font-size: 260%;
+}
+h2 {
+    font-size: 200%;
+}
+h3 {
+    font-size: 160%;
+}
+h4 {
+    font-size: 140%;
+}
+h5 {
+    font-size: 120%;
+}
+h6 {
+    font-size: 100%;
+}
+
+pre {
+    color: #000;
+    background: #f6f6ff;
+    border: 1px solid #99f;
+}
+
+dt {
+    border-bottom: 1px solid #eef;
+}
+
+dt code {
+    font-family: Verdana;
+}
+
+a:link {
+    color: #00C;
+    background: transparent;
+}
+a:visited {
+    color: #609;
+    background: transparent;
+}
+a:active, a:hover {
+    color: #C00;
+    background: transparent;
+}
+
+/*
+ * class
+ */
+
+.label-not-found {
+    color: white;
+    background: red;
+}
+
+/* ======== end @import "color.css"; ==== */
+
+-->
+</style>
+</head>
+<body>
+<h1><a name="" href="#"></a> <a name="label-0">mof-mode - MOF ファイルを編集したりする</a></h1><!-- RDLabel: "mof-mode - MOF ファイルを編集したりする" -->
+
+<ul>
+<li>Author:  miyamuko <a href="mailto:miyamuko (at) mtb.biglobe.ne.jp">&lt;URL:mailto:miyamuko (at) mtb.biglobe.ne.jp&gt;</a></li>
+<li>URL: <a href="http://miyamuko.s56.xrea.com/xyzzy/mof-mode.html">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/mof-mode.html&gt;</a></li>
+<li>Version: $Id: mof-mode.l,v 1.16 2004/08/09 14:03:12 miyamuko Exp $</li>
+</ul>
+<h2><a name="1" href="#1">1</a> <a name="label-1">説明</a></h2><!-- RDLabel: "説明" -->
+
+<p><a href="http://www.dmtf.org/education/mof">MOF</a> ファイルを編集するための
+major mode です。</p>
+<p>今のところ以下のことができます。</p>
+<ul>
+<li>MOF のキーワードと
+  <a href="http://www.dmtf.org/standards/cim/cim_schema_v29_prelim/">CIM Schema v2.9 Preliminary</a>
+  で定義されている Core Qualifier の色づけ＆補完</li>
+<li>Qualifier を認識したインデント</li>
+<li>Qualifier 宣言もちゃんとインデント</li>
+<li>クラスと Qualifier のタグジャンプ</li>
+<li>Values と ValueMap Qualifier の対応付け</li>
+<li>MOF の構文要素を意識したカーソル移動・マーキング</li>
+<li>include ファイルのオープン</li>
+<li>外部コマンドの登録</li>
+<li>CIM Specification v2.2 Appendix C で定義されている「単位」の補完＆挿入</li>
+<li>MOF の文字列だけを ispell。(主に Description を想定)</li>
+</ul>
+<h2><a name="2" href="#2">2</a> <a name="label-2">インストール</a></h2><!-- RDLabel: "インストール" -->
+
+<p><a href="http://www.mirai.ne.jp/~gyo/xyzzy/ni.html">NetInstaller</a> でインストールした場合は 3 以降を、
+NetInstaller + <code>ni-autoload</code> を使っている人は 4 以降で OK です。</p>
+<ol>
+<li><p>アーカイブをダウンロードします。</p>
+<p><a href="http://miyamuko.s56.xrea.com/xyzzy/archives/mof-mode.zip">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/archives/mof-mode.zip&gt;</a></p></li>
+<li>アーカイブを展開して、$XYZZY/site-lisp 配下にファイルをコピーします。</li>
+<li><p>拡張子が mof また mfl のファイルを開いたときに自動的に mof-mode になるように
+    ~/.xyzzy または $XYZZY/site-lisp/siteinit.l に以下のコードを追加します。</p>
+<pre>;; mof-mode
+(require "mof-mode")
+(pushnew '("\\.\\(mof\\|mfl\\)$" . mof-mode) *auto-mode-alist* :test 'equal)</pre></li>
+<li><p>設定を反映させるには xyzzy を再起動してください。</p>
+<p>※siteinit.l に記述した場合には再ダンプが必要です。</p></li>
+</ol>
+<h2><a name="3" href="#3">3</a> <a name="label-3">リファレンス</a></h2><!-- RDLabel: "リファレンス" -->
+
+<h3><a name="3.1" href="#3.1">3.1</a> <a name="label-4">キー割り当て</a></h3><!-- RDLabel: "キー割り当て" -->
+
+<dl>
+<dt><a name="label-5" id="label-5"><kbd>TAB</kbd></a></dt><!-- RDLabel: "TAB" -->
+<dd>
+<p>インデントします。</p>
+<p>Qualifier 宣言を複数行にわたって書く場合は次のようにインデントします。</p>
+<pre>Qualifier Key : boolean = false,
+                Scope(property, reference),
+                Flavor(DisableOverride);</pre>
+</dd>
+<dt><a name="label-6" id="label-6"><kbd>RET</kbd></a></dt><!-- RDLabel: "RET" -->
+<dd>
+改行＋インデント付け＋文字列を自動的に閉じたりします。
+</dd>
+<dt><a name="label-7" id="label-7"><kbd>M-TAB</kbd></a></dt><!-- RDLabel: "M-TAB" -->
+<dd>
+キーワードと CIM の Core Qualifier を補完します。
+<ul>
+<li>先行する文字があればその文字から始まるキーワードをツールチップで表示します。
+      先行する文字がなければすべてのキーワードを表示します。</li>
+<li>Units Qualifier の中で実行すると CIM Specification v2.2 Appendix C
+      で定義されている単位を補完します。</li>
+</ul>
+</dd>
+<dt><a name="label-8" id="label-8"><kbd>F5</kbd></a></dt><!-- RDLabel: "F5" -->
+<dd>
+<p>現在のバッファを構文チェックします。</p>
+<p>構文チェック用のコマンドは <var>*mof-lint-command*</var> で変更できます。</p>
+</dd>
+<dt><a name="label-9" id="label-9"><kbd>Shift-F5</kbd></a></dt><!-- RDLabel: "Shift-F5" -->
+<dd>
+<p>現在のバッファをコンパイルする。</p>
+<p>コンパイル用のコマンドは <var>*mof-compiler-command*</var> で変更できます。</p>
+</dd>
+<dt><a name="label-10" id="label-10"><kbd>C-c RET</kbd></a></dt><!-- RDLabel: "C-c RET" -->
+<dd>
+<p><code>#pragma include</code> でインクルードしているファイルを開きます。</p>
+<p>カレントディレクトリを探し、見つからない場合は include ディレクトリを順に探します。
+include ディレクトリは <var>*mof-include-directory-list*</var> で追加できます。</p>
+<p><code>mof-find-include-file-dialog</code> を使えば include
+しているファイルの一覧をダイアログから選択し開くことができます。</p>
+</dd>
+<dt><a name="label-11" id="label-11"><kbd>C-c C-c</kbd></a></dt><!-- RDLabel: "C-c C-c" -->
+<dd>
+リージョンをコメントアウトします。
+</dd>
+<dt><a name="label-12" id="label-12"><kbd>C-c C-u</kbd></a></dt><!-- RDLabel: "C-c C-u" -->
+<dd>
+リージョンのコメントを解除します。
+</dd>
+<dt><a name="label-13" id="label-13"><kbd>C-/</kbd></a></dt><!-- RDLabel: "C-/" -->
+<dd>
+行のコメント・非コメントを切り替えます。
+</dd>
+<dt><a name="label-14" id="label-14"><kbd>C-c n</kbd></a></dt><!-- RDLabel: "C-c n" -->
+<dd>
+<p>現在の Namespace をツールチップで表示します。</p>
+<p><code>#pragma namespace</code> がない場合は default namespace (\\root\cimv2) を表示します。</p>
+</dd>
+<dt><a name="label-15" id="label-15"><kbd>C-c v v</kbd></a></dt><!-- RDLabel: "C-c v v" -->
+<dd>
+<p>Values と ValueMap Qualifier 上で実行すると、
+対応する値をツールチップで表示します。</p>
+<p>例</p>
+<pre>ValueMap { "0", "1", "2", "3" },
+Values { "Deployable", "Installable", "Executable", "Running" }</pre>
+<p><code>"2"</code> の上で実行すると <code>Installable</code> をツールチップで表示します。</p>
+</dd>
+<dt><a name="label-16" id="label-16"><kbd>C-c v g</kbd></a></dt><!-- RDLabel: "C-c v g" -->
+<dd>
+<p>Values と ValueMap Qualifier 上で実行すると、対応する値の先頭に移動します。</p>
+<p>例</p>
+<pre>ValueMap { "0", "1", "2" },
+Values {
+  "Pentium(R) III Processor with Intel(R) SpeedStep(TM) "
+  "Technology", "Pentium(R) 4", "Intel(R) Xeon(TM)"
+},</pre>
+<p><code>"0"</code> に上で実行すると <code>"Pentium(R) III Processor..."</code> の先頭に移動します。
+連続する文字列もちゃんと考慮してます。</p>
+</dd>
+<dt><a name="label-17" id="label-17"><kbd>C-c v d</kbd></a></dt><!-- RDLabel: "C-c v d" -->
+<dd>
+<p>一時バッファを作成して Values と ValueMap の対応を表示します。
+Qualifier の中で実行してください。</p>
+<pre>ValueMap { "0", "1", "2", "3", "4" },
+Values { "Deployable", "Installable", "Executable", "Running" }</pre>
+<p>実行例</p>
+<pre>0 =&gt; Deployable
+1 =&gt; Installable
+2 =&gt; Executable
+3 =&gt; Running
+4 =&gt; nil</pre>
+</dd>
+<dt><a name="label-18" id="label-18"><kbd>C-c v m</kbd></a></dt><!-- RDLabel: "C-c v m" -->
+<dd>
+<p>ValueMap を自動生成しカーソル位置に挿入します。Qualifier の中で実行してください。</p>
+<p>使用前</p>
+<pre>Values { "Deployable", "Installable", "Executable", "Running" }</pre>
+<p>使用後</p>
+<pre>ValueMap { "0", "1", "2", "3" },
+Values { "Deployable", "Installable", "Executable", "Running" }</pre>
+<p>連番は 0 から始まります。0 以外ではじめたい場合はソースでもいじってください。</p>
+<p>65 桁を超える場合勝手に改行します。
+fold する桁数をかえたい場合、前置引数で指定します。</p>
+<pre>C-u 70 C-c v m</pre>
+</dd>
+<dt><a name="label-19" id="label-19"><kbd>C-M-Space</kbd></a></dt><!-- RDLabel: "C-M-Space" -->
+<dd>
+直近のクラス、インスタンス、Qualifier 宣言をマークします。
+</dd>
+<dt><a name="label-20" id="label-20"><kbd>C-M-f</kbd></a></dt><!-- RDLabel: "C-M-f" -->
+<dt><a name="label-21" id="label-21"><kbd>C-M-b</kbd></a></dt><!-- RDLabel: "C-M-b" -->
+<dd>
+Qualifier list の開始点と終了点を行ったり来たりします。
+</dd>
+<dt><a name="label-22" id="label-22"><kbd>C-M-n</kbd></a></dt><!-- RDLabel: "C-M-n" -->
+<dt><a name="label-23" id="label-23"><kbd>C-M-p</kbd></a></dt><!-- RDLabel: "C-M-p" -->
+<dd>
+クラス、インスタンス、Qualifier 宣言、メソッド、プロパティを行ったり来たりします。
+</dd>
+</dl>
+<h3><a name="3.2" href="#3.2">3.2</a> <a name="label-24">コマンド</a></h3><!-- RDLabel: "コマンド" -->
+
+<dl>
+<dt><a name="label-25" id="label-25"><code>mof-completion ()</code></a></dt><!-- RDLabel: "mof-completion" -->
+<dd>
+<p>補完します。キー設定を変える場合は以下を .xyzzy に追加します。</p>
+<pre>;; 補完キーの設定を Ctrl + . にする（デフォルト M-TAB)
+(add-hook '*mof-mode-hook*
+          '(lambda ()
+               (local-set-key #\C-. 'mof-completion)))</pre></dd>
+<dt><a name="label-26" id="label-26"><code>mof-define-command (<var>symbol</var> <var>command</var> &amp;<var>key</var> <var>opts</var> <var>before</var>-<var>hook</var> <var>after</var>-<var>hook</var> <var>key</var> <var>name</var> <var>output</var> <var>dir</var>)</code></a></dt><!-- RDLabel: "mof-define-command" -->
+<dd>
+<p>バッファのファイル名を引数に実行する外部コマンドを定義します。</p>
+<dl>
+<dt><a name="label-27" id="label-27">symbol</a></dt><!-- RDLabel: "symbol" -->
+<dd>
+<p>作成するコマンドのシンボルを指定します。</p>
+<p>関数名とかメニューのタグ名だったりします。</p>
+</dd>
+<dt><a name="label-28" id="label-28">command</a></dt><!-- RDLabel: "command" -->
+<dd>
+オプションなしでコマンドを指定します。
+</dd>
+<dt><a name="label-29" id="label-29">opts</a></dt><!-- RDLabel: "opts" -->
+<dd>
+コマンドのオプションをリストで指定します。
+</dd>
+<dt><a name="label-30" id="label-30">wait</a></dt><!-- RDLabel: "wait" -->
+<dd>
+コマンドの実行が終了するのを待つ場合は <var>non-nil</var> を指定します。
+</dd>
+<dt><a name="label-31" id="label-31">key</a></dt><!-- RDLabel: "key" -->
+<dd>
+<p>バインドするキーを指定します。</p>
+<p>ショートカットキーを指定しない場合は <var>nil</var> を指定します。</p>
+</dd>
+<dt><a name="label-32" id="label-32">name</a></dt><!-- RDLabel: "name" -->
+<dd>
+<p>メニューの項目名を指定します。</p>
+<p>メニューに追加しない場合は <var>nil</var> を指定します。</p>
+</dd>
+<dt><a name="label-33" id="label-33">output</a></dt><!-- RDLabel: "output" -->
+<dd>
+<p>コマンドの実行結果を出力するバッファ名を指定します。</p>
+<p>省略時は <var>*mof-command-buffer-name*</var> です。</p>
+</dd>
+<dt><a name="label-34" id="label-34">dir</a></dt><!-- RDLabel: "dir" -->
+<dd>
+<p>コマンド実行時のディレクトリを指定します。</p>
+<p>省略時はコマンドが置いてあるディレクトリです。
+で、それも取れない場合は mof ファイルがあるディレクトリです。</p>
+</dd>
+<dt><a name="label-35" id="label-35">before-hook</a></dt><!-- RDLabel: "before-hook" -->
+<dd>
+コマンドの実行前に実行するフックを指定します。
+<ul>
+<li>フックの実行結果が <var>nil</var> の場合はコマンドを実行しません。</li>
+<li>フックが指定されていない場合、フックの実行結果が <var>non-nil</var>
+          の場合はコマンドを実行します。</li>
+</ul>
+</dd>
+<dt><a name="label-36" id="label-36">after-hook</a></dt><!-- RDLabel: "after-hook" -->
+<dd>
+<p>コマンドの実行後に実行するフックを指定します。</p>
+<p>フックは引数を一つとります。wait の値によって変わります。</p>
+<ul>
+<li>wait が <var>non-nil</var> の場合: コマンドの終了ステータス。</li>
+<li>wait が <var>nil</var> の場合: プロセス (make-process の戻り値)。</li>
+</ul>
+</dd>
+</dl>
+<p>例</p>
+<pre>;; wbemservices のコマンドを定義 (環境変数 WBEM_HOME を設定する必要があります。)
+;; mof2html を実行し HTML を生成してブラウザで開く
+(mof-define-command 'ed::mof-to-html
+                    (merge-pathnames "bin/mof2html.bat" (si:getenv "WBEM_HOME"))
+                    :name "JWS mof2html"
+                    :wait t
+                    :after-hook '(lambda (exit)
+                                  (when (zerop exit)
+                                    (shell-execute (merge-pathnames "bin/xml/index.html" (si:getenv "WBEM_HOME"))))))
+;; mof2bean を実行し Java ファイルを生成してファイラで開く
+(mof-define-command 'ed::mof-to-bean
+                    (merge-pathnames "bin/mof2bean.bat" (si:getenv "WBEM_HOME"))
+                    :opts (list "user" "pass" (merge-pathnames "bin/bean.txt" (si:getenv "WBEM_HOME")))
+                    :name "JWS mof2bean"
+                    :wait t
+                    :after-hook '(lambda (exit)
+                                  (when (zerop exit)
+                                    (multiple-value-bind (files ok)
+                                        (filer (merge-pathnames "bin/bean" (si:getenv "WBEM_HOME")) t)
+                                      (when ok
+                                        (find-file files))))))
+;; mofcomp する。コマンドの終了は待たない。
+(mof-define-command 'ed::mof-compile-jws
+                    (merge-pathnames "bin/mofcomp.bat" (si:getenv "WBEM_HOME"))
+                    :key #\F6
+                    :opts '("-u" "user" "-p" "pass")
+                    :name "JWS mofcomp"
+                    :before-hook '(lambda ()
+                                   (yes-or-no-p "本当に mofcomp するの?")))</pre></dd>
+</dl>
+<h3><a name="3.3" href="#3.3">3.3</a> <a name="label-37">変数</a></h3><!-- RDLabel: "変数" -->
+
+<dl>
+<dt><a name="label-38" id="label-38"><code>*mof-comment-column*</code></a></dt><!-- RDLabel: "*mof-comment-column*" -->
+<dd>
+<p><code>indent-for-comment</code> で挿入するコメントの開始位置。
+デフォルト値は 60 です。</p>
+<pre>0    10    20    30    40     50     60
+class Win32_Sample                   // ←これを挿入する位置</pre></dd>
+<dt><a name="label-39" id="label-39"><code>*mof-indent-level*</code></a></dt><!-- RDLabel: "*mof-indent-level*" -->
+<dd>
+インデント幅を指定します。
+デフォルト値は 3 です。</dd>
+<dt><a name="label-40" id="label-40"><code>*mof-qualifier-offset*</code></a></dt><!-- RDLabel: "*mof-qualifier-offset*" -->
+<dd>
+Qualifier のオフセットを指定します。
+デフォルト値は 3 です。</dd>
+<dt><a name="label-41" id="label-41"><code>*mof-compile-command*</code></a></dt><!-- RDLabel: "*mof-compile-command*" -->
+<dd>
+mofcomp 用コマンドを指定します。
+デフォルト値は "mofcomp" です。</dd>
+<dt><a name="label-42" id="label-42"><code>*mof-lint-command*</code></a></dt><!-- RDLabel: "*mof-lint-command*" -->
+<dd>
+構文チェック用コマンドを指定します。
+デフォルト値は "mofcomp -check" です。</dd>
+<dt><a name="label-43" id="label-43"><code>*mof-command-buffer-name*</code></a></dt><!-- RDLabel: "*mof-command-buffer-name*" -->
+<dd>
+コマンド実行時の出力バッファ名。
+デフォルト値は "*MOF Command*" です。</dd>
+<dt><a name="label-44" id="label-44"><code>*mof-include-directory-list*</code></a></dt><!-- RDLabel: "*mof-include-directory-list*" -->
+<dd>
+<p><code>mof-find-include-file</code> でファイルを探すディレクトリを指定します。</p>
+<pre>;; Include ディレクトリを追加
+(pushnew "D:/CIM_V28Prelim-MOFs/" *mof-include-directory-list*)</pre></dd>
+</dl>
+<h2><a name="4" href="#4">4</a> <a name="label-45">コーディングスタイル</a></h2><!-- RDLabel: "コーディングスタイル" -->
+
+<p>MOF のコーディングスタイル集です。
+デフォルトは DMTF - CIM Schema v2.8 です。</p>
+<h3><a name="4.1" href="#4.1">4.1</a> <a name="label-46">DMTF - CIM Schema v2.8</a></h3><!-- RDLabel: "DMTF - CIM Schema v2.8" -->
+
+<ul>
+<li><p>.xyzzy</p>
+<pre>;; CIM Schema v2.8 のインデントスタイル
+(setf *mof-indent-level* 3)
+(setf *mof-qualifier-offset* 3)</pre></li>
+<li><p>style</p>
+<pre>// comment
+   [abstract]
+class Win32_LogicalDisk
+{
+   // comment
+      [read]
+   string DriveLetter;
+}</pre></li>
+</ul>
+<h3><a name="4.2" href="#4.2">4.2</a> <a name="label-47">DMTF - CIM Schema v2.7</a></h3><!-- RDLabel: "DMTF - CIM Schema v2.7" -->
+
+<ul>
+<li><p>.xyzzy</p>
+<pre>;; CIM Schema v2.7 のインデントスタイル
+(setf *mof-indent-level* 4)
+(setf *mof-qualifier-offset* 4)</pre></li>
+<li><p>style</p>
+<pre>// comment
+    [abstract]
+class Win32_LogicalDisk
+{
+    // comment
+        [read]
+    string DriveLetter;
+}</pre></li>
+</ul>
+<h3><a name="4.3" href="#4.3">4.3</a> <a name="label-48">Microsoft / SUN</a></h3><!-- RDLabel: "Microsoft / SUN" -->
+
+<ul>
+<li><p>.xyzzy</p>
+<pre>(setf *mof-indent-level* 4)
+(setf *mof-qualifier-offset* 0)</pre></li>
+<li><p>style</p>
+<pre>// comment
+[abstract]
+class Win32_LogicalDisk
+{
+    // comment
+    [read]
+    string DriveLetter;
+}</pre></li>
+</ul>
+<h3><a name="4.4" href="#4.4">4.4</a> <a name="label-49">DMTF - <a href="http://www.dmtf.org/education/cimtutorial/extend/spec.php">CIM Tutorial</a></a></h3><!-- RDLabel: "DMTF - " -->
+
+<ul>
+<li><p>.xyzzy</p>
+<pre>(setf *mof-indent-level* 8)
+(setf *mof-qualifier-offset* -4)</pre></li>
+<li><p>style</p>
+<pre>// comment
+[abstract]
+class Win32_LogicalDisk
+{
+        // comment
+    [read]
+        string DriveLetter;
+}</pre></li>
+</ul>
+<h2><a name="5" href="#5">5</a> <a name="label-50">既知のバグ</a></h2><!-- RDLabel: "既知のバグ" -->
+
+<ul>
+<li>mof-generate-java-constants は単純な int 型のみ。
+  string や 1..4 のようなレンジには対応していない。</li>
+</ul>
+<h2><a name="6" href="#6">6</a> <a name="label-51">これからやるかもしれないこと</a></h2><!-- RDLabel: "これからやるかもしれないこと" -->
+
+<ul>
+<li>リファレンス。</li>
+</ul>
+<h2><a name="7" href="#7">7</a> <a name="label-52">関連するかもしれないページ</a></h2><!-- RDLabel: "関連するかもしれないページ" -->
+
+<dl>
+<dt><a name="label-53" id="label-53">Common Information Model (CIM) Standards</a></dt><!-- RDLabel: "Common Information Model (CIM) Standards" -->
+<dd>
+<a href="http://www.dmtf.org/standards/standard_cim.php">&lt;URL:http://www.dmtf.org/standards/standard_cim.php&gt;</a>
+</dd>
+<dt><a name="label-54" id="label-54">MOF Specification</a></dt><!-- RDLabel: "MOF Specification" -->
+<dd>
+<a href="http://www.dmtf.org/standards/cim/cim_spec_v22/#_Toc453584969">&lt;URL:http://www.dmtf.org/standards/cim/cim_spec_v22/#_Toc453584969&gt;</a>
+</dd>
+<dt><a name="label-55" id="label-55">CIM Schema v2.8</a></dt><!-- RDLabel: "CIM Schema v2.8" -->
+<dd>
+<a href="http://www.dmtf.org/standards/cim/cim_schema_v28">&lt;URL:http://www.dmtf.org/standards/cim/cim_schema_v28&gt;</a>
+</dd>
+<dt><a name="label-56" id="label-56">CIM Schema v2.7</a></dt><!-- RDLabel: "CIM Schema v2.7" -->
+<dd>
+<a href="http://www.dmtf.org/standards/cim/cim_schema_v27">&lt;URL:http://www.dmtf.org/standards/cim/cim_schema_v27&gt;</a>
+</dd>
+<dt><a name="label-57" id="label-57">WMI CIM Schema</a></dt><!-- RDLabel: "WMI CIM Schema" -->
+<dd>
+%SystemRoot%\system32\wbem\cimwin32.mof
+</dd>
+<dt><a name="label-58" id="label-58">Microsoft MOF Editor</a></dt><!-- RDLabel: "Microsoft MOF Editor" -->
+<dd>
+<a href="http://www.dmtf.org/members/tools">&lt;URL:http://www.dmtf.org/members/tools&gt;</a>
+</dd>
+</dl>
+<h2><a name="8" href="#8">8</a> <a name="label-59">ライセンス</a></h2><!-- RDLabel: "ライセンス" -->
+
+<p>mof-mode は修正 BSD ライセンスに基づいて利用可能です。</p>
+<pre>Copyright (C) 2003-2004 MIYAMUKO Katsuyuki. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1 Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer as the first lines
+of this file unmodified.
+
+2 Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.</pre>
+
+</body>
+</html>

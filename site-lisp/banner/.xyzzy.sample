@@ -1,0 +1,34 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; banner
+(require "banner")
+
+;; Meadow さんの font directory を追加
+(pushnew "D:/Tools/Meadow/fonts/bdf" *bdf-directory-list*)
+
+;; 四角でレイアウトする
+(setf *banner-font-fg-char* "■")
+(setf *banner-font-bg-char* "□")
+
+;; monafont を利用する
+(setf *banner-bdf-font-selecter*
+      #'(lambda (c)
+          (cond ((kanji-char-p c)
+                 ; 漢字、ひらがな、カタカナ
+                 "monak12.bdf")
+                ((kana-char-p c)
+                 ; いわゆる半角カナ
+                 "mona6x12r.bdf")
+                (t
+                 ; その他
+                 "mona6x12a.bdf"))))
+
+;; K12 を利用する
+(setf *banner-bdf-font-selecter*
+      #'(lambda (c)
+          (cond ((kanji-char-p c)
+                 ; 漢字、ひらがな、カタカナ
+                 "k12x10.bdf")
+                (t
+                 ; その他
+                 "k6x10.bdf"))))

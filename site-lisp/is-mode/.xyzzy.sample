@@ -1,0 +1,21 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; is-mode
+(require "is-mode")
+(pushnew '("\\.rul$" . is-mode) *auto-mode-alist* :test 'equal)
+
+;; インデントの幅(下図で _ の部分, default=4)
+(setq *is-indent-level* 4)
+
+;; ラベルのオフセット(下図で - の部分, default=-4)
+;;; 説明のためのありえない設定。
+(setq *is-label-offset* 4)
+
+;; function Foo(nBar)
+;; ____number nFoo;
+;; begin
+;; ____if (nBar != 0) goto Baz;
+;; ____nFoo = 10
+;; ____----Label:
+;; ____// ...
+;; end;

@@ -1,0 +1,5 @@
+(lisp::in-package-1 :user)
+(require "drive-info/ffi/package")
+(require "drive-info/ffi/types")
+(require "drive-info/ffi/kernel32")
+(provide "drive-info/ffi")

@@ -1,0 +1,8 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; properties-mode
+(load-library "properties-mode")
+(pushnew '("\\.properties$" . properties-mode) *auto-mode-alist* :test 'equal)
+
+;; ƒCƒ“ƒfƒ“ƒg•‚ğ 4 ‚É‚·‚é
+(setq *properties-indent-level* 4)

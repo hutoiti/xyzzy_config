@@ -1,0 +1,21 @@
+2004-08-09  MIYAMUKO Katsuyuki  <miyamuko@yyy.yyyyyyy.yy.yy>
+
+	* サイト移転に伴うこまごまとした修正
+
+2003-08-12  MIYAMUKO Katsuyuki  <k-miyamuko@xy.yy.yyz.zyy>
+
+	* ni-autoload 用ファイルをやっと追加。
+
+2003-04-13  MIYAMUKO Katsuyuki  <k-miyamuko@xy.yy.yyz.zyy>
+
+	* (({#define HOGE})) をタグジャンプできるようにした
+
+	* 複数行コメントのインデントが変だったのを修正
+
+	* switch 文の default のインデントが変だったのを修正
+
+	* キーワードファイルの名前を IS から InstallScript に変更
+
+2003-03-08  MIYAMUKO Katsuyuki  <k-miyamuko@xy.yy.yyz.zyy>
+
+	* 初期リリース

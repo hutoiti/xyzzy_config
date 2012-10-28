@@ -1,0 +1,4 @@
+; -*- Mode: Lisp; Package: editor -*-
+
+;; natural-compare
+(require "natural-compare")

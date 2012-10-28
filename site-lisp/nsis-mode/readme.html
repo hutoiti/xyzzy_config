@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>nsis-mode - NSIS ファイルを編集したりする</title>
+<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+<style type="text/css" media="screen,all">
+<!--
+/* @import styles/document.css
+ * @date Tue Aug 10 01:28:44 2004
+ */
+
+/* ======== @import "article.css"; ======== */
+@charset "Shift_JIS";
+
+/* body */
+body {
+    margin: 2em;
+    padding: 0;
+}
+
+/* heading */
+h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+/* lists */
+ul, ol {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+dd ul {
+    padding-left: 0;
+    margin-left: 1em;
+}
+
+dd ul ul {
+    padding-left: 0;
+    margin-left: 2em;
+}
+
+li {
+    line-height: 1.2;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0.2em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd, dd p, li p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+pre {
+    padding: 0.4em;
+    margin: 1em;
+    font-size: 90%;
+    overflow: auto;
+}
+
+p {
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+code, kbd, dfn {
+    font-size: 100%;
+}
+
+/* ======== end @import "article.css"; ==== */
+
+
+/* ======== @import "color.css"; ======== */
+body {
+    color: black;
+    font-family: Verdana;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #005a9c;
+    font-family: Verdana;
+}
+h1 {
+    font-size: 260%;
+}
+h2 {
+    font-size: 200%;
+}
+h3 {
+    font-size: 160%;
+}
+h4 {
+    font-size: 140%;
+}
+h5 {
+    font-size: 120%;
+}
+h6 {
+    font-size: 100%;
+}
+
+pre {
+    color: #000;
+    background: #f6f6ff;
+    border: 1px solid #99f;
+}
+
+dt {
+    border-bottom: 1px solid #eef;
+}
+
+dt code {
+    font-family: Verdana;
+}
+
+a:link {
+    color: #00C;
+    background: transparent;
+}
+a:visited {
+    color: #609;
+    background: transparent;
+}
+a:active, a:hover {
+    color: #C00;
+    background: transparent;
+}
+
+/*
+ * class
+ */
+
+.label-not-found {
+    color: white;
+    background: red;
+}
+
+/* ======== end @import "color.css"; ==== */
+
+-->
+</style>
+</head>
+<body>
+<h1><a name="" href="#"></a> <a name="label-0">nsis-mode - NSIS ファイルを編集したりする</a></h1><!-- RDLabel: "nsis-mode - NSIS ファイルを編集したりする" -->
+
+<ul>
+<li>Author:  miyamuko <a href="mailto:miyamuko (at) mtb.biglobe.ne.jp">&lt;URL:mailto:miyamuko (at) mtb.biglobe.ne.jp&gt;</a></li>
+<li>URL: <a href="http://miyamuko.s56.xrea.com/xyzzy/nsis-mode.html">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/nsis-mode.html&gt;</a></li>
+<li>Version: $Id: nsis-mode.l,v 1.9 2004/08/09 14:03:15 miyamuko Exp $</li>
+</ul>
+<h2><a name="1" href="#1">1</a> <a name="label-1">説明</a></h2><!-- RDLabel: "説明" -->
+
+<p>NSIS スクリプトファイルの編集用モードです。</p>
+<ul>
+<li>適当なインデント</li>
+<li>適当な色づけ</li>
+<li>キーワードの補完</li>
+<li>Function と !define のタグジャンプ</li>
+</ul>
+<h2><a name="2" href="#2">2</a> <a name="label-2">インストール</a></h2><!-- RDLabel: "インストール" -->
+
+<p><a href="http://www.mirai.ne.jp/~gyo/xyzzy/ni.html">NetInstaller</a> でインストールした場合は 3 以降を、
+NetInstaller + <code>ni-autoload</code> を使っている人は 4 以降で OK です。</p>
+<ol>
+<li><p>アーカイブをダウンロードします。</p>
+<p><a href="http://miyamuko.s56.xrea.com/xyzzy/archives/nsis-mode.zip">&lt;URL:http://miyamuko.s56.xrea.com/xyzzy/archives/nsis-mode.zip&gt;</a></p></li>
+<li>アーカイブを展開して、$XYZZY/site-lisp 配下にファイルをコピーします。</li>
+<li><p>拡張子が nsi (NSIS Script File) または nsh (NSIS Header File)
+    のファイルを開いたときに自動的に nsis-mode になるように
+    ~/.xyzzy または $XYZZY/site-lisp/siteinit.l に以下のコードを追加します。</p>
+<pre>;; nsis-mode
+(require "nsis-mode")
+(pushnew '("\\.ns[ih]$" . nsis-mode) *auto-mode-alist* :test 'equal)</pre></li>
+<li><p>設定を反映させるには xyzzy を再起動してください。</p>
+<p>※siteinit.l に記述した場合には再ダンプが必要です。</p></li>
+</ol>
+<h2><a name="3" href="#3">3</a> <a name="label-3">リファレンス</a></h2><!-- RDLabel: "リファレンス" -->
+
+<h3><a name="3.1" href="#3.1">3.1</a> <a name="label-4">キー割り当て</a></h3><!-- RDLabel: "キー割り当て" -->
+
+<dl>
+<dt><a name="label-5" id="label-5"><kbd>TAB</kbd></a></dt><!-- RDLabel: "TAB" -->
+<dd>
+<p>インデントする。</p>
+<p>Compiler directive (!defineとか) はインデントしません。</p>
+</dd>
+<dt><a name="label-6" id="label-6"><kbd>RET</kbd></a></dt><!-- RDLabel: "RET" -->
+<dd>
+改行＋インデント付け。
+</dd>
+<dt><a name="label-7" id="label-7"><kbd>M-TAB</kbd></a></dt><!-- RDLabel: "M-TAB" -->
+<dd>
+<p>キーワードと組み込み関数の補完。</p>
+<p>先行する文字があればその文字から始まるキーワードをツールチップで表示します。
+先行する文字がなければすべてのキーワードを表示します。</p>
+</dd>
+</dl>
+<h3><a name="3.2" href="#3.2">3.2</a> <a name="label-8">変数</a></h3><!-- RDLabel: "変数" -->
+
+<dl>
+<dt><a name="label-9" id="label-9"><code>*nsis-indent-level*</code></a></dt><!-- RDLabel: "*nsis-indent-level*" -->
+<dt><a name="label-10" id="label-10"><code>*nsis-continued-statement-offset*</code></a></dt><!-- RDLabel: "*nsis-continued-statement-offset*" -->
+</dl>
+<p>インデントレベルを設定します。</p>
+<pre>;; インデントの幅(下図で _ の部分, default=2)
+(setq *nsis-indent-level* 4)
+
+;; 継続行のオフセット(下図で - の部分, default=4)
+(setq *nsis-continued-statement-offset* 4)
+
+;; Section "Modern User Interface" SecContribModernUI
+;; ____SetOutPath "$INSTDIR" \
+;; ____----"\Examples\Modern UI"
+;; EndSection</pre>
+<h2><a name="4" href="#4">4</a> <a name="label-11">これからやるかもしれないこと</a></h2><!-- RDLabel: "これからやるかもしれないこと" -->
+
+<ul>
+<li>へなちょこなので放置
+<ul>
+<li>だれか引き取ってください。</li>
+</ul></li>
+</ul>
+<h2><a name="5" href="#5">5</a> <a name="label-12">関連するかもしれないページ</a></h2><!-- RDLabel: "関連するかもしれないページ" -->
+
+<dl>
+<dt><a name="label-13" id="label-13">Nullsoft Scriptable Install System // NSIS Developer Site</a></dt><!-- RDLabel: "Nullsoft Scriptable Install System // NSIS Developer Site" -->
+<dd>
+<a href="http://nsis.sf.net/">&lt;URL:http://nsis.sf.net/&gt;</a>
+</dd>
+<dt><a name="label-14" id="label-14">NSIS related software - NSIS Archive</a></dt><!-- RDLabel: "NSIS related software - NSIS Archive" -->
+<dd>
+<a href="http://nsis.sourceforge.net/archive/nsisweb.php?page=8&amp;instances=0">&lt;URL:http://nsis.sourceforge.net/archive/nsisweb.php?page=8&amp;instances=0&gt;</a>
+</dd>
+</dl>
+<h2><a name="6" href="#6">6</a> <a name="label-15">ライセンス</a></h2><!-- RDLabel: "ライセンス" -->
+
+<p>nsis-mode は修正 BSD ライセンスに基づいて利用可能です。</p>
+<pre>Copyright (C) 2003-2004 MIYAMUKO Katsuyuki. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1 Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer as the first lines
+of this file unmodified.
+
+2 Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.</pre>
+
+</body>
+</html>

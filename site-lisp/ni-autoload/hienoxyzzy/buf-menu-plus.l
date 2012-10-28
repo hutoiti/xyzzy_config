@@ -1,0 +1,1 @@
+(require "buf-menu-plus")
